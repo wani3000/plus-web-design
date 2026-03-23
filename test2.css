@@ -1,0 +1,194 @@
+/* Dedicated stylesheet for Test 2 */
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #000; /* Standard base background */
+  color: #fff;
+  overflow-x: hidden;
+}
+
+/* Background Video fixed covering viewport */
+.bg-video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  z-index: -2;
+  will-change: filter, opacity;
+}
+
+/* Base overlay to dim background video slightly */
+.video-overlay {
+  position: fixed;
+  top: 0; 
+  left: 0; 
+  width: 100vw; 
+  height: 100vh;
+  background: rgba(0,0,0,0.4);
+  z-index: -1;
+}
+
+/* Pinned Container wrapper */
+.pin-container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* Top padding to safely align below navbar */
+  padding-top: 70px;
+  box-sizing: border-box;
+}
+
+/* Phone Alignment Container */
+.iphone-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  perspective: 1200px; /* Crucial for realistic 3D transform depth */
+}
+
+.iphone-3d-wrapper {
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+/* iPhone Outer Hardware Frame */
+.iphone-frame {
+  position: relative;
+  width: 380px;
+  height: 820px;
+  border-radius: 55px; /* Physical curve */
+  background: #000;
+  overflow: hidden; /* Constrains inner UI */
+  box-shadow: 0 0 0 12px #111, 0 30px 60px rgba(0,0,0,0.8), inset 0 0 0 2px #444; /* Shiny outer bezel simulation */
+  z-index: 10;
+  /* The phone enters from below offscreen. Let GSAP take it from 150vh to 0. */
+  transform: translateY(150vh);
+  will-change: transform, scale, opacity;
+}
+
+/* Reflective Glare Overlay */
+.glare {
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(135deg, rgba(255,255,255,0.12) 0%, rgba(255,255,255,0) 50%);
+  pointer-events: none; /* Passes clicks underneath */
+  z-index: 20;
+  transform: rotate(-15deg);
+}
+
+/* Notch / Dynamic Island */
+.dynamic-island {
+  position: absolute;
+  top: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 120px;
+  height: 35px;
+  background: #050505;
+  border-radius: 20px;
+  z-index: 30;
+  box-shadow: 0 0 5px rgba(0,0,0,0.5);
+}
+
+/* Inner Scrolling App Content */
+.app-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 350%; /* Make the internal app wrapper extremely tall to scroll through */
+  background: #f4f6f9;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  color: #111;
+  font-family: 'Pretendard Variable', sans-serif;
+  will-change: transform;
+}
+
+/* Inner Mock App Layout Elements */
+.app-header {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  height: 100px; /* Provides room behind the island notch */
+  background: rgba(255,255,255,0.7);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding-bottom: 15px;
+  font-weight: 700;
+  font-size: 18px;
+  z-index: 15;
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+  box-sizing: border-box;
+}
+
+.app-screen {
+  padding: 30px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  opacity: 0.3; /* Base hidden, GSAP fades in */
+  transform: translateY(40px);
+}
+
+.app-screen h3 {
+  margin: 0;
+  font-size: 26px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+
+/* Mock Card styling simulating generic app blocks */
+.mock-card {
+  width: 100%;
+  height: 150px;
+  background: #ffffff;
+  border-radius: 24px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.04);
+}
+.mock-card.lg { height: 260px; }
+.mock-card.banner { height: 200px; background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%); }
+.mock-card.vertical { height: 400px; }
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+.mock-card.sm { height: 130px; }
+
+/* The final exit section on the very bottom */
+.next-section {
+  height: 100vh;
+  width: 100vw;
+  background: #050505;
+  position: relative;
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  opacity: 0; /* Initiates hidden, GSAP resolves it */
+}
+
+.next-section h2 { 
+  font-size: 4rem; 
+  margin-bottom: 1rem; 
+  color: #fff;
+  font-weight: 700;
+}
+.next-section p { 
+  font-size: 1.5rem; 
+  color: #888; 
+}

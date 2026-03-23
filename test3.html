@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>테스트 3 - Revolut UI</title>
+  <link rel="stylesheet" href="./style.css" />
+  <link rel="stylesheet" href="./test3.css" />
+</head>
+<body>
+  <!-- Top Navigation Bar (Shared) -->
+  <nav class="top-nav">
+    <a href="/" class="nav-tab">테스트1</a>
+    <a href="/test2.html" class="nav-tab">테스트2</a>
+    <a href="/test3.html" class="nav-tab active">테스트3</a>
+  </nav>
+
+  <!-- Pinned Scroll Section -->
+  <section id="hero-section">
+    <!-- Background Photo Layer -->
+    <img src="/t3-bg.png" class="bg-photo" alt="Background" />
+    
+    <!-- White Clip Path Expanding Layer -->
+    <div class="white-fill"></div>
+    
+    <!-- Phone Hardware Frame -->
+    <div class="phone-frame">
+      <img src="/t3-center.png" class="hero-photo" alt="Mobile View" />
+    </div>
+    
+    <!-- Revealing Cards Container -->
+    <div class="cards-container">
+      <div class="card card-left">
+        <img src="/t3-left.png" class="card-bg" alt="Left Card Overlay"/>
+        <div class="card-overlay">
+          <div class="card-badge">Personal &middot; EUR</div>
+          <div class="card-amount">&euro;3,126</div>
+          <div class="card-transaction">Coffee in Paris <span>-&euro;3.25</span></div>
+        </div>
+      </div>
+      <div class="card card-center">
+        <!-- Center uses same background as phone to create seamless zoom metaphor -->
+        <img src="/t3-center.png" class="card-bg" alt="Center Real Card"/>
+        <div class="card-overlay">
+          <div class="card-badge">Personal</div>
+          <div class="card-amount">&pound;6,012</div>
+          <div class="card-transaction">Salary <span>+&pound;2,550</span></div>
+        </div>
+      </div>
+      <div class="card card-right">
+        <img src="/t3-right.png" class="card-bg" alt="Right Card Overlay"/>
+        <div class="card-overlay">
+          <div class="card-badge">Personal</div>
+          <div class="card-amount">&pound;2,350</div>
+          <div class="card-transaction">House bills <span>-&pound;225</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Next Normal Section -->
+  <section id="next-section">
+    <h2>Financial Freedom</h2>
+    <p>Seamless management across borders.</p>
+  </section>
+
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script type="module" src="./test3.js"></script>
+</body>
+</html>
