@@ -1,88 +1,97 @@
 gsap.registerPlugin(ScrollTrigger);
 
-// Main pinned timeline corresponding to the full Test 3 experience
+// ==========================================
+// Dynamic size setup for white-fill hole
+// ==========================================
+
+function getPhoneDimensions() {
+  const scale = window.innerWidth <= 1400 ? 0.7 : 1;
+  return {
+    width: 390 * scale,
+    height: 844 * scale,
+    borderRadius: 52 * scale
+  };
+}
+
+// Set initial white-fill shape to match phone frame
+const dims = getPhoneDimensions();
+gsap.set(".white-fill", { 
+  width: dims.width, 
+  height: dims.height, 
+  borderRadius: dims.borderRadius,
+  xPercent: -50,
+  yPercent: -50
+});
+
 const tl = gsap.timeline({
   scrollTrigger: {
     trigger: "#hero-section",
     start: "top top",
-    end: () => "+=" + (window.innerHeight * 4), // 400vh of pinned scroll range
+    end: () => "+=" + (window.innerHeight * 1.5), // 150vh — 한 번 스크롤로 전체 완료
     pin: true,
-    scrub: 1, // Smooth scrub behavior explicitly requested
+    scrub: 0.4, // 빠르고 즉각적인 반응
   }
 });
 
-// Calculate percentages dynamically in timeline duration.
-// Let total duration be 100 to map directly to the percentage requests in the prompt.
+// Total timeline duration = 100 (percentage-based mapping)
 
 // ==========================================
-// SCROLL PHASE 1: White fill expands (0% -> 50%)
+// SCROLL PHASE 1: White fill + phone shrink (0% → 40%)
 // ==========================================
 
-// Animation A: white-fill expands
+// Animation A: white-fill의 구멍 크기를 폰 프레임과 똑같이 축소
 tl.to(".white-fill", {
-  clipPath: "inset(0% 0% 0% 0% round 0px)",
-  ease: "none",
-  duration: 50
-}, 0); // start at 0%
-
-// Animation B: phone-frame shrinks to 0.82
-tl.to(".phone-frame", {
-  scale: 0.82,
+  scale: 0.667,
   ease: "none",
   duration: 50
 }, 0);
 
-// Animation C: hero-photo counter-scales
-// 1 / 0.82 ≈ 1.2195, effectively neutralizing the size reduction visually
-tl.to(".hero-photo", {
-  scale: 1.22, 
+// Animation A-2: white-fill 그림자(흰 배경) 확산
+tl.fromTo(".white-fill",
+  { boxShadow: "0 0 0 0px #ffffff" },
+  { boxShadow: "0 0 0 200vmax #ffffff", ease: "none", duration: 40 },
+  0
+);
+
+// Animation B: phone-frame → 카드 크기(260px)로 점진 축소 (전체 50 duration)
+// 260 / 390 ≈ 0.667 — white-fill 확장이 끝나는 시점에 카드 크기와 일치
+tl.to(".phone-frame", {
+  scale: 0.667,
   ease: "none",
   duration: 50
 }, 0);
 
-// Animation D: background photo fades slightly (20% -> 50%)
-tl.to(".bg-photo", {
-  opacity: 0,
-  ease: "none",
-  duration: 30 // 50% - 20% = 30 duration blocks
-}, 20); // start at 20%
-
 // ==========================================
-// SCROLL PHASE 2: Cards appear (50% -> 100%)
+// SCROLL PHASE 2: 카드 등장 (40% → 90%)
 // ==========================================
 
-// Animation E: Phone fades out, center card fades in (50% -> 60%)
-tl.to(".phone-frame", {
-  opacity: 0,
-  ease: "none",
-  duration: 10 // 60% - 50%
-}, 50); // start at 50%
-
+// Animation E: cards-container를 보이게 해 left/right 카드 등장 준비
+// phone-frame이 곧바로 센터 카드 역할을 하므로 card-center는 숨김 유지
 tl.to(".cards-container", {
   opacity: 1,
   ease: "none",
   duration: 10
-}, 50);
+}, 40);
 
-tl.to(".card-center", {
-  opacity: 1,
-  scale: 1,
+// phone-frame & white-fill border-radius 전환: 폰 모양 → 카드 모양(24px)
+tl.to(".phone-frame, .white-fill", {
+  borderRadius: "24px",
   ease: "none",
   duration: 10
-}, 50);
+}, 40);
 
-// Animation F: card-left enters from left (58% -> 80%)
+// Animation F: 좌측 카드 슬라이드인 (48% → 70%)
 tl.fromTo(".card-left",
   { opacity: 0, scale: 1.3, x: -80 },
   { opacity: 1, scale: 1, x: 0, ease: "none", duration: 22 },
-  58 // start at 58%
+  48
 );
 
-// Animation G: card-right enters from right (65% -> 85%)
+// Animation G: 우측 카드 슬라이드인 (55% → 75%)
 tl.fromTo(".card-right",
   { opacity: 0, scale: 1.3, x: 80 },
   { opacity: 1, scale: 1, x: 0, ease: "none", duration: 20 },
-  65 // start at 65%
+  55
 );
 
-// Timeline automatically sits idle from 85 to 100 providing scroll clearance before unpinning.
+// 75%~100% idle — 언핀 전 여유 구간

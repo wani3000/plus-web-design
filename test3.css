@@ -12,32 +12,25 @@ body {
   height: 100vh; /* Pinned by GSAP ScrollTrigger */
   position: relative;
   overflow: hidden;
-  background: #000;
+  /* Single image — background-attachment:fixed keeps it viewport-anchored during pin */
+  background: url('/t3-center.png') center / cover fixed;
 }
 
-/* Base fullscreen background */
-.bg-photo {
-  position: fixed;
-  inset: 0;
-  width: 100vw;
-  height: 100vh;
-  object-fit: cover;
-  z-index: 0;
-  will-change: opacity;
-}
 
-/* White revealing overlay layer */
+/* Transparent hole layering white box-shadow outwards to reveal background */
 .white-fill {
-  position: fixed;
-  inset: 0;
-  background: #ffffff;
-  /* Centered exact clipped dimensions matching the phone frame: 390x844 */
-  clip-path: inset(calc(50vh - 422px) calc(50vw - 195px) calc(50vh - 422px) calc(50vw - 195px) round 52px);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* Start centered, scaling down with GSAP */
+  background: transparent;
   z-index: 5;
-  will-change: clip-path;
+  box-shadow: 0 0 0 0px #ffffff;
+  /* width and height are set dynamically by JS */
+  will-change: box-shadow, transform, border-radius;
 }
 
-/* Phone Frame */
+/* Phone Frame — transparent border overlay, background image shows through */
 .phone-frame {
   position: absolute;
   width: 390px;
@@ -47,19 +40,13 @@ body {
   top: 50%;
   transform: translate(-50%, -50%);
   z-index: 10;
-  overflow: hidden;
-  box-shadow: 0 40px 120px rgba(0,0,0,0.5);
+  border: 1px solid rgba(255,255,255,0.15); /* Softer highlight frame */
+  box-shadow: inset 0 0 0 1px rgba(0,0,0,0.05); /* Soft inner depth */
   box-sizing: border-box;
   will-change: transform, opacity;
+  background: transparent;
 }
 
-.hero-photo {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transform-origin: center center;
-  will-change: transform;
-}
 
 /* CARDS LAYER */
 .cards-container {
@@ -69,7 +56,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 32px;
+  gap: 20px;
   z-index: 20;
   opacity: 0;
   pointer-events: none;
@@ -83,22 +70,15 @@ body {
   .phone-frame {
     transform: translate(-50%, -50%) scale(0.7);
   }
-  .white-fill {
-    /* Scaled down mathematical masking matching a 0.7 physical device scale */
-    /* 390 * 0.7 = 273. -> width/2 = 136.5 */
-    /* 844 * 0.7 = 590.8. -> height/2 = 295.4 */
-    /* Radius 52 * 0.7 = 36.4 */
-    clip-path: inset(calc(50vh - 295.4px) calc(50vw - 136.5px) calc(50vh - 295.4px) calc(50vw - 136.5px) round 36.4px);
-  }
 }
 
 .card {
-  width: 390px;
+  width: 260px;
   aspect-ratio: 9 / 19.5;
-  border-radius: 36px;
+  border-radius: 24px;
   overflow: hidden;
   background: #fff;
-  box-shadow: 0 24px 80px rgba(0,0,0,0.12);
+  box-shadow: 0 16px 60px rgba(0,0,0,0.12);
   position: relative;
   flex-shrink: 0;
   will-change: transform, opacity;
@@ -124,48 +104,7 @@ body {
   object-fit: cover;
 }
 
-.card-overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 60%);
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  padding: 30px;
-  color: white;
-  z-index: 2;
-}
 
-.card-badge {
-  position: absolute;
-  top: 30px;
-  left: 30px;
-  background: rgba(255,255,255,0.2);
-  backdrop-filter: blur(10px);
-  padding: 6px 14px;
-  border-radius: 20px;
-  font-size: 14px;
-  font-weight: 600;
-  letter-spacing: -0.2px;
-}
-
-.card-amount {
-  font-size: 48px;
-  font-weight: 700;
-  margin-bottom: 8px;
-  letter-spacing: -1.5px;
-}
-
-.card-transaction {
-  font-size: 18px;
-  font-weight: 500;
-  display: flex;
-  justify-content: space-between;
-  opacity: 0.9;
-}
-.card-transaction span {
-  font-weight: 700;
-}
 
 /* Normal continuation content */
 #next-section {
