@@ -27,11 +27,14 @@ const tl = gsap.timeline({
   scrollTrigger: {
     trigger: "#hero-section",
     start: "top top",
-    end: () => "+=" + (window.innerHeight * 1.5), // 150vh — 한 번 스크롤로 전체 완료
+    end: () => "+=" + (window.innerHeight * 2.5), // 250vh — 딤+텍스트 구간까지 여유 확보
     pin: true,
-    scrub: 0.4, // 빠르고 즉각적인 반응
+    scrub: 0.4,
   }
 });
+
+// 카드 오버레이 텍스트 초기 상태 명시
+gsap.set(".card-overlay-text", { opacity: 0, y: 20 });
 
 // Total timeline duration = 100 (percentage-based mapping)
 
@@ -95,7 +98,7 @@ tl.fromTo(".card-right",
 );
 
 // ==========================================
-// SCROLL PHASE 3: card-left 딤 + 텍스트 등장 (72% → 95%)
+// SCROLL PHASE 3: card-left 딤 + 텍스트 등장 (65% → 90%)
 // ==========================================
 
 // card-left 이미지 위 딤 오버레이
@@ -103,14 +106,14 @@ tl.to(".card-left .img-overlay", {
   backgroundColor: "rgba(0, 0, 0, 0.55)",
   ease: "none",
   duration: 15
-}, 72);
+}, 65);
 
 // 딤 이후 텍스트 슬라이드업
 tl.to(".card-overlay-text", {
   opacity: 1,
   y: 0,
   ease: "power2.out",
-  duration: 18
-}, 78);
+  duration: 15
+}, 72);
 
-// 95%~100% idle — 언핀 전 여유 구간
+// 90%~100% idle — 언핀 전 여유 구간
