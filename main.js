@@ -12,22 +12,22 @@ gsap.set(".img-02, .img-03", { x: "-50vw" });
 gsap.set(".img-04, .img-05", { x: "50vw" });
 
 // Create master timeline pinned to scroll
-// We assume timeline duration translates strictly to scroll percentage.
-// Mapping standard 10 units = 100% of scroll scrub distance.
-// Start to finish: 0 to 10
+// Timeline: 13 units total
+//   0  -> 9.5  : image convergence phases
+//   9.5-> 13   : dimmed overlay + text reveal
 const tl = gsap.timeline({
   scrollTrigger: {
     trigger: ".hero-pinned",
     start: "top top",
-    end: "+=3000", // Smooth, long scrub distance
-    scrub: 1.2, // smoothing factor for scrub
+    end: "+=4000", // Extended for overlay phase
+    scrub: 1.2,
     pin: true,
     anticipatePin: 1
   }
 });
 
 // ----------------------------------------------------------------------
-// Phase 2: Scroll Begins (0% -> 50%) -> Duration: 5
+// Phase 2: Scroll Begins (0% -> ~38%) -> Duration: 5
 // `image 01` scales down and centers itself
 // ----------------------------------------------------------------------
 
@@ -37,51 +37,77 @@ tl.to(".hero-title", {
   y: -50,
   duration: 1.5,
   ease: "power2.out"
-}, 0); // Starts at 0
+}, 0);
 
 tl.to(".img-01", {
-  width: "36vw",     // Final centered width
-  height: "70vh",    // Final centered height
+  width: "36vw",
+  height: "70vh",
   borderRadius: "8px",
   ease: "power2.inOut",
-  duration: 5        // Represents 50%
-}, 0);               // Starts at 0
+  duration: 5
+}, 0);
 
 // ----------------------------------------------------------------------
-// Phase 3: Left Images Fly In (staggered, ~30% -> 70%) -> Time: 3 -> 7
+// Phase 3: Left Images Fly In -> Time: 3 -> 7
 // ----------------------------------------------------------------------
 tl.to(".img-02", {
   x: 0,
   opacity: 1,
-  duration: 4,         // 3 to 7
-  ease: "expo.out"     // Fast start, slow finish
-}, 3);                 // Starts at 3 (30%)
+  duration: 4,
+  ease: "expo.out"
+}, 3);
 
 tl.to(".img-03", {
   x: 0,
   opacity: 1,
   duration: 4,
   ease: "expo.out"
-}, 3.5);               // Starts slightly delayed at 35%
+}, 3.5);
 
 // ----------------------------------------------------------------------
-// Phase 4: Right Images Fly In (staggered, ~50% -> 90%) -> Time: 5 -> 9
+// Phase 4: Right Images Fly In -> Time: 5 -> 9
 // ----------------------------------------------------------------------
 tl.to(".img-04", {
   x: 0,
   opacity: 1,
-  duration: 4,         // 5 to 9
+  duration: 4,
   ease: "expo.out"
-}, 5);                 // Starts at 5 (50%)
+}, 5);
 
 tl.to(".img-05", {
   x: 0,
   opacity: 1,
   duration: 4,
   ease: "expo.out"
-}, 5.5);               // Starts slightly delayed at 55%
+}, 5.5);
 
 // ----------------------------------------------------------------------
-// Final State: pad the end to reach exactly 10 units (100% boundary)
+// Phase 5: Per-image Dim Overlay -> Time: 9.5 -> 11
+// Each of the 5 image-wrappers gets its own dark overlay
 // ----------------------------------------------------------------------
-tl.to({}, { duration: 0.5 }, 9.5); // Ensures tl is exactly 10 units long
+tl.to(".img-overlay", {
+  backgroundColor: "rgba(0, 0, 0, 0.55)",
+  duration: 1.5,
+  ease: "power2.inOut"
+}, 9.5);
+
+// Also fade in the text container (transparency switch)
+tl.to(".gallery-overlay", {
+  opacity: 1,
+  duration: 1.5,
+  ease: "power2.inOut"
+}, 9.5);
+
+// ----------------------------------------------------------------------
+// Phase 6: Text Slides Up -> Time: 10.5 -> 13
+// Text rises from below into the center of the dimmed overlay
+// ----------------------------------------------------------------------
+tl.to(".overlay-text", {
+  opacity: 1,
+  y: 0,
+  duration: 2,
+  ease: "power3.out"
+}, 10.5);
+
+// Clean end boundary
+tl.to({}, { duration: 0.5 }, 13);

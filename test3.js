@@ -94,4 +94,23 @@ tl.fromTo(".card-right",
   55
 );
 
-// 75%~100% idle — 언핀 전 여유 구간
+// ==========================================
+// SCROLL PHASE 3: card-left 딤 + 텍스트 등장 (72% → 95%)
+// ==========================================
+
+// card-left 이미지 위 딤 오버레이
+tl.to(".card-left .img-overlay", {
+  backgroundColor: "rgba(0, 0, 0, 0.55)",
+  ease: "none",
+  duration: 15
+}, 72);
+
+// 딤 이후 텍스트 슬라이드업
+tl.to(".card-overlay-text", {
+  opacity: 1,
+  y: 0,
+  ease: "power2.out",
+  duration: 18
+}, 78);
+
+// 95%~100% idle — 언핀 전 여유 구간

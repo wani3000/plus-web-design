@@ -199,3 +199,39 @@ body {
   max-width: 500px;
   line-height: 1.6;
 }
+
+/* Gallery text overlay - no background, just centers the text above all images */
+.gallery-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 30;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Per-image dimmed overlay — sits inside each image-wrapper */
+.img-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0);
+  z-index: 2;
+  border-radius: inherit;
+  pointer-events: none;
+  transition: none; /* Controlled by GSAP */
+}
+
+.overlay-text {
+  font-family: 'Pretendard Variable', Pretendard, sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: #ffffff;
+  text-align: center;
+  line-height: 1.7;
+  margin: 0;
+  letter-spacing: -0.01em;
+  opacity: 0;
+  transform: translateY(40px);
+}

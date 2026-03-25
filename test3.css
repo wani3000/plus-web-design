@@ -129,3 +129,35 @@ body {
   font-size: 1.5rem; 
   color: #888; 
 }
+
+/* Card inner dim overlay (reuses .img-overlay pattern from test1) */
+.card .img-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0);
+  z-index: 2;
+  border-radius: inherit;
+  pointer-events: none;
+  transition: none;
+}
+
+/* Card inner text */
+.card-overlay-text {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 3;
+  margin: 0;
+  padding: 28px 20px;
+  font-family: 'Pretendard Variable', Pretendard, sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: #ffffff;
+  text-align: center;
+  line-height: 1.7;
+  letter-spacing: -0.01em;
+  opacity: 0;
+  transform: translateY(20px);
+  pointer-events: none;
+}
