@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>테스트 3 - Revolut UI</title>
+  <script type="module" crossorigin src="/plus-web-design/assets/test3-Cmhe8pov.js"></script>
+  <link rel="modulepreload" crossorigin href="/plus-web-design/assets/style-CzHI19xT.js">
+  <link rel="stylesheet" crossorigin href="/plus-web-design/assets/style-WH0SdyKq.css">
+  <link rel="stylesheet" crossorigin href="/plus-web-design/assets/test3-qEQst7Xp.css">
+</head>
+<body>
+  <!-- Top Navigation Bar (Shared) -->
+  <nav class="top-nav">
+    <a href="./" class="nav-tab">테스트1</a>
+    <a href="./test2.html" class="nav-tab">테스트2</a>
+    <a href="./test3.html" class="nav-tab active">테스트3</a>
+  </nav>
+
+  <!-- Pinned Scroll Section -->
+  <section id="hero-section">
+
+    <!-- White Clip Path Expanding Layer -->
+    <div class="white-fill"></div>
+    
+    <!-- Phone Frame (border only — background image shows through) -->
+    <div class="phone-frame"></div>
+    
+    <!-- Revealing Cards Container -->
+    <div class="cards-container">
+      <div class="card card-left">
+        <img src="./t3-left.png" class="card-bg" alt="Left Card Overlay"/>
+        <div class="img-overlay"></div>
+        <p class="card-overlay-text">"증여세 신고가 제일 걱정이었는데<br>알림 오고 그대로 따라 하니까<br>생각보다 금방 끝났어요."</p>
+      </div>
+      <div class="card card-center">
+        <!-- Center uses same background as phone to create seamless zoom metaphor -->
+        <img src="./t3-center.png" class="card-bg" alt="Center Real Card"/>
+      </div>
+      <div class="card card-right">
+        <img src="./t3-right.png" class="card-bg" alt="Right Card Overlay"/>
+      </div>
+    </div>
+  </section>
+
+  <!-- Next Normal Section -->
+  <section id="next-section">
+    <h2>Financial Freedom</h2>
+    <p>Seamless management across borders.</p>
+  </section>
+
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+</body>
+</html>

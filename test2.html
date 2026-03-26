@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>테스트 2 - Device Scroll UI</title>
+    <!-- Keep the shared top nav from style.css -->
+    <!-- Test 2 specific styles -->
+    <script type="module" crossorigin src="/plus-web-design/assets/test2-BXzP3QDH.js"></script>
+    <link rel="modulepreload" crossorigin href="/plus-web-design/assets/style-CzHI19xT.js">
+    <link rel="stylesheet" crossorigin href="/plus-web-design/assets/style-WH0SdyKq.css">
+    <link rel="stylesheet" crossorigin href="/plus-web-design/assets/test2-DMN9S8sl.css">
+  </head>
+  <body>
+    <!-- Top Navigation Bar (Shared) -->
+    <nav class="top-nav">
+      <a href="./" class="nav-tab">테스트1</a>
+      <a href="./test2.html" class="nav-tab active">테스트2</a>
+      <a href="./test3.html" class="nav-tab">테스트3</a>
+    </nav>
+
+    <!-- Background Video Layer -->
+    <video class="bg-video" autoplay muted loop playsinline>
+      <!-- High quality abstract video. Downloaded locally to prevent ORB blocking -->
+      <source src="./bg-video.mp4" type="video/mp4" />
+    </video>
+    <!-- Dark overlay to ensure the video isn't too overpowering to the iPhone frame -->
+    <div class="video-overlay"></div>
+
+    <!-- Pinned Scroll Section -->
+    <section class="pin-container">
+      <div class="iphone-container">
+        <!-- Interactive 3D Wrapper bounded by mouse tracking -->
+        <div class="iphone-3d-wrapper">
+          <div class="iphone-frame">
+            <!-- Glare Overlay Simulation -->
+            <div class="glare"></div>
+            <!-- Dynamic Island Overlay -->
+            <div class="dynamic-island"></div>
+            
+            <!-- Inner Scrolling App Content -->
+            <div class="app-content">
+              <!-- Mock App Header -->
+              <div class="app-header">PI Platform</div>
+              
+              <!-- Stacked App Screens -->
+              <!-- Screen 1: Home -->
+              <div class="app-screen type-home">
+                <h3>Welcome</h3>
+                <div class="mock-card lg"></div>
+                <div class="mock-card"></div>
+              </div>
+              
+              <!-- Screen 2: Features -->
+              <div class="app-screen type-feature">
+                <h3>Features</h3>
+                <div class="mock-card banner"></div>
+                <div class="grid-2">
+                  <div class="mock-card sm"></div>
+                  <div class="mock-card sm"></div>
+                  <div class="mock-card sm"></div>
+                  <div class="mock-card sm"></div>
+                </div>
+              </div>
+
+              <!-- Screen 3: Details -->
+              <div class="app-screen type-detail">
+                <h3>Insights</h3>
+                <div class="mock-card vertical"></div>
+                <div class="mock-card"></div>
+                <div class="mock-card"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Next Section (Exit Phase) -->
+    <section class="next-section">
+      <h2 style="font-family: 'Pretendard Variable', sans-serif;">미래를 준비하는 투자 플랫폼</h2>
+      <p style="font-family: 'Pretendard Variable', sans-serif;">지금 바로 경험해 보세요.</p>
+    </section>
+
+    <!-- GSAP / ScrollTrigger Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <!-- Test 2 Core Application Script -->
+  </body>
+</html>
