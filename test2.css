@@ -1,11 +1,37 @@
+@import url('./color-tokens.css');
+
 /* Dedicated stylesheet for Test 2 */
+@font-face {
+  font-family: 'Pretendard Variable';
+  src: url('./font/Pretendard-Regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Pretendard Variable';
+  src: url('./font/Pretendard-Medium.otf') format('opentype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Pretendard Variable';
+  src: url('./font/Pretendard-Bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
 
 body {
   margin: 0;
   padding: 0;
-  background-color: #000; /* Standard base background */
-  color: #fff;
+  background-color: var(--color-gray-90); /* Standard base background */
+  color: var(--color-gray-00);
   overflow-x: hidden;
+  font-family: 'Pretendard Variable', sans-serif;
 }
 
 /* Background Video fixed covering viewport */
@@ -27,7 +53,7 @@ body {
   left: 0; 
   width: 100vw; 
   height: 100vh;
-  background: rgba(0,0,0,0.4);
+  background: rgba(var(--color-gray-90-rgb), 0.4);
   z-index: -1;
 }
 
@@ -65,9 +91,9 @@ body {
   width: 380px;
   height: 820px;
   border-radius: 55px; /* Physical curve */
-  background: #000;
+  background: var(--color-gray-90);
   overflow: hidden; /* Constrains inner UI */
-  box-shadow: 0 0 0 12px #111, 0 30px 60px rgba(0,0,0,0.8), inset 0 0 0 2px #444; /* Shiny outer bezel simulation */
+  box-shadow: 0 0 0 12px var(--color-gray-90), 0 30px 60px rgba(var(--color-gray-90-rgb), 0.8), inset 0 0 0 2px var(--color-gray-80); /* Shiny outer bezel simulation */
   z-index: 10;
   /* The phone enters from below offscreen. Let GSAP take it from 150vh to 0. */
   transform: translateY(150vh);
@@ -81,7 +107,7 @@ body {
   left: -50%;
   width: 200%;
   height: 200%;
-  background: linear-gradient(135deg, rgba(255,255,255,0.12) 0%, rgba(255,255,255,0) 50%);
+  background: linear-gradient(135deg, rgba(var(--color-gray-00-rgb), 0.12) 0%, rgba(var(--color-gray-00-rgb), 0) 50%);
   pointer-events: none; /* Passes clicks underneath */
   z-index: 20;
   transform: rotate(-15deg);
@@ -95,10 +121,10 @@ body {
   transform: translateX(-50%);
   width: 120px;
   height: 35px;
-  background: #050505;
+  background: var(--color-gray-90);
   border-radius: 20px;
   z-index: 30;
-  box-shadow: 0 0 5px rgba(0,0,0,0.5);
+  box-shadow: 0 0 5px rgba(var(--color-gray-90-rgb), 0.5);
 }
 
 /* Inner Scrolling App Content */
@@ -108,11 +134,11 @@ body {
   left: 0;
   width: 100%;
   height: 350%; /* Make the internal app wrapper extremely tall to scroll through */
-  background: #f4f6f9;
+  background: var(--color-neutral-blue-10);
   z-index: 1;
   display: flex;
   flex-direction: column;
-  color: #111;
+  color: var(--color-gray-90);
   font-family: 'Pretendard Variable', sans-serif;
   will-change: transform;
 }
@@ -123,7 +149,7 @@ body {
   top: 0;
   width: 100%;
   height: 100px; /* Provides room behind the island notch */
-  background: rgba(255,255,255,0.7);
+  background: rgba(var(--color-gray-00-rgb), 0.7);
   backdrop-filter: blur(15px);
   -webkit-backdrop-filter: blur(15px);
   display: flex;
@@ -133,7 +159,7 @@ body {
   font-weight: 700;
   font-size: 18px;
   z-index: 15;
-  border-bottom: 1px solid rgba(0,0,0,0.05);
+  border-bottom: 1px solid rgba(var(--color-gray-90-rgb), 0.05);
   box-sizing: border-box;
 }
 
@@ -157,12 +183,12 @@ body {
 .mock-card {
   width: 100%;
   height: 150px;
-  background: #ffffff;
+  background: var(--color-gray-00);
   border-radius: 24px;
-  box-shadow: 0 8px 30px rgba(0,0,0,0.04);
+  box-shadow: 0 8px 30px rgba(var(--color-gray-90-rgb), 0.04);
 }
 .mock-card.lg { height: 260px; }
-.mock-card.banner { height: 200px; background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%); }
+.mock-card.banner { height: 200px; background: linear-gradient(135deg, var(--color-neutral-blue-20) 0%, var(--color-neutral-brown-20) 100%); }
 .mock-card.vertical { height: 400px; }
 .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
 .mock-card.sm { height: 130px; }
@@ -171,7 +197,7 @@ body {
 .next-section {
   height: 100vh;
   width: 100vw;
-  background: #050505;
+  background: var(--color-gray-90);
   position: relative;
   z-index: 20;
   display: flex;
@@ -185,10 +211,10 @@ body {
 .next-section h2 { 
   font-size: 4rem; 
   margin-bottom: 1rem; 
-  color: #fff;
+  color: var(--color-gray-00);
   font-weight: 700;
 }
 .next-section p { 
   font-size: 1.5rem; 
-  color: #888; 
+  color: var(--color-gray-50); 
 }
