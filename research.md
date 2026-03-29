@@ -223,6 +223,28 @@ This codebase is a static landing-page prototype for the Korean fintech concept 
 - Fonts are heavy and fully self-hosted, which increases payload size.
 - `dist/.DS_Store` appeared in generated artifacts, indicating local macOS filesystem noise can leak into output.
 
+### Root cause analysis for runtime loading fragility
+- Candidate cause 1:
+  - the issue is only duplicated script tags in built HTML, but source is otherwise consistent
+  - Falsification:
+    - `test2.js` and `test3.js` reference global `gsap` and `ScrollTrigger`
+    - source HTML also explicitly loads CDN GSAP and ScrollTrigger
+    - therefore the inconsistency exists in source, not only in build output
+- Candidate cause 2:
+  - the issue is only that `index.html` differs from the other entries, but `test2` and `test3` are internally safe
+  - Falsification:
+    - Vite injects bundled module entry scripts for `test2` and `test3`
+    - those entries still depend on globals instead of imports
+    - therefore each of those pages has a mixed dependency model on its own
+- Candidate cause 3:
+  - the issue is purely cosmetic because CDN globals always load before the module entry
+  - Falsification:
+    - current behavior depends on external CDN availability and script ordering
+    - bundler-level dependency tracking does not know that GSAP is required in those entry scripts
+    - this is a runtime contract risk, not just a stylistic concern
+- Conclusion:
+  - `test2` and `test3` should move to the same module import strategy already used by `main.js`
+
 ### Confirmed product constraints
 - UI work is approval-gated by project instruction.
 - Therefore immediate work should focus on:
@@ -291,3 +313,19 @@ This codebase is a static landing-page prototype for the Korean fintech concept 
   - confirmed build success
   - confirmed preview startup on `127.0.0.1:4173`
   - confirmed HTTP 200 for `/`, `/test2.html`, `/test3.html`
+
+### `SCRUM-32` `[FE] Consolidate GSAP loading strategy across test entries`
+- Objective:
+  - remove the mixed global-CDN-plus-module pattern from `test2` and `test3`
+- Expected implementation:
+  - import `gsap` and `ScrollTrigger` directly in `test2.js` and `test3.js`
+  - remove CDN script tags from `test2.html` and `test3.html`
+- Verification target:
+  - `npm run verify`
+  - inspect built `dist/test2.html` and `dist/test3.html` to ensure a single loading strategy remains
+- Implemented result:
+  - `test2.js` and `test3.js` now import `gsap` and `ScrollTrigger` directly
+  - `test2.html` and `test3.html` no longer include CDN GSAP script tags
+- Verification result:
+  - `npm run verify` passed after the change
+  - built `dist/test2.html` and `dist/test3.html` now load only Vite-managed module assets

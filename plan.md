@@ -147,6 +147,9 @@ for each test entry:
 - Tradeoffs:
   - importing GSAP via modules improves determinism
   - removing CDN usage reduces external dependency but changes boot assumptions
+- Current decision:
+  - move `test2` and `test3` to module imports to match `main.js`
+  - remove redundant CDN tags from both HTML files
 - Technical constraints:
   - no visual retuning
   - preserve scroll behavior timing as much as possible
@@ -176,10 +179,18 @@ verify build and runtime preview still pass
 ### Iteration Log
 - Iteration 0
   - problem identified from evidence: `test2` and `test3` mix CDN global GSAP with Vite module entry output
-  - execution not started yet
+- Iteration 1
+  - converted `test2` and `test3` entry scripts to direct GSAP module imports
+  - removed CDN GSAP tags from both HTML files
+  - verified with `npm run verify`
+  - inspected built `dist/test2.html` and `dist/test3.html` to confirm a single loading strategy
+  - Quality status:
+    - functional correctness: satisfied
+    - code quality: satisfied
+    - edge cases: satisfied for the identified mixed-loading failure mode
 
 ### Todo List
-- `[ ]` `SCRUM-32` Agent-1
+- `[x]` `SCRUM-32` Agent-1
 - `[ ]` `SCRUM-33` Agent-1
 - `[ ]` `SCRUM-34` Agent-1 `🔒 승인 대기`
 

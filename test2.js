@@ -1,3 +1,6 @@
+import gsap from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+
 // Register core GSAP ScrollTrigger plugin exclusively
 gsap.registerPlugin(ScrollTrigger);
 

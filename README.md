@@ -8,6 +8,7 @@
 - Jira 대표/하위 태스크 구조 생성 완료
 - 첫 비UI 태스크 `SCRUM-29` 문서화 및 코드베이스 분석 완료
 - `SCRUM-30` 검증 워크플로 추가 완료
+- `SCRUM-32` GSAP 로딩 전략 통합 완료
 - UI 관련 작업은 개발자 승인 전까지 보류
 
 ## 핵심 디렉토리 구조
@@ -69,8 +70,8 @@
 - 완료된 하위 태스크
   - `SCRUM-29` `[INFRA] Audit build outputs and establish agent documentation baseline`
   - `SCRUM-30` `[INFRA] Add repeatable repository verification workflow`
-- 대기 중 다음 비UI 태스크
   - `SCRUM-32` `[FE] Consolidate GSAP loading strategy across test entries`
+- 대기 중 다음 비UI 태스크
   - `SCRUM-33` `[FE] Add non-visual runtime guards for DOM-dependent animations`
   - `SCRUM-35` `[INFRA] Validate GitHub Pages deployment path and operational flow`
   - `SCRUM-36` `[INFRA] Audit heavy font and media assets for delivery risk`
