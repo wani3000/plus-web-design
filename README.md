@@ -7,6 +7,7 @@
 - 초기 운영 세팅 완료, 후속 비UI 작업 시작 단계
 - Jira 대표/하위 태스크 구조 생성 완료
 - 첫 비UI 태스크 `SCRUM-29` 문서화 및 코드베이스 분석 완료
+- `SCRUM-30` 검증 워크플로 추가 완료
 - UI 관련 작업은 개발자 승인 전까지 보류
 
 ## 핵심 디렉토리 구조
@@ -45,6 +46,17 @@
 - Plain CSS
 - GitHub Pages 배포
 
+## 기본 실행 및 검증 명령
+- 개발 서버
+  - `npm run dev`
+- 프로덕션 빌드
+  - `npm run build`
+- 빌드 결과 미리보기
+  - `npm run preview`
+- 권장 검증 루프
+  - `npm run verify`
+  - 동작: build 실행 -> local preview 기동 -> `/`, `/test2.html`, `/test3.html` HTTP 확인 -> preview 종료
+
 ## 에이전트 역할 분담
 - Agent-1
   - `SCRUM-26` 대표 태스크 총괄
@@ -56,8 +68,8 @@
   - `SCRUM-26` plus-web-design repository governance and delivery foundation
 - 완료된 하위 태스크
   - `SCRUM-29` `[INFRA] Audit build outputs and establish agent documentation baseline`
-- 대기 중 다음 비UI 태스크
   - `SCRUM-30` `[INFRA] Add repeatable repository verification workflow`
+- 대기 중 다음 비UI 태스크
   - `SCRUM-32` `[FE] Consolidate GSAP loading strategy across test entries`
   - `SCRUM-33` `[FE] Add non-visual runtime guards for DOM-dependent animations`
   - `SCRUM-35` `[INFRA] Validate GitHub Pages deployment path and operational flow`

@@ -69,6 +69,12 @@ rerun verification through the new workflow
 - Tradeoffs:
   - script should remain simple because project is static
   - avoid introducing tooling that exceeds project size
+- Current implementation direction:
+  - add a Node verification script that:
+    - starts Vite preview on a fixed local port
+    - probes `/`, `/test2.html`, `/test3.html`
+    - exits non-zero on missing routes or non-200 responses
+    - terminates the preview child process
 - Technical constraints:
   - no visual changes
   - must work with multi-entry Vite output
@@ -95,10 +101,18 @@ rerun verification through the new workflow
     - functional correctness: satisfied for current documented findings
     - code quality: satisfied
     - edge cases: satisfied by explicitly documenting absent layers
+- Iteration 2
+  - added repeatable verification commands through `npm run verify`
+  - added Node-based preview smoke check for `/`, `/test2.html`, `/test3.html`
+  - verified the new workflow end-to-end
+  - Quality status:
+    - functional correctness: satisfied
+    - code quality: satisfied
+    - edge cases: satisfied by explicit non-zero failure conditions in the verification script
 
 ### Todo List
 - `[x]` `SCRUM-29` Agent-1
-- `[ ]` `SCRUM-30` Agent-1
+- `[x]` `SCRUM-30` Agent-1
 - `[ ]` `SCRUM-31` Agent-1 `🔒 승인 대기`
 
 ## Representative Task: `SCRUM-27` plus-web-design animation runtime hardening

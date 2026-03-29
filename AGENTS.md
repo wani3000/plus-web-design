@@ -42,8 +42,8 @@
 ## Build and Verification Rules
 - Always validate with actual outputs before concluding a change works.
 - Minimum verification for non-trivial work:
-  - `npm run build`
-  - `npm run preview -- --host 127.0.0.1`
+  - `npm run verify`
+  - fallback: `npm run build` and `npm run preview -- --host 127.0.0.1`
   - Confirm the relevant page responds from preview or inspect generated `dist/` files.
 - For dependency or plugin issues:
   - Check `package.json`

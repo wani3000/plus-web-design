@@ -268,3 +268,26 @@ This codebase is a static landing-page prototype for the Korean fintech concept 
   - `research.md`
   - `plan.md`
   - refreshed `README.md`
+
+### `SCRUM-30` `[INFRA] Add repeatable repository verification workflow`
+- Objective:
+  - encode artifact-first validation into a repeatable local command
+- Verified needs:
+  - build currently must be run manually
+  - preview currently must be started manually
+  - smoke checks were done manually with `curl -I`
+- Candidate solutions:
+  - npm script only wrapping `vite build`
+  - shell script that starts preview and curls pages
+  - Node script that starts preview, probes routes, and shuts it down
+- Current preferred direction:
+  - Node-based verification script, because it is cross-platform enough for this repo and can manage preview lifecycle in one command
+- Implemented result:
+  - added `scripts/verify-preview.mjs`
+  - added `npm run verify:preview`
+  - added `npm run verify`
+- Verification result:
+  - `npm run verify` passed
+  - confirmed build success
+  - confirmed preview startup on `127.0.0.1:4173`
+  - confirmed HTTP 200 for `/`, `/test2.html`, `/test3.html`
