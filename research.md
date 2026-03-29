@@ -73,19 +73,19 @@ This codebase is a static landing-page prototype for the Korean fintech concept 
 - `test2.html`
   - Alternate landing experiment built around a simulated iPhone frame over video.
   - Includes shared `style.css` plus `test2.css`.
-  - Uses CDN `<script>` tags for GSAP and ScrollTrigger.
+  - Now relies on Vite-managed module loading for GSAP.
 - `test2.js`
   - Drives scroll pinning, in-phone content movement, fade-ins, and 3D tilt.
-  - Depends on global `gsap` and `ScrollTrigger` rather than imports.
+  - Imports `gsap` and `ScrollTrigger` directly.
 - `test2.css`
   - Test 2-specific visual styling, including phone mockup, video backdrop, and next section.
 - `test3.html`
   - Alternate landing experiment based on phone-to-card reveal.
   - Includes shared `style.css` plus `test3.css`.
-  - Uses CDN `<script>` tags for GSAP and ScrollTrigger.
+  - Now relies on Vite-managed module loading for GSAP.
 - `test3.js`
   - Drives dynamic phone dimensions, pinning, reveal timing, overlay darkening, and text entry.
-  - Depends on global `gsap` and `ScrollTrigger`.
+  - Imports `gsap` and `ScrollTrigger` directly.
 - `test3.css`
   - Test 3-specific styles for the hero, reveal layers, cards, and follow-up section.
 - `color-tokens.css`
@@ -182,14 +182,14 @@ This codebase is a static landing-page prototype for the Korean fintech concept 
 - Triggers later chart and counter animations based on scroll position and intersection.
 
 ### Entry 2: `test2.html` + `test2.js`
-- Uses global GSAP and ScrollTrigger from CDN.
+- Uses module-imported GSAP and ScrollTrigger.
 - Pins an iPhone mockup over a looping background video.
 - Scrolls an oversized app-content panel within the mock phone.
 - Uses mouse movement to add 3D tilt.
 - Ends by fading in a follow-up CTA section.
 
 ### Entry 3: `test3.html` + `test3.js`
-- Uses global GSAP and ScrollTrigger from CDN.
+- Uses module-imported GSAP and ScrollTrigger.
 - Pins a hero section with a centered phone frame.
 - Shrinks the phone and matching white-fill mask.
 - Reveals left and right cards.
@@ -202,20 +202,15 @@ This codebase is a static landing-page prototype for the Korean fintech concept 
 - `node_modules/gsap` exists implicitly because the build passed and the dependency is present in lockfile.
 
 ### Mixed loading pattern risk
-- Candidate cause 1: `test2.js` and `test3.js` fully rely on bundled ES imports.
-  - Falsification: source files do not import GSAP; they expect globals.
-- Candidate cause 2: `test2.html` and `test3.html` rely only on CDN globals.
-  - Falsification: built HTML also injects bundled module scripts for each entry because Vite treats `test2.js` and `test3.js` as module entry points.
-- Candidate cause 3: Vite strips CDN dependencies and rewrites source safely.
-  - Falsification: built HTML still contains CDN `<script>` tags plus bundled modules.
-- Conclusion:
-  - `test2` and `test3` currently use a fragile mixed runtime model: CDN globals for GSAP plus Vite-bundled local entry modules. It works only as long as script ordering and global availability remain intact.
+- Historical issue:
+  - `test2` and `test3` previously mixed CDN global GSAP with Vite-bundled module entries.
+- Current state:
+  - this was removed in `SCRUM-32`; both entries now use direct module imports and built HTML no longer includes CDN GSAP tags.
 
 ## Current Problems and Improvement Areas
 
 ### Confirmed maintainability risks
 - Root-level active app code and `src/` starter remnants coexist, which obscures source-of-truth boundaries.
-- `test2` and `test3` depend on global GSAP while `index` uses module imports.
 - Shared navigation is duplicated:
   - injected via `Header()` for `index`
   - hardcoded directly in `test2.html` and `test3.html`
@@ -329,3 +324,23 @@ This codebase is a static landing-page prototype for the Korean fintech concept 
 - Verification result:
   - `npm run verify` passed after the change
   - built `dist/test2.html` and `dist/test3.html` now load only Vite-managed module assets
+
+### `SCRUM-33` `[FE] Add non-visual runtime guards for DOM-dependent animations`
+- Objective:
+  - prevent hard runtime failures when an expected DOM node or browser-only assumption is missing
+- Candidate failure points identified:
+  - timeline initialization on missing root containers
+  - `quickTo` bindings on missing interactive wrappers
+  - `gsap.set` calls on selectors expected to exist
+- Expected implementation:
+  - resolve key nodes up front
+  - initialize animation timelines only when required nodes exist
+  - skip optional behavior gracefully when prerequisites are absent
+- Implemented result:
+  - `test2.js` now checks required nodes before creating the pinned timeline
+  - `test2.js` only binds tilt interaction when the wrapper exists
+  - `test3.js` now checks required nodes before setting base states and timelines
+  - `test3.js` only runs optional reveal steps when their specific nodes exist
+- Verification result:
+  - `npm run verify` passed after the guard changes
+  - build output remained valid for all three entry pages

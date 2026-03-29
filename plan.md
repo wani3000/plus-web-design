@@ -171,6 +171,9 @@ verify build and runtime preview still pass
 - Considerations:
   - use guards only where structure can truly be optional
   - do not silently mask real programming errors without documenting them
+- Current decision:
+  - start with `test2.js` and `test3.js`, where entire timelines currently assume page-specific markup exists
+  - prefer explicit required-node checks over scattering nullish operators across every animation call
 
 #### `SCRUM-34` `[UI] Refine landing page content, layout, and style consistency`
 - Status:
@@ -188,10 +191,18 @@ verify build and runtime preview still pass
     - functional correctness: satisfied
     - code quality: satisfied
     - edge cases: satisfied for the identified mixed-loading failure mode
+- Iteration 2
+  - added explicit required-node checks before page-specific timeline initialization
+  - limited optional interactions to run only when target nodes exist
+  - re-verified with `npm run verify`
+  - Quality status:
+    - functional correctness: satisfied
+    - code quality: satisfied
+    - edge cases: satisfied for missing-node runtime scenarios
 
 ### Todo List
 - `[x]` `SCRUM-32` Agent-1
-- `[ ]` `SCRUM-33` Agent-1
+- `[x]` `SCRUM-33` Agent-1
 - `[ ]` `SCRUM-34` Agent-1 `🔒 승인 대기`
 
 ## Representative Task: `SCRUM-28` plus-web-design deployment and asset operations
