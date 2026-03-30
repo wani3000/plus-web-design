@@ -125,16 +125,14 @@ tl.to({}, { duration: 0.5 }, 13);
 // Chart line animation (orange gradient line)
 const accentLine = document.querySelector('.chart-line--accent');
 if (accentLine) {
-  const observer = new IntersectionObserver(
-    ([entry], obs) => {
-      if (entry.isIntersecting) {
-        accentLine.classList.add('animate');
-        obs.disconnect();
-      }
-    },
-    { threshold: 0.35 }
-  );
-  observer.observe(accentLine);
+  ScrollTrigger.create({
+    trigger: accentLine,
+    start: 'center center',
+    once: true,
+    onEnter: () => {
+      accentLine.classList.add('animate');
+    }
+  });
 }
 
 // Section 03 comparison chart animation (2천만 원 vs 5천만 원)
@@ -153,7 +151,7 @@ if (compareChart) {
   gsap.timeline({
     scrollTrigger: {
       trigger: compareChart,
-      start: 'top 78%',
+      start: 'center center',
       toggleActions: 'play none none none',
       once: true
     }
@@ -204,7 +202,7 @@ if (monthlyCard) {
     gsap.timeline({
       scrollTrigger: {
         trigger: monthlyCard,
-        start: 'top 78%',
+        start: 'center center',
         toggleActions: 'play none none none',
         once: true
       }
@@ -224,5 +222,153 @@ if (monthlyCard) {
           amountEl.textContent = Math.round(counter.value).toLocaleString('ko-KR');
         }
       }, 0.22);
+  }
+}
+
+// Section 03 right-bottom card animation (ETF cards drop + zigzag stack)
+const etfCard = document.querySelector('.section-03__card--right-bottom');
+if (etfCard) {
+  const etfItems = etfCard.querySelectorAll('.section-03__etf-item');
+  if (etfItems.length > 0) {
+    const dropOrder = Array.from(etfItems).reverse();
+    gsap.set(dropOrder, { y: -80, opacity: 0 });
+
+    const etfTl = gsap.timeline({
+      scrollTrigger: {
+        trigger: etfCard,
+        start: 'center center',
+        toggleActions: 'play none none none',
+        once: true
+      }
+    });
+
+    dropOrder.forEach((item, index) => {
+      const startAt = index * 0.24;
+
+      etfTl
+        .to(item, { opacity: 1, duration: 0.02 }, startAt)
+        // free fall (gravity)
+        .to(item, {
+          y: 0,
+          duration: 0.36,
+          ease: 'power2.in'
+        }, startAt)
+        // first impact
+        .to(item, {
+          y: 16,
+          duration: 0.07,
+          ease: 'power1.out'
+        }, startAt + 0.36)
+        .to(item, {
+          y: 0,
+          duration: 0.12,
+          ease: 'power2.out'
+        }, startAt + 0.43)
+        // second small impact
+        .to(item, {
+          y: 6,
+          duration: 0.06,
+          ease: 'power1.out'
+        }, startAt + 0.55)
+        .to(item, {
+          y: 0,
+          duration: 0.09,
+          ease: 'power1.out'
+        }, startAt + 0.61);
+    });
+  }
+}
+
+// Section 04 tax amount counter animation (00,000,000원 -> 19,647,038원)
+const taxCard = document.querySelector('.section-04__card--narrow-top');
+if (taxCard) {
+  const taxAmountEl = taxCard.querySelector('.section-04__tax-amount');
+  const taxBodyCard = taxCard.querySelector('.section-04__tax-card');
+  const taxLogoWrap = taxCard.querySelector('.section-04__tax-logo-wrap');
+  if (taxAmountEl) {
+    const targetAmount = 19647038;
+    const counter = { value: 0 };
+    const formatAmount = (value) => `${Math.round(value).toString().padStart(8, '0').replace(/\B(?=(\d{3})+(?!\d))/g, ',')}원`;
+
+    taxAmountEl.textContent = '00,000,000원';
+    if (taxBodyCard) {
+      gsap.set(taxBodyCard, { y: 18, autoAlpha: 0 });
+    }
+    if (taxLogoWrap) {
+      gsap.set(taxLogoWrap, { y: 56, autoAlpha: 0 });
+    }
+
+    const taxTl = gsap.timeline({
+      scrollTrigger: {
+        trigger: taxCard,
+        start: 'center center',
+        toggleActions: 'play none none none',
+        once: true
+      }
+    });
+
+    if (taxBodyCard) {
+      taxTl.to(taxBodyCard, {
+        y: 0,
+        autoAlpha: 1,
+        duration: 0.45,
+        ease: 'power3.out'
+      }, 0);
+    }
+
+    taxTl
+      .to(counter, {
+        value: targetAmount * 0.88,
+        duration: 0.15,
+        ease: 'power1.out',
+        onUpdate: () => {
+          taxAmountEl.textContent = formatAmount(counter.value);
+        }
+      })
+      .to(counter, {
+        value: targetAmount,
+        duration: 0.85,
+        ease: 'power2.out',
+        onUpdate: () => {
+          taxAmountEl.textContent = formatAmount(counter.value);
+        },
+        onComplete: () => {
+          taxAmountEl.textContent = formatAmount(targetAmount);
+        }
+      });
+
+    if (taxLogoWrap) {
+      taxTl.to(taxLogoWrap, {
+        y: 0,
+        autoAlpha: 1,
+        duration: 0.7,
+        ease: 'power3.out'
+      }, 0.45);
+    }
+  }
+}
+
+// Section 04 insight cards animation (bottom -> top sequential rise)
+const insightCard = document.querySelector('.section-04__card--narrow-bottom');
+if (insightCard) {
+  const insightItems = insightCard.querySelectorAll('.section-04__insight-item');
+  if (insightItems.length > 0) {
+    const riseOrder = Array.from(insightItems).reverse();
+    gsap.set(riseOrder, { y: 48, autoAlpha: 0 });
+
+    gsap.timeline({
+      scrollTrigger: {
+        trigger: insightCard,
+        start: 'center center',
+        toggleActions: 'play none none none',
+        once: true
+      }
+    }).to(riseOrder, {
+      y: 0,
+      autoAlpha: 1,
+      duration: 0.6,
+      ease: 'power3.out',
+      stagger: 0.18
+    });
   }
 }
