@@ -43,17 +43,24 @@
       </div>
     </section>
 
-    <!-- Subsequent Content Section -->
-    <section class="content-below">
-      <h2>Experience the Flow</h2>
-      <p>Scroll back up to replay the animation sequence.</p>
+    <section class="section-01">
+      <div class="section-01__inner">
+        <h2 class="section-01__heading">아이 자산 어떻게 관리하고 계신가요?</h2>
+        <div class="section-01__bubbles" aria-hidden="true">
+          <p class="section-01__bubble section-01__bubble--1">2천만원 넘게 증여하면 그 때 신고하려고 했어요</p>
+          <p class="section-01__bubble section-01__bubble--2">자녀가 결혼할 때 여윳돈이 있으면 줄 생각이에요</p>
+          <p class="section-01__bubble section-01__bubble--3">그때그때 되는 대로 증여하고 있어요</p>
+          <p class="section-01__bubble section-01__bubble--4">자녀 명의로 투자를 하고는 있는데 수익률이 높지 않아요</p>
+          <p class="section-01__bubble section-01__bubble--5">증여세 신고는 생각만 해도 머리 아파요. 안 걸리면 되는 거 아닌가요?</p>
+        </div>
+      </div>
     </section>
 
     <section class="section-02">
       <div class="section-02__inner">
         <div class="section-02__heading">
           <h2>시간이 아이 자산을 키워줘요</h2>
-          <p>subtitle</p>
+          <p>일찍 시작할수록 복리가 더 오래 일해요</p>
         </div>
 
         <div class="section-02__grid">
@@ -62,8 +69,8 @@
             <svg class="section-02__chart" viewBox="0 0 620 240" aria-hidden="true" role="img">
               <defs>
                 <linearGradient id="section-02-gradient" x1="0%" y1="100%" x2="100%" y2="0%">
-                  <stop offset="0%" stop-color="#ff7a00" />
-                  <stop offset="100%" stop-color="#ffb25b" />
+                  <stop offset="0%" stop-color="var(--color-orange-60)" />
+                  <stop offset="100%" stop-color="var(--color-orange-40)" />
                 </linearGradient>
               </defs>
               <polyline class="chart-line chart-line--accent" points="20,190 130,176 240,160 350,142 460,122 600,96" />
@@ -75,7 +82,19 @@
 
           <div class="section-02__block section-02__block--hero" aria-hidden="true"></div>
           <div class="section-02__block section-02__block--image" aria-hidden="true"></div>
-          <div class="section-02__block section-02__block--sub" aria-hidden="true"></div>
+          <div class="section-02__block section-02__block--sub" aria-hidden="true">
+            <div class="section-02__logo-stack">
+              <div class="section-02__logo-card section-02__logo-card--red">
+                <img class="section-02__logo-image section-02__logo-image--red" src="./ic_box_red.png" alt="">
+              </div>
+              <div class="section-02__logo-card section-02__logo-card--green">
+                <img class="section-02__logo-image section-02__logo-image--green" src="./ic_box_green.png" alt="">
+              </div>
+              <div class="section-02__logo-card section-02__logo-card--white">
+                <img class="section-02__logo-image section-02__logo-image--white" src="./ic_box_white.png" alt="">
+              </div>
+            </div>
+          </div>
 
           <article class="section-02__card section-02__card--text">
             <h3>지금의 선택이 나중의 차이를 만들어요</h3>
@@ -89,12 +108,15 @@
       <div class="section-03__inner">
         <div class="section-03__heading">
           <h2>일찍부터 증여해서<br>자녀에게 미래의 목돈을 만들어주세요</h2>
-          <p>subtitle</p>
+          <p>10년 주기 한도를 놓치지 않는 증여 플랜</p>
         </div>
       </div>
 
       <div class="section-03__card section-03__card--left-top">
-        <h3>10년마다 리셋되는 공제 한도</h3>
+        <div class="section-03__card-head">
+          <h3>10년마다 리셋되는 공제 한도</h3>
+          <span class="section-03__chip">첫번째 공식</span>
+        </div>
         <p>미성년은 2천만 원, 성년은 5천만 원. 10년마다 새로 열리는 한도를 놓치지 않고 채우는 것만으로도 수억 원의 차이가 생겨요.</p>
         <div class="section-03__chart-block" aria-hidden="true">
           <div class="section-03__chart-label section-03__chart-label--small">2천만 원</div>
@@ -107,7 +129,10 @@
         </div>
       </div>
       <div class="section-03__card section-03__card--right-top">
-        <h3>월 19만 4천 원, 유기정기금으로 나눠서</h3>
+        <div class="section-03__card-head">
+          <h3>월 19만 4천 원, 유기정기금으로 나눠서</h3>
+          <span class="section-03__chip">두번째 공식</span>
+        </div>
         <p>목돈이 없어도 괜찮아요. 매달 나눠 보내고 신고는 처음 한 번만 하면 돼요.<br>유기정기금 방식을 활용하면 공제 한도 안에서 더 많은 금액을 증여할 수 있어요.</p>
         <div class="section-03__monthly-visual" aria-hidden="true">
           <div class="section-03__monthly-amount" data-target="194000">0</div>
@@ -119,7 +144,10 @@
       </div>
 
       <div class="section-03__card section-03__card--left-bottom">
-        <h3>증여한 돈은 바로 투자로</h3>
+        <div class="section-03__card-head">
+          <h3>증여한 돈은 바로 투자로</h3>
+          <span class="section-03__chip">세번째 공식</span>
+        </div>
         <p>통장에 잠들면 가치가 줄어요. 증여한 날 바로 미국 ETF에 연결해 복리가 시작되게 해야 해요.</p>
         <div class="section-03__invest-visual" aria-hidden="true">
           <div class="section-03__invest-ui">
@@ -148,7 +176,10 @@
         </div>
       </div>
       <div class="section-03__card section-03__card--right-bottom">
-        <h3>VOO·QQQM, 검증된 ETF에 맡겨요</h3>
+        <div class="section-03__card-head">
+          <h3>VOO·QQQM, 검증된 ETF에 맡겨요</h3>
+          <span class="section-03__chip">네번째 공식</span>
+        </div>
         <p>S&P500과 나스닥100을 추종하는 ETF예요. 애플, 구글, 엔비디아 등 수백 개 기업에 자동 분산 투자되고 운용 보수는 연 0.03% 수준이에요.</p>
         <div class="section-03__etf-visual" aria-hidden="true">
           <div class="section-03__etf-stage">
@@ -363,7 +394,7 @@
             <div class="section-04__insight-list" aria-hidden="true">
               <div class="section-04__insight-item section-04__insight-item--1">
                 <div class="section-04__insight-icon">
-                  <div class="section-04__insight-icon-inner"></div>
+                  <img class="section-04__insight-icon-image" src="./insight-icon-default.png" alt="">
                 </div>
                 <div class="section-04__insight-copy">
                   <p class="section-04__insight-title">자녀 용돈도 증여 대상인가요?</p>
@@ -373,7 +404,7 @@
 
               <div class="section-04__insight-item section-04__insight-item--2">
                 <div class="section-04__insight-icon">
-                  <div class="section-04__insight-icon-inner"></div>
+                  <img class="section-04__insight-icon-image" src="./insight-icon-default.png" alt="">
                 </div>
                 <div class="section-04__insight-copy">
                   <p class="section-04__insight-title">자녀 용돈도 증여 대상인가요?</p>
@@ -383,7 +414,7 @@
 
               <div class="section-04__insight-item section-04__insight-item--3">
                 <div class="section-04__insight-icon">
-                  <div class="section-04__insight-icon-inner"></div>
+                  <img class="section-04__insight-icon-image" src="./insight-icon-default.png" alt="">
                 </div>
                 <div class="section-04__insight-copy">
                   <p class="section-04__insight-title">자녀 용돈도 증여 대상인가요?</p>
@@ -396,7 +427,37 @@
           <article class="section-04__card section-04__card--wide-bottom">
             <h3>증여 계획부터 시작해요</h3>
             <p>자녀 나이와 기존 증여 내역을 입력하면 남은 공제 한도와 적절한 금액을 알려줘요.</p>
+            <div class="section-04__plan-widget">
+              <div class="section-04__plan-row section-04__plan-row--primary">
+                <span class="section-04__plan-label">증여세 신고 금액</span>
+                <span class="section-04__plan-value" data-target="5000000">5,000,000원</span>
+              </div>
+              <div class="section-04__plan-row section-04__plan-row--secondary">
+                <span class="section-04__plan-label">신고해야 할 금액</span>
+                <span class="section-04__plan-value" data-target="5000000">5,000,000원</span>
+              </div>
+              <div class="section-04__plan-progress" aria-hidden="true">
+                <div class="section-04__plan-progress-track"></div>
+                <div class="section-04__plan-progress-fill"></div>
+                <div class="section-04__plan-progress-fill section-04__plan-progress-fill--dark"></div>
+              </div>
+              <div class="section-04__plan-foot">
+                <span>증여재산공제 한도</span>
+                <strong>2천만원</strong>
+              </div>
+            </div>
           </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-05 section-05--download-cta">
+      <div class="section-05__inner">
+        <h2 class="section-05__title">우리 아이 첫 번째 자산,<br>함께 만들어가요</h2>
+        <p class="section-05__subtitle">서브타이틀 수정</p>
+        <div class="section-05__actions">
+          <a class="section-05__button" href="#" aria-label="AppStore 다운로드">AppStore</a>
+          <a class="section-05__button" href="#" aria-label="Google Play 다운로드">Google Play</a>
         </div>
       </div>
     </section>

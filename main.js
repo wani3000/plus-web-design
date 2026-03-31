@@ -135,9 +135,119 @@ if (accentLine) {
   });
 }
 
+// Section 02 sub-logo cards animation (domino-like gravity stacking, no overlap)
+const section02SubBlock = document.querySelector('.section-02__block--sub');
+if (section02SubBlock) {
+  const redCard = section02SubBlock.querySelector('.section-02__logo-card--red');
+  const greenCard = section02SubBlock.querySelector('.section-02__logo-card--green');
+  const whiteCard = section02SubBlock.querySelector('.section-02__logo-card--white');
+  const dropOrder = [whiteCard, greenCard, redCard].filter(Boolean);
+
+  if (dropOrder.length > 0) {
+    const physics = [
+      { startY: -360, fall: 1.0, bounce: 8, impact: 3, driftX: 0 },
+      { startY: -300, fall: 0.88, bounce: 7, impact: 4, driftX: -8 },
+      { startY: -240, fall: 0.78, bounce: 6, impact: 5, driftX: 7 }
+    ];
+
+    gsap.set(dropOrder, {
+      y: (index) => physics[index]?.startY ?? -260,
+      x: (index) => physics[index]?.driftX ?? 0,
+      autoAlpha: 0,
+      scaleX: 1,
+      scaleY: 1,
+      transformOrigin: '50% 100%'
+    });
+
+    const logoTl = gsap.timeline({
+      scrollTrigger: {
+        trigger: section02SubBlock,
+        start: 'top 78%',
+        toggleActions: 'play none none none',
+        once: true
+      }
+    });
+
+    const defaultPhysics = { startY: -260, fall: 0.9, bounce: 6, impact: 3, driftX: 0 };
+    const startTimes = [];
+    const overlapStartRatio = 0.58;
+    let cursor = 0;
+    dropOrder.forEach((card, index) => {
+      const p = physics[index] ?? defaultPhysics;
+      startTimes[index] = cursor;
+      const impactAt = cursor + p.fall;
+      const landedCards = dropOrder.slice(0, index).filter((_, prevIndex) => {
+        const prevStart = startTimes[prevIndex] ?? 0;
+        const prevFall = (physics[prevIndex] ?? defaultPhysics).fall;
+        return impactAt >= prevStart + prevFall;
+      });
+
+      logoTl
+        .to(card, { autoAlpha: 1, zIndex: 50 + index, duration: 0.02 }, cursor)
+        .to(card, {
+          y: 0,
+          x: 0,
+          duration: p.fall,
+          ease: 'power4.in'
+        }, cursor)
+        .to(card, {
+          scaleX: 1.05,
+          scaleY: 0.92,
+          duration: 0.07,
+          ease: 'power1.out'
+        }, impactAt)
+        .to(card, {
+          y: -p.bounce,
+          scaleX: 0.99,
+          scaleY: 1.02,
+          duration: 0.16,
+          ease: 'power2.out'
+        }, impactAt + 0.05)
+        .to(card, {
+          y: 0,
+          scaleX: 1,
+          scaleY: 1,
+          duration: 0.2,
+          ease: 'power2.in'
+        }, impactAt + 0.21)
+        .to(card, {
+          y: -Math.max(2, Math.round(p.bounce * 0.34)),
+          duration: 0.08,
+          ease: 'power1.out'
+        }, impactAt + 0.41)
+        .to(card, {
+          y: 0,
+          duration: 0.11,
+          ease: 'power1.in'
+        }, impactAt + 0.49)
+        .to(card, { zIndex: index + 1, duration: 0.01 }, impactAt + 0.61);
+
+      if (landedCards.length > 0) {
+        logoTl
+          .to(landedCards, {
+            y: `+=${p.impact}`,
+            duration: 0.07,
+            ease: 'power1.out',
+            stagger: 0.015
+          }, impactAt + 0.02)
+          .to(landedCards, {
+            y: `-=${p.impact}`,
+            duration: 0.14,
+            ease: 'power2.out',
+            stagger: 0.015
+          }, impactAt + 0.09);
+      }
+
+      // Cascading drop: next card starts while current card is still falling.
+      cursor += p.fall * overlapStartRatio;
+    });
+  }
+}
+
 // Section 03 comparison chart animation (2천만 원 vs 5천만 원)
 const compareChart = document.querySelector('.section-03__chart-block');
 if (compareChart) {
+  const leftTopCard = document.querySelector('.section-03__card--left-top');
   const bars = ['.section-03__chart-bar--small', '.section-03__chart-bar--large'];
   const smallLine = '.section-03__chart-line--small';
   const largeLine = '.section-03__chart-line--large';
@@ -150,7 +260,7 @@ if (compareChart) {
 
   gsap.timeline({
     scrollTrigger: {
-      trigger: compareChart,
+      trigger: leftTopCard || compareChart,
       start: 'center center',
       toggleActions: 'play none none none',
       once: true
@@ -370,5 +480,90 @@ if (insightCard) {
       ease: 'power3.out',
       stagger: 0.18
     });
+  }
+}
+
+// Section 04 plan progress animation (light orange first, then dark orange)
+const planCard = document.querySelector('.section-04__card--wide-bottom');
+if (planCard) {
+  const planWidget = planCard.querySelector('.section-04__plan-widget');
+  const lightBar = planCard.querySelector('.section-04__plan-progress-fill:not(.section-04__plan-progress-fill--dark)');
+  const darkBar = planCard.querySelector('.section-04__plan-progress-fill--dark');
+  const primaryAmountEl = planCard.querySelector('.section-04__plan-row--primary .section-04__plan-value');
+  const secondaryAmountEl = planCard.querySelector('.section-04__plan-row--secondary .section-04__plan-value');
+
+  if (lightBar && darkBar) {
+    const parseTarget = (el) => Number(el?.dataset.target ?? String(el?.textContent ?? '').replace(/[^\d]/g, ''));
+    const formatWonCounter = (value) => {
+      const digits = Math.max(0, Math.round(value)).toString().padStart(7, '0');
+      return `${digits.replace(/\B(?=(\d{3})+(?!\d))/g, ',')}원`;
+    };
+
+    const primaryTarget = parseTarget(primaryAmountEl);
+    const secondaryTarget = parseTarget(secondaryAmountEl);
+    const primaryCounter = { value: 0 };
+    const secondaryCounter = { value: 0 };
+
+    gsap.set([lightBar, darkBar], { scaleX: 0, transformOrigin: 'left center' });
+    if (planWidget) {
+      gsap.set(planWidget, { y: 20, autoAlpha: 0 });
+    }
+    if (primaryAmountEl) {
+      primaryAmountEl.textContent = formatWonCounter(0);
+    }
+    if (secondaryAmountEl) {
+      secondaryAmountEl.textContent = formatWonCounter(0);
+    }
+
+    const planTl = gsap.timeline({
+      scrollTrigger: {
+        trigger: planCard,
+        start: 'center center',
+        toggleActions: 'play none none none',
+        once: true
+      }
+    });
+
+    if (planWidget) {
+      planTl.to(planWidget, {
+        y: 0,
+        autoAlpha: 1,
+        duration: 0.55,
+        ease: 'power3.out'
+      });
+    }
+
+    planTl
+      .to(lightBar, {
+        scaleX: 1,
+        duration: 0.75,
+        ease: 'power2.out'
+      }, planWidget ? '+=0.04' : 0)
+      .to(secondaryCounter, {
+        value: secondaryTarget,
+        duration: 0.75,
+        ease: 'power2.out',
+        onUpdate: () => {
+          if (secondaryAmountEl) {
+            secondaryAmountEl.textContent = formatWonCounter(secondaryCounter.value);
+          }
+        }
+      }, '<')
+      .to(darkBar, {
+        scaleX: 1,
+        duration: 0.55,
+        ease: 'power2.out'
+      }, '+=0.08');
+
+    if (primaryAmountEl) {
+      planTl.to(primaryCounter, {
+        value: primaryTarget,
+        duration: 0.55,
+        ease: 'power2.out',
+        onUpdate: () => {
+          primaryAmountEl.textContent = formatWonCounter(primaryCounter.value);
+        }
+      }, '<');
+    }
   }
 }
