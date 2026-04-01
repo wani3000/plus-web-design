@@ -14,7 +14,7 @@ document.body.insertBefore(Header(), document.body.firstChild);
 // Keep hero pinning below fixed header + tabs + 20px gap
 const headerHeight = document.querySelector('.header')?.getBoundingClientRect().height ?? 72;
 const tabHeight = document.querySelector('.top-nav')?.getBoundingClientRect().height ?? 46;
-const heroGapFromTabs = 20;
+const heroGapFromTabs = 0;
 const topUiOffset = Math.round(headerHeight + tabHeight + heroGapFromTabs);
 
 // Set initial states for fly-in images
@@ -30,9 +30,10 @@ const tl = gsap.timeline({
     trigger: ".hero-pinned",
     start: `top top+=${topUiOffset}`,
     end: "+=4000", // Extended for overlay phase
-    scrub: 1.2,
+    scrub: 0.55,
     pin: true,
-    anticipatePin: 1
+    anticipatePin: 1,
+    invalidateOnRefresh: true
   }
 });
 
@@ -50,8 +51,8 @@ tl.to(".hero-title", {
 }, 0);
 
 tl.to(".img-01", {
-  width: "36%",
-  height: "70%",
+  width: "50vh",
+  height: "66.6667vh",
   borderRadius: "8px",
   ease: "power2.inOut",
   duration: 5
@@ -95,32 +96,65 @@ tl.to(".img-05", {
 // Phase 5: Per-image Dim Overlay -> Time: 9.5 -> 11
 // Each of the 5 image-wrappers gets its own dark overlay
 // ----------------------------------------------------------------------
-tl.to(".img-overlay", {
-  backgroundColor: "rgba(var(--color-gray-90-rgb), 0.55)",
-  duration: 1.5,
-  ease: "power2.inOut"
-}, 9.5);
-
-// Also fade in the text container (transparency switch)
-tl.to(".gallery-overlay", {
+tl.to(".img-01 .img-overlay", {
   opacity: 1,
-  duration: 1.5,
+  duration: 0.45,
   ease: "power2.inOut"
 }, 9.5);
-
-// ----------------------------------------------------------------------
-// Phase 6: Text Slides Up -> Time: 10.5 -> 13
-// Text rises from below into the center of the dimmed overlay
-// ----------------------------------------------------------------------
-tl.to(".overlay-text", {
+tl.to(".img-01 .img-card-text", {
   opacity: 1,
   y: 0,
-  duration: 2,
+  duration: 0.4,
   ease: "power3.out"
-}, 10.5);
+}, 9.78);
 
-// Clean end boundary
-tl.to({}, { duration: 0.5 }, 13);
+tl.to(".img-03 .img-overlay", {
+  opacity: 1,
+  duration: 0.42,
+  ease: "power2.inOut"
+}, 10.12);
+tl.to(".img-03 .img-card-text", {
+  opacity: 1,
+  y: 0,
+  duration: 0.36,
+  ease: "power3.out"
+}, 10.42);
+
+tl.to(".img-02 .img-overlay", {
+  opacity: 1,
+  duration: 0.42,
+  ease: "power2.inOut"
+}, 10.72);
+tl.to(".img-02 .img-card-text", {
+  opacity: 1,
+  y: 0,
+  duration: 0.36,
+  ease: "power3.out"
+}, 11.02);
+
+tl.to(".img-05 .img-overlay", {
+  opacity: 1,
+  duration: 0.42,
+  ease: "power2.inOut"
+}, 11.32);
+tl.to(".img-05 .img-card-text", {
+  opacity: 1,
+  y: 0,
+  duration: 0.36,
+  ease: "power3.out"
+}, 11.62);
+
+tl.to(".img-04 .img-overlay", {
+  opacity: 1,
+  duration: 0.42,
+  ease: "power2.inOut"
+}, 11.92);
+tl.to(".img-04 .img-card-text", {
+  opacity: 1,
+  y: 0,
+  duration: 0.36,
+  ease: "power3.out"
+}, 12.22);
 
 // Chart line animation (orange gradient line)
 const accentLine = document.querySelector('.chart-line--accent');
@@ -133,6 +167,65 @@ if (accentLine) {
       accentLine.classList.add('animate');
     }
   });
+}
+
+// Section 01 bubble animation (scattered cloud reveal + ongoing drift)
+const section01Bubbles = document.querySelector('.section-01__bubbles');
+if (section01Bubbles) {
+  const bubbles = Array.from(section01Bubbles.querySelectorAll('.section-01__bubble'));
+  if (bubbles.length > 0) {
+    bubbles.forEach((bubble) => {
+      bubble.addEventListener('mouseenter', () => {
+        bubble._cloudDriftTween?.pause();
+      });
+
+      bubble.addEventListener('mouseleave', () => {
+        bubble._cloudDriftTween?.resume();
+      });
+    });
+
+    gsap.set(bubbles, {
+      autoAlpha: 0,
+      x: 0,
+      y: (index) => 10 + (index % 4) * 8
+    });
+
+    gsap.timeline({
+      scrollTrigger: {
+        trigger: section01Bubbles,
+        start: 'center center',
+        toggleActions: 'play none none none',
+        once: true
+      },
+      onComplete: () => {
+        bubbles.forEach((bubble, index) => {
+          const driftX = 24 + (index % 4) * 10;
+          const driftY = index % 2 === 0 ? -6 : 6;
+          const duration = 6.5 + index * 0.35;
+
+          bubble._cloudDriftTween = gsap.to(bubble, {
+            x: `+=${driftX}`,
+            y: `+=${driftY}`,
+            duration,
+            ease: 'sine.inOut',
+            repeat: -1,
+            yoyo: true
+          });
+        });
+      }
+    })
+      .to(bubbles, {
+        autoAlpha: 1,
+        x: 0,
+        y: 0,
+        duration: 0.85,
+        ease: 'power3.out',
+        stagger: {
+          each: 0.08,
+          from: 'random'
+        }
+      });
+  }
 }
 
 // Section 02 sub-logo cards animation (domino-like gravity stacking, no overlap)
@@ -307,6 +400,7 @@ if (monthlyCard) {
   if (amountEl && notes.length > 0) {
     const counter = { value: 0 };
     amountEl.textContent = '0';
+    gsap.set(amountEl, { y: 44, autoAlpha: 0 });
     gsap.set(notes, { y: 160, opacity: 0 });
 
     gsap.timeline({
@@ -317,6 +411,12 @@ if (monthlyCard) {
         once: true
       }
     })
+      .to(amountEl, {
+        y: 0,
+        autoAlpha: 1,
+        duration: 0.7,
+        ease: 'power3.out'
+      }, 0)
       .to(notes, {
         y: 0,
         opacity: 1,
@@ -332,6 +432,29 @@ if (monthlyCard) {
           amountEl.textContent = Math.round(counter.value).toLocaleString('ko-KR');
         }
       }, 0.22);
+  }
+}
+
+// Section 03 left-bottom invest card dim overlay (after 2s delay)
+const investCard = document.querySelector('.section-03__card--left-bottom');
+if (investCard) {
+  const investOverlay = investCard.querySelector('.section-03__invest-overlay');
+  if (investOverlay) {
+    gsap.set(investOverlay, { yPercent: 100, autoAlpha: 1 });
+
+    gsap.timeline({
+      scrollTrigger: {
+        trigger: investCard,
+        start: 'center center',
+        toggleActions: 'play none none none',
+        once: true
+      }
+    }).to(investOverlay, {
+      yPercent: 0,
+      duration: 0.55,
+      ease: 'power3.out',
+      delay: 1
+    });
   }
 }
 
