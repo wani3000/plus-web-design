@@ -3191,20 +3191,6 @@
           }
         },
         {
-          "type": "rectangle",
-          "id": "RMwnj",
-          "x": 686,
-          "y": 899,
-          "name": "Rectangle 47",
-          "fill": "#f2f2f3ff",
-          "width": 380,
-          "height": 478,
-          "stroke": {
-            "align": "inside",
-            "thickness": 1
-          }
-        },
-        {
           "type": "frame",
           "id": "cs8Hd",
           "x": 286,
@@ -3405,6 +3391,206 @@
                   "fontFamily": "Pretendard",
                   "fontSize": 16,
                   "fontWeight": "normal"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "rectangle",
+          "id": "mfjoZ",
+          "x": 1131,
+          "y": 720,
+          "fill": {
+            "type": "image",
+            "enabled": true,
+            "url": "ic_companylogo_03.png",
+            "mode": "fill"
+          },
+          "width": 214,
+          "height": 214
+        },
+        {
+          "type": "rectangle",
+          "id": "iolYD",
+          "x": 1406,
+          "y": 685,
+          "fill": {
+            "type": "image",
+            "enabled": true,
+            "url": "ic_companylogo_02.png",
+            "mode": "fill"
+          },
+          "width": 214,
+          "height": 214
+        },
+        {
+          "type": "rectangle",
+          "id": "FJ3le",
+          "x": 1299,
+          "y": 413,
+          "fill": {
+            "type": "image",
+            "enabled": true,
+            "url": "ic_companylogo_03.png",
+            "mode": "fill"
+          },
+          "width": 214,
+          "height": 214
+        },
+        {
+          "type": "group",
+          "id": "E2HZC",
+          "x": 686,
+          "y": 859.0000000000002,
+          "children": [
+            {
+              "type": "group",
+              "id": "dsTrs",
+              "x": 0,
+              "y": 0,
+              "name": "Mask group",
+              "children": [
+                {
+                  "type": "rectangle",
+                  "id": "Hh0J9",
+                  "x": 0,
+                  "y": 47.08978141606758,
+                  "name": "Image Overlay",
+                  "fill": "#f2f2f3ff",
+                  "width": 380,
+                  "height": 470.9102185839324,
+                  "stroke": {
+                    "align": "inside",
+                    "thickness": 1
+                  }
+                },
+                {
+                  "type": "group",
+                  "id": "WiguP",
+                  "x": 53,
+                  "y": 68.06645528522859,
+                  "name": "Container",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "yst6n",
+                      "x": 0,
+                      "y": 47.43968498371487,
+                      "name": "t",
+                      "rotation": 22.716490364915273,
+                      "clip": true,
+                      "width": 120.42870869231828,
+                      "height": 122.42590090771942,
+                      "fill": "#e31937ff",
+                      "cornerRadius": 9.600000381469727,
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": 2.4000000953674316
+                      },
+                      "layout": "none",
+                      "children": [
+                        {
+                          "type": "rectangle",
+                          "id": "Kn6oD",
+                          "x": 18.12399673461914,
+                          "y": 16.823556900024414,
+                          "name": "Screenshot_2016-07-20-12-15-12-1 1",
+                          "fill": {
+                            "type": "image",
+                            "enabled": true,
+                            "url": "",
+                            "mode": "stretch"
+                          },
+                          "width": 83.76284790039062,
+                          "height": 86.35311889648438,
+                          "stroke": {
+                            "align": "inside",
+                            "thickness": 2.4000000953674316
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "qKbHJ",
+              "x": 85,
+              "y": 294.1610349998107,
+              "name": "a",
+              "rotation": 3.999999713091089,
+              "clip": true,
+              "width": 160,
+              "height": 160,
+              "fill": "#ffffffff",
+              "cornerRadius": 9.600000381469727,
+              "stroke": {
+                "align": "inside",
+                "thickness": 2.4000000953674316
+              },
+              "layout": "none",
+              "children": [
+                {
+                  "type": "rectangle",
+                  "id": "fjPgI",
+                  "x": 51.18846893310547,
+                  "y": 40.07655334472656,
+                  "name": "Apple_logo_black.svg 1",
+                  "rotation": -7.951386703658792e-16,
+                  "fill": {
+                    "type": "image",
+                    "enabled": true,
+                    "url": "",
+                    "mode": "fill"
+                  },
+                  "width": 57.631004333496094,
+                  "height": 70.8577880859375,
+                  "stroke": {
+                    "align": "inside",
+                    "thickness": 2.4000000953674316
+                  }
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "6zS5d",
+              "x": 196.48423506861332,
+              "y": 141.99999999999977,
+              "name": "n",
+              "rotation": -8.00000038608561,
+              "clip": true,
+              "width": 140,
+              "height": 140,
+              "fill": "#77b900ff",
+              "cornerRadius": 9.600000381469727,
+              "stroke": {
+                "align": "inside",
+                "thickness": 2.4000000953674316
+              },
+              "layout": "none",
+              "children": [
+                {
+                  "type": "rectangle",
+                  "id": "FdN3a",
+                  "x": -7.715646266937256,
+                  "y": -7.7180986404418945,
+                  "name": "icn-sec-fill-NAS00208X-E0 1",
+                  "fill": {
+                    "type": "image",
+                    "enabled": true,
+                    "url": "",
+                    "mode": "fill"
+                  },
+                  "width": 155.43310546875,
+                  "height": 155.43310546875,
+                  "stroke": {
+                    "align": "inside",
+                    "thickness": 2.4000000953674316
+                  }
                 }
               ]
             }
@@ -3708,7 +3894,7 @@
     {
       "type": "frame",
       "id": "VGR61",
-      "x": 798,
+      "x": 1046,
       "y": 0,
       "name": "Frame 1000006862",
       "clip": true,
@@ -4722,6 +4908,589 @@
           "fontFamily": "LIFEPLUS",
           "fontSize": 32,
           "fontWeight": "700"
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "GxyVX",
+      "x": -2452,
+      "y": 3732,
+      "name": "Section",
+      "width": 1920,
+      "height": 466,
+      "fill": "#2a2a2aff",
+      "stroke": {
+        "align": "inside",
+        "thickness": 1
+      },
+      "layout": "none",
+      "children": [
+        {
+          "type": "frame",
+          "id": "t6y8O",
+          "x": 527.5,
+          "y": 100,
+          "name": "Container",
+          "width": 865,
+          "height": 265.7799987792969,
+          "stroke": {
+            "align": "inside",
+            "thickness": 1
+          },
+          "layout": "none",
+          "children": [
+            {
+              "type": "text",
+              "id": "m9Nlr",
+              "x": 227.140625,
+              "y": -1,
+              "name": "Heading 2 → 우리 아이 첫 번째 자산,\nPi와 함께 만들어보세요",
+              "fill": "#f0f0f0ff",
+              "textGrowth": "fixed-width-height",
+              "width": 413.84527587890625,
+              "height": 112.19000244140625,
+              "content": "우리 아이 첫 번째 자산,\n 함께 만들어가요",
+              "lineHeight": 1.150000015894572,
+              "textAlign": "center",
+              "textAlignVertical": "middle",
+              "fontFamily": "Pretendard",
+              "fontSize": 48,
+              "fontWeight": "700",
+              "letterSpacing": -2
+            },
+            {
+              "type": "text",
+              "id": "dimTD",
+              "x": 328.419921875,
+              "y": 130.390625,
+              "name": "서브타이틀 수정",
+              "fill": "#888888ff",
+              "textGrowth": "fixed-width-height",
+              "width": 209.36000061035156,
+              "height": 46.189998626708984,
+              "content": "서브타이틀 수정",
+              "lineHeight": 1.7000000476837158,
+              "textAlign": "center",
+              "textAlignVertical": "middle",
+              "fontFamily": "Pretendard",
+              "fontSize": 16,
+              "fontWeight": "300"
+            },
+            {
+              "type": "frame",
+              "id": "RYW2V",
+              "x": 329.0999755859375,
+              "y": 210,
+              "name": "Frame 1000006698",
+              "stroke": {
+                "align": "inside",
+                "thickness": 1
+              },
+              "gap": 10,
+              "justifyContent": "end",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "eonW4",
+                  "name": "Button",
+                  "width": 98.69999694824219,
+                  "height": 32.5,
+                  "fill": "#707075ff",
+                  "cornerRadius": 100,
+                  "stroke": {
+                    "align": "inside",
+                    "thickness": 1
+                  },
+                  "layout": "none",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "1MAFS",
+                      "x": 22,
+                      "y": 9,
+                      "name": "AppStore",
+                      "fill": "#ffffffff",
+                      "textGrowth": "fixed-width-height",
+                      "width": 55.067813873291016,
+                      "height": 14.5,
+                      "content": "AppStore",
+                      "textAlign": "center",
+                      "textAlignVertical": "middle",
+                      "fontFamily": "Pretendard",
+                      "fontSize": 12,
+                      "fontWeight": "600"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "amKCu",
+                  "name": "Button",
+                  "width": 98.69999694824219,
+                  "height": 32.5,
+                  "fill": "#707075ff",
+                  "cornerRadius": 100,
+                  "stroke": {
+                    "align": "inside",
+                    "thickness": 1
+                  },
+                  "layout": "none",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "6pvnp",
+                      "x": 16,
+                      "y": 9,
+                      "name": "Google Play",
+                      "fill": "#ffffffff",
+                      "content": "Google Play",
+                      "textAlign": "center",
+                      "textAlignVertical": "middle",
+                      "fontFamily": "Pretendard",
+                      "fontSize": 12,
+                      "fontWeight": "600"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "TOFxD",
+      "x": -871,
+      "y": -2528,
+      "name": "section.02",
+      "clip": true,
+      "width": 1920,
+      "height": 1526,
+      "fill": "#FFFFFF",
+      "layout": "none",
+      "children": [
+        {
+          "type": "frame",
+          "id": "zPeqh",
+          "x": 286,
+          "y": 152,
+          "name": "Frame 1000006709",
+          "width": 1440,
+          "stroke": {
+            "align": "inside",
+            "thickness": 1
+          },
+          "layout": "vertical",
+          "gap": 30,
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "0tGrS",
+              "name": "Heading 2 → 아이의 미래,\n오늘 시작해도 늦지 않아요",
+              "fill": "#141415ff",
+              "textGrowth": "fixed-width",
+              "width": "fill_container",
+              "content": "시간이 아이 자산을 키워줘요",
+              "lineHeight": 1.2758620689655173,
+              "textAlign": "center",
+              "textAlignVertical": "middle",
+              "fontFamily": "Pretendard",
+              "fontSize": 58,
+              "fontWeight": "700",
+              "letterSpacing": -2
+            },
+            {
+              "type": "text",
+              "id": "rH4tF",
+              "name": "subtitle",
+              "fill": "#000000ff",
+              "textGrowth": "fixed-width",
+              "width": "fill_container",
+              "content": "subtitle",
+              "textAlign": "center",
+              "textAlignVertical": "middle",
+              "fontFamily": "Pretendard",
+              "fontSize": 32,
+              "fontWeight": "normal",
+              "letterSpacing": -0.5
+            }
+          ]
+        },
+        {
+          "type": "rectangle",
+          "id": "2zoTS",
+          "x": 286,
+          "y": 377,
+          "name": "Rectangle 45",
+          "fill": "#dddddfff",
+          "width": 780,
+          "height": 500,
+          "stroke": {
+            "align": "inside",
+            "thickness": 1
+          }
+        },
+        {
+          "type": "rectangle",
+          "id": "JNB1P",
+          "x": 286,
+          "y": 899,
+          "name": "Rectangle 44",
+          "fill": {
+            "type": "image",
+            "enabled": true,
+            "url": "",
+            "mode": "fill"
+          },
+          "width": 380,
+          "height": 478,
+          "stroke": {
+            "align": "inside",
+            "thickness": 1
+          }
+        },
+        {
+          "type": "frame",
+          "id": "8yfPl",
+          "x": 286,
+          "y": 377,
+          "name": "Frame 1000006660",
+          "width": 780,
+          "height": 500,
+          "fill": "#f2f2f3ff",
+          "stroke": {
+            "align": "inside",
+            "thickness": 1
+          },
+          "layout": "vertical",
+          "gap": 16,
+          "padding": 40,
+          "justifyContent": "end"
+        },
+        {
+          "type": "rectangle",
+          "id": "RersT",
+          "x": 1086,
+          "y": 377,
+          "fill": "#CCCCCC",
+          "width": 640,
+          "height": 640
+        },
+        {
+          "type": "group",
+          "id": "LbmK6",
+          "x": 1086,
+          "y": 1037,
+          "children": [
+            {
+              "type": "rectangle",
+              "id": "zjqJq",
+              "x": 0,
+              "y": 0,
+              "name": "Rectangle 46",
+              "fill": "#f2f2f3ff",
+              "width": 640,
+              "height": 340,
+              "stroke": {
+                "align": "inside",
+                "thickness": 1
+              }
+            }
+          ]
+        },
+        {
+          "type": "group",
+          "id": "LDV6v",
+          "x": 686,
+          "y": 859.0000000000002,
+          "name": "Mask group",
+          "children": [
+            {
+              "type": "rectangle",
+              "id": "3Hf9J",
+              "x": 0,
+              "y": 47.08978141606758,
+              "name": "Image Overlay",
+              "fill": "#f2f2f3ff",
+              "width": 380,
+              "height": 470.9102185839324,
+              "stroke": {
+                "align": "inside",
+                "thickness": 1
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "WXJUp",
+      "x": -7690,
+      "y": 542,
+      "name": "Container",
+      "width": 1920,
+      "fill": "#dddddfff",
+      "stroke": {
+        "align": "inside",
+        "thickness": 1
+      },
+      "layout": "vertical",
+      "gap": 121,
+      "padding": [
+        200,
+        0
+      ],
+      "alignItems": "center",
+      "children": [
+        {
+          "type": "text",
+          "id": "FtAEX",
+          "name": "Heading 2 → 아이의 미래,\n오늘 시작해도 늦지 않아요",
+          "fill": "#141415ff",
+          "content": "아이 자산 어떻게 관리하고 계신가요?",
+          "lineHeight": 1.2758620689655173,
+          "textAlign": "center",
+          "textAlignVertical": "middle",
+          "fontFamily": "Pretendard",
+          "fontSize": 58,
+          "fontWeight": "700",
+          "letterSpacing": -2
+        },
+        {
+          "type": "group",
+          "id": "0EK4o",
+          "name": "Container",
+          "children": [
+            {
+              "type": "frame",
+              "id": "kaxIj",
+              "x": 693,
+              "y": 288,
+              "name": "Container",
+              "fill": "#ffffffff",
+              "cornerRadius": 300,
+              "stroke": {
+                "align": "inside",
+                "thickness": 1
+              },
+              "gap": 8,
+              "padding": 30,
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "mpvZQ",
+                  "name": "Label",
+                  "fill": "#000000ff",
+                  "content": "증여세 신고는 생각만 해도 머리 아파요. 안 걸리면 되는 거 아닌가요?",
+                  "lineHeight": 1,
+                  "textAlign": "center",
+                  "textAlignVertical": "middle",
+                  "fontFamily": "Pretendard",
+                  "fontSize": 32,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "yZSU3",
+              "x": 1389,
+              "y": 166,
+              "name": "Container",
+              "fill": "#ffffffff",
+              "cornerRadius": 300,
+              "stroke": {
+                "align": "inside",
+                "thickness": 1
+              },
+              "gap": 8,
+              "padding": 30,
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "dzkG8",
+                  "name": "Label",
+                  "fill": "#000000ff",
+                  "content": "자녀 명의로 투자를 하고는 있는데 수익률이 높지 않아요",
+                  "lineHeight": 1,
+                  "textAlign": "center",
+                  "textAlignVertical": "middle",
+                  "fontFamily": "Pretendard",
+                  "fontSize": 32,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "cF3mc",
+              "x": 348,
+              "y": 136,
+              "name": "Container",
+              "fill": "#ffffffff",
+              "cornerRadius": 300,
+              "stroke": {
+                "align": "inside",
+                "thickness": 1
+              },
+              "gap": 8,
+              "padding": 30,
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "19E4m",
+                  "name": "Label",
+                  "fill": "#000000ff",
+                  "content": "그때그때 되는 대로 증여하고 있어요",
+                  "lineHeight": 1,
+                  "textAlign": "center",
+                  "textAlignVertical": "middle",
+                  "fontFamily": "Pretendard",
+                  "fontSize": 32,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "9frfs",
+              "x": 348,
+              "y": 136,
+              "name": "Container",
+              "fill": "#ffffffff",
+              "cornerRadius": 300,
+              "stroke": {
+                "align": "inside",
+                "thickness": 1
+              },
+              "gap": 8,
+              "padding": 30,
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "97uL8",
+                  "name": "Label",
+                  "fill": "#000000ff",
+                  "content": "그때그때 되는 대로 증여하고 있어요",
+                  "lineHeight": 1,
+                  "textAlign": "center",
+                  "textAlignVertical": "middle",
+                  "fontFamily": "Pretendard",
+                  "fontSize": 32,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "blHjY",
+              "x": 0,
+              "y": 0,
+              "name": "Container",
+              "fill": "#ffffffff",
+              "cornerRadius": 300,
+              "stroke": {
+                "align": "inside",
+                "thickness": 1
+              },
+              "gap": 8,
+              "padding": 30,
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "1zozP",
+                  "name": "Label",
+                  "fill": "#000000ff",
+                  "content": "2천만원 넘게 증여하면 그때 신고하려고 했어요",
+                  "lineHeight": 1,
+                  "textAlign": "center",
+                  "textAlignVertical": "middle",
+                  "fontFamily": "Pretendard",
+                  "fontSize": 32,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "fjPXe",
+              "x": 967,
+              "y": 0,
+              "name": "Container",
+              "fill": "#ffffffff",
+              "cornerRadius": 300,
+              "stroke": {
+                "align": "inside",
+                "thickness": 1
+              },
+              "gap": 8,
+              "padding": 30,
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "q8HLf",
+                  "name": "Label",
+                  "fill": "#000000ff",
+                  "content": "자녀가 결혼할 때 여윳돈이 있으면 줄 생각이에요",
+                  "lineHeight": 1,
+                  "textAlign": "center",
+                  "textAlignVertical": "middle",
+                  "fontFamily": "Pretendard",
+                  "fontSize": 32,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "IOxSN",
+              "x": 967,
+              "y": 0,
+              "name": "Container",
+              "fill": "#ffffffff",
+              "cornerRadius": 300,
+              "stroke": {
+                "align": "inside",
+                "thickness": 1
+              },
+              "gap": 8,
+              "padding": 30,
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "fpy23",
+                  "name": "Label",
+                  "fill": "#000000ff",
+                  "content": "자녀가 결혼할 때 여윳돈이 있으면 줄 생각이에요",
+                  "lineHeight": 1,
+                  "textAlign": "center",
+                  "textAlignVertical": "middle",
+                  "fontFamily": "Pretendard",
+                  "fontSize": 32,
+                  "fontWeight": "normal"
+                }
+              ]
+            }
+          ]
         }
       ]
     }

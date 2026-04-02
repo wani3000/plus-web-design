@@ -1,6 +1,7 @@
 import './style.css'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import lottie from 'lottie-web'
 import { Header } from './src/components/Header.js'
 
 gsap.registerPlugin(ScrollTrigger);
@@ -156,17 +157,124 @@ tl.to(".img-04 .img-card-text", {
   ease: "power3.out"
 }, 12.22);
 
-// Chart line animation (orange gradient line)
-const accentLine = document.querySelector('.chart-line--accent');
-if (accentLine) {
+// Section 02 chart (SVG + GSAP path draw)
+const section02Chart = document.querySelector('.section-02__chart');
+if (section02Chart) {
+  const accentPath = section02Chart.querySelector('.chart-line--accent');
+  const basePath = section02Chart.querySelector('.chart-line--base');
+
+  const primePathForDraw = (path) => {
+    if (!path) return;
+    const length = path.getTotalLength();
+    path.style.strokeDasharray = String(length);
+    path.style.strokeDashoffset = String(length);
+    path.style.opacity = '1';
+  };
+
+  primePathForDraw(accentPath);
+  primePathForDraw(basePath);
+
   ScrollTrigger.create({
-    trigger: accentLine,
-    start: 'center center',
+    trigger: '.section-02__card--chart',
+    start: 'top 75%',
     once: true,
     onEnter: () => {
-      accentLine.classList.add('animate');
+      if (!accentPath || !basePath) return;
+      gsap.timeline()
+        .to(basePath, {
+          strokeDashoffset: 0,
+          duration: 1.45,
+          ease: 'power2.out'
+        })
+        .to(accentPath, {
+          strokeDashoffset: 0,
+          duration: 1.6,
+          ease: 'power2.out'
+        }, '+=0.08');
     }
   });
+}
+
+// Section 02 right-bottom card hourglass lottie
+const hourglassLottieEl = document.querySelector('.section-02__hourglass-lottie');
+if (hourglassLottieEl) {
+  const orange60 = [243 / 255, 117 / 255, 33 / 255, 1];
+  const sourcePrimary = [0, 150 / 255, 64 / 255];
+  const sourceSecondary = [230 / 255, 246 / 255, 234 / 255];
+  const pickTargetColor = (arr) => {
+    if (!Array.isArray(arr) || arr.length < 3) return false;
+    if (!arr.slice(0, 3).every((value) => typeof value === 'number')) return false;
+    const primaryDiff =
+      Math.abs(arr[0] - sourcePrimary[0]) +
+      Math.abs(arr[1] - sourcePrimary[1]) +
+      Math.abs(arr[2] - sourcePrimary[2]);
+    if (primaryDiff < 0.02) return orange60;
+
+    const secondaryDiff =
+      Math.abs(arr[0] - sourceSecondary[0]) +
+      Math.abs(arr[1] - sourceSecondary[1]) +
+      Math.abs(arr[2] - sourceSecondary[2]);
+    if (secondaryDiff < 0.02) return [1, 1, 1, 1];
+
+    return null;
+  };
+  const applyColor = (arr) => {
+    const targetColor = pickTargetColor(arr);
+    if (!targetColor) return;
+    arr[0] = targetColor[0];
+    arr[1] = targetColor[1];
+    arr[2] = targetColor[2];
+  };
+
+  const recolorLottie = (node) => {
+    if (!node) return;
+    if (Array.isArray(node)) {
+      node.forEach(recolorLottie);
+      return;
+    }
+    if (typeof node !== 'object') return;
+
+    if (node.c && typeof node.c === 'object' && 'k' in node.c) {
+      const { k } = node.c;
+      if (Array.isArray(k)) {
+        if (typeof k[0] === 'number') {
+          applyColor(k);
+        } else {
+          k.forEach((frame) => {
+            if (frame && typeof frame === 'object') {
+              if (Array.isArray(frame.s)) applyColor(frame.s);
+              if (Array.isArray(frame.e)) applyColor(frame.e);
+            }
+          });
+        }
+      }
+    }
+
+    Object.values(node).forEach(recolorLottie);
+  };
+
+  fetch('/hourglass-loading.json')
+    .then((res) => res.json())
+    .then((rawData) => {
+      const animationData = JSON.parse(JSON.stringify(rawData));
+      recolorLottie(animationData);
+      lottie.loadAnimation({
+        container: hourglassLottieEl,
+        renderer: 'svg',
+        loop: true,
+        autoplay: true,
+        animationData
+      });
+    })
+    .catch(() => {
+      lottie.loadAnimation({
+        container: hourglassLottieEl,
+        renderer: 'svg',
+        loop: true,
+        autoplay: true,
+        path: '/hourglass-loading.json'
+      });
+    });
 }
 
 // Section 01 bubble animation (scattered cloud reveal + ongoing drift)
