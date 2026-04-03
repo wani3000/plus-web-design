@@ -162,6 +162,9 @@ const section02Chart = document.querySelector('.section-02__chart');
 if (section02Chart) {
   const accentPath = section02Chart.querySelector('.chart-line--accent');
   const basePath = section02Chart.querySelector('.chart-line--base');
+  const chartCard = section02Chart.closest('.section-02__card--chart');
+  const chartAlpha = chartCard?.querySelector('h3');
+  const guideLine = chartCard?.querySelector('.section-02__guide-line');
 
   const primePathForDraw = (path) => {
     if (!path) return;
@@ -171,8 +174,39 @@ if (section02Chart) {
     path.style.opacity = '1';
   };
 
+  const primeGuideLineForDraw = (line) => {
+    if (!line) return;
+    line.style.transform = 'scaleX(0)';
+    line.style.opacity = '1';
+  };
+
+  const syncSection02GuideLine = () => {
+    if (!chartCard || !chartAlpha || !guideLine) return;
+    const cardRect = chartCard.getBoundingClientRect();
+    const titleRect = chartAlpha.getBoundingClientRect();
+    const svgRect = section02Chart.getBoundingClientRect();
+    const lineLeft = Math.round(titleRect.right - cardRect.left + 8);
+    const accentEndX = (svgRect.left - cardRect.left) + (svgRect.width * (600 / 620));
+    const lineRight = Math.round(accentEndX - 40);
+    const lineWidth = Math.max(0, Math.round(lineRight - lineLeft));
+    guideLine.style.left = `${lineLeft}px`;
+    guideLine.style.top = `${Math.round(((titleRect.top + titleRect.bottom) / 2) - cardRect.top)}px`;
+    guideLine.style.width = `${lineWidth}px`;
+  };
+
   primePathForDraw(accentPath);
   primePathForDraw(basePath);
+  syncSection02GuideLine();
+  primeGuideLineForDraw(guideLine);
+
+  if (chartAlpha) {
+    gsap.set(chartAlpha, { opacity: 0, y: 8 });
+  }
+
+  window.addEventListener('resize', () => {
+    syncSection02GuideLine();
+    primeGuideLineForDraw(guideLine);
+  });
 
   ScrollTrigger.create({
     trigger: '.section-02__card--chart',
@@ -190,7 +224,18 @@ if (section02Chart) {
           strokeDashoffset: 0,
           duration: 1.6,
           ease: 'power2.out'
-        }, '+=0.08');
+        }, '+=0.08')
+        .to(guideLine, {
+          scaleX: 1,
+          duration: 0.24,
+          ease: 'power1.out'
+        }, '>')
+        .to(chartAlpha, {
+          opacity: 1,
+          y: 0,
+          duration: 0.28,
+          ease: 'power2.out'
+        }, '<+=0.04');
     }
   });
 }
@@ -346,30 +391,38 @@ if (section02SubBlock) {
 
   if (dropOrder.length > 0) {
     const physics = [
-      { startY: -360, fall: 1.0, bounce: 8, impact: 3, driftX: 0 },
-      { startY: -300, fall: 0.88, bounce: 7, impact: 4, driftX: -8 },
-      { startY: -240, fall: 0.78, bounce: 6, impact: 5, driftX: 7 }
+      { startY: -520, fall: 1.0, bounce: 8, impact: 3, driftX: 0 },
+      { startY: -470, fall: 0.88, bounce: 7, impact: 4, driftX: -8 },
+      { startY: -420, fall: 0.78, bounce: 6, impact: 5, driftX: 7 }
+    ];
+    const defaultPhysics = { startY: -260, fall: 0.9, bounce: 6, impact: 3, driftX: 0 };
+    const exitPhysics = [
+      { fallOut: 0.92, endY: 560, impact: 4 },
+      { fallOut: 0.82, endY: 540, impact: 4 },
+      { fallOut: 0.74, endY: 520, impact: 5 }
     ];
 
-    gsap.set(dropOrder, {
-      y: (index) => physics[index]?.startY ?? -260,
-      x: (index) => physics[index]?.driftX ?? 0,
-      autoAlpha: 0,
-      scaleX: 1,
-      scaleY: 1,
-      transformOrigin: '50% 100%'
-    });
+    const resetLogoCards = () => {
+      gsap.set(dropOrder, {
+        y: (index) => physics[index]?.startY ?? defaultPhysics.startY,
+        x: (index) => physics[index]?.driftX ?? defaultPhysics.driftX,
+        autoAlpha: 1,
+        scaleX: 1,
+        scaleY: 1,
+        zIndex: 1,
+        transformOrigin: '50% 100%'
+      });
+    };
+
+    resetLogoCards();
 
     const logoTl = gsap.timeline({
-      scrollTrigger: {
-        trigger: section02SubBlock,
-        start: 'top 78%',
-        toggleActions: 'play none none none',
-        once: true
-      }
+      paused: true,
+      repeat: -1,
+      repeatDelay: 0,
+      onRepeat: resetLogoCards
     });
 
-    const defaultPhysics = { startY: -260, fall: 0.9, bounce: 6, impact: 3, driftX: 0 };
     const startTimes = [];
     const overlapStartRatio = 0.58;
     let cursor = 0;
@@ -384,7 +437,7 @@ if (section02SubBlock) {
       });
 
       logoTl
-        .to(card, { autoAlpha: 1, zIndex: 50 + index, duration: 0.02 }, cursor)
+        .to(card, { zIndex: 50 + index, duration: 0.02 }, cursor)
         .to(card, {
           y: 0,
           x: 0,
@@ -442,6 +495,51 @@ if (section02SubBlock) {
       // Cascading drop: next card starts while current card is still falling.
       cursor += p.fall * overlapStartRatio;
     });
+
+    const settledAt = Math.max(
+      ...dropOrder.map((_, index) => {
+        const p = physics[index] ?? defaultPhysics;
+        const startAt = startTimes[index] ?? 0;
+        return startAt + p.fall + 0.6;
+      })
+    );
+
+    const exitStart = settledAt + 2;
+    dropOrder.forEach((card, index) => {
+      const exit = exitPhysics[index] ?? exitPhysics[exitPhysics.length - 1];
+      const outAt = exitStart + index * 0.2;
+
+      logoTl
+        .to(card, {
+          y: exit.endY,
+          duration: exit.fallOut,
+          ease: 'power4.in'
+        }, outAt);
+
+      const remainingCards = dropOrder.slice(index + 1);
+      if (remainingCards.length > 0) {
+        logoTl
+          .to(remainingCards, {
+            y: `+=${exit.impact}`,
+            duration: 0.07,
+            ease: 'power1.out',
+            stagger: 0.015
+          }, outAt + 0.05)
+          .to(remainingCards, {
+            y: `-=${exit.impact}`,
+            duration: 0.14,
+            ease: 'power2.out',
+            stagger: 0.015
+          }, outAt + 0.12);
+      }
+    });
+
+    ScrollTrigger.create({
+      trigger: section02SubBlock,
+      start: 'top 78%',
+      once: true,
+      onEnter: () => logoTl.play(0)
+    });
   }
 }
 
@@ -452,8 +550,8 @@ if (compareChart) {
   const bars = ['.section-03__chart-bar--small', '.section-03__chart-bar--large'];
   const smallLine = '.section-03__chart-line--small';
   const largeLine = '.section-03__chart-line--large';
-  const smallLabel = '.section-03__chart-label--small';
-  const largeLabel = '.section-03__chart-label--large';
+  const smallLabel = '.section-03__chart-label-group--small';
+  const largeLabel = '.section-03__chart-label-group--large';
 
   gsap.set(bars, { transformOrigin: 'center bottom', scaleY: 0, y: 20, opacity: 1 });
   gsap.set([smallLine, largeLine], { scaleX: 0, opacity: 1 });
@@ -546,23 +644,112 @@ if (monthlyCard) {
 // Section 03 left-bottom invest card dim overlay (after 2s delay)
 const investCard = document.querySelector('.section-03__card--left-bottom');
 if (investCard) {
+  const investUi = investCard.querySelector('.section-03__invest-ui');
   const investOverlay = investCard.querySelector('.section-03__invest-overlay');
+  const investSheet = investCard.querySelector('.section-03__invest-sheet');
+  const investPromptTitle = investCard.querySelector('.section-03__invest-sheet-title--prompt');
+  const investTypedTitle = investCard.querySelector('.section-03__invest-sheet-title--typed');
+  const investTypedValue = investCard.querySelector('.section-03__invest-sheet-typed');
+  const investAmountValue = investCard.querySelector('.section-03__invest-field--amount .section-03__invest-value');
+  const investTotalValue = investCard.querySelector('.section-03__invest-accent');
   if (investOverlay) {
-    gsap.set(investOverlay, { yPercent: 100, autoAlpha: 1 });
+    if (investUi) {
+      gsap.set(investUi, { autoAlpha: 0, y: 48 });
+    }
+    gsap.set(investOverlay, { autoAlpha: 0 });
+    if (investSheet) {
+      gsap.set(investSheet, { yPercent: 100, autoAlpha: 1 });
+    }
+    if (investPromptTitle) {
+      gsap.set(investPromptTitle, { autoAlpha: 1 });
+    }
+    if (investTypedTitle) {
+      gsap.set(investTypedTitle, { autoAlpha: 0 });
+    }
+    if (investTypedValue) {
+      investTypedValue.textContent = '1';
+    }
 
-    gsap.timeline({
+    const investTl = gsap.timeline({
       scrollTrigger: {
         trigger: investCard,
         start: 'center center',
         toggleActions: 'play none none none',
         once: true
       }
-    }).to(investOverlay, {
-      yPercent: 0,
-      duration: 0.55,
-      ease: 'power3.out',
+    });
+
+    if (investUi) {
+      investTl.to(investUi, {
+        autoAlpha: 1,
+        y: 0,
+        duration: 0.48,
+        ease: 'power3.out'
+      });
+    }
+
+    investTl.to(investOverlay, {
+      autoAlpha: 1,
+      duration: 0.28,
+      ease: 'power2.out',
       delay: 1
     });
+
+    if (investSheet) {
+      investTl.to(investSheet, {
+        yPercent: 0,
+        duration: 0.48,
+        ease: 'power3.out'
+      }, '<');
+    }
+
+    if (investPromptTitle && investTypedTitle) {
+      investTl
+        .to({}, { duration: 1 })
+        .to(investPromptTitle, {
+          autoAlpha: 0,
+          duration: 0.16,
+          ease: 'power2.out'
+        })
+        .to(investTypedTitle, {
+          autoAlpha: 1,
+          duration: 0.16,
+          ease: 'power2.out'
+        }, '<');
+
+      if (investTypedValue) {
+        const typedSequence = ['1', '19', '194', '1,940', '19,400', '194,000'];
+        typedSequence.forEach((value, index) => {
+          investTl.call(() => {
+            investTypedValue.textContent = value;
+          }, [], `>+${index === 0 ? 0 : 0.16}`);
+        });
+
+        investTl.call(() => {
+          const finalAmount = 194000;
+          const totalMonths = 120;
+          if (investAmountValue) {
+            investAmountValue.textContent = `월 ${finalAmount.toLocaleString('ko-KR')}원`;
+          }
+          if (investTotalValue) {
+            investTotalValue.textContent = `예상 총 증여 금액 ${(finalAmount * totalMonths).toLocaleString('ko-KR')}원`;
+          }
+        });
+      }
+
+      investTl
+        .to({}, { duration: 2.5 })
+        .to(investSheet, {
+          yPercent: 100,
+          duration: 0.42,
+          ease: 'power3.in'
+        })
+        .to(investOverlay, {
+          autoAlpha: 0,
+          duration: 0.24,
+          ease: 'power2.out'
+        }, '<');
+    }
   }
 }
 
@@ -796,5 +983,74 @@ if (planCard) {
         }
       }, '<');
     }
+  }
+}
+
+// Section 01b phone rail animation
+const section01b = document.querySelector('.section-01b');
+if (section01b) {
+  const phoneWrap = section01b.querySelector('.section-01b__phone-wrap');
+  if (phoneWrap) {
+    const centerIndex = 4;
+    let phoneCycleStarted = false;
+
+    const getPhoneCards = () => Array.from(phoneWrap.querySelectorAll('.section-01b__phone-outline'));
+    const updatePhoneActiveState = () => {
+      getPhoneCards().forEach((card, index) => {
+        card.classList.toggle('is-active', index === centerIndex);
+      });
+    };
+
+    const runPhoneCycle = () => {
+      const cards = getPhoneCards();
+      if (cards.length <= centerIndex + 1) return;
+
+      const step = cards[0].getBoundingClientRect().width + parseFloat(getComputedStyle(phoneWrap).columnGap || getComputedStyle(phoneWrap).gap || '0');
+      const currentCenterCard = cards[centerIndex];
+      const nextCenterCard = cards[centerIndex + 1];
+      const currentScreen = currentCenterCard?.querySelector('.section-01b__phone-screen');
+      const nextScreen = nextCenterCard?.querySelector('.section-01b__phone-screen');
+
+      if (currentScreen) {
+        gsap.to(currentScreen, {
+          opacity: 0.45,
+          duration: 0.72,
+          ease: 'power2.inOut'
+        });
+      }
+
+      if (nextScreen) {
+        gsap.to(nextScreen, {
+          opacity: 1,
+          duration: 0.72,
+          ease: 'power2.inOut'
+        });
+      }
+
+      gsap.to(phoneWrap, {
+        x: -step,
+        duration: 0.72,
+        ease: 'power2.inOut',
+        onComplete: () => {
+          phoneWrap.appendChild(cards[0]);
+          gsap.set(phoneWrap, { x: 0 });
+          updatePhoneActiveState();
+          gsap.delayedCall(2, runPhoneCycle);
+        }
+      });
+    };
+
+    updatePhoneActiveState();
+
+    ScrollTrigger.create({
+      trigger: section01b,
+      start: 'top 80%',
+      once: true,
+      onEnter: () => {
+        if (phoneCycleStarted) return;
+        phoneCycleStarted = true;
+        gsap.delayedCall(2, runPhoneCycle);
+      }
+    });
   }
 }
