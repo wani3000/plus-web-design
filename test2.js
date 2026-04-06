@@ -1,140 +1,111 @@
+import './style.css'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { Header } from './src/components/Header.js'
+import { initSharedSections } from './src/initSectionsTest2.js'
 
-// Register core GSAP ScrollTrigger plugin exclusively
 gsap.registerPlugin(ScrollTrigger);
 
-const pinContainer = document.querySelector('.pin-container');
-const iphoneFrame = document.querySelector('.iphone-frame');
-const bgVideo = document.querySelector('.bg-video');
-const appContent = document.querySelector('.app-content');
-const nextSection = document.querySelector('.next-section');
-const homeScreen = document.querySelector('.type-home');
-const featureScreen = document.querySelector('.type-feature');
-const detailScreen = document.querySelector('.type-detail');
-const tiltWrapper = document.querySelector('.iphone-3d-wrapper');
+document.querySelector('#app')?.remove();
+document.body.insertBefore(Header(), document.body.firstChild);
 
-if (pinContainer && iphoneFrame && bgVideo && appContent && nextSection) {
-  // -----------------------------------------------------------------------------
-  // MAIN TIMELINE
-  // We pin the .pin-container for a long total scroll distance constraint (~3500px).
-  // -----------------------------------------------------------------------------
+const headerHeight = document.querySelector('.header')?.getBoundingClientRect().height ?? 72;
+const topUiOffset = Math.round(headerHeight);
+const heroPinned = document.querySelector('.hero-pinned');
+
+gsap.set('.img-02, .img-03', { x: '-50vw' });
+gsap.set('.img-04, .img-05', { x: '50vw' });
+
+if (heroPinned) {
+  const overlayMap = [
+    '.img-01 .img-overlay',
+    '.img-03 .img-overlay',
+    '.img-02 .img-overlay',
+    '.img-05 .img-overlay',
+    '.img-04 .img-overlay'
+  ];
+  const textMap = [
+    '.img-01 .img-card-text',
+    '.img-03 .img-card-text',
+    '.img-02 .img-card-text',
+    '.img-05 .img-card-text',
+    '.img-04 .img-card-text'
+  ];
+
+  gsap.set(overlayMap, { opacity: 0 });
+  gsap.set(textMap, { opacity: 0, y: 20 });
+
   const tl = gsap.timeline({
     scrollTrigger: {
-      trigger: pinContainer,
-      start: 'top top', // Trigger when pin-container touches top of viewport
-      end: '+=3500', // Total scroll distance during pinning (px)
-      pin: true, // Pin the container physically on the screen
-      scrub: 1, // Bind smooth interpolation to scroll (1sec catchup easing)
+      trigger: '.hero-pinned',
+      start: `top top+=${topUiOffset}`,
+      end: '+=4000',
+      pin: true,
+      scrub: 0.55,
+      invalidateOnRefresh: true
     }
   });
 
-  // Note: Within the timeline, time is abstract and mapped dynamically to the ScrollTrigger distance.
-  // Assume timeline duration of "100" to represent strict percentage mappings.
-
-  // -----------------------------------------------------------------------------
-  // PHASE 1: Entrance Mapping (0% - 15% of scroll)
-  // - The iPhone slides vertically up from offscreen (150vh -> 0)
-  // - Video behind progressive acquires an 8px blur mask.
-  // -----------------------------------------------------------------------------
-  tl.to(iphoneFrame, {
-    y: 0,
-    duration: 15, // Takes up exactly 15% length
-    ease: 'power3.out' // Elastic easing gives it a soft fluid lift
+  tl.to('.hero-title', {
+    opacity: 0,
+    y: -50,
+    duration: 1.5,
+    ease: 'power2.out'
   }, 0);
 
-  tl.to(bgVideo, {
-    filter: 'blur(8px)',
-    duration: 15,
-    ease: 'none'
+  tl.to('.img-01', {
+    width: '50vh',
+    height: '66.6667vh',
+    borderRadius: '8px',
+    ease: 'power2.inOut',
+    duration: 5
   }, 0);
 
-  // -----------------------------------------------------------------------------
-  // PHASE 2: In-App Scroll Mechanism (15% - 85% of scroll)
-  // - `.app-content` transforms negatively simulating finger scroll behavior
-  // - Embedded `.app-screen` blocks fade and float in chronologically.
-  // -----------------------------------------------------------------------------
-  // Calculation: The inner app content is 350% total height. The phone view matches 100% height.
-  // To reach the exact bottom boundary, we need to scroll by roughly -71.4% (or ~ -250% relative).
-  // The easiest metric is moving the translation absolute percentage matching its own relative boundary.
-  tl.to(appContent, {
-    yPercent: -71.4, // -71.4% of 350% is reaching precisely the lower edge overflow offset.
-    ease: 'none',
-    duration: 70 // Takes up the broad 70% inner band representing pure app exploration.
-  }, 15);
-
-  // Inner Screen Fade-Ins (staggered mapping into viewport timing)
-  if (homeScreen) {
-    tl.to(homeScreen, {
-      opacity: 1,
-      y: 0,
-      duration: 10,
-      ease: 'power2.out'
-    }, 15);
-  }
-
-  if (featureScreen) {
-    tl.to(featureScreen, {
-      opacity: 1,
-      y: 0,
-      duration: 10,
-      ease: 'power2.out'
-    }, 30);
-  }
-
-  if (detailScreen) {
-    tl.to(detailScreen, {
-      opacity: 1,
-      y: 0,
-      duration: 10,
-      ease: 'power2.out'
-    }, 58);
-  }
-
-  // -----------------------------------------------------------------------------
-  // PHASE 3: Exit & Handoff (85% - 100% of scroll)
-  // - Shrink and dissolve iPhone into background
-  // - De-blur video and dissolve
-  // - Introduce the `.next-section` CTA
-  // -----------------------------------------------------------------------------
-  tl.to(iphoneFrame, {
-    scale: 0.85,
-    opacity: 0,
-    duration: 15,
-    ease: 'power2.inOut'
-  }, 85);
-
-  tl.to(bgVideo, {
-    filter: 'blur(0px)',
-    opacity: 0,
-    duration: 15,
-    ease: 'power2.inOut'
-  }, 85);
-
-  tl.to(nextSection, {
+  tl.to('.img-02', {
+    x: 0,
     opacity: 1,
-    duration: 10,
-    ease: 'none'
-  }, 90);
-}
+    duration: 1.4,
+    ease: 'expo.out'
+  }, 3);
 
-// -----------------------------------------------------------------------------
-// INTERACTIVE: 3D Mouse Tilt Responsiveness
-// Uses generic GSAP quickTo binding coordinates fluidly without scrolling lock
-// -----------------------------------------------------------------------------
-if (tiltWrapper) {
-  const xTo = gsap.quickTo(tiltWrapper, 'rotateY', { duration: 0.5, ease: 'power3.out' });
-  const yTo = gsap.quickTo(tiltWrapper, 'rotateX', { duration: 0.5, ease: 'power3.out' });
+  tl.to('.img-03', {
+    x: 0,
+    opacity: 1,
+    duration: 1.4,
+    ease: 'expo.out'
+  }, 3.5);
 
-  window.addEventListener('mousemove', (event) => {
-    // Normalize screen x/y constraints mapped to standard generic floats (-1 to +1)
-    const xNorm = (event.clientX / window.innerWidth - 0.5) * 2;
-    const yNorm = (event.clientY / window.innerHeight - 0.5) * 2;
+  tl.to('.img-04', {
+    x: 0,
+    opacity: 1,
+    duration: 1.4,
+    ease: 'expo.out'
+  }, 5);
 
-    // Max visual rotation restriction:
-    // +/- 12deg on Y axis (left/right tilt)
-    // +/- 8deg on X axis (up/down tilt)
-    xTo(xNorm * 12);
-    yTo(-yNorm * 8); // yNorm must invert corresponding mapping for correct CSS 3D physics axis
+  tl.to('.img-05', {
+    x: 0,
+    opacity: 1,
+    duration: 1.4,
+    ease: 'expo.out'
+  }, 5.5);
+
+  overlayMap.forEach((selector, index) => {
+    tl.to(selector, {
+      opacity: 1,
+      duration: 0.3,
+      ease: 'power1.out'
+    }, 9.5 + index * 0.72);
+  });
+
+  textMap.forEach((selector, index) => {
+    tl.to(selector, {
+      opacity: 1,
+      y: 0,
+      duration: 0.35,
+      ease: 'power2.out'
+    }, 9.62 + index * 0.72);
   });
 }
+
+initSharedSections();
+requestAnimationFrame(() => ScrollTrigger.refresh());

@@ -1,7 +1,7 @@
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { Header } from './src/components/Header.js'
-import { initSharedSections } from './src/initSharedSections.js'
+import { initSharedSections } from './src/initSectionsTest3.js'
 
 gsap.registerPlugin(ScrollTrigger);
 

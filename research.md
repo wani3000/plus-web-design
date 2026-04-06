@@ -10,7 +10,7 @@
 - Verified build command: `npm run build`
 - Verified verification command: `npm run verify`
 
-현재 저장소는 PI(자산공식) 콘셉트의 애니메이션 중심 정적 랜딩 프로토타입이다. 코드베이스의 실질적인 핵심은 루트 엔트리 파일과 정적 자산이며, 런타임은 브라우저 내 GSAP 타임라인, DOM 측정, 텍스트/숫자 애니메이션, 비디오/이미지 레이어 조합으로 구성된다. 서버 렌더링, 백엔드, ORM, 데이터 저장소는 현재 코드에서 검증되지 않았다.
+현재 저장소는 PI(자산공식) 콘셉트의 애니메이션 중심 정적 랜딩 프로토타입이다. 코드베이스의 실질적인 핵심은 루트 엔트리 파일과 정적 자산이며, 런타임은 브라우저 내 GSAP 타임라인, DOM 측정, 텍스트/숫자 애니메이션, 비디오/이미지 레이어 조합으로 구성된다. 서버 렌더링, 백엔드, ORM, 데이터 저장소는 현재 코드에서 검증되지 않았다. 최근 구조상 가장 중요한 사실은 `test1`, `test2`, `test3`가 이제 JS 초기화 기준으로 분리되어 있으며, 같은 섹션 이름을 공유해도 각 엔트리의 히어로/인터랙션은 서로 다른 코드 경로로 실행된다는 점이다.
 
 ## Verified Technical Stack
 - Runtime: Node.js
@@ -66,9 +66,12 @@
   - primary landing page and main production-facing prototype
 - [main.js](/Users/hanwha/Documents/GitHub/plus-web-design/main.js)
   - header mount and hero-only scroll timeline for the main page
-- [src/initSharedSections.js](/Users/hanwha/Documents/GitHub/plus-web-design/src/initSharedSections.js)
-  - shared initializer for section 01~05 interactions
-  - reused by `main.js` and `test3.js`
+- [src/initSectionsTest1.js](/Users/hanwha/Documents/GitHub/plus-web-design/src/initSectionsTest1.js)
+  - `index.html` 전용 section 01~05 initializer
+- [src/initSectionsTest2.js](/Users/hanwha/Documents/GitHub/plus-web-design/src/initSectionsTest2.js)
+  - `test2.html` 전용 section 01~05 initializer
+- [src/initSectionsTest3.js](/Users/hanwha/Documents/GitHub/plus-web-design/src/initSectionsTest3.js)
+  - `test3.html` 전용 section 01~05 initializer
 - [style.css](/Users/hanwha/Documents/GitHub/plus-web-design/style.css)
   - main landing styles and all section layouts
 - [test2.html](/Users/hanwha/Documents/GitHub/plus-web-design/test2.html), [test2.js](/Users/hanwha/Documents/GitHub/plus-web-design/test2.js), [test2.css](/Users/hanwha/Documents/GitHub/plus-web-design/test2.css)
@@ -206,27 +209,44 @@
 ### Entry 1: `index.html` + `main.js`
 - imports GSAP, ScrollTrigger, and `lottie-web`
 - injects header/navigation
-- coordinates hero-specific scroll timeline
-- delegates section 01~05 interactions to [src/initSharedSections.js](/Users/hanwha/Documents/GitHub/plus-web-design/src/initSharedSections.js)
-- includes number typing, card loops, stacked-card drops, hover motions, and modal reveal flows
+- coordinates **test1-only** hero one-shot transition
+- hero behavior:
+  - first downward scroll input triggers one-shot gallery transition
+  - after gallery completion, page auto-scrolls to `Section 01`
+  - upward scroll near `Section 01` top can return to hero first state
+- delegates section 01~05 interactions to [src/initSectionsTest1.js](/Users/hanwha/Documents/GitHub/plus-web-design/src/initSectionsTest1.js)
 - active visible section order currently skips former Section 02; removed markup is preserved in [section-02-backup.html](/Users/hanwha/Documents/GitHub/plus-web-design/section-02-backup.html)
+- footer is test1-only custom/footer variant, not shared with test2/test3
 
-### Entry 2: `test2.html` + `main.js`
+### Entry 2: `test2.html` + `test2.js`
 - `index.html` 기반 전체 랜딩 변형
 - former Section 02가 복구된 버전
-- shared section interactions and main hero flow are reused from `main.js` and `src/initSharedSections.js`
+- mounts the shared header
+- owns its own hero scroll-scrub flow with dim/text overlays and gallery text
+- uses [src/initSectionsTest2.js](/Users/hanwha/Documents/GitHub/plus-web-design/src/initSectionsTest2.js) for its own lower-section interactions
+- keeps the older shared/common footer
 
 ### Entry 3: `test3.html` + `test3.js`
 - phone-to-card reveal experiment
 - dim, text, and reveal transitions
 - mounts the shared header
-- reuses [src/initSharedSections.js](/Users/hanwha/Documents/GitHub/plus-web-design/src/initSharedSections.js) for the pasted main sections below the hero
+- uses [src/initSectionsTest3.js](/Users/hanwha/Documents/GitHub/plus-web-design/src/initSectionsTest3.js) for the pasted main sections below the hero
 - active visible section order also skips former Section 02; removed markup is preserved in [section-02-backup.html](/Users/hanwha/Documents/GitHub/plus-web-design/section-02-backup.html)
+- keeps the older shared/common footer
 
-## Test2 Status Update
-- [test2.html](/Users/hanwha/Documents/GitHub/plus-web-design/test2.html) is no longer the old iPhone experiment page
-- it is now a full landing-page variant with Section 02 restored between Section 01b and Section 03
-- [test2.js](/Users/hanwha/Documents/GitHub/plus-web-design/test2.js) and [test2.css](/Users/hanwha/Documents/GitHub/plus-web-design/test2.css) remain in the repo as inactive remnants unless explicitly reconnected
+## Entry Split Status
+- `test1/test2/test3` no longer share a single section initializer
+- current initializer ownership:
+  - `test1` -> `main.js` + `src/initSectionsTest1.js`
+  - `test2` -> `test2.js` + `src/initSectionsTest2.js`
+  - `test3` -> `test3.js` + `src/initSectionsTest3.js`
+- this split was introduced to prevent test1 hero/section changes from unintentionally changing test2/test3 behavior
+- remaining shared layer:
+  - `style.css`
+  - `src/components/Header.js`
+- consequence:
+  - JS interaction regressions can now be isolated per entry
+  - CSS-level changes can still affect multiple entries if selectors are shared
 
 ## Current Problems and Maintenance Risks
 

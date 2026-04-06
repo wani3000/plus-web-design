@@ -2690,6 +2690,76 @@ body {
   object-fit: contain;
 }
 
+.site-footer--test1 {
+  padding: 40px 0;
+}
+
+.site-footer__inner--test1 {
+  width: min(var(--section-max), 100%);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.site-footer__brand-row,
+.site-footer__action-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 40px;
+}
+
+.site-footer__brand-copy {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.site-footer__pi-logo {
+  width: 32px;
+  height: 32px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.site-footer__pi-logo img {
+  width: 31.2px;
+  height: 25.6px;
+  display: block;
+  object-fit: contain;
+}
+
+.site-footer__brand-text {
+  color: #908f8e;
+  font-family: 'HanwhaGothic', 'Pretendard Variable', Pretendard, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 16px;
+  white-space: nowrap;
+}
+
+.site-footer__brand-partners {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  transform: translate(-8px, 2px);
+}
+
+.site-footer__partner-logo {
+  display: block;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.site-footer__partner-logo--plus,
+.site-footer__partner-logo--hanwha {
+  width: auto;
+  height: 24px;
+}
+
 @media (max-width: 1480px) {
   .section-01__inner,
   .section-01b__inner,

@@ -10,7 +10,9 @@
 - Active source of truth:
   - [index.html](/Users/hanwha/Documents/GitHub/plus-web-design/index.html)
   - [main.js](/Users/hanwha/Documents/GitHub/plus-web-design/main.js)
-  - [src/initSharedSections.js](/Users/hanwha/Documents/GitHub/plus-web-design/src/initSharedSections.js)
+  - [src/initSectionsTest1.js](/Users/hanwha/Documents/GitHub/plus-web-design/src/initSectionsTest1.js)
+  - [src/initSectionsTest2.js](/Users/hanwha/Documents/GitHub/plus-web-design/src/initSectionsTest2.js)
+  - [src/initSectionsTest3.js](/Users/hanwha/Documents/GitHub/plus-web-design/src/initSectionsTest3.js)
   - [style.css](/Users/hanwha/Documents/GitHub/plus-web-design/style.css)
   - [test2.html](/Users/hanwha/Documents/GitHub/plus-web-design/test2.html)
   - [test2.js](/Users/hanwha/Documents/GitHub/plus-web-design/test2.js)
@@ -24,6 +26,15 @@
 - Active deployment targets:
   - GitHub Pages
   - Vercel
+
+## Current Branching Rule
+- `test1`, `test2`, `test3` are now treated as separate entry tracks.
+- Future changes must explicitly state whether they target:
+  - test1 only
+  - test2 only
+  - test3 only
+  - or shared CSS/asset layers
+- Current user direction is to default to **test1-only** changes unless explicitly told otherwise.
 
 ## Current Workstreams
 
@@ -53,15 +64,15 @@
 ### Workstream B: Main Landing Runtime Maintenance
 
 #### Goal
-- Preserve the currently implemented landing behavior while reducing drift and runtime fragility.
+- Preserve the currently implemented test1 landing behavior while reducing drift and runtime fragility.
 
 #### Active scope
-- Hero gallery sequencing
+- Hero one-shot gallery sequencing
 - Section 01 floating bubble field
 - Section 01b centered phone/card strip
-- Section 02 chart/video/stacked-card interactions
 - Section 03 chart, counter, and invest-modal flows
 - Section 04 functional card animations
+- test1-only footer
 
 #### Verified constraints
 - UI is already heavily implemented; future changes require careful visual verification
@@ -79,9 +90,11 @@ log the result
 ```
 
 #### Current implementation note
-- Main hero-specific motion remains in [main.js](/Users/hanwha/Documents/GitHub/plus-web-design/main.js)
-- Section 01~05 interactions are centralized in [src/initSharedSections.js](/Users/hanwha/Documents/GitHub/plus-web-design/src/initSharedSections.js)
-- `test3.js` should reuse the same initializer when it embeds the main sections
+- Main hero-specific motion for test1 remains in [main.js](/Users/hanwha/Documents/GitHub/plus-web-design/main.js)
+- test1 hero is now one-shot, not scrub
+- after gallery transition, test1 auto-scrolls to Section 01
+- Section 01~05 interactions are now separated per entry in [src/initSectionsTest1.js](/Users/hanwha/Documents/GitHub/plus-web-design/src/initSectionsTest1.js), [src/initSectionsTest2.js](/Users/hanwha/Documents/GitHub/plus-web-design/src/initSectionsTest2.js), and [src/initSectionsTest3.js](/Users/hanwha/Documents/GitHub/plus-web-design/src/initSectionsTest3.js)
+- test1/test2/test3 should not share a single section initializer
 
 ### Workstream C: Secondary Entry Stability
 
@@ -98,11 +111,12 @@ log the result
 
 #### Strategy
 - Keep them on the same dependency model as the main build
-- Reuse shared section animation initialization instead of duplicating section logic between entries
+- Keep section animation initialization entry-specific so test1/test2/test3 do not affect each other at runtime
 - Re-verify after any shared CSS or asset change
 - Current note:
-  - `test2.html` is now a full landing-page variant with Section 02 restored
-  - legacy `test2.js` and `test2.css` are currently inactive remnants
+  - `test2.html` is a full landing-page variant with Section 02 restored and the older scrub hero
+  - `test3.html` remains the phone-to-card reveal experiment
+  - `test2.css` remains inactive unless explicitly reused
 
 ## Current Verified Implementations
 
@@ -177,8 +191,34 @@ log the result
   - code quality: satisfied
   - edge cases: satisfied
 
+### Iteration 5
+- Split section initializers by entry:
+  - `src/initSectionsTest1.js`
+  - `src/initSectionsTest2.js`
+  - `src/initSectionsTest3.js`
+- Removed old shared initializer
+- Reconnected `test2` and `test3` to their own runtime paths
+- Verified that test1/test2/test3 no longer share one section-initialization JS path
+- Quality status:
+  - functional correctness: satisfied
+  - code quality: improved
+  - edge cases: shared CSS still requires care
+
+### Iteration 6
+- Converted test1 hero to one-shot gallery transition
+- Added auto-scroll from test1 hero gallery into Section 01
+- Added reverse path from Section 01 top back to hero first state
+- Fixed Section 01B initial card ordering so test1 always starts with `img_mockup_01.png` in the center slot
+- Replaced test1 footer with dedicated Figma-based variant while keeping test2/test3 footer unchanged
+- Quality status:
+  - functional correctness: satisfied by build verification
+  - code quality: improved, but shared CSS remains a multi-entry risk
+  - edge cases: runtime branch split documented
+
 ## Todo List
 - `[x]` Refresh core operating docs to reflect current code reality
 - `[x]` Keep build/verify commands documented and working
+- `[x]` Split test1/test2/test3 section initializers
+- `[x]` Document test1/test2/test3 branch ownership
 - `[ ]` Continue section-level runtime maintenance with artifact-first verification
 - `[ ]` Reduce source-of-truth ambiguity between root entry files and `src/` remnants when safe
