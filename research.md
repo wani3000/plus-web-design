@@ -211,9 +211,10 @@
 - includes number typing, card loops, stacked-card drops, hover motions, and modal reveal flows
 - active visible section order currently skips former Section 02; removed markup is preserved in [section-02-backup.html](/Users/hanwha/Documents/GitHub/plus-web-design/section-02-backup.html)
 
-### Entry 2: `test2.html` + `test2.js`
-- phone mockup over moving background
-- scroll-linked phone content motion
+### Entry 2: `test2.html` + `main.js`
+- `index.html` 기반 전체 랜딩 변형
+- former Section 02가 복구된 버전
+- shared section interactions and main hero flow are reused from `main.js` and `src/initSharedSections.js`
 
 ### Entry 3: `test3.html` + `test3.js`
 - phone-to-card reveal experiment
@@ -221,6 +222,11 @@
 - mounts the shared header
 - reuses [src/initSharedSections.js](/Users/hanwha/Documents/GitHub/plus-web-design/src/initSharedSections.js) for the pasted main sections below the hero
 - active visible section order also skips former Section 02; removed markup is preserved in [section-02-backup.html](/Users/hanwha/Documents/GitHub/plus-web-design/section-02-backup.html)
+
+## Test2 Status Update
+- [test2.html](/Users/hanwha/Documents/GitHub/plus-web-design/test2.html) is no longer the old iPhone experiment page
+- it is now a full landing-page variant with Section 02 restored between Section 01b and Section 03
+- [test2.js](/Users/hanwha/Documents/GitHub/plus-web-design/test2.js) and [test2.css](/Users/hanwha/Documents/GitHub/plus-web-design/test2.css) remain in the repo as inactive remnants unless explicitly reconnected
 
 ## Current Problems and Maintenance Risks
 

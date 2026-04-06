@@ -21,11 +21,12 @@
 - [style.css](/Users/hanwha/Documents/GitHub/plus-web-design/style.css)
   - 메인 엔트리 전역/섹션 스타일
 - [test2.html](/Users/hanwha/Documents/GitHub/plus-web-design/test2.html)
-  - iPhone 스크롤 실험 엔트리
+  - 메인 랜딩 변형 엔트리
+  - `Section 02`가 포함된 전체 페이지
 - [test2.js](/Users/hanwha/Documents/GitHub/plus-web-design/test2.js)
-  - test2 인터랙션 로직
+  - 과거 실험 페이지용 스크립트 잔재
 - [test2.css](/Users/hanwha/Documents/GitHub/plus-web-design/test2.css)
-  - test2 전용 스타일
+  - 과거 실험 페이지용 스타일 잔재
 - [test3.html](/Users/hanwha/Documents/GitHub/plus-web-design/test3.html)
   - 카드 리빌 실험 엔트리
 - [test3.js](/Users/hanwha/Documents/GitHub/plus-web-design/test3.js)
@@ -51,6 +52,9 @@
   - 회색 배경 후속 섹션
   - `파이가 자산관리의 시작을 도와드릴게요`
   - 중앙 고정 white stroke 프레임과 다수 카드 슬라이드 애니메이션
+- Section 02
+  - `왜 사전증여를 해야 하나요?`
+  - 현재 메인 `index.html`에서는 제거되었고 `test2.html`에서만 전체 페이지 흐름에 포함
 - Section 03
   - 4가지 공식 카드
   - 공제 한도 차트, 유기정기금 수치 애니메이션, 투자 입력 모달 카드, ETF 카드

@@ -100,6 +100,9 @@ log the result
 - Keep them on the same dependency model as the main build
 - Reuse shared section animation initialization instead of duplicating section logic between entries
 - Re-verify after any shared CSS or asset change
+- Current note:
+  - `test2.html` is now a full landing-page variant with Section 02 restored
+  - legacy `test2.js` and `test2.css` are currently inactive remnants
 
 ## Current Verified Implementations
 
