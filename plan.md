@@ -1,259 +1,172 @@
 # plan.md
 
 ## Planning Basis
-- This plan is derived from verified repository state, not assumed architecture.
-- Current repository scope is static web only.
-- UI work is locked pending explicit developer approval.
+- This plan reflects the current verified repository reality, not the original setup-only phase.
+- The project is a static Vite landing prototype with active UI/animation implementation already in progress.
+- There is still no verified backend, API, DB, or ORM layer.
+- Current planning focus is documentation alignment, runtime verification, and controlled maintenance of the implemented landing interactions.
 
-## Representative Task: `SCRUM-26` plus-web-design repository governance and delivery foundation
+## Current Reality Snapshot
+- Active source of truth:
+  - [index.html](/Users/hanwha/Documents/GitHub/plus-web-design/index.html)
+  - [main.js](/Users/hanwha/Documents/GitHub/plus-web-design/main.js)
+  - [src/initSharedSections.js](/Users/hanwha/Documents/GitHub/plus-web-design/src/initSharedSections.js)
+  - [style.css](/Users/hanwha/Documents/GitHub/plus-web-design/style.css)
+  - [test2.html](/Users/hanwha/Documents/GitHub/plus-web-design/test2.html)
+  - [test2.js](/Users/hanwha/Documents/GitHub/plus-web-design/test2.js)
+  - [test2.css](/Users/hanwha/Documents/GitHub/plus-web-design/test2.css)
+  - [test3.html](/Users/hanwha/Documents/GitHub/plus-web-design/test3.html)
+  - [test3.js](/Users/hanwha/Documents/GitHub/plus-web-design/test3.js)
+  - [test3.css](/Users/hanwha/Documents/GitHub/plus-web-design/test3.css)
+- Verified checks:
+  - `npm run build`
+  - `npm run verify`
+- Active deployment targets:
+  - GitHub Pages
+  - Vercel
 
-### Subtasks
-- `SCRUM-29` `[INFRA] Audit build outputs and establish agent documentation baseline` | executable now
-- `SCRUM-30` `[INFRA] Add repeatable repository verification workflow` | executable now
-- `SCRUM-31` `[UI] Review and approve landing page visual change scope` | `🔒 승인 대기`
+## Current Workstreams
 
-### Strategy
-- Establish a stable working contract before any code refactor.
-- Use verified build and preview output as the baseline.
-- Keep UI untouched.
-- Create documentation first so later agents inherit the right boundaries and task map.
+### Workstream A: Documentation Alignment
 
-### Subtask Plans
+#### Goal
+- Keep repository docs aligned with current code reality.
 
-#### `SCRUM-29` `[INFRA] Audit build outputs and establish agent documentation baseline`
-- Goal:
-  - document the actual system, Jira structure, rules, and current risks
-- Files:
-  - `/Users/hanwha/Documents/GitHub/plus-web-design/AGENTS.md`
-  - `/Users/hanwha/Documents/GitHub/plus-web-design/research.md`
-  - `/Users/hanwha/Documents/GitHub/plus-web-design/plan.md`
-  - `/Users/hanwha/Documents/GitHub/plus-web-design/README.md`
-- Pseudocode:
+#### Files
+- [README.md](/Users/hanwha/Documents/GitHub/plus-web-design/README.md)
+- [research.md](/Users/hanwha/Documents/GitHub/plus-web-design/research.md)
+- [plan.md](/Users/hanwha/Documents/GitHub/plus-web-design/plan.md)
+
+#### Strategy
+- Remove stale claims from the initial setup phase.
+- Document the current UI-heavy implementation honestly.
+- Avoid inventing Jira or approval states that are no longer reflected in the code.
+
+#### Quality Bar
+- Functional correctness:
+  - docs match current file structure, build commands, and runtime shape
+- Code quality:
+  - clear boundaries between verified facts and absent layers
+- Edge cases:
+  - explicitly call out what does not exist instead of implying future architecture
+
+### Workstream B: Main Landing Runtime Maintenance
+
+#### Goal
+- Preserve the currently implemented landing behavior while reducing drift and runtime fragility.
+
+#### Active scope
+- Hero gallery sequencing
+- Section 01 floating bubble field
+- Section 01b centered phone/card strip
+- Section 02 chart/video/stacked-card interactions
+- Section 03 chart, counter, and invest-modal flows
+- Section 04 functional card animations
+
+#### Verified constraints
+- UI is already heavily implemented; future changes require careful visual verification
+- Main runtime is concentrated in [main.js](/Users/hanwha/Documents/GitHub/plus-web-design/main.js) and [style.css](/Users/hanwha/Documents/GitHub/plus-web-design/style.css)
+- Regressions are more likely from timing and layout coordination than from business logic
+
+#### Preferred workflow
 ```text
-scan repository
-verify build output
-verify preview responses
-verify dependencies and deploy workflow
-create Jira task tree
-write operating rules and architecture docs from evidence
-```
-- Considerations:
-  - repository contains misleading starter remnants in `src/`
-  - documentation must explicitly state that DB/API/ORM are absent
-  - README must avoid implying a backend exists
-- Technical constraints:
-  - no UI modifications allowed
-  - no unsupported architectural claims
-- Quality bar:
-  - functional correctness: docs match verified codebase and Jira
-  - code quality: follows `AGENTS.md` rules
-  - edge cases: clearly states when layers do not exist rather than inventing them
-- Stopping rule:
-  - complete only after docs, Jira structure, and verification evidence are aligned
-
-#### `SCRUM-30` `[INFRA] Add repeatable repository verification workflow`
-- Goal:
-  - encode the minimum artifact-first validation loop into repo scripts or docs
-- Candidate files:
-  - `/Users/hanwha/Documents/GitHub/plus-web-design/package.json`
-  - `/Users/hanwha/Documents/GitHub/plus-web-design/README.md`
-  - optional helper script under `/Users/hanwha/Documents/GitHub/plus-web-design/scripts/`
-- Pseudocode:
-```text
-identify current manual verification steps
-decide whether npm script or shell helper is least invasive
-implement build + preview + smoke-check flow
-document command usage
-rerun verification through the new workflow
-```
-- Tradeoffs:
-  - script should remain simple because project is static
-  - avoid introducing tooling that exceeds project size
-- Current implementation direction:
-  - add a Node verification script that:
-    - starts Vite preview on a fixed local port
-    - probes `/`, `/test2.html`, `/test3.html`
-    - exits non-zero on missing routes or non-200 responses
-    - terminates the preview child process
-- Technical constraints:
-  - no visual changes
-  - must work with multi-entry Vite output
-- Quality bar:
-  - command is repeatable
-  - validates actual artifacts
-  - documents failure points clearly
-
-#### `SCRUM-31` `[UI] Review and approve landing page visual change scope`
-- Goal:
-  - collect UI work but do not implement without approval
-- Expected files if later approved:
-  - root HTML/CSS/JS entry files
-  - `public/` assets
-- Status:
-  - `🔒 승인 대기`
-
-### Iteration Log
-- Iteration 1
-  - verified repository layout, dependencies, build output, preview responses, and deploy workflow
-  - created Jira representative tasks and subtasks for this repository
-  - completed baseline docs from evidence
-  - Quality status:
-    - functional correctness: satisfied for current documented findings
-    - code quality: satisfied
-    - edge cases: satisfied by explicitly documenting absent layers
-- Iteration 2
-  - added repeatable verification commands through `npm run verify`
-  - added Node-based preview smoke check for `/`, `/test2.html`, `/test3.html`
-  - verified the new workflow end-to-end
-  - Quality status:
-    - functional correctness: satisfied
-    - code quality: satisfied
-    - edge cases: satisfied by explicit non-zero failure conditions in the verification script
-
-### Todo List
-- `[x]` `SCRUM-29` Agent-1
-- `[x]` `SCRUM-30` Agent-1
-- `[ ]` `SCRUM-31` Agent-1 `🔒 승인 대기`
-
-## Representative Task: `SCRUM-27` plus-web-design animation runtime hardening
-
-### Subtasks
-- `SCRUM-32` `[FE] Consolidate GSAP loading strategy across test entries` | executable after current foundation work
-- `SCRUM-33` `[FE] Add non-visual runtime guards for DOM-dependent animations` | executable after current foundation work
-- `SCRUM-34` `[UI] Refine landing page content, layout, and style consistency` | `🔒 승인 대기`
-
-### Strategy
-- Fix runtime fragility before any visual polish.
-- Preserve visible behavior unless approval explicitly expands scope.
-- Standardize entry loading so the build output does not depend on mixed global and module conventions.
-
-### Subtask Plans
-
-#### `SCRUM-32` `[FE] Consolidate GSAP loading strategy across test entries`
-- Files likely affected:
-  - `/Users/hanwha/Documents/GitHub/plus-web-design/test2.html`
-  - `/Users/hanwha/Documents/GitHub/plus-web-design/test2.js`
-  - `/Users/hanwha/Documents/GitHub/plus-web-design/test3.html`
-  - `/Users/hanwha/Documents/GitHub/plus-web-design/test3.js`
-- Pseudocode:
-```text
-for each test entry:
-  inspect current script ordering
-  convert to one consistent loading model
-  rebuild
-  inspect dist html for duplicate or conflicting script strategy
-  preview and smoke-check
-```
-- Tradeoffs:
-  - importing GSAP via modules improves determinism
-  - removing CDN usage reduces external dependency but changes boot assumptions
-- Current decision:
-  - move `test2` and `test3` to module imports to match `main.js`
-  - remove redundant CDN tags from both HTML files
-- Technical constraints:
-  - no visual retuning
-  - preserve scroll behavior timing as much as possible
-- Stopping rule:
-  - source and built HTML reflect one loading strategy only
-
-#### `SCRUM-33` `[FE] Add non-visual runtime guards for DOM-dependent animations`
-- Files likely affected:
-  - `/Users/hanwha/Documents/GitHub/plus-web-design/main.js`
-  - `/Users/hanwha/Documents/GitHub/plus-web-design/test2.js`
-  - `/Users/hanwha/Documents/GitHub/plus-web-design/test3.js`
-- Pseudocode:
-```text
-collect all DOM queries and browser API assumptions
-guard optional nodes
-fail soft when section markup is absent
-verify build and runtime preview still pass
-```
-- Considerations:
-  - use guards only where structure can truly be optional
-  - do not silently mask real programming errors without documenting them
-- Current decision:
-  - start with `test2.js` and `test3.js`, where entire timelines currently assume page-specific markup exists
-  - prefer explicit required-node checks over scattering nullish operators across every animation call
-
-#### `SCRUM-34` `[UI] Refine landing page content, layout, and style consistency`
-- Status:
-  - `🔒 승인 대기`
-
-### Iteration Log
-- Iteration 0
-  - problem identified from evidence: `test2` and `test3` mix CDN global GSAP with Vite module entry output
-- Iteration 1
-  - converted `test2` and `test3` entry scripts to direct GSAP module imports
-  - removed CDN GSAP tags from both HTML files
-  - verified with `npm run verify`
-  - inspected built `dist/test2.html` and `dist/test3.html` to confirm a single loading strategy
-  - Quality status:
-    - functional correctness: satisfied
-    - code quality: satisfied
-    - edge cases: satisfied for the identified mixed-loading failure mode
-- Iteration 2
-  - added explicit required-node checks before page-specific timeline initialization
-  - limited optional interactions to run only when target nodes exist
-  - re-verified with `npm run verify`
-  - Quality status:
-    - functional correctness: satisfied
-    - code quality: satisfied
-    - edge cases: satisfied for missing-node runtime scenarios
-
-### Todo List
-- `[x]` `SCRUM-32` Agent-1
-- `[x]` `SCRUM-33` Agent-1
-- `[ ]` `SCRUM-34` Agent-1 `🔒 승인 대기`
-
-## Representative Task: `SCRUM-28` plus-web-design deployment and asset operations
-
-### Subtasks
-- `SCRUM-35` `[INFRA] Validate GitHub Pages deployment path and operational flow` | executable after current foundation work
-- `SCRUM-36` `[INFRA] Audit heavy font and media assets for delivery risk` | executable after current foundation work
-- `SCRUM-37` `[UI] Approve visual tradeoffs for font and media optimization` | `🔒 승인 대기`
-
-### Strategy
-- Confirm deployment assumptions before changing runtime code.
-- Separate non-visual findings from any approval-gated visual tradeoffs.
-
-### Subtask Plans
-
-#### `SCRUM-35` `[INFRA] Validate GitHub Pages deployment path and operational flow`
-- Files:
-  - `/Users/hanwha/Documents/GitHub/plus-web-design/.github/workflows/deploy-pages.yml`
-  - `/Users/hanwha/Documents/GitHub/plus-web-design/vite.config.js`
-  - `/Users/hanwha/Documents/GitHub/plus-web-design/README.md`
-- Pseudocode:
-```text
-verify BASE_PATH usage
-verify generated asset URLs under non-root base
-verify workflow matches current build contract
-document any mismatch and fix non-visual issues
+identify target section
+inspect current DOM/CSS/runtime values
+change one animation or layout cluster at a time
+run npm run build
+verify rendered behavior in preview/browser
+log the result
 ```
 
-#### `SCRUM-36` `[INFRA] Audit heavy font and media assets for delivery risk`
-- Files:
-  - `/Users/hanwha/Documents/GitHub/plus-web-design/font/`
-  - `/Users/hanwha/Documents/GitHub/plus-web-design/public/`
-  - `/Users/hanwha/Documents/GitHub/plus-web-design/research.md`
-- Pseudocode:
-```text
-list asset sizes
-identify top payload contributors
-separate pure delivery improvements from visual tradeoffs
-document optimization paths
-```
+#### Current implementation note
+- Main hero-specific motion remains in [main.js](/Users/hanwha/Documents/GitHub/plus-web-design/main.js)
+- Section 01~05 interactions are centralized in [src/initSharedSections.js](/Users/hanwha/Documents/GitHub/plus-web-design/src/initSharedSections.js)
+- `test3.js` should reuse the same initializer when it embeds the main sections
 
-#### `SCRUM-37` `[UI] Approve visual tradeoffs for font and media optimization`
-- Status:
-  - `🔒 승인 대기`
+### Workstream C: Secondary Entry Stability
 
-### Iteration Log
-- Iteration 0
-  - build artifacts already show large self-hosted fonts in `dist/assets`
-  - execution not started yet
+#### Goal
+- Keep `test2` and `test3` buildable and visually intact while the main landing evolves.
 
-### Todo List
-- `[ ]` `SCRUM-35` Agent-1
-- `[ ]` `SCRUM-36` Agent-1
-- `[ ]` `SCRUM-37` Agent-1 `🔒 승인 대기`
+#### Files
+- [test2.html](/Users/hanwha/Documents/GitHub/plus-web-design/test2.html)
+- [test2.js](/Users/hanwha/Documents/GitHub/plus-web-design/test2.js)
+- [test2.css](/Users/hanwha/Documents/GitHub/plus-web-design/test2.css)
+- [test3.html](/Users/hanwha/Documents/GitHub/plus-web-design/test3.html)
+- [test3.js](/Users/hanwha/Documents/GitHub/plus-web-design/test3.js)
+- [test3.css](/Users/hanwha/Documents/GitHub/plus-web-design/test3.css)
+
+#### Strategy
+- Keep them on the same dependency model as the main build
+- Reuse shared section animation initialization instead of duplicating section logic between entries
+- Re-verify after any shared CSS or asset change
+
+## Current Verified Implementations
+
+### Section 01b phone/card strip
+- Gray full-height section
+- Center-fixed white stroke frame
+- Multi-card lateral loop with active center emphasis
+- Side cards clipped by section bounds
+
+### Section 02 chart block
+- Orange comparison graph animation
+- Dashed guide line to `수익 α`
+- `2천만 원 / 미성년`, `5천만 원 / 성년` grouped labels
+- Left and right video blocks populated
+
+### Section 03 invest modal flow
+- Underlying tall clipped invest card
+- Dim + slide-up sheet
+- Prompt cursor state
+- Typed amount sequence:
+  - `1`
+  - `19`
+  - `194`
+  - `1,940`
+  - `19,400`
+  - `194,000`
+- Underlying values update after typing:
+  - `월 194,000원`
+  - `예상 총 증여 금액 23,280,000원`
+
+## Outstanding Maintenance Concerns
+- Animation constants remain highly manual and section-specific
+- Root docs and code reality can drift quickly after UI iteration bursts
+- `src/` starter remnants still create source-of-truth ambiguity
+- Local `.pen` file is modified independently from web runtime and should stay intentionally managed
+
+## Iteration Log
+
+### Iteration 1
+- Established initial governance docs and verification scripts
+- Added repeatable `npm run verify` workflow
+- Verified static multi-entry runtime shape
+- Quality status:
+  - functional correctness: satisfied
+  - code quality: satisfied
+  - edge cases: satisfied
+
+### Iteration 2
+- Main landing moved beyond initial setup into active UI/animation implementation
+- Section 01b, Section 02, and Section 03 interaction work materially expanded
+- Earlier docs became stale against actual repository reality
+- Quality status:
+  - functional correctness: docs stale
+  - code quality: needs refresh
+  - edge cases: partial
+
+### Iteration 3
+- Refreshed `README.md`, `research.md`, and `plan.md` to match current repository state
+- Removed outdated “UI locked/pending only” framing from current-state docs
+- Kept conclusions limited to verified code, build output, and deployment reality
+- Quality status:
+  - functional correctness: satisfied
+  - code quality: satisfied
+  - edge cases: satisfied
+
+## Todo List
+- `[x]` Refresh core operating docs to reflect current code reality
+- `[x]` Keep build/verify commands documented and working
+- `[ ]` Continue section-level runtime maintenance with artifact-first verification
+- `[ ]` Reduce source-of-truth ambiguity between root entry files and `src/` remnants when safe

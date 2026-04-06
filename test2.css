@@ -65,8 +65,6 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  /* Top padding to safely align below navbar */
-  padding-top: 70px;
   box-sizing: border-box;
 }
 

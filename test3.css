@@ -130,6 +130,13 @@ body {
   object-fit: cover;
 }
 
+.card-bg-final {
+  opacity: 0;
+  z-index: 1;
+  transform: translateY(20px);
+  will-change: transform, opacity;
+}
+
 
 
 /* Normal continuation content */

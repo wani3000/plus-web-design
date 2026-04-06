@@ -1,5 +1,7 @@
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { Header } from './src/components/Header.js'
+import { initSharedSections } from './src/initSharedSections.js'
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -21,9 +23,20 @@ const whiteFill = document.querySelector('.white-fill');
 const phoneFrame = document.querySelector('.phone-frame');
 const cardsContainer = document.querySelector('.cards-container');
 const cardLeft = document.querySelector('.card-left');
+const cardCenter = document.querySelector('.card-center');
 const cardRight = document.querySelector('.card-right');
+const cardCenterFinal = document.querySelector('.card-center .card-bg-final');
 const cardLeftOverlay = document.querySelector('.card-left .img-overlay');
 const cardOverlayText = document.querySelector('.card-overlay-text');
+
+document.body.insertBefore(Header(), document.body.firstChild);
+
+const headerHeight = document.querySelector('.header')?.getBoundingClientRect().height ?? 72;
+
+if (heroSection) {
+  heroSection.style.marginTop = `${headerHeight}px`;
+  heroSection.style.height = `calc(100vh - ${headerHeight}px)`;
+}
 
 if (heroSection && whiteFill && phoneFrame && cardsContainer) {
   // Set initial white-fill shape to match phone frame
@@ -40,10 +53,18 @@ if (heroSection && whiteFill && phoneFrame && cardsContainer) {
     gsap.set(cardOverlayText, { opacity: 0, y: 20 });
   }
 
+  if (cardCenter) {
+    gsap.set(cardCenter, { opacity: 0, scale: 0.82 });
+  }
+
+  if (cardCenterFinal) {
+    gsap.set(cardCenterFinal, { opacity: 0, y: 20 });
+  }
+
   const tl = gsap.timeline({
     scrollTrigger: {
       trigger: heroSection,
-      start: 'top top',
+      start: `top top+=${Math.round(headerHeight)}`,
       end: () => '+=' + (window.innerHeight * 2.5), // 250vh — 딤+텍스트 구간까지 여유 확보
       pin: true,
       scrub: 0.4,
@@ -138,5 +159,34 @@ if (heroSection && whiteFill && phoneFrame && cardsContainer) {
     }, 72);
   }
 
-  // 90%~100% idle — 언핀 전 여유 구간
+  // Hand off from phone frame to the actual center card at the end of the sequence.
+  if (cardCenter) {
+    tl.to(cardCenter, {
+      opacity: 1,
+      scale: 1,
+      ease: 'none',
+      duration: 8
+    }, 90);
+  }
+
+  tl.to(phoneFrame, {
+    opacity: 0,
+    ease: 'none',
+    duration: 8
+  }, 90);
+
+  // Final center image replacement after the card composition is complete.
+  if (cardCenterFinal) {
+    tl.to(cardCenterFinal, {
+      opacity: 1,
+      y: 0,
+      ease: 'power2.out',
+      duration: 15
+    }, 90);
+  }
+
+  // 90%~100% final state hold — 언핀 전 여유 구간
 }
+
+initSharedSections();
+requestAnimationFrame(() => ScrollTrigger.refresh());
