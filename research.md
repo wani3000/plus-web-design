@@ -209,6 +209,7 @@
 - coordinates hero-specific scroll timeline
 - delegates section 01~05 interactions to [src/initSharedSections.js](/Users/hanwha/Documents/GitHub/plus-web-design/src/initSharedSections.js)
 - includes number typing, card loops, stacked-card drops, hover motions, and modal reveal flows
+- active visible section order currently skips former Section 02; removed markup is preserved in [section-02-backup.html](/Users/hanwha/Documents/GitHub/plus-web-design/section-02-backup.html)
 
 ### Entry 2: `test2.html` + `test2.js`
 - phone mockup over moving background
@@ -219,6 +220,7 @@
 - dim, text, and reveal transitions
 - mounts the shared header
 - reuses [src/initSharedSections.js](/Users/hanwha/Documents/GitHub/plus-web-design/src/initSharedSections.js) for the pasted main sections below the hero
+- active visible section order also skips former Section 02; removed markup is preserved in [section-02-backup.html](/Users/hanwha/Documents/GitHub/plus-web-design/section-02-backup.html)
 
 ## Current Problems and Maintenance Risks
 

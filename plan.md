@@ -165,6 +165,15 @@ log the result
   - code quality: satisfied
   - edge cases: satisfied
 
+### Iteration 4
+- Backed up former Section 02 markup into `section-02-backup.html`
+- Removed Section 02 from `index.html` and `test3.html`
+- Re-verified build output after visible landing flow reduction
+- Quality status:
+  - functional correctness: satisfied
+  - code quality: satisfied
+  - edge cases: satisfied
+
 ## Todo List
 - `[x]` Refresh core operating docs to reflect current code reality
 - `[x]` Keep build/verify commands documented and working

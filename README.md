@@ -6,7 +6,7 @@
 ## 현재 작업 컨텍스트
 - 문서 초기 세팅 단계는 끝났고, 실제 랜딩 UI/모션 구현이 상당 부분 반영된 상태다.
 - 현재 소스 오브 트루스는 루트 엔트리 파일과 정적 자산이다.
-- 최근 작업은 `index.html` 메인 랜딩의 섹션 02, 03, 04 인터랙션과 콘텐츠 카드 구현에 집중되어 있다.
+- 최근 작업은 `index.html` 메인 랜딩의 섹션 01b, 03, 04 인터랙션과 콘텐츠 카드 구현에 집중되어 있다.
 - 배포는 GitHub Pages와 Vercel 둘 다 사용 중이며, 로컬 검증 기본 루프는 `npm run verify`다.
 
 ## 핵심 디렉토리 구조
@@ -15,7 +15,9 @@
 - [main.js](/Users/hanwha/Documents/GitHub/plus-web-design/main.js)
   - 메인 엔트리의 헤더/히어로 전용 애니메이션 및 인터랙션 로직
 - [src/initSharedSections.js](/Users/hanwha/Documents/GitHub/plus-web-design/src/initSharedSections.js)
-  - 메인과 `test3`가 공유하는 섹션 01~05 인터랙션 초기화 모듈
+  - 메인과 `test3`가 공유하는 섹션 인터랙션 초기화 모듈
+- [section-02-backup.html](/Users/hanwha/Documents/GitHub/plus-web-design/section-02-backup.html)
+  - 제거한 Section 02 마크업 백업
 - [style.css](/Users/hanwha/Documents/GitHub/plus-web-design/style.css)
   - 메인 엔트리 전역/섹션 스타일
 - [test2.html](/Users/hanwha/Documents/GitHub/plus-web-design/test2.html)
@@ -49,9 +51,6 @@
   - 회색 배경 후속 섹션
   - `파이가 자산관리의 시작을 도와드릴게요`
   - 중앙 고정 white stroke 프레임과 다수 카드 슬라이드 애니메이션
-- Section 02
-  - 복리/시작 시점 비교
-  - 차트 카드, 좌우 비디오 카드, 적층 로고 카드
 - Section 03
   - 4가지 공식 카드
   - 공제 한도 차트, 유기정기금 수치 애니메이션, 투자 입력 모달 카드, ETF 카드
@@ -91,9 +90,9 @@
 - 메인 랜딩의 다수 UI/모션 구현이 이미 반영되어 있음
 - 최근 집중 작업 영역:
   - Section 01b 카드 프레임/슬라이드 인터랙션
-  - Section 02 비디오 카드 및 차트 라벨 보강
   - Section 03 투자 입력 모달, dim, 숫자 입력 시퀀스, 카드 값 반영
   - 메인 섹션 인터랙션을 `test3`에서도 동일하게 재생하기 위한 공유 초기화 구조 정리
+  - 기존 Section 02 제거 및 백업 파일 분리
 - 비시각 문서 현실화 작업:
   - 현재 README/research/plan을 실제 코드 상태에 맞게 갱신
 
