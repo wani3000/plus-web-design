@@ -194,7 +194,7 @@ export function initSharedSections() {
       gsap.timeline({
         scrollTrigger: {
           trigger: section01Bubbles,
-          start: 'center center',
+          start: 'top bottom',
           toggleActions: 'play none none none',
           once: true
         },
