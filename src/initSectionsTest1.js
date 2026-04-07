@@ -420,7 +420,7 @@ export function initSharedSections() {
   }
 
   // Section 03 left-bottom invest card sequence
-  const investCard = document.querySelector('.section-03__card--left-bottom');
+  const investCard = document.querySelector('.section-03__invest-visual')?.closest('.section-03__card');
   if (investCard) {
     const investUi = investCard.querySelector('.section-03__invest-ui');
     const investOverlay = investCard.querySelector('.section-03__invest-overlay');
@@ -516,7 +516,7 @@ export function initSharedSections() {
   }
 
   // Section 03 right-bottom card animation
-  const etfCard = document.querySelector('.section-03__card--right-bottom');
+  const etfCard = document.querySelector('.section-03__etf-visual')?.closest('.section-03__card');
   if (etfCard) {
     const etfItems = etfCard.querySelectorAll('.section-03__etf-item');
     if (etfItems.length > 0) {

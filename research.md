@@ -115,6 +115,7 @@
 - central white stroke frame with multiple numbered phone-ratio cards
 - active center card remains emphasized while side cards stay dimmed
 - cards shift laterally in a timed loop
+- current entry trigger for the card rail is `start: 'top bottom'` in the per-entry initializers
 
 ### Section 02
 - title/copy around early start and compounding
@@ -130,10 +131,15 @@
 
 ### Section 03
 - four “formula” cards
+- latest test1 copy currently reads:
+  - `증여재산공제에 맞춰 10년 주기로 계획`
+  - `유기정기금 증여하고 장기 투자`
+  - `장기 투자에 적합한 선택, 미국 ETF`
+  - `증여세 신고는 필수!`
 - key implemented interactions:
   - chart/limit comparison card
   - monthly giving card with animated count
-  - “증여한 돈은 바로 투자로” card with:
+  - invest-modal card with:
     - oversized clipped card body
     - dimmed overlay
     - slide-up modal
@@ -141,14 +147,18 @@
     - typed amount sequence `1 -> 19 -> 194 -> 1,940 -> 19,400 -> 194,000`
     - reflected value update on underlying card
   - ETF card cluster and related stacked UI
+- test1 currently swaps the ETF cluster and invest-modal component positions:
+  - `장기 투자에 적합한 선택, 미국 ETF` card contains the ETF cluster
+  - `증여세 신고는 필수!` card contains the invest modal flow
 
 ### Section 04
 - multiple gray cards for planning, tax, insight, and looping strips
 - includes:
   - stacked card animations
-  - insight cards
   - tax amount counter
-  - animated strips and cover/reveal effects
+- test1 currently simplifies this section:
+  - insight list component removed from `증여금을 투자로 연결해요`
+  - bottom marquee/invest strip removed from `자녀가 여러명이어도 쉽게`
 
 ### Section 05
 - CTA/download section

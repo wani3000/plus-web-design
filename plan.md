@@ -125,6 +125,7 @@ log the result
 - Center-fixed white stroke frame
 - Multi-card lateral loop with active center emphasis
 - Side cards clipped by section bounds
+- 현재 엔트리별 initializer에서 시작 트리거는 `top bottom`
 
 ### Section 02 chart block
 - Orange comparison graph animation
@@ -133,6 +134,12 @@ log the result
 - Left and right video blocks populated
 
 ### Section 03 invest modal flow
+- 테스트1 최신 카드 카피는 Section 03 네 장 모두 재정리된 상태다:
+  - `증여재산공제에 맞춰 10년 주기로 계획`
+  - `유기정기금 증여하고 장기 투자`
+  - `장기 투자에 적합한 선택, 미국 ETF`
+  - `증여세 신고는 필수!`
+- 테스트1에서는 ETF 묶음과 투자 입력 모달 컴포넌트의 위치/애니메이션 바인딩도 서로 교체된 상태다
 - Underlying tall clipped invest card
 - Dim + slide-up sheet
 - Prompt cursor state
@@ -152,6 +159,7 @@ log the result
 - Root docs and code reality can drift quickly after UI iteration bursts
 - `src/` starter remnants still create source-of-truth ambiguity
 - Local `.pen` file is modified independently from web runtime and should stay intentionally managed
+- test1의 Section 04는 일부 보조 컴포넌트를 제거해 더 단순한 카드 구조가 되었으므로, 향후 동일 섹션 변경 시 test2/test3와 혼동하지 않도록 주의가 필요하다
 
 ## Iteration Log
 
