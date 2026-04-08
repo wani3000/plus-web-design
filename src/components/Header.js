@@ -1,6 +1,8 @@
 export function Header() {
   const template = document.createElement('template');
   const piLogo = './io_pi.png';
+  const googlePlayHref = 'https://play.google.com/store/apps/details?id=hw.dp.plus&hl=ko';
+  const appleStoreHref = 'https://apps.apple.com/kr/app/%ED%8C%8C%EC%9D%B4/id6755743981';
   const googlePlayLogo = 'https://www.figma.com/api/mcp/asset/c1269f60-c578-4fa6-934d-c540a1afcd7c';
   const appleLogo = 'https://www.figma.com/api/mcp/asset/9522aba2-6fb0-4e8e-8b20-f634d3780b7d';
   const pathname = window.location.pathname;
@@ -25,13 +27,13 @@ export function Header() {
     </nav>
 
     <div class="header__stores">
-      <a class="store-button" href="#">
+      <a class="store-button" href="${googlePlayHref}" data-store="google" aria-label="Google Play 다운로드">
         <span class="store-button__icon-frame" aria-hidden="true">
           <img class="store-button__icon-image" src="${googlePlayLogo}" alt="" />
         </span>
         <span class="store-button__label">Google Play</span>
       </a>
-      <a class="store-button" href="#">
+      <a class="store-button" href="${appleStoreHref}" data-store="apple" aria-label="App Store 다운로드">
         <span class="store-button__icon-frame" aria-hidden="true">
           <img class="store-button__icon-image store-button__icon-image--apple" src="${appleLogo}" alt="" />
         </span>
