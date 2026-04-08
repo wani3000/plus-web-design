@@ -2,6 +2,7 @@ import './style.css'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { Header } from './src/components/Header.js'
+import { initStoreDownloadModal } from './src/initStoreDownloadModal.js'
 import { initSharedSections } from './src/initSectionsTest1.js'
 
 gsap.registerPlugin(ScrollTrigger);
@@ -263,4 +264,5 @@ window.addEventListener('touchend', (event) => {
 }, { passive: true });
 
 initSharedSections();
+initStoreDownloadModal();
 requestAnimationFrame(() => ScrollTrigger.refresh());

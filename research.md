@@ -149,16 +149,64 @@
   - ETF card cluster and related stacked UI
 - test1 currently swaps the ETF cluster and invest-modal component positions:
   - `장기 투자에 적합한 선택, 미국 ETF` card contains the ETF cluster
-  - `증여세 신고는 필수!` card contains the invest modal flow
+  - `증여세 신고는 필수!` card keeps the title/chip/description and fills the inner white plane with a document checklist UI based on Pencil node `1uy7r`
+  - this document checklist card animates in test1 with the white plane and internal title rising first, followed by the two checklist items in sequence
+  - after the checklist is fully shown and held for `2초`, the checklist screen exits and a completion state based on Pencil node `mEPLU` rises in with `신고 접수 완료` copy
+  - in the completion state, the check icon rises first, followed by the title and then the body copy; the body copy color is `#555558`
+  - after the completion state is shown for `5초`, the white plane itself exits downward, resets, and rises back in from below to replay the checklist-to-complete sequence in a loop
+  - the ETF cluster in test1 is currently one-shot again: `VOO`, `QQQM`, `XLK` three cards drop in once and then remain settled
+  - current displayed seed values are:
+    - `VOO / 1.839450주 / 1,753,480원 / +83,097 (5.00%)`
+    - `QQQM / 4.537390주 / 1,748,571원 / +83,097 (5.00%)`
+    - `XLK / 4.043310주 / 1,752,448원 / +83,097 (5.00%)`
+  - once the ETF stack has settled, the right-side totals in test1 now continue updating every `5초` from `5.00%` upward in `1.5%` increments until `12.00%`
+  - calculation is based on each card's current displayed total treated as the `5.00%` state, with principal back-calculated and each later total/gain recomputed from that principal
+  - ETF change text color is currently `#ff3b30`
+  - ETF logo asset is currently `/public/ic_logo_etf.png`
+  - ETF stack wrapper is currently positioned at `bottom: -6px`, which is `10px` higher than the previous `-16px`
+  - top `VOO` card is currently offset `5px` lower than before via `.section-03__etf-item--first`
+  - all Google Play / App Store buttons now open a shared QR popup with dimmed background; the popup shows app name `파이`, the store label, a generated QR code, and a close button using `public/ic_close_24.png`
+  - the shared popup is attached globally in `src/initStoreDownloadModal.js`, so the same behavior should exist on test1/test2/test3 without page-specific wiring
+  - closing the popup restores focus to the original trigger with `preventScroll: true` and the panel no longer animates translate/scale on close, which removes the visible shake/jump
+- test1의 Section 03 네 장은 현재 모두 카드 텍스트가 먼저 등장한 뒤 내부 애니메이션이 이어지는 순서다. 제목/chip이 먼저, 설명문이 그 다음이며, 이후 차트/수치/ETF/문서 카드 모션이 시작된다.
+- test1의 애니메이션 카드 트리거는 현재 공통 `top 68%` 기준으로 늦춰져 있다. 이전 `top 80%`보다 카드가 더 내려온 시점에 트리거가 발생한다.
 
 ### Section 04
+- 테스트1의 `다자녀 자산관리 카드`는 현재 카드 컨테이너 `overflow: hidden` 기준으로 상단이 잘리며, 배지 3개도 같은 카드 경계 안에서 clip된다.
+- 현재 위치값은 카드 본체 `top: 45px`, `translateX(calc(-50% + 110px))`, 배지 묶음 `top: 249px`, `translateX(calc(-50% + 250px))`이다.
+- 진입 애니메이션은 카드 본체 `y: 56 -> 0`, 배지 묶음 `y: 20 -> 0`으로 분리되어 있다.
+- 배지 묶음은 현재 `z-index: 6`으로, 하단 카피와 gradient보다 위 레이어에 있다.
+- 배지 3개는 현재 겹친 상태로 등장한 뒤, 카드 진입 완료 후 약 `0.65초` 뒤 초록/파랑 배지만 오른쪽으로 이동해 최종 `10px` 간격을 만든다.
+- Pencil `oFssN` 값 기준 하늘색 배지는 배경 `#7d8d9d`, outer gradient stroke, inner white stroke, outer orange shadow를 가진 selected 상태이며, 현재 웹에서는 80px 크기에 맞춰 비례 재현한다.
+- selected 배지의 gradient stroke는 현재 mask-composite 기반 ring으로 구현해, stroke 안쪽에 남던 회색 얇은 라인을 제거했다.
+- 겹침 상태의 배지 레이어는 `edit(gray)=1`, `olive=2`, `blue selected=3`으로 고정한다.
+- 현재 텍스트는 `gray / 김둘째 / 김첫째` 순서이며, selected 스타일은 초기 blue(`김첫째`)에 있다.
+- 초기 folded 상태는 `김첫째(7,500,000원)`이며, 이 상태를 `4초` 유지한 뒤 배지가 spread 된다.
+- spread 후 `0.45초` 뒤 olive(`김둘째`)가 selected 되고, 금액은 `5,000,000원`으로 바뀌며 상단 이미지 레이어도 선택 자녀에 맞춰 전환된다.
+- 그 다음 단계에서 배지들은 다시 접히며, olive는 `x: 36`, blue는 `x: -36`으로 이동해 folded 상태에서도 olive가 selected 위치를 차지한다.
+- folded `김둘째` 상태도 `4초` 유지한 뒤 다시 spread 되고, `0.45초` 뒤 blue(`김첫째`)가 selected 되며 금액은 `7,500,000원`으로 돌아간다. 이후 folded blue 상태로 돌아와 같은 루프를 반복한다.
 - multiple gray cards for planning, tax, insight, and looping strips
 - includes:
   - stacked card animations
   - tax amount counter
+- test1의 `증여 계획부터 시작해요` 카드 plan widget은 초기 `5,000,000원 / 5,000,000원` 카운트와 progress 등장 후 약 `2초` 뒤 시작되는 `2.5초` 동안 primary 금액만 `20,000,000원`으로 확장되고, 진한 주황 progress fill도 동시에 `100%`까지 차오른다. 이후 `5초` 정지 후 현재 위젯은 사라지고, 아래에서 0 상태 위젯이 다시 올라오며 같은 시퀀스를 반복한다.
 - test1 currently simplifies this section:
+  - test1의 Section 04 네 장도 현재 모두 카드 텍스트가 먼저 등장한 뒤 내부 애니메이션이 이어지는 순서다. 제목이 먼저, 설명문이 그 다음이며, 이후 plan widget / 낙하 박스 / tax card / family app 모션이 시작된다.
   - insight list component removed from `증여금을 투자로 연결해요`
-  - bottom marquee/invest strip removed from `자녀가 여러명이어도 쉽게`
+  - `증여금을 투자로 연결해요` 카드에는 test2 `Section 02`의 낙하 박스 컴포넌트(흰/초록/빨강)와 같은 물리 애니메이션을 test1 전용 wrapper로 이식했으며, 루트 자산 `ic_box_red.png`, `ic_box_green.png`, `ic_box_white.png`를 그대로 사용함. test1 이식본은 1회만 떨어진 뒤 착지 상태로 유지되고, test2 원본만 반복/이탈 단계를 가진다. 현재 박스는 `120x120`, 내부 아이콘은 비례 축소된 `69x69`이다.
+  - 같은 카드는 현재 3박스만 유지하며, 이전에 추가했던 전면 정적 박스는 제거됐다.
+  - 현재 Pencil 배치 보정상 뒤쪽 빨강/초록 박스는 비대칭이다. 빨강 박스는 기존 기준보다 `40px` 위, 초록 박스는 기존 기준보다 `120px` 위에 놓여 있다.
+  - 초록 박스는 위 이동 보정과 별도로 현재 위치에서 `5px` 더 오른쪽으로 이동해 있다.
+  - test1 이식본의 낙하 순서는 `white -> red -> green`이며, test2 원본 `white -> green -> red`와 다르게 분기된다.
+  - 3박스 스택 전체는 현재 카드 시각 중심에 맞게 왼쪽으로 재배치되어 있다.
+  - bottom marquee/invest strip removed from `쉬운 자녀관리`
+  - `쉬운 자녀관리` 카드에는 Figma `222:695` 기반의 모바일 관리 요약 UI가 카드 내부 컴포넌트로 구현되어 있음
+  - 같은 카드의 하단 카피 뒤 gradient overlay는 현재 제거된 상태다
+  - 같은 카드의 상단 `375x324` 빈 영역은 `/public/bg_image_02.png`로 시작하고, 전환 시 `/public/bg_image_01.png`로 바뀌며, 본문 흰 시트/타이틀은 `300px`부터 시작하는 HTML/CSS 구조로 카드 안에서 겹쳐 올라오게 배치됨
+  - 같은 카드의 시트 내부에는 제목 아래 `24px` 간격으로 Pencil `Rz6CN` 기반 신고 금액 요약 컴포넌트를 HTML/CSS로 직접 구현했다
+  - 이 신고 금액 요약은 현재 선택 배지와 연동되며, 초기 blue(`김첫째`) 상태에서는 `5,000,000원`, olive(`김둘째`) 선택 전환 후에는 `7,400,000원`으로 primary/sub 값이 함께 바뀐다
+  - `김둘째` 선택 전환과 같은 시점에 카드 시트 제목과 신고 금액 요약 컴포넌트는 `y: 16 -> 0`, `autoAlpha: 0 -> 1`의 슬라이드업으로 다시 노출된다
+  - 같은 카드 상단에는 Pencil 노드 `KfAFw`, `YXDXl`, `BGdYD`를 80x80 배지로 재현해 카드 컴포넌트 위 레이어에 오버레이 배치하며, `KfAFw` 내부 연필 아이콘은 `/public/ic24_pencil2.png`를 사용함. 현재 카드와 배지 모두 약 10% 위로 이동된 상태에서 배지는 강하게 포개지도록 배치됨
 
 ### Section 05
 - CTA/download section

@@ -1,6 +1,7 @@
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { Header } from './src/components/Header.js'
+import { initStoreDownloadModal } from './src/initStoreDownloadModal.js'
 import { initSharedSections } from './src/initSectionsTest3.js'
 
 gsap.registerPlugin(ScrollTrigger);
@@ -189,4 +190,5 @@ if (heroSection && whiteFill && phoneFrame && cardsContainer) {
 }
 
 initSharedSections();
+initStoreDownloadModal();
 requestAnimationFrame(() => ScrollTrigger.refresh());

@@ -2,6 +2,7 @@ import './style.css'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { Header } from './src/components/Header.js'
+import { initStoreDownloadModal } from './src/initStoreDownloadModal.js'
 import { initSharedSections } from './src/initSectionsTest2.js'
 
 gsap.registerPlugin(ScrollTrigger);
@@ -108,4 +109,5 @@ if (heroPinned) {
 }
 
 initSharedSections();
+initStoreDownloadModal();
 requestAnimationFrame(() => ScrollTrigger.refresh());
