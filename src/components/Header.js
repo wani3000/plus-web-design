@@ -1,6 +1,7 @@
 export function Header() {
   const template = document.createElement('template');
   const piLogo = './io_pi.png';
+  const homeHref = './';
   const googlePlayHref = 'https://play.google.com/store/apps/details?id=hw.dp.plus&hl=ko';
   const appleStoreHref = 'https://apps.apple.com/kr/app/%ED%8C%8C%EC%9D%B4/id6755743981';
   const googlePlayLogo = 'https://www.figma.com/api/mcp/asset/c1269f60-c578-4fa6-934d-c540a1afcd7c';
@@ -13,11 +14,11 @@ export function Header() {
 <header class="header">
   <div class="header__inner">
     <div class="header__left">
-      <div class="header__logo-wrap" aria-label="PI">
+      <a class="header__logo-wrap" href="${homeHref}" aria-label="PI 홈으로 이동" data-home-link>
         <span class="header__logo-frame">
           <img class="header__logo-image" src="${piLogo}" alt="PI" />
         </span>
-      </div>
+      </a>
     </div>
 
     <nav class="header__nav" aria-label="주요 메뉴">

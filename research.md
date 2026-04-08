@@ -66,6 +66,7 @@
   - primary landing page and main production-facing prototype
 - [main.js](/Users/hanwha/Documents/GitHub/plus-web-design/main.js)
   - header mount and hero-only scroll timeline for the main page
+- header PI logo reloads the landing top on root pages
 - [src/initSectionsTest1.js](/Users/hanwha/Documents/GitHub/plus-web-design/src/initSectionsTest1.js)
   - `index.html` 전용 section 01~05 initializer
 - [src/initSectionsTest2.js](/Users/hanwha/Documents/GitHub/plus-web-design/src/initSectionsTest2.js)
@@ -269,9 +270,10 @@
 - injects header/navigation
 - coordinates **test1-only** hero one-shot transition
 - hero behavior:
-  - first downward scroll input triggers one-shot gallery transition
-  - after gallery completion, page auto-scrolls to `Section 01`
+  - first downward scroll input triggers a 1.3s one-shot gallery transition
+  - after gallery completion, the page auto-scrolls to `Section 01` over 1.3s
   - upward scroll near `Section 01` top can return to hero first state
+- hero right-bottom card now uses `section-02-left-video.mp4`
 - delegates section 01~05 interactions to [src/initSectionsTest1.js](/Users/hanwha/Documents/GitHub/plus-web-design/src/initSectionsTest1.js)
 - active visible section order currently skips former Section 02; removed markup is preserved in [section-02-backup.html](/Users/hanwha/Documents/GitHub/plus-web-design/section-02-backup.html)
 - footer is test1-only custom/footer variant, not shared with test2/test3
@@ -327,3 +329,32 @@
 - This repository is an actively iterated static landing prototype, not a governance-only setup anymore
 - The active source of truth is the root-level HTML/CSS/JS entry set
 - The major engineering need now is not backend architecture, but disciplined verification of UI-heavy animation code and keeping docs synchronized with actual implementation state
+
+
+- Hero center image now uses `img_main_website.png`.
+
+
+- Hero left-top card now uses `section-02-hero-video.mp4`.
+
+
+- Hero left-bottom card now uses `bg_02_baby.png`.
+
+- Hero center and left-top media are now swapped: the center card uses `section-02-hero-video.mp4`, and the left-top card uses `img_main_website.png`.
+
+- The hero main video now uses a two-layer crossfade loop to mask the jump when `section-02-hero-video.mp4` restarts.
+
+- Hero right-top card now uses `baby_03.png`.
+
+- The PI logo click path now disables scroll restoration and scrolls to the hero top before refreshing the landing.
+
+- Hero left-top card now uses `bg_image_04.png`.
+
+- The hero main video now uses `section-02-hero-video-poster.png` as a poster to reduce the black flash while reloading.
+
+- Hero image hover zoom was removed so the gallery no longer scales up on pointer hover.
+
+- The `쉬운 자녀관리` badge selection now holds each selected state for 3 seconds instead of 4.
+
+- The hero main video now preloads `section-02-hero-video-poster.png` and uses it as a background fallback to reduce the black flash on reload.
+
+- The hero main video fallback now uses the provided first-frame screenshot as the visible placeholder until the video is ready.

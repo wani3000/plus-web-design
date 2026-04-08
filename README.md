@@ -76,6 +76,7 @@
   - [main.js](/Users/hanwha/Documents/GitHub/plus-web-design/main.js) + [src/initSectionsTest1.js](/Users/hanwha/Documents/GitHub/plus-web-design/src/initSectionsTest1.js) 조합
   - 히어로는 one-shot 전환
   - 갤러리 전환 후 `Section 01`로 자동 스크롤
+  - 히어로 우측 하단 카드가 `section-02-left-video.mp4` 비디오로 표시됨
   - `Section 02`는 제거된 상태
   - 테스트1 전용 푸터 사용
 - 테스트2: [test2.html](/Users/hanwha/Documents/GitHub/plus-web-design/test2.html)
@@ -92,8 +93,9 @@
 ## 테스트1 구조
 - Hero
   - 고정 헤더 아래 첫 화면 히어로
-  - 스크롤 1회 입력으로 갤러리 상태로 빠르게 전환
-  - 전환 후 `Section 01` 위치로 자동 스크롤
+  - 좌측 PI 로고 클릭 시 랜딩 최상단 새로고침
+  - 스크롤 1회 입력으로 1.3초 동안 갤러리 상태로 전환
+  - 전환 후 `Section 01` 위치로 1.3초 동안 자동 스크롤
 - Section 01
   - `아이 자산 어떻게 관리하고 계신가요?`
   - 랜덤 배치 말풍선과 hover 인터랙션
@@ -172,3 +174,32 @@
   - 현재 코드베이스 구조 및 검증 결과
 - [plan.md](/Users/hanwha/Documents/GitHub/plus-web-design/plan.md)
   - 현재 상태 기준 계획/정리 문서
+
+
+- Hero center image now uses `img_main_website.png`.
+
+
+- Hero left-top card now uses `section-02-hero-video.mp4`.
+
+
+- Hero left-bottom card now uses `bg_02_baby.png`.
+
+- Hero center and left-top media are now swapped: the center card uses `section-02-hero-video.mp4`, and the left-top card uses `img_main_website.png`.
+
+- The hero main video now uses a two-layer crossfade loop so `section-02-hero-video.mp4` feels less like it snaps back to frame 0.
+
+- Hero right-top card now uses `baby_03.png`.
+
+- Clicking the PI logo on the landing page now explicitly returns the view to the hero top before refreshing, with scroll restoration disabled for that reload path.
+
+- Hero left-top card now uses `bg_image_04.png`.
+
+- The hero main video now has a `section-02-hero-video-poster.png` poster to reduce the black flash while the video loads.
+
+- Hero image hover zoom was removed so the gallery no longer scales up on pointer hover.
+
+- The `쉬운 자녀관리` badge selection now holds each selected state for 3 seconds instead of 4.
+
+- The hero main video now preloads `section-02-hero-video-poster.png` and uses it as a background fallback to reduce the black flash on reload.
+
+- The hero main video fallback now uses the provided first-frame screenshot as the visible placeholder until the video frame is ready.

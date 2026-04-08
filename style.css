@@ -359,10 +359,48 @@ body {
   object-fit: cover;
   display: block;
   transform: scale(1.05); /* Slight scaled-up start for a parallax inner effect if needed */
-  transition: transform 0.4s ease-out;
 }
-.image-wrapper:hover img {
-  transform: scale(1.1);
+.image-wrapper video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transform: scale(1.05);
+  background: #000;
+}
+.hero-loop-video {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  border-radius: inherit;
+  background: url('./section-02-hero-video-poster.png') center center / cover no-repeat #000;
+}
+
+.hero-loop-video__fallback {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  z-index: 2;
+  pointer-events: none;
+  opacity: 1;
+}
+
+.hero-loop-video__layer {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  opacity: 0;
+}
+
+.hero-loop-video__layer--primary {
+  opacity: 1;
+}
+
+.hero-loop-video .hero-media-video {
+  transform: scale(1.05);
 }
 
 /* Focus: Image 01 (Initial expansive state) */

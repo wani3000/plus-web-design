@@ -1244,7 +1244,7 @@ export function initSharedSections() {
         if (familyBadgeItems.length < 3 || !familyOliveBadge || !familyBlueBadge) return;
 
         const badgeLoop = gsap.timeline()
-          .to({}, { duration: 4 })
+          .to({}, { duration: 3 })
           // first spread
           .to(familyBadgeItems[1], {
             x: 54,
@@ -1275,7 +1275,7 @@ export function initSharedSections() {
             ease: 'power2.inOut'
           }, '<')
           // hold on olive folded state
-          .to({}, { duration: 4 })
+          .to({}, { duration: 3 })
           // spread again, then switch back to blue
           .to(familyBadgeItems[1], {
             x: 54,

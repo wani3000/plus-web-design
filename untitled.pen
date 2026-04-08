@@ -1,5 +1,5 @@
 {
-  "version": "2.9",
+  "version": "2.10",
   "children": [
     {
       "type": "frame",
@@ -2572,7 +2572,7 @@
     {
       "type": "frame",
       "id": "ktmn1",
-      "x": -5333,
+      "x": -5334,
       "y": 1935,
       "name": "ic_logo_500",
       "rotation": -1.5902773407317584e-15,
@@ -4299,48 +4299,6 @@
       ]
     },
     {
-      "type": "rectangle",
-      "id": "XC8LQ",
-      "x": -2641,
-      "y": -1230,
-      "fill": {
-        "type": "image",
-        "enabled": true,
-        "url": "ic_companylogo_01.png",
-        "mode": "fill"
-      },
-      "width": 640,
-      "height": 640
-    },
-    {
-      "type": "rectangle",
-      "id": "g8RMX",
-      "x": -3340,
-      "y": -1230,
-      "fill": {
-        "type": "image",
-        "enabled": true,
-        "url": "ic_companylogo_02.png",
-        "mode": "fill"
-      },
-      "width": 640,
-      "height": 640
-    },
-    {
-      "type": "rectangle",
-      "id": "JAU4Y",
-      "x": -1935,
-      "y": -1230,
-      "fill": {
-        "type": "image",
-        "enabled": true,
-        "url": "ic_companylogo_03.png",
-        "mode": "fill"
-      },
-      "width": 640,
-      "height": 640
-    },
-    {
       "id": "xqDdI",
       "type": "ref",
       "ref": "5qS6M",
@@ -5489,6 +5447,3630 @@
                   "fontWeight": "normal"
                 }
               ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "pRtgC",
+      "x": -2550.20772050511,
+      "y": 1059.2180009743035,
+      "name": "Frame 1000006324",
+      "width": 375,
+      "fill": "#ffffffff",
+      "cornerRadius": [
+        24,
+        24,
+        0,
+        0
+      ],
+      "stroke": {
+        "align": "inside",
+        "thickness": 1
+      },
+      "layout": "vertical",
+      "gap": 16,
+      "padding": [
+        0,
+        0,
+        30,
+        0
+      ],
+      "alignItems": "center",
+      "children": [
+        {
+          "type": "frame",
+          "id": "mTJgP",
+          "name": "handlebar",
+          "width": "fill_container",
+          "height": 20,
+          "stroke": {
+            "align": "inside",
+            "thickness": 1
+          },
+          "layout": "vertical",
+          "gap": 8,
+          "padding": [
+            10,
+            8
+          ],
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "rectangle",
+              "cornerRadius": 300,
+              "id": "fvBTW",
+              "name": "Rectangle 10893",
+              "fill": "#dddddfff",
+              "width": 46,
+              "height": 4,
+              "stroke": {
+                "align": "inside",
+                "thickness": 1
+              }
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "9LLkc",
+          "name": "Frame 1000006030",
+          "width": "fill_container",
+          "stroke": {
+            "align": "inside",
+            "thickness": 1
+          },
+          "layout": "vertical",
+          "children": [
+            {
+              "type": "frame",
+              "id": "oxTq7",
+              "name": "price",
+              "width": 375,
+              "fill": "#ffffffff",
+              "stroke": {
+                "align": "inside",
+                "thickness": 1
+              },
+              "layout": "vertical",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "cgyne",
+                  "name": "price",
+                  "width": "fill_container",
+                  "stroke": {
+                    "align": "inside",
+                    "thickness": 1
+                  },
+                  "layout": "vertical",
+                  "gap": 8,
+                  "padding": [
+                    8,
+                    20
+                  ],
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "51gtk",
+                      "name": "Input Prompt Text",
+                      "fill": "#dddddfff",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "금액을 입력해주세요",
+                      "lineHeight": 1.25,
+                      "fontFamily": "LIFEPLUS",
+                      "fontSize": 32,
+                      "fontWeight": "700"
+                    },
+                    {
+                      "type": "text",
+                      "id": "iss2u",
+                      "name": "Purchase Info Text",
+                      "fill": "#141415ff",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "1,000원 단위로 입력할 수 있어요",
+                      "lineHeight": 1.3846153846153846,
+                      "fontFamily": "Pretendard",
+                      "fontSize": 13,
+                      "fontWeight": "normal",
+                      "letterSpacing": -0.26
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "yntM5",
+                  "x": 0,
+                  "y": 82,
+                  "name": "Purchase Info Container",
+                  "enabled": false,
+                  "width": "fill_container(375)",
+                  "height": 42,
+                  "stroke": {
+                    "align": "inside",
+                    "thickness": 1
+                  },
+                  "layout": "vertical",
+                  "gap": 10,
+                  "padding": [
+                    10,
+                    20
+                  ],
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "5fhPK",
+                      "name": "Estimated Shares Container",
+                      "width": "fill_container",
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": 1
+                      },
+                      "gap": 177,
+                      "justifyContent": "space_between",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "xFGVR",
+                          "name": "Estimated Shares Label",
+                          "fill": "#707075ff",
+                          "content": "자녀이름의 남은 공제 한도",
+                          "lineHeight": 1.4666666666666666,
+                          "fontFamily": "Pretendard",
+                          "fontSize": 15,
+                          "fontWeight": "500",
+                          "letterSpacing": -0.3
+                        },
+                        {
+                          "type": "text",
+                          "id": "SlAma",
+                          "name": "Estimated Shares Value",
+                          "fill": "#141415ff",
+                          "content": "20,000,000원",
+                          "lineHeight": 1.4666666666666666,
+                          "textAlign": "right",
+                          "fontFamily": "Pretendard",
+                          "fontSize": 15,
+                          "fontWeight": "500",
+                          "letterSpacing": -0.3
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "2NKNV",
+              "name": "Quick Add Container",
+              "width": "fill_container",
+              "stroke": {
+                "align": "inside",
+                "thickness": 1
+              },
+              "layout": "vertical",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "ySxvB",
+                  "name": "Quick Add Buttons Container",
+                  "width": 375,
+                  "height": 64,
+                  "stroke": {
+                    "align": "inside",
+                    "thickness": 1
+                  },
+                  "gap": 8,
+                  "padding": [
+                    14,
+                    20
+                  ],
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "qck4Q",
+                      "name": "Quick Add Button",
+                      "width": "fill_container",
+                      "cornerRadius": 8,
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": 1,
+                        "fill": "#a2a2a5ff"
+                      },
+                      "gap": 8,
+                      "padding": [
+                        9,
+                        12
+                      ],
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "RzvYy",
+                          "name": "Quick Add Button Text",
+                          "fill": "#141415ff",
+                          "content": "+1만",
+                          "lineHeight": 1.3846153846153846,
+                          "textAlign": "right",
+                          "fontFamily": "Pretendard",
+                          "fontSize": 13,
+                          "fontWeight": "500",
+                          "letterSpacing": -0.26
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "SVKLj",
+                      "name": "Quick Add Button",
+                      "width": "fill_container",
+                      "cornerRadius": 8,
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": 1,
+                        "fill": "#a2a2a5ff"
+                      },
+                      "gap": 8,
+                      "padding": [
+                        9,
+                        12
+                      ],
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "Fs4WR",
+                          "name": "Quick Add Button Text",
+                          "fill": "#141415ff",
+                          "content": "+5만",
+                          "lineHeight": 1.3846153846153846,
+                          "textAlign": "right",
+                          "fontFamily": "Pretendard",
+                          "fontSize": 13,
+                          "fontWeight": "500",
+                          "letterSpacing": -0.26
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "9GXCe",
+                      "name": "Quick Add Button",
+                      "width": "fill_container",
+                      "cornerRadius": 8,
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": 1,
+                        "fill": "#a2a2a5ff"
+                      },
+                      "gap": 8,
+                      "padding": [
+                        9,
+                        12
+                      ],
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "dEz0y",
+                          "name": "Quick Add Button Text",
+                          "fill": "#141415ff",
+                          "content": "+10만",
+                          "lineHeight": 1.3846153846153846,
+                          "textAlign": "right",
+                          "fontFamily": "Pretendard",
+                          "fontSize": 13,
+                          "fontWeight": "500",
+                          "letterSpacing": -0.26
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "U3tjL",
+                      "name": "Quick Add Button",
+                      "cornerRadius": 8,
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": 1,
+                        "fill": "#a2a2a5ff"
+                      },
+                      "gap": 8,
+                      "padding": [
+                        9,
+                        12
+                      ],
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "VoIbr",
+                          "name": "Quick Add Button Text",
+                          "fill": "#141415ff",
+                          "content": "비과세 최대 한도",
+                          "lineHeight": 1.3846153846153846,
+                          "textAlign": "right",
+                          "fontFamily": "Pretendard",
+                          "fontSize": 13,
+                          "fontWeight": "500",
+                          "letterSpacing": -0.26
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "IM4mY",
+                  "name": "Number Pad Container",
+                  "width": "fill_container",
+                  "stroke": {
+                    "align": "inside",
+                    "thickness": 1
+                  },
+                  "layout": "vertical",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "Qpe7b",
+                      "name": "Number Pad Row",
+                      "width": "fill_container",
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": 1
+                      },
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "kv2Od",
+                          "name": "NumberPad",
+                          "width": "fill_container",
+                          "height": 56,
+                          "stroke": {
+                            "align": "inside",
+                            "thickness": 1
+                          },
+                          "layout": "vertical",
+                          "gap": 8,
+                          "justifyContent": "center",
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "0sAzm",
+                              "name": "Number Pad Key",
+                              "fill": "#141415ff",
+                              "textGrowth": "fixed-width",
+                              "width": "fill_container",
+                              "content": "1",
+                              "lineHeight": 1.2727272727272727,
+                              "textAlign": "center",
+                              "fontFamily": "LIFEPLUS",
+                              "fontSize": 22,
+                              "fontWeight": "500"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "aoTFB",
+                          "name": "NumberPad",
+                          "width": "fill_container",
+                          "height": 56,
+                          "stroke": {
+                            "align": "inside",
+                            "thickness": 1
+                          },
+                          "layout": "vertical",
+                          "gap": 8,
+                          "justifyContent": "center",
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "7a7Cf",
+                              "name": "Number Pad Key",
+                              "fill": "#141415ff",
+                              "textGrowth": "fixed-width",
+                              "width": "fill_container",
+                              "content": "2",
+                              "lineHeight": 1.2727272727272727,
+                              "textAlign": "center",
+                              "fontFamily": "LIFEPLUS",
+                              "fontSize": 22,
+                              "fontWeight": "500"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "N6MKB",
+                          "name": "NumberPad",
+                          "width": "fill_container",
+                          "height": 56,
+                          "stroke": {
+                            "align": "inside",
+                            "thickness": 1
+                          },
+                          "layout": "vertical",
+                          "gap": 8,
+                          "justifyContent": "center",
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "GGgBA",
+                              "name": "Number Pad Key",
+                              "fill": "#141415ff",
+                              "textGrowth": "fixed-width",
+                              "width": "fill_container",
+                              "content": "3",
+                              "lineHeight": 1.2727272727272727,
+                              "textAlign": "center",
+                              "fontFamily": "LIFEPLUS",
+                              "fontSize": 22,
+                              "fontWeight": "500"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "xADzV",
+                      "name": "Number Pad Row",
+                      "width": "fill_container",
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": 1
+                      },
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "dUczJ",
+                          "name": "NumberPad",
+                          "width": "fill_container",
+                          "height": 56,
+                          "stroke": {
+                            "align": "inside",
+                            "thickness": 1
+                          },
+                          "layout": "vertical",
+                          "gap": 8,
+                          "justifyContent": "center",
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "7EKWT",
+                              "name": "Number Pad Key",
+                              "fill": "#141415ff",
+                              "textGrowth": "fixed-width",
+                              "width": "fill_container",
+                              "content": "4",
+                              "lineHeight": 1.2727272727272727,
+                              "textAlign": "center",
+                              "fontFamily": "LIFEPLUS",
+                              "fontSize": 22,
+                              "fontWeight": "500"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "2pSRW",
+                          "name": "NumberPad",
+                          "width": "fill_container",
+                          "height": 56,
+                          "stroke": {
+                            "align": "inside",
+                            "thickness": 1
+                          },
+                          "layout": "vertical",
+                          "gap": 8,
+                          "justifyContent": "center",
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "7cO3U",
+                              "name": "Number Pad Key",
+                              "fill": "#141415ff",
+                              "textGrowth": "fixed-width",
+                              "width": "fill_container",
+                              "content": "5",
+                              "lineHeight": 1.2727272727272727,
+                              "textAlign": "center",
+                              "fontFamily": "LIFEPLUS",
+                              "fontSize": 22,
+                              "fontWeight": "500"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "83YPV",
+                          "name": "NumberPad",
+                          "width": "fill_container",
+                          "height": 56,
+                          "stroke": {
+                            "align": "inside",
+                            "thickness": 1
+                          },
+                          "layout": "vertical",
+                          "gap": 8,
+                          "justifyContent": "center",
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "SKvh2",
+                              "name": "Number Pad Key",
+                              "fill": "#141415ff",
+                              "textGrowth": "fixed-width",
+                              "width": "fill_container",
+                              "content": "6",
+                              "lineHeight": 1.2727272727272727,
+                              "textAlign": "center",
+                              "fontFamily": "LIFEPLUS",
+                              "fontSize": 22,
+                              "fontWeight": "500"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "d3cnK",
+                      "name": "Number Pad Row",
+                      "width": "fill_container",
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": 1
+                      },
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "ek5C9",
+                          "name": "NumberPad",
+                          "width": "fill_container",
+                          "height": 56,
+                          "stroke": {
+                            "align": "inside",
+                            "thickness": 1
+                          },
+                          "layout": "vertical",
+                          "gap": 8,
+                          "justifyContent": "center",
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "WiP8C",
+                              "name": "Number Pad Key",
+                              "fill": "#141415ff",
+                              "textGrowth": "fixed-width",
+                              "width": "fill_container",
+                              "content": "7",
+                              "lineHeight": 1.2727272727272727,
+                              "textAlign": "center",
+                              "fontFamily": "LIFEPLUS",
+                              "fontSize": 22,
+                              "fontWeight": "500"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "3ZjLP",
+                          "name": "NumberPad",
+                          "width": "fill_container",
+                          "height": 56,
+                          "stroke": {
+                            "align": "inside",
+                            "thickness": 1
+                          },
+                          "layout": "vertical",
+                          "gap": 8,
+                          "justifyContent": "center",
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "TmaEp",
+                              "name": "Number Pad Key",
+                              "fill": "#141415ff",
+                              "textGrowth": "fixed-width",
+                              "width": "fill_container",
+                              "content": "8",
+                              "lineHeight": 1.2727272727272727,
+                              "textAlign": "center",
+                              "fontFamily": "LIFEPLUS",
+                              "fontSize": 22,
+                              "fontWeight": "500"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "C6urj",
+                          "name": "NumberPad",
+                          "width": "fill_container",
+                          "height": 56,
+                          "stroke": {
+                            "align": "inside",
+                            "thickness": 1
+                          },
+                          "layout": "vertical",
+                          "gap": 8,
+                          "justifyContent": "center",
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "11cS8",
+                              "name": "Number Pad Key",
+                              "fill": "#141415ff",
+                              "textGrowth": "fixed-width",
+                              "width": "fill_container",
+                              "content": "9",
+                              "lineHeight": 1.2727272727272727,
+                              "textAlign": "center",
+                              "fontFamily": "LIFEPLUS",
+                              "fontSize": 22,
+                              "fontWeight": "500"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "18h9a",
+                      "name": "Number Pad Row",
+                      "width": "fill_container",
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": 1
+                      },
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "ra2M0",
+                          "name": "NumberPad",
+                          "width": "fill_container",
+                          "height": 56,
+                          "stroke": {
+                            "align": "inside",
+                            "thickness": 1
+                          },
+                          "layout": "vertical",
+                          "gap": 8,
+                          "justifyContent": "center",
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "GSHSl",
+                              "name": "Number Pad Key",
+                              "fill": "#141415ff",
+                              "textGrowth": "fixed-width",
+                              "width": "fill_container",
+                              "content": "초기화",
+                              "lineHeight": 1.4666666666666666,
+                              "textAlign": "center",
+                              "fontFamily": "Pretendard",
+                              "fontSize": 15,
+                              "fontWeight": "500",
+                              "letterSpacing": -0.3
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "AYUkf",
+                          "name": "NumberPad",
+                          "width": "fill_container",
+                          "height": 56,
+                          "stroke": {
+                            "align": "inside",
+                            "thickness": 1
+                          },
+                          "layout": "vertical",
+                          "gap": 8,
+                          "justifyContent": "center",
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "4NV9j",
+                              "name": "Number Pad Key",
+                              "fill": "#141415ff",
+                              "textGrowth": "fixed-width",
+                              "width": "fill_container",
+                              "content": "0",
+                              "lineHeight": 1.2727272727272727,
+                              "textAlign": "center",
+                              "fontFamily": "LIFEPLUS",
+                              "fontSize": 22,
+                              "fontWeight": "500"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "16dso",
+                          "name": "Backspace Key Container",
+                          "width": "fill_container",
+                          "height": "fill_container",
+                          "stroke": {
+                            "align": "inside",
+                            "thickness": 1
+                          },
+                          "layout": "vertical",
+                          "gap": 8,
+                          "justifyContent": "center",
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "frame",
+                              "id": "SqaDN",
+                              "name": "ic_arrow_back_primary_20",
+                              "clip": true,
+                              "width": 20,
+                              "height": 20,
+                              "fill": {
+                                "type": "color",
+                                "color": "#ffffffff",
+                                "enabled": false
+                              },
+                              "stroke": {
+                                "align": "inside",
+                                "thickness": 1
+                              },
+                              "layout": "none",
+                              "children": [
+                                {
+                                  "type": "group",
+                                  "id": "mkZaQ",
+                                  "x": 1.6666692836962795,
+                                  "y": 3.3332653709891567,
+                                  "name": "Keypad Button Icon Container",
+                                  "children": [
+                                    {
+                                      "type": "group",
+                                      "id": "Ajpp1",
+                                      "x": 16.666691149881444,
+                                      "y": 0.00005897935170651181,
+                                      "name": "Keypad Button Icon",
+                                      "rotation": -90.00000250447808,
+                                      "children": [
+                                        {
+                                          "type": "path",
+                                          "id": "iaY5K",
+                                          "x": 6.427079362469158,
+                                          "y": -0.000059527952544158325,
+                                          "name": "Vector 17",
+                                          "rotation": 4.174129685072152e-7,
+                                          "geometry": "M0 0l0 12",
+                                          "width": 0,
+                                          "height": 16.635162353515625,
+                                          "stroke": {
+                                            "align": "center",
+                                            "thickness": 1.7999999523162842,
+                                            "fill": "#141415ff"
+                                          }
+                                        },
+                                        {
+                                          "type": "path",
+                                          "id": "aAYo7",
+                                          "x": -0.000058250827351002954,
+                                          "y": 10.23946976661864,
+                                          "name": "Vector",
+                                          "rotation": -2.074044289147745e-13,
+                                          "geometry": "M0 0l7 7 7-7",
+                                          "width": 12.854440689086914,
+                                          "height": 6.427220821380615,
+                                          "stroke": {
+                                            "align": "center",
+                                            "thickness": 1.7999999523162842,
+                                            "fill": "#141415ff"
+                                          }
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "MYDTz",
+          "name": "component/button",
+          "clip": true,
+          "width": 335,
+          "height": 56,
+          "fill": "#dddddfff",
+          "cornerRadius": 12,
+          "stroke": {
+            "align": "inside",
+            "thickness": 1
+          },
+          "gap": 8,
+          "justifyContent": "center",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "bxQZW",
+              "name": "확인",
+              "fill": "#a2a2a5ff",
+              "content": "확인",
+              "lineHeight": 1.5,
+              "textAlign": "center",
+              "textAlignVertical": "middle",
+              "fontFamily": "LIFEPLUS",
+              "fontSize": 16,
+              "fontWeight": "700"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "JW66s",
+      "x": -3264,
+      "y": 2236,
+      "name": "img_mockup_01",
+      "clip": true,
+      "width": 375,
+      "height": 470,
+      "stroke": {
+        "align": "inside",
+        "thickness": 1
+      },
+      "layout": "none",
+      "children": [
+        {
+          "type": "frame",
+          "id": "1M55L",
+          "x": 0,
+          "y": 0,
+          "name": "프로필",
+          "clip": true,
+          "width": 375,
+          "height": 324,
+          "stroke": {
+            "align": "inside",
+            "thickness": 1
+          },
+          "layout": "none"
+        },
+        {
+          "type": "frame",
+          "id": "B9wGa",
+          "x": 0,
+          "y": 858,
+          "name": "tab bar",
+          "width": 375,
+          "stroke": {
+            "align": "inside",
+            "thickness": 1
+          },
+          "layout": "vertical",
+          "children": [
+            {
+              "type": "frame",
+              "id": "Flpl4",
+              "name": "component/bottom_navigation",
+              "fill": "#ffffffff",
+              "stroke": {
+                "align": "inside",
+                "thickness": {
+                  "top": 1
+                },
+                "fill": "#dddddfff"
+              },
+              "gap": 1,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "SKepJ",
+                  "name": "tab1",
+                  "width": 187,
+                  "stroke": {
+                    "align": "inside",
+                    "thickness": 1
+                  },
+                  "gap": 8,
+                  "padding": [
+                    7,
+                    8
+                  ],
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "Ri0cC",
+                      "name": "left",
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": 1
+                      },
+                      "gap": 8,
+                      "padding": 8,
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "ZtkQA",
+                          "name": "ic_home_primary_24",
+                          "clip": true,
+                          "width": 24,
+                          "height": 24,
+                          "stroke": {
+                            "align": "inside",
+                            "thickness": 1
+                          },
+                          "layout": "none",
+                          "children": [
+                            {
+                              "type": "path",
+                              "id": "iTSz6",
+                              "x": 2,
+                              "y": 1,
+                              "name": "Union",
+                              "geometry": "M20 8l-10-8-10 8 0 14 6.5 0 0-7 7 0 0 7 6.5 0 0-14z",
+                              "fill": "#141415ff",
+                              "width": 20,
+                              "height": 22,
+                              "stroke": {
+                                "align": "inside",
+                                "thickness": 1
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "0MW5e",
+                  "name": "tab2",
+                  "width": 187,
+                  "stroke": {
+                    "align": "inside",
+                    "thickness": 1
+                  },
+                  "gap": 8,
+                  "padding": [
+                    7,
+                    8
+                  ],
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "Yx71N",
+                      "name": "right",
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": 1
+                      },
+                      "gap": 8,
+                      "padding": 8,
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "51C6f",
+                          "name": "ic_account_disable_24",
+                          "clip": true,
+                          "width": 24,
+                          "height": 24,
+                          "stroke": {
+                            "align": "inside",
+                            "thickness": 1
+                          },
+                          "layout": "none",
+                          "children": [
+                            {
+                              "type": "ellipse",
+                              "id": "sIumv",
+                              "x": 6,
+                              "y": 1,
+                              "name": "Ellipse 157",
+                              "sweepAngle": -360.00001001791264,
+                              "fill": "#bebec1ff",
+                              "width": 12,
+                              "height": 12,
+                              "stroke": {
+                                "align": "inside",
+                                "thickness": 1
+                              }
+                            },
+                            {
+                              "type": "path",
+                              "id": "Qgn0J",
+                              "x": 2,
+                              "y": 14,
+                              "name": "Rectangle 11049",
+                              "geometry": "M0 0l20 0 0 9-20 0 0-9z",
+                              "fill": "#bebec1ff",
+                              "width": 20,
+                              "height": 9,
+                              "stroke": {
+                                "align": "inside",
+                                "thickness": 1
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "OhZT8",
+              "name": "component/homeindicator",
+              "width": 375,
+              "height": 32,
+              "stroke": {
+                "align": "inside",
+                "thickness": 1
+              },
+              "layout": "none",
+              "children": [
+                {
+                  "type": "rectangle",
+                  "id": "7g5Vh",
+                  "x": 0,
+                  "y": 0,
+                  "name": "Vector",
+                  "fill": "#ffffffff",
+                  "width": 375,
+                  "height": 32,
+                  "stroke": {
+                    "align": "inside",
+                    "thickness": 1
+                  }
+                },
+                {
+                  "type": "rectangle",
+                  "cornerRadius": 200,
+                  "id": "gzNsV",
+                  "x": 121,
+                  "y": 19,
+                  "name": "Vector",
+                  "fill": "#141415ff",
+                  "width": 133,
+                  "height": 5,
+                  "stroke": {
+                    "align": "inside",
+                    "thickness": 1
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "CKtHV",
+          "x": 0,
+          "y": 300,
+          "name": "프로필_증여+투자정보",
+          "stroke": {
+            "align": "inside",
+            "thickness": 1
+          },
+          "layout": "vertical",
+          "gap": -24,
+          "padding": [
+            0,
+            0,
+            80,
+            0
+          ],
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "R1Hp1",
+              "name": "증여+투자정보",
+              "width": 375,
+              "fill": "#ffffffff",
+              "cornerRadius": [
+                24,
+                24,
+                0,
+                0
+              ],
+              "stroke": {
+                "align": "inside",
+                "thickness": 1
+              },
+              "effect": {
+                "type": "shadow",
+                "shadowType": "outer",
+                "color": "#0000000d",
+                "offset": {
+                  "x": 0,
+                  "y": -15
+                },
+                "blur": 13.125
+              },
+              "layout": "vertical",
+              "gap": 24,
+              "padding": [
+                24,
+                20,
+                80,
+                20
+              ],
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "iv28r",
+                  "name": "타이틀 메시지",
+                  "width": "fill_container",
+                  "stroke": {
+                    "align": "inside",
+                    "thickness": 1
+                  },
+                  "layout": "vertical",
+                  "gap": 8,
+                  "justifyContent": "end",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "Q4NWj",
+                      "name": "더 증여할 수 있는 공제 한도가 남아있어요",
+                      "fill": "#141415ff",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "더 증여할 수 있는\n공제 한도가 남아있어요",
+                      "lineHeight": 1.3333333333333333,
+                      "fontFamily": "LIFEPLUS",
+                      "fontSize": 24,
+                      "fontWeight": "700"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "jRsew",
+                      "x": 0,
+                      "y": 72,
+                      "name": "Frame 1000005389",
+                      "enabled": false,
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": {
+                          "bottom": 1
+                        }
+                      },
+                      "gap": 10,
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "2xxgV",
+                          "name": "더보기",
+                          "fill": "#a2a2a5ff",
+                          "content": "더보기",
+                          "lineHeight": 1.4666666666666666,
+                          "fontFamily": "Pretendard",
+                          "fontSize": 15,
+                          "fontWeight": "500",
+                          "letterSpacing": -0.3
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "group",
+      "id": "KfAFw",
+      "x": -3924,
+      "y": 2668,
+      "children": [
+        {
+          "type": "ellipse",
+          "id": "liPgW",
+          "x": 0,
+          "y": 0,
+          "fill": "#a2a2a5",
+          "width": 52,
+          "height": 52,
+          "stroke": {
+            "align": "inside",
+            "thickness": 1,
+            "fill": "#ffffffff"
+          }
+        },
+        {
+          "type": "frame",
+          "id": "KUK4o",
+          "x": 14,
+          "y": 14,
+          "name": "ic/24_pencil2",
+          "width": 24,
+          "height": 24,
+          "fill": {
+            "type": "color",
+            "color": "#ffffffff",
+            "enabled": false
+          },
+          "stroke": {
+            "align": "inside",
+            "thickness": 1
+          },
+          "layout": "none",
+          "children": [
+            {
+              "type": "path",
+              "id": "sGHCK",
+              "x": 4.000405311584473,
+              "y": 3.9999444484710693,
+              "name": "Vector",
+              "geometry": "M191.90002 48.79101l-44.68998-44.69c-1.30004-1.30017-2.84346-2.33153-4.54212-3.03519-1.69865-0.70366-3.51927-1.06582-5.35789-1.06582-1.83862 0-3.65924 0.36217-5.3579 1.06582-1.69865 0.70366-3.24206 1.73502-4.5421 3.03519l-123.31001 123.32c-1.30265 1.29815-2.33556 2.84123-3.03923 4.54032-0.70367 1.6991-1.06418 3.52065-1.06077 5.35968l0 44.69001c0 3.71302 1.475 7.27397 4.10051 9.89947 2.62551 2.62551 6.18646 4.10053 9.89949 4.10053l44.69 0c1.83904 0.00341 3.66058-0.35709 5.35969-1.06076 1.6991-0.70368 3.24216-1.73659 4.54031-3.03925l123.31-123.32c1.30018-1.30004 2.33153-2.84345 3.03519-4.54211 0.70366-1.69865 1.06583-3.51927 1.06583-5.35789 0-1.83863-0.36217-3.65924-1.06583-5.35789-0.70366-1.69865-1.73501-3.24207-3.03519-4.54211z m-131.8 134.63001c-0.37335 0.3756-0.88042 0.58777-1.41 0.59l-44.69 0c-0.53043 0-1.03914-0.21071-1.41421-0.58579-0.37507-0.37507-0.58578-0.88379-0.58579-1.41421l0-44.69001c0.00223-0.52957 0.21441-1.03665 0.59-1.41l89.41-89.42 47.51001 47.52-89.41001 89.41001z m123.31001-123.31001l-25.41 25.41-47.51-47.51 25.40999-25.42c0.18575-0.18595 0.40633-0.33347 0.64913-0.43412 0.2428-0.10065 0.50305-0.15245 0.76588-0.15245 0.26284 0 0.52309 0.05181 0.76589 0.15245 0.2428 0.10065 0.46336 0.24817 0.64911 0.43412l44.68 44.69c0.18596 0.18575 0.33347 0.40633 0.43412 0.64912 0.10064 0.2428 0.15245 0.50304 0.15245 0.76588 0 0.26283-0.05181 0.52309-0.15245 0.76588-0.10065 0.2428-0.24816 0.46337-0.43412 0.64912z",
+              "fill": "#ffffffff",
+              "width": 15.999184608459473,
+              "height": 16,
+              "stroke": {
+                "align": "inside",
+                "thickness": 0.125
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "group",
+      "id": "YXDXl",
+      "x": -3850,
+      "y": 2673,
+      "children": [
+        {
+          "type": "group",
+          "id": "gbVH4",
+          "x": 0,
+          "y": 0,
+          "children": [
+            {
+              "type": "ellipse",
+              "id": "Gy85a",
+              "x": 0,
+              "y": 0,
+              "fill": "#818e74",
+              "width": 52,
+              "height": 52,
+              "stroke": {
+                "align": "inside",
+                "thickness": 1,
+                "fill": "#ffffffff"
+              }
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "id": "bPLDM",
+          "x": 0,
+          "y": 18,
+          "fill": "#ffffffff",
+          "textGrowth": "fixed-width",
+          "width": 52,
+          "content": "김첫째",
+          "textAlign": "center",
+          "fontFamily": "Pretendard",
+          "fontSize": 11,
+          "fontWeight": "600"
+        }
+      ]
+    },
+    {
+      "type": "group",
+      "id": "BGdYD",
+      "x": -3771,
+      "y": 2673,
+      "children": [
+        {
+          "type": "group",
+          "id": "aXiFZ",
+          "x": 0,
+          "y": 0,
+          "children": [
+            {
+              "type": "ellipse",
+              "id": "uno2q",
+              "x": 0,
+              "y": 0,
+              "fill": "#7d8d9d",
+              "width": 52,
+              "height": 52,
+              "stroke": {
+                "align": "inside",
+                "thickness": 1,
+                "fill": "#ffffffff"
+              }
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "id": "FgSdk",
+          "x": 0,
+          "y": 18,
+          "fill": "#ffffffff",
+          "textGrowth": "fixed-width",
+          "width": 52,
+          "content": "김첫째",
+          "textAlign": "center",
+          "fontFamily": "Pretendard",
+          "fontSize": 11,
+          "fontWeight": "600"
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "IQprx",
+      "x": -3814,
+      "y": 2201,
+      "name": "navbar 2",
+      "cornerRadius": [
+        40,
+        40,
+        0,
+        0
+      ],
+      "stroke": {
+        "align": "inside",
+        "thickness": {
+          "bottom": 1
+        }
+      },
+      "layout": "vertical",
+      "children": [
+        {
+          "type": "frame",
+          "id": "btKQs",
+          "name": "ios_status_bar",
+          "width": 375,
+          "height": 44,
+          "stroke": {
+            "align": "inside",
+            "thickness": 1
+          },
+          "layout": "none",
+          "children": [
+            {
+              "type": "rectangle",
+              "id": "cqxFo",
+              "x": 0,
+              "y": 0,
+              "name": "Rectangle 4052",
+              "width": 375,
+              "height": 44,
+              "stroke": {
+                "align": "inside",
+                "thickness": 1
+              }
+            },
+            {
+              "type": "frame",
+              "id": "ffeZV",
+              "x": 0,
+              "y": 0,
+              "name": "component_common_status_bar",
+              "enabled": false,
+              "clip": true,
+              "width": 375,
+              "height": 44,
+              "stroke": {
+                "align": "inside",
+                "thickness": 1
+              },
+              "layout": "none",
+              "children": [
+                {
+                  "type": "group",
+                  "id": "7kCs7",
+                  "x": 336,
+                  "y": 17.3333740234375,
+                  "name": "Battery",
+                  "children": [
+                    {
+                      "type": "rectangle",
+                      "cornerRadius": 2.6666667461395264,
+                      "id": "lF4vn",
+                      "x": 0,
+                      "y": 0,
+                      "name": "Border",
+                      "opacity": 0.3499999940395355,
+                      "width": 22,
+                      "height": 11.333333015441895,
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": 1,
+                        "fill": "#141415ff"
+                      }
+                    },
+                    {
+                      "type": "path",
+                      "id": "uzw8M",
+                      "x": 23,
+                      "y": 3.6666667461395264,
+                      "name": "Cap",
+                      "opacity": 0.4000000059604645,
+                      "geometry": "M0 0l0 4c0.80473-0.33878 1.32804-1.12687 1.32804-2 0-0.87313-0.52331-1.66122-1.32804-2",
+                      "fill": "#141415ff",
+                      "width": 1.328037977218628,
+                      "height": 4
+                    },
+                    {
+                      "type": "rectangle",
+                      "cornerRadius": 1.3333333730697632,
+                      "id": "PMLVC",
+                      "x": 2,
+                      "y": 1.9999998807907104,
+                      "name": "Capacity",
+                      "fill": "#141415ff",
+                      "width": 18,
+                      "height": 7.333333492279053
+                    }
+                  ]
+                },
+                {
+                  "type": "group",
+                  "id": "I4Ut9",
+                  "x": 315.6937255859375,
+                  "y": 17.330688476562496,
+                  "name": "Wifi",
+                  "children": [
+                    {
+                      "type": "path",
+                      "id": "2D7K1",
+                      "x": 0,
+                      "y": 0,
+                      "name": "Wifi-path",
+                      "geometry": "M7.63661 2.27733c2.21589 0.0001 4.34705 0.85153 5.953 2.37833 0.12093 0.11787 0.31423 0.11639 0.43333-0.00333l1.156-1.16667c0.06031-0.06072 0.09393-0.14297 0.09343-0.22855-0.0005-0.08558-0.03508-0.16743-0.0961-0.22745-4.2151-4.03955-10.8649-4.03955-15.08 0-0.06106 0.05997-0.0957 0.1418-0.09626 0.22738-0.00056 0.08558 0.033 0.16786 0.09326 0.22862l1.15634 1.16667c0.11903 0.1199 0.31247 0.12139 0.43333 0.00333 1.60615-1.5269 3.73756-2.37834 5.95367-2.37833l0 0z",
+                      "fill": "#ffffffff",
+                      "width": 15.27237606048584,
+                      "height": 4.743237495422363
+                    },
+                    {
+                      "type": "path",
+                      "id": "iVFJJ",
+                      "x": 2.663280963897705,
+                      "y": 3.7940404415130615,
+                      "name": "Wifi-path",
+                      "geometry": "M4.97332 2.27895c1.21749-0.00007 2.39153 0.45246 3.294 1.26967 0.12206 0.11598 0.31434 0.11347 0.43334-0.00567l1.15466-1.16666c0.06081-0.06119 0.09455-0.14421 0.09367-0.23048-0.00088-0.08626-0.0363-0.16858-0.09833-0.22852-2.7482-2.55638-7.00413-2.55638-9.75234 0-0.06208 0.05995-0.0975 0.1423-0.09831 0.22859-0.00081 0.08629 0.03304 0.1693 0.09398 0.23041l1.15433 1.16666c0.11899 0.11913 0.31127 0.12165 0.43334 0.00567 0.90187-0.81667 2.07498-1.26916 3.29166-1.26967l0 0z",
+                      "fill": "#ffffffff",
+                      "width": 9.94901180267334,
+                      "height": 3.6339809894561768
+                    },
+                    {
+                      "type": "path",
+                      "id": "hTJbO",
+                      "x": 5.3233723640441895,
+                      "y": 7.591164588928223,
+                      "name": "Wifi-path",
+                      "geometry": "M4.53223 1.26616c0.06175-0.06061 0.09576-0.14401 0.094-0.23051-0.00177-0.08651-0.03915-0.16845-0.10333-0.22649-1.27557-1.07888-3.14376-1.07888-4.41933 0-0.06422 0.05799-0.10167 0.13991-0.1035 0.22642-0.00183 0.08651 0.03212 0.16994 0.09383 0.23058l1.99767 2.01567c0.05855 0.05924 0.13838 0.09258 0.22166 0.09258 0.08329 0 0.16312-0.03334 0.22167-0.09258l1.99733-2.01567z",
+                      "fill": "#ffffffff",
+                      "width": 4.626293659210205,
+                      "height": 3.3744072914123535
+                    }
+                  ]
+                },
+                {
+                  "type": "group",
+                  "id": "oyiZc",
+                  "x": 293.6666259765625,
+                  "y": 17.6666259765625,
+                  "name": "Cellular_Connection",
+                  "children": [
+                    {
+                      "type": "path",
+                      "id": "CZpg4",
+                      "x": 0,
+                      "y": 6.666666507720947,
+                      "name": "Cellular_Connection-path",
+                      "geometry": "M1 0l1 0c0.55228 0 1 0.44772 1 1l0 2c0 0.55228-0.44772 1-1 1l-1 0c-0.55228 0-1-0.44772-1-1l0-2c0-0.55228 0.44772-1 1-1l0 0z",
+                      "fill": "#ffffffff",
+                      "width": 3,
+                      "height": 4
+                    },
+                    {
+                      "type": "path",
+                      "id": "nFRzg",
+                      "x": 4.666666507720947,
+                      "y": 4.666666507720947,
+                      "name": "Cellular_Connection-path",
+                      "geometry": "M1 0l1 0c0.55228 0 1 0.44772 1 1l0 4c0 0.55228-0.44772 1-1 1l-1 0c-0.55228 0-1-0.44772-1-1l0-4c0-0.55228 0.44772-1 1-1z",
+                      "fill": "#ffffffff",
+                      "width": 3,
+                      "height": 6
+                    },
+                    {
+                      "type": "path",
+                      "id": "sQi0L",
+                      "x": 9.333333015441895,
+                      "y": 2.3333332538604736,
+                      "name": "Cellular_Connection-path",
+                      "geometry": "M1 0l1 0c0.55228 0 1 0.44772 1 1l0 6.33333c0 0.55228-0.44772 1-1 1l-1 0c-0.55228 0-1-0.44771-1-1l0-6.33333c0-0.55228 0.44772-1 1-1z",
+                      "fill": "#ffffffff",
+                      "width": 3,
+                      "height": 8.333333015441895
+                    },
+                    {
+                      "type": "path",
+                      "id": "APS6n",
+                      "x": 14,
+                      "y": 0,
+                      "name": "Cellular_Connection-path",
+                      "geometry": "M1 0l1 0c0.55228 0 1 0.44772 1 1l0 8.66667c0 0.55228-0.44772 1-1 1l-1 0c-0.55228 0-1-0.44772-1-1l0-8.66667c0-0.55228 0.44772-1 1-1l0 0z",
+                      "fill": "#ffffffff",
+                      "width": 3,
+                      "height": 10.666666984558105
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "R0GQe",
+                  "x": 21,
+                  "y": 14,
+                  "name": "time_style",
+                  "clip": true,
+                  "width": 54,
+                  "height": 19,
+                  "fill": {
+                    "type": "color",
+                    "color": "#ffffffff",
+                    "enabled": false
+                  },
+                  "stroke": {
+                    "align": "inside",
+                    "thickness": 1
+                  },
+                  "layout": "none",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "97jTT",
+                      "x": 0,
+                      "y": 0.3299999237060547,
+                      "name": "↳ Time",
+                      "fill": "#141415ff",
+                      "textGrowth": "fixed-width",
+                      "width": 54,
+                      "content": "18:41",
+                      "textAlign": "center",
+                      "fontFamily": "SF Pro",
+                      "fontSize": 15,
+                      "fontWeight": "normal",
+                      "letterSpacing": -0.30000001192092896
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "beTh6",
+          "name": "component/top_navigation",
+          "stroke": {
+            "align": "inside",
+            "thickness": 1
+          },
+          "layout": "vertical",
+          "children": [
+            {
+              "type": "frame",
+              "id": "GzM9n",
+              "name": "component/top_navigation",
+              "width": 375,
+              "height": 48,
+              "stroke": {
+                "align": "inside",
+                "thickness": 1
+              },
+              "gap": 10,
+              "padding": [
+                0,
+                12,
+                0,
+                20
+              ],
+              "justifyContent": "space_between",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "qtm1X",
+                  "name": "logo",
+                  "stroke": {
+                    "align": "inside",
+                    "thickness": 1
+                  },
+                  "layout": "vertical",
+                  "gap": 10,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "tahFJ",
+                      "name": "logo_pi_h24_black",
+                      "clip": true,
+                      "width": 25,
+                      "height": 20,
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": 0.8333333134651184
+                      },
+                      "layout": "none",
+                      "children": [
+                        {
+                          "type": "path",
+                          "id": "aUga9",
+                          "x": -0.0001255671086255461,
+                          "y": 0,
+                          "name": "Union",
+                          "geometry": "M12.16016 2.44043c1.40836 0 2.77656 0.24372 4.10351 0.73047 1.35812 0.46177 2.55607 1.16852 3.58985 2.12012 1.03606 0.92701 1.86558 2.08387 2.48925 3.46679 0.62737 1.36435 0.9375 2.95383 0.9375 4.7627-0.00008 1.75392-0.29797 3.31382-0.89648 4.67578l0.00098 0.00098c-0.57001 1.35702-1.35923 2.51425-2.36719 3.46777-1.00749 0.95295-2.19183 1.67422-3.54981 2.16309-1.35647 0.48827-2.80641 0.73242-4.34765 0.73242l-6.43946 0 0 6.95996-5.68066 0 0-29.08008 12.16016 0z m-6.4795 16.7998l6.23926 0c0.96567 0 1.77603-0.15715 2.43653-0.46191l0.00293-0.00098c0.6957-0.30926 1.25701-0.71908 1.68847-1.22656l0.00391-0.00488c0.46024-0.51149 0.80731-1.11359 1.03906-1.8086 0.233-0.699 0.34953-1.42476 0.34961-2.17675 0-0.64496-0.1036-1.3056-0.31152-1.98145l0-0.00195c-0.20569-0.69421-0.54062-1.32437-1.00391-1.89063-0.46036-0.56254-1.05056-1.02577-1.77441-1.38769-0.71285-0.35635-1.57455-0.53906-2.59082-0.53906l-6.07911 0 0 11.48046z m8.49219-0.16796c-0.00902 0.00346-0.01828 0.00635-0.02734 0.00976 0.10096-0.03797 0.19951-0.07804 0.29492-0.12207l-0.26758 0.11231z m2.85352-2.64356c0.01679-0.0356 0.03566-0.07031 0.05175-0.10644l0.01368-0.03223c-0.02058 0.04699-0.0437 0.09259-0.06543 0.13867z m21.38965 15.0918l-5.71973 0 0-21.2002 5.71973 0 0 21.2002z m0-25.80078l-5.71973 0 0-5.71973 5.71973 0 0 5.71973z",
+                          "fill": "#000000ff",
+                          "width": 24.3752498626709,
+                          "height": 20
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "SE2IU",
+                  "name": "right",
+                  "stroke": {
+                    "align": "inside",
+                    "thickness": 1
+                  },
+                  "justifyContent": "end",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "o43ic",
+                      "name": "icon",
+                      "width": "fit_content(40)",
+                      "height": "fit_content(40)",
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": 1
+                      },
+                      "gap": 10,
+                      "padding": 8,
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "cwQ7A",
+                          "x": 8,
+                          "y": 8,
+                          "name": "ic/24_interface",
+                          "enabled": false,
+                          "clip": true,
+                          "width": 24,
+                          "height": 24,
+                          "fill": {
+                            "type": "color",
+                            "color": "#ffffffff",
+                            "enabled": false
+                          },
+                          "stroke": {
+                            "align": "inside",
+                            "thickness": 1
+                          },
+                          "layout": "none",
+                          "children": [
+                            {
+                              "type": "rectangle",
+                              "id": "DeuI4",
+                              "x": 0,
+                              "y": 0,
+                              "name": "Rectangle 10872",
+                              "fill": "#bebec1ff",
+                              "width": 24,
+                              "height": 24,
+                              "stroke": {
+                                "align": "inside",
+                                "thickness": 1
+                              }
+                            },
+                            {
+                              "type": "rectangle",
+                              "id": "ltwXn",
+                              "x": 2,
+                              "y": 2,
+                              "name": "Rectangle 10873",
+                              "fill": "#dddddfff",
+                              "width": 20,
+                              "height": 20,
+                              "stroke": {
+                                "align": "inside",
+                                "thickness": 1
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "Lko2q",
+                      "name": "icon",
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": 1
+                      },
+                      "gap": 10,
+                      "padding": 8,
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "uzsRl",
+                          "name": "ic_bell_24",
+                          "clip": true,
+                          "width": 24,
+                          "height": 24,
+                          "fill": {
+                            "type": "color",
+                            "color": "#ffffffff",
+                            "enabled": false
+                          },
+                          "stroke": {
+                            "align": "inside",
+                            "thickness": 1
+                          },
+                          "layout": "none",
+                          "children": [
+                            {
+                              "type": "path",
+                              "id": "RhVJz",
+                              "x": 3,
+                              "y": 2,
+                              "name": "Union",
+                              "geometry": "M14.56286 11.29973l0 0.68562 0.45613 0.51189 1.18101 1.32535 0 0.75184-14.4 0 0-0.75184 1.18101-1.32535 0.45613-0.51188 0-0.68563 0-3.1115c0.00204-1.75153 0.63036-3.39731 1.69743-4.58384 1.06102-1.17982 2.45605-1.80189 3.86543-1.80439 1.40939 0.0025 2.80441 0.62458 3.86543 1.80439 1.06706 1.18653 1.69539 2.83231 1.69743 4.58384l0 0.00086 0 3.11064z m3.43714 3.2747l0-1.43746-1.63714-1.83724 0-3.11252c-0.00227-2.17061-0.77872-4.25159-2.15904-5.78645-1.38031-1.53485-3.25177-2.39824-5.20382-2.40076-1.95205 0.00252-3.82351 0.86591-5.20382 2.40076-1.38031 1.53485-2.15677 3.61584-2.15904 5.78645l0 3.11252-1.63714 1.83724 0 1.43746 0 1.8 1.8 0 3.3-0.00002c0 0.99146 0.43371 1.92292 1.17306 2.5955 0.73651 0.66999 1.71865 1.03358 2.72694 1.03358 1.0083 0 1.99044-0.36359 2.72695-1.03358 0.73934-0.67257 1.17305-1.60404 1.17305-2.5955l3.3 0.00002 1.8 0 0-1.8z m-6.9 1.79998l-4.2 0c0 0.45613 0.19843 0.91297 0.5843 1.264 0.38871 0.35361 0.93269 0.56507 1.5157 0.56508 0.583 0 1.12698-0.21146 1.5157-0.56508 0.38588-0.35103 0.5843-0.80786 0.5843-1.264z",
+                              "fillRule": "evenodd",
+                              "fill": "#141415ff",
+                              "width": 18,
+                              "height": 20.00348663330078
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "oFssN",
+      "x": -3740.409339213674,
+      "y": 2762.2166805129673,
+      "name": "selected1",
+      "clip": true,
+      "width": 56,
+      "height": 56,
+      "fill": "#7d8d9dff",
+      "cornerRadius": 30,
+      "stroke": {
+        "align": "center",
+        "thickness": 2.5
+      },
+      "effect": {
+        "type": "shadow",
+        "shadowType": "outer",
+        "color": "#e5640ecc",
+        "blur": 8.75
+      },
+      "layout": "none",
+      "children": [
+        {
+          "type": "text",
+          "id": "hRSvf",
+          "x": 11.000001907348633,
+          "y": 19.000001907348633,
+          "name": "김첫째",
+          "fill": "#ffffffff",
+          "content": "김첫째",
+          "lineHeight": 1.3846153846153846,
+          "textAlign": "center",
+          "fontFamily": "Pretendard",
+          "fontSize": 13,
+          "fontWeight": "700",
+          "letterSpacing": -0.13
+        },
+        {
+          "type": "ellipse",
+          "id": "xTqbq",
+          "x": 2.000001907348633,
+          "y": 2.000001907348633,
+          "name": "Ellipse 252",
+          "sweepAngle": -360.00001001791264,
+          "width": 52,
+          "height": 52,
+          "stroke": {
+            "align": "inside",
+            "thickness": 1,
+            "fill": "#ffffffff"
+          }
+        },
+        {
+          "type": "ellipse",
+          "id": "AdI0o",
+          "x": 0,
+          "y": 0,
+          "name": "Ellipse 253",
+          "sweepAngle": -360.00001001791264,
+          "width": 56,
+          "height": 56,
+          "stroke": {
+            "align": "inside",
+            "thickness": 2,
+            "fill": {
+              "type": "gradient",
+              "gradientType": "linear",
+              "enabled": true,
+              "rotation": -150.04910316798345,
+              "size": {
+                "height": 1.0159138703434745
+              },
+              "colors": [
+                {
+                  "color": "#e5640eff",
+                  "position": 0
+                },
+                {
+                  "color": "#ffb379ff",
+                  "position": 0.30000001192092896
+                },
+                {
+                  "color": "#fff2e5ff",
+                  "position": 0.5961538553237915
+                },
+                {
+                  "color": "#f7924aff",
+                  "position": 1
+                }
+              ],
+              "center": {
+                "x": 0.5188140177025786,
+                "y": 0.4961530578324887
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "YPueu",
+      "x": -4226.359986737301,
+      "y": 2865.955085192283,
+      "name": "component/top_navigation",
+      "stroke": {
+        "align": "inside",
+        "thickness": 1
+      },
+      "layout": "vertical",
+      "children": [
+        {
+          "type": "frame",
+          "id": "qH3qw",
+          "name": "component/top_navigation",
+          "width": 375,
+          "height": 48,
+          "stroke": {
+            "align": "inside",
+            "thickness": 1
+          },
+          "gap": 10,
+          "padding": [
+            0,
+            12,
+            0,
+            20
+          ],
+          "justifyContent": "space_between",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "HOEtW",
+              "name": "logo",
+              "stroke": {
+                "align": "inside",
+                "thickness": 1
+              },
+              "layout": "vertical",
+              "gap": 10,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "f1qYh",
+                  "name": "logo_pi_h24_black",
+                  "clip": true,
+                  "width": 25,
+                  "height": 20,
+                  "stroke": {
+                    "align": "inside",
+                    "thickness": 0.8333333134651184
+                  },
+                  "layout": "none",
+                  "children": [
+                    {
+                      "type": "path",
+                      "id": "m1bW2",
+                      "x": -0.0001255671086255461,
+                      "y": 0,
+                      "name": "Union",
+                      "geometry": "M12.16016 2.44043c1.40836 0 2.77656 0.24372 4.10351 0.73047 1.35812 0.46177 2.55607 1.16852 3.58985 2.12012 1.03606 0.92701 1.86558 2.08387 2.48925 3.46679 0.62737 1.36435 0.9375 2.95383 0.9375 4.7627-0.00008 1.75392-0.29797 3.31382-0.89648 4.67578l0.00098 0.00098c-0.57001 1.35702-1.35923 2.51425-2.36719 3.46777-1.00749 0.95295-2.19183 1.67422-3.54981 2.16309-1.35647 0.48827-2.80641 0.73242-4.34765 0.73242l-6.43946 0 0 6.95996-5.68066 0 0-29.08008 12.16016 0z m-6.4795 16.7998l6.23926 0c0.96567 0 1.77603-0.15715 2.43653-0.46191l0.00293-0.00098c0.6957-0.30926 1.25701-0.71908 1.68847-1.22656l0.00391-0.00488c0.46024-0.51149 0.80731-1.11359 1.03906-1.8086 0.233-0.699 0.34953-1.42476 0.34961-2.17675 0-0.64496-0.1036-1.3056-0.31152-1.98145l0-0.00195c-0.20569-0.69421-0.54062-1.32437-1.00391-1.89063-0.46036-0.56254-1.05056-1.02577-1.77441-1.38769-0.71285-0.35635-1.57455-0.53906-2.59082-0.53906l-6.07911 0 0 11.48046z m8.49219-0.16796c-0.00902 0.00346-0.01828 0.00635-0.02734 0.00976 0.10096-0.03797 0.19951-0.07804 0.29492-0.12207l-0.26758 0.11231z m2.85352-2.64356c0.01679-0.0356 0.03566-0.07031 0.05175-0.10644l0.01368-0.03223c-0.02058 0.04699-0.0437 0.09259-0.06543 0.13867z m21.38965 15.0918l-5.71973 0 0-21.2002 5.71973 0 0 21.2002z m0-25.80078l-5.71973 0 0-5.71973 5.71973 0 0 5.71973z",
+                      "fill": "#000000ff",
+                      "width": 24.3752498626709,
+                      "height": 20
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "0d8zj",
+              "name": "right",
+              "stroke": {
+                "align": "inside",
+                "thickness": 1
+              },
+              "justifyContent": "end",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "2XCWN",
+                  "name": "icon",
+                  "width": "fit_content(40)",
+                  "height": "fit_content(40)",
+                  "stroke": {
+                    "align": "inside",
+                    "thickness": 1
+                  },
+                  "gap": 10,
+                  "padding": 8,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "GEKVp",
+                      "x": 8,
+                      "y": 8,
+                      "name": "ic/24_interface",
+                      "enabled": false,
+                      "clip": true,
+                      "width": 24,
+                      "height": 24,
+                      "fill": {
+                        "type": "color",
+                        "color": "#ffffffff",
+                        "enabled": false
+                      },
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": 1
+                      },
+                      "layout": "none",
+                      "children": [
+                        {
+                          "type": "rectangle",
+                          "id": "KDCvM",
+                          "x": 0,
+                          "y": 0,
+                          "name": "Rectangle 10872",
+                          "fill": "#bebec1ff",
+                          "width": 24,
+                          "height": 24,
+                          "stroke": {
+                            "align": "inside",
+                            "thickness": 1
+                          }
+                        },
+                        {
+                          "type": "rectangle",
+                          "id": "2Db9J",
+                          "x": 2,
+                          "y": 2,
+                          "name": "Rectangle 10873",
+                          "fill": "#dddddfff",
+                          "width": 20,
+                          "height": 20,
+                          "stroke": {
+                            "align": "inside",
+                            "thickness": 1
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "cnzBL",
+                  "name": "icon",
+                  "stroke": {
+                    "align": "inside",
+                    "thickness": 1
+                  },
+                  "gap": 10,
+                  "padding": 8,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "BGGoT",
+                      "name": "ic_bell_24",
+                      "clip": true,
+                      "width": 24,
+                      "height": 24,
+                      "fill": {
+                        "type": "color",
+                        "color": "#ffffffff",
+                        "enabled": false
+                      },
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": 1
+                      },
+                      "layout": "none",
+                      "children": [
+                        {
+                          "type": "path",
+                          "id": "NY3fk",
+                          "x": 3,
+                          "y": 2,
+                          "name": "Union",
+                          "geometry": "M14.56286 11.29973l0 0.68562 0.45613 0.51189 1.18101 1.32535 0 0.75184-14.4 0 0-0.75184 1.18101-1.32535 0.45613-0.51188 0-0.68563 0-3.1115c0.00204-1.75153 0.63036-3.39731 1.69743-4.58384 1.06102-1.17982 2.45605-1.80189 3.86543-1.80439 1.40939 0.0025 2.80441 0.62458 3.86543 1.80439 1.06706 1.18653 1.69539 2.83231 1.69743 4.58384l0 0.00086 0 3.11064z m3.43714 3.2747l0-1.43746-1.63714-1.83724 0-3.11252c-0.00227-2.17061-0.77872-4.25159-2.15904-5.78645-1.38031-1.53485-3.25177-2.39824-5.20382-2.40076-1.95205 0.00252-3.82351 0.86591-5.20382 2.40076-1.38031 1.53485-2.15677 3.61584-2.15904 5.78645l0 3.11252-1.63714 1.83724 0 1.43746 0 1.8 1.8 0 3.3-0.00002c0 0.99146 0.43371 1.92292 1.17306 2.5955 0.73651 0.66999 1.71865 1.03358 2.72694 1.03358 1.0083 0 1.99044-0.36359 2.72695-1.03358 0.73934-0.67257 1.17305-1.60404 1.17305-2.5955l3.3 0.00002 1.8 0 0-1.8z m-6.9 1.79998l-4.2 0c0 0.45613 0.19843 0.91297 0.5843 1.264 0.38871 0.35361 0.93269 0.56507 1.5157 0.56508 0.583 0 1.12698-0.21146 1.5157-0.56508 0.38588-0.35103 0.5843-0.80786 0.5843-1.264z",
+                          "fillRule": "evenodd",
+                          "fill": "#141415ff",
+                          "width": 18,
+                          "height": 20.00348663330078
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "mTOJu",
+      "x": -3340.1119353560284,
+      "y": 1545.2779356446335,
+      "name": "신고 금액+예정 금액이 4% 이상",
+      "width": 335,
+      "fill": "#ffffffff",
+      "cornerRadius": 12,
+      "stroke": {
+        "align": "inside",
+        "thickness": 1,
+        "fill": "#dddddfff"
+      },
+      "layout": "vertical",
+      "gap": 20,
+      "padding": [
+        16,
+        20
+      ],
+      "children": [
+        {
+          "type": "frame",
+          "id": "SYH4m",
+          "name": "신고금액",
+          "width": "fill_container",
+          "stroke": {
+            "align": "inside",
+            "thickness": 1
+          },
+          "layout": "vertical",
+          "gap": 4,
+          "children": [
+            {
+              "type": "frame",
+              "id": "iPUWn",
+              "name": "\b증여세 신고 금액",
+              "width": "fill_container",
+              "stroke": {
+                "align": "inside",
+                "thickness": 1
+              },
+              "gap": 12,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "vjeBX",
+                  "name": "Frame 1000005445",
+                  "stroke": {
+                    "align": "inside",
+                    "thickness": 1
+                  },
+                  "gap": 10,
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "YLYAp",
+                      "name": "증여세 신고 금액",
+                      "fill": "#141415ff",
+                      "content": "증여세 신고 금액",
+                      "lineHeight": 1.5,
+                      "fontFamily": "Pretendard",
+                      "fontSize": 16,
+                      "fontWeight": "500",
+                      "letterSpacing": -0.32
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "1vLGF",
+                  "name": "Frame 1000005405",
+                  "width": "fill_container",
+                  "stroke": {
+                    "align": "inside",
+                    "thickness": 1
+                  },
+                  "justifyContent": "end",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "6lYyz",
+                      "name": "7,400,000원",
+                      "fill": "#39393cff",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "7,400,000원",
+                      "lineHeight": 1.5,
+                      "textAlign": "right",
+                      "fontFamily": "Pretendard",
+                      "fontSize": 16,
+                      "fontWeight": "700",
+                      "letterSpacing": -0.16
+                    },
+                    {
+                      "type": "frame",
+                      "id": "Lfw3P",
+                      "name": "ic_chevron_right_primary_16",
+                      "clip": true,
+                      "width": 16,
+                      "height": 16,
+                      "fill": {
+                        "type": "color",
+                        "color": "#ffffffff",
+                        "enabled": false
+                      },
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": 1
+                      },
+                      "layout": "none",
+                      "children": [
+                        {
+                          "type": "path",
+                          "id": "EMD0L",
+                          "x": 8.736156463623047,
+                          "y": 13.757597923278809,
+                          "name": "Vector (Stroke)",
+                          "rotation": 89.99999931675467,
+                          "geometry": "M0 1.27279l1.27279-1.27279 7.36361 7.3636 7.3636-7.3636 1.27279 1.27279-8.63639 8.6364-8.6364-8.6364z",
+                          "fillRule": "evenodd",
+                          "fill": "#141415ff",
+                          "width": 11.5151948928833,
+                          "height": 6.606126308441162,
+                          "stroke": {
+                            "align": "center",
+                            "thickness": 1.7999999523162842
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "ISztH",
+              "name": "신고 예정 금액",
+              "width": "fill_container",
+              "stroke": {
+                "align": "inside",
+                "thickness": 1
+              },
+              "gap": 12,
+              "padding": [
+                0,
+                16,
+                0,
+                0
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "ZsWbh",
+                  "name": "Frame 1000005424",
+                  "stroke": {
+                    "align": "inside",
+                    "thickness": 1
+                  },
+                  "gap": 6,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "GadPN",
+                      "name": "신고해야 할 금액",
+                      "fill": "#8a8a8fff",
+                      "content": "신고해야 할 금액",
+                      "lineHeight": 1.4285714285714286,
+                      "fontFamily": "Pretendard",
+                      "fontSize": 14,
+                      "fontWeight": "500",
+                      "letterSpacing": -0.28
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "CKs2j",
+                  "name": "Frame 1000005405",
+                  "width": "fill_container",
+                  "stroke": {
+                    "align": "inside",
+                    "thickness": 1
+                  },
+                  "justifyContent": "end",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "hgeIm",
+                      "name": "7,400,000원",
+                      "fill": "#a2a2a5ff",
+                      "content": "7,400,000원",
+                      "lineHeight": 1.4285714285714286,
+                      "textAlign": "right",
+                      "fontFamily": "Pretendard",
+                      "fontSize": 14,
+                      "fontWeight": "700",
+                      "letterSpacing": -0.14
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "PRyEt",
+          "name": "\bprogress",
+          "width": "fill_container",
+          "stroke": {
+            "align": "inside",
+            "thickness": 1
+          },
+          "layout": "vertical",
+          "gap": 4,
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "IyQKV",
+              "name": "progress bar",
+              "width": "fill_container",
+              "stroke": {
+                "align": "inside",
+                "thickness": 1
+              },
+              "layout": "vertical",
+              "gap": 8,
+              "alignItems": "end",
+              "children": [
+                {
+                  "type": "group",
+                  "id": "5rttK",
+                  "name": "Group 6603",
+                  "children": [
+                    {
+                      "type": "rectangle",
+                      "cornerRadius": 300,
+                      "id": "NlpyK",
+                      "x": 0,
+                      "y": 0,
+                      "name": "Rectangle 11690",
+                      "fill": "#f2f2f3ff",
+                      "width": 295,
+                      "height": 8,
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": 1
+                      }
+                    },
+                    {
+                      "type": "rectangle",
+                      "cornerRadius": 300,
+                      "id": "zoQHN",
+                      "x": 0,
+                      "y": 0,
+                      "name": "Rectangle 11692",
+                      "fill": "#ffcea6ff",
+                      "width": 147.5,
+                      "height": 8,
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": 1
+                      }
+                    },
+                    {
+                      "type": "rectangle",
+                      "cornerRadius": 300,
+                      "id": "rdH5H",
+                      "x": 0,
+                      "y": 0,
+                      "name": "Rectangle 11693",
+                      "fill": "#f37521ff",
+                      "width": 73.75,
+                      "height": 8,
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": 1
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "O6a1H",
+                  "name": "Frame 1000005407",
+                  "stroke": {
+                    "align": "inside",
+                    "thickness": 1
+                  },
+                  "gap": 6,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "bkAni",
+                      "name": "증여재산공제 한도",
+                      "fill": "#707075ff",
+                      "content": "증여재산공제 한도",
+                      "lineHeight": 1.3333333333333333,
+                      "fontFamily": "Pretendard",
+                      "fontSize": 12,
+                      "fontWeight": "normal",
+                      "letterSpacing": -0.24
+                    },
+                    {
+                      "type": "text",
+                      "id": "i0RnP",
+                      "name": "2천만원",
+                      "fill": "#141415ff",
+                      "content": "2천만원",
+                      "lineHeight": 1.3333333333333333,
+                      "fontFamily": "Pretendard",
+                      "fontSize": 12,
+                      "fontWeight": "normal",
+                      "letterSpacing": -0.24
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "Rz6CN",
+      "x": -3244,
+      "y": 2790,
+      "name": "신고 금액+예정 금액이 4% 이상",
+      "width": 335,
+      "fill": "#ffffffff",
+      "cornerRadius": 12,
+      "stroke": {
+        "align": "inside",
+        "thickness": 1,
+        "fill": "#dddddfff"
+      },
+      "layout": "vertical",
+      "gap": 20,
+      "padding": [
+        16,
+        20
+      ],
+      "children": [
+        {
+          "type": "frame",
+          "id": "tITeo",
+          "name": "신고금액",
+          "width": "fill_container",
+          "stroke": {
+            "align": "inside",
+            "thickness": 1
+          },
+          "layout": "vertical",
+          "gap": 4,
+          "children": [
+            {
+              "type": "frame",
+              "id": "QYS8h",
+              "name": "\b증여세 신고 금액",
+              "width": "fill_container",
+              "stroke": {
+                "align": "inside",
+                "thickness": 1
+              },
+              "gap": 12,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "jUEmZ",
+                  "name": "Frame 1000005445",
+                  "stroke": {
+                    "align": "inside",
+                    "thickness": 1
+                  },
+                  "gap": 10,
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "ckuxz",
+                      "name": "증여세 신고 금액",
+                      "fill": "#141415ff",
+                      "content": "증여세 신고 금액",
+                      "lineHeight": 1.5,
+                      "fontFamily": "Pretendard",
+                      "fontSize": 16,
+                      "fontWeight": "500",
+                      "letterSpacing": -0.32
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "g4s2Y",
+                  "name": "Frame 1000005405",
+                  "width": "fill_container",
+                  "stroke": {
+                    "align": "inside",
+                    "thickness": 1
+                  },
+                  "justifyContent": "end",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "BXzRT",
+                      "name": "7,400,000원",
+                      "fill": "#39393cff",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "7,400,000원",
+                      "lineHeight": 1.5,
+                      "textAlign": "right",
+                      "fontFamily": "Pretendard",
+                      "fontSize": 16,
+                      "fontWeight": "700",
+                      "letterSpacing": -0.16
+                    },
+                    {
+                      "type": "frame",
+                      "id": "Gmb4z",
+                      "name": "ic_chevron_right_primary_16",
+                      "clip": true,
+                      "width": 16,
+                      "height": 16,
+                      "fill": {
+                        "type": "color",
+                        "color": "#ffffffff",
+                        "enabled": false
+                      },
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": 1
+                      },
+                      "layout": "none",
+                      "children": [
+                        {
+                          "type": "path",
+                          "id": "J69Le",
+                          "x": 8.736156463623047,
+                          "y": 13.757597923278809,
+                          "name": "Vector (Stroke)",
+                          "rotation": 89.99999931675467,
+                          "geometry": "M0 1.27279l1.27279-1.27279 7.36361 7.3636 7.3636-7.3636 1.27279 1.27279-8.63639 8.6364-8.6364-8.6364z",
+                          "fillRule": "evenodd",
+                          "fill": "#141415ff",
+                          "width": 11.5151948928833,
+                          "height": 6.606126308441162,
+                          "stroke": {
+                            "align": "center",
+                            "thickness": 1.7999999523162842
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "atrio",
+              "name": "신고 예정 금액",
+              "width": "fill_container",
+              "stroke": {
+                "align": "inside",
+                "thickness": 1
+              },
+              "gap": 12,
+              "padding": [
+                0,
+                16,
+                0,
+                0
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "6irQq",
+                  "name": "Frame 1000005424",
+                  "stroke": {
+                    "align": "inside",
+                    "thickness": 1
+                  },
+                  "gap": 6,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "6lV4A",
+                      "name": "신고해야 할 금액",
+                      "fill": "#8a8a8fff",
+                      "content": "신고해야 할 금액",
+                      "lineHeight": 1.4285714285714286,
+                      "fontFamily": "Pretendard",
+                      "fontSize": 14,
+                      "fontWeight": "500",
+                      "letterSpacing": -0.28
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "ow2hS",
+                  "name": "Frame 1000005405",
+                  "width": "fill_container",
+                  "stroke": {
+                    "align": "inside",
+                    "thickness": 1
+                  },
+                  "justifyContent": "end",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "QFeRl",
+                      "name": "7,400,000원",
+                      "fill": "#a2a2a5ff",
+                      "content": "7,400,000원",
+                      "lineHeight": 1.4285714285714286,
+                      "textAlign": "right",
+                      "fontFamily": "Pretendard",
+                      "fontSize": 14,
+                      "fontWeight": "700",
+                      "letterSpacing": -0.14
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "ywKsd",
+          "name": "\bprogress",
+          "width": "fill_container",
+          "stroke": {
+            "align": "inside",
+            "thickness": 1
+          },
+          "layout": "vertical",
+          "gap": 4,
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "An6yK",
+              "name": "progress bar",
+              "width": "fill_container",
+              "stroke": {
+                "align": "inside",
+                "thickness": 1
+              },
+              "layout": "vertical",
+              "gap": 8,
+              "alignItems": "end",
+              "children": [
+                {
+                  "type": "group",
+                  "id": "MLlz3",
+                  "name": "Group 6603",
+                  "children": [
+                    {
+                      "type": "rectangle",
+                      "cornerRadius": 300,
+                      "id": "duxiP",
+                      "x": 0,
+                      "y": 0,
+                      "name": "Rectangle 11690",
+                      "fill": "#f2f2f3ff",
+                      "width": 295,
+                      "height": 8,
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": 1
+                      }
+                    },
+                    {
+                      "type": "rectangle",
+                      "cornerRadius": 300,
+                      "id": "ovKy3",
+                      "x": 0,
+                      "y": 0,
+                      "name": "Rectangle 11692",
+                      "fill": "#ffcea6ff",
+                      "width": 147.5,
+                      "height": 8,
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": 1
+                      }
+                    },
+                    {
+                      "type": "rectangle",
+                      "cornerRadius": 300,
+                      "id": "RlD71",
+                      "x": 0,
+                      "y": 0,
+                      "name": "Rectangle 11693",
+                      "fill": "#f37521ff",
+                      "width": 73.75,
+                      "height": 8,
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": 1
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "tk12T",
+                  "name": "Frame 1000005407",
+                  "stroke": {
+                    "align": "inside",
+                    "thickness": 1
+                  },
+                  "gap": 6,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "4YXE4",
+                      "name": "증여재산공제 한도",
+                      "fill": "#707075ff",
+                      "content": "증여재산공제 한도",
+                      "lineHeight": 1.3333333333333333,
+                      "fontFamily": "Pretendard",
+                      "fontSize": 12,
+                      "fontWeight": "normal",
+                      "letterSpacing": -0.24
+                    },
+                    {
+                      "type": "text",
+                      "id": "47P2X",
+                      "name": "2천만원",
+                      "fill": "#141415ff",
+                      "content": "2천만원",
+                      "lineHeight": 1.3333333333333333,
+                      "fontFamily": "Pretendard",
+                      "fontSize": 12,
+                      "fontWeight": "normal",
+                      "letterSpacing": -0.24
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "group",
+      "id": "5f2NC",
+      "x": -2686,
+      "y": -2040,
+      "children": [
+        {
+          "type": "rectangle",
+          "cornerRadius": 12,
+          "id": "k2bSr",
+          "x": 0,
+          "y": 0,
+          "name": "Rectangle 17",
+          "fill": "#f2f2f3ff",
+          "width": 500,
+          "height": 500,
+          "stroke": {
+            "align": "inside",
+            "thickness": 1
+          }
+        },
+        {
+          "type": "rectangle",
+          "id": "ZgX43",
+          "x": 360,
+          "y": 262.1652867293076,
+          "rotation": 10.644267375556387,
+          "fill": {
+            "type": "image",
+            "enabled": true,
+            "url": "ic_companylogo_02.png",
+            "mode": "fill"
+          },
+          "width": 120,
+          "height": 120
+        },
+        {
+          "type": "rectangle",
+          "id": "rPEj6",
+          "x": 251.49337308988652,
+          "y": 211,
+          "rotation": -15.710574111921932,
+          "fill": {
+            "type": "image",
+            "enabled": true,
+            "url": "ic_companylogo_03.png",
+            "mode": "fill"
+          },
+          "width": 120,
+          "height": 120
+        },
+        {
+          "type": "rectangle",
+          "id": "t8UGL",
+          "x": 250,
+          "y": 373.36754082846505,
+          "rotation": 6.876491917218305,
+          "fill": {
+            "type": "image",
+            "enabled": true,
+            "url": "ic_companylogo_01.png",
+            "mode": "fill"
+          },
+          "width": 120,
+          "height": 120
+        },
+        {
+          "type": "group",
+          "id": "FEZM3",
+          "x": 179,
+          "y": 101.95251511584593,
+          "rotation": 9.571075034136605,
+          "children": [
+            {
+              "type": "rectangle",
+              "id": "mlVTb",
+              "x": 0,
+              "y": 0,
+              "fill": "#ffffffff",
+              "width": 120,
+              "height": 120
+            },
+            {
+              "type": "group",
+              "id": "tNmun",
+              "x": 27,
+              "y": 30,
+              "children": [
+                {
+                  "type": "path",
+                  "id": "LKh4c",
+                  "x": 20.04611957851739,
+                  "y": 15.239467681229144,
+                  "name": "Vector",
+                  "geometry": "M3.85852 14.68099c-0.83-7.49 7.03-13.5 17.55-13.42 10.51 0.08 19.7 6.22 20.53 13.71 0.83 7.49-7.03 13.51-17.55 13.43001-10.51-0.08-19.71-6.22001-20.53-13.71001m40.04 2.32c-0.95-9.29-11.53-16.91-23.64-17.00999-12.1-0.1-21.14 7.35-20.19 16.64999 0.95 9.29 11.54 16.91 23.64 17.01 12.1 0.1 21.14-7.36 20.19-16.65z",
+                  "fill": "#f7bb82ff",
+                  "width": 44.95388042148271,
+                  "height": 34.48728605846614,
+                  "stroke": {
+                    "align": "inside",
+                    "thickness": 0.75
+                  }
+                },
+                {
+                  "type": "path",
+                  "id": "E8CCS",
+                  "x": 18.283755665184344,
+                  "y": 22.97938659819397,
+                  "name": "Vector",
+                  "geometry": "M27.35218 26.28816c-5.96 6.23-15.53 6.74-21.35999 1.15-5.85-5.59-5.74-15.17 0.22-21.4 5.96-6.22 15.53-6.74 21.37-1.15 5.84 5.59 5.74 15.17-0.23001 21.4z m-22.07999-20.45c-6.93 7.25-7.04 18.38-0.26 24.88 6.79 6.5 17.90999 5.90001 24.83999-1.34 6.93-7.23 7.04-18.37 0.25-24.87-6.78-6.5-17.9-5.9-24.82999 1.34",
+                  "fill": "#f4a051ff",
+                  "width": 35.91140879227505,
+                  "height": 36.089977525246276,
+                  "stroke": {
+                    "align": "inside",
+                    "thickness": 0.75
+                  }
+                },
+                {
+                  "type": "path",
+                  "id": "GRE6d",
+                  "x": 0,
+                  "y": 0,
+                  "name": "Vector",
+                  "geometry": "M23.7846 4.97055c12.4-4.65 24.65999 0.05 27.37999 10.5 2.73 10.44-5.11 22.68-17.51 27.32-12.4 4.65-24.65-0.05-27.37999-10.5-2.72-10.44 5.12-22.67 17.51-27.32z m-11.52 3.99c-12.86 10.18-16.13 24.94-7.31 32.95 8.82 8.02 26.4 6.26 39.26-3.92 12.86-10.19 16.13-24.94 7.30999-32.96-8.82-8.02-26.4-6.26-39.25999 3.92",
+                  "fill": "#ed7100ff",
+                  "width": 57.74686820009053,
+                  "height": 48.091969101745846,
+                  "stroke": {
+                    "align": "inside",
+                    "thickness": 0.75
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "1uy7r",
+      "x": -1609,
+      "y": -1540,
+      "name": "tax.doc.01",
+      "clip": true,
+      "width": 375,
+      "height": 478,
+      "fill": "#ffffffff",
+      "stroke": {
+        "align": "outside",
+        "thickness": 1
+      },
+      "layout": "none",
+      "children": [
+        {
+          "type": "frame",
+          "id": "q0ENj",
+          "x": 0.33363749754425953,
+          "y": 43.19962792548904,
+          "name": "title",
+          "width": 375,
+          "stroke": {
+            "align": "inside",
+            "thickness": 1
+          },
+          "layout": "vertical",
+          "gap": 6,
+          "padding": [
+            0,
+            20
+          ],
+          "children": [
+            {
+              "type": "text",
+              "id": "2Qtxi",
+              "name": "Title Text",
+              "fill": "#141415ff",
+              "textGrowth": "fixed-width",
+              "width": "fill_container",
+              "content": "신고에 필요한 서류는\n파이가 준비했어요",
+              "lineHeight": 1.3333333333333333,
+              "fontFamily": "LIFEPLUS",
+              "fontSize": 24,
+              "fontWeight": "700"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "bERtl",
+          "x": 0.33363749754425953,
+          "y": 145.19962792548904,
+          "name": "Frame 1000004612",
+          "width": 375,
+          "stroke": {
+            "align": "inside",
+            "thickness": 1
+          },
+          "layout": "vertical",
+          "gap": 20,
+          "padding": [
+            0,
+            20
+          ],
+          "children": [
+            {
+              "type": "frame",
+              "id": "L516S",
+              "name": "Frame 1000005171",
+              "width": "fill_container",
+              "stroke": {
+                "align": "inside",
+                "thickness": 1
+              },
+              "layout": "vertical",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "3vo5m",
+                  "name": "Certificate Option",
+                  "width": "fill_container",
+                  "cornerRadius": 8,
+                  "stroke": {
+                    "align": "inside",
+                    "thickness": 1
+                  },
+                  "gap": 10,
+                  "padding": [
+                    12,
+                    0
+                  ],
+                  "justifyContent": "space_between",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "dlEmg",
+                      "name": "Frame 1000004610",
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": 1
+                      },
+                      "gap": 2,
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "dOsJ6",
+                          "name": "ic_dot_secondary_16",
+                          "width": 16,
+                          "height": 16,
+                          "stroke": {
+                            "align": "inside",
+                            "thickness": 1
+                          },
+                          "layout": "none",
+                          "children": [
+                            {
+                              "type": "rectangle",
+                              "id": "NAWaM",
+                              "x": 0,
+                              "y": 0,
+                              "name": "Rectangle 10888",
+                              "width": 16,
+                              "height": 16,
+                              "stroke": {
+                                "align": "inside",
+                                "thickness": 1
+                              }
+                            },
+                            {
+                              "type": "ellipse",
+                              "id": "TP3hY",
+                              "x": 6,
+                              "y": 6,
+                              "name": "Ellipse 188",
+                              "sweepAngle": -360.00001001791264,
+                              "fill": "#f37521ff",
+                              "width": 4,
+                              "height": 4,
+                              "stroke": {
+                                "align": "inside",
+                                "thickness": 1
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "id": "0tnnw",
+                          "name": "Certificate Name",
+                          "fill": "#141415ff",
+                          "content": "통장 거래내역서",
+                          "lineHeight": 1.4444444444444444,
+                          "fontFamily": "Pretendard",
+                          "fontSize": 18,
+                          "fontWeight": "500",
+                          "letterSpacing": -0.36
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "wRgzX",
+                      "name": "Frame 1000004611",
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": 1
+                      },
+                      "gap": 2,
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "nDnT9",
+                          "name": "Certificate Name",
+                          "fill": "#707075ff",
+                          "content": "자세히 보기",
+                          "lineHeight": 1.4285714285714286,
+                          "fontFamily": "Pretendard",
+                          "fontSize": 14,
+                          "fontWeight": "500",
+                          "letterSpacing": -0.28
+                        },
+                        {
+                          "type": "frame",
+                          "id": "UK1qk",
+                          "name": "ic_chevron_right_disable_16",
+                          "clip": true,
+                          "width": 16,
+                          "height": 16,
+                          "fill": {
+                            "type": "color",
+                            "color": "#ffffffff",
+                            "enabled": false
+                          },
+                          "stroke": {
+                            "align": "inside",
+                            "thickness": 1
+                          },
+                          "layout": "none",
+                          "children": [
+                            {
+                              "type": "path",
+                              "id": "6i3NQ",
+                              "x": 8.736156463623047,
+                              "y": 13.757597923278809,
+                              "name": "Vector (Stroke)",
+                              "rotation": 89.99999931675467,
+                              "geometry": "M0 1.27279l1.27279-1.27279 7.36361 7.3636 7.3636-7.3636 1.27279 1.27279-8.63639 8.6364-8.6364-8.6364z",
+                              "fillRule": "evenodd",
+                              "fill": "#bebec1ff",
+                              "width": 11.5151948928833,
+                              "height": 6.606126308441162,
+                              "stroke": {
+                                "align": "center",
+                                "thickness": 1.7999999523162842
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "R0qZq",
+                  "name": "Frame 1000005170",
+                  "width": "fill_container",
+                  "fill": "#fff2e5ff",
+                  "cornerRadius": 8,
+                  "stroke": {
+                    "align": "inside",
+                    "thickness": 1
+                  },
+                  "gap": 8,
+                  "padding": 12,
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "aw0XP",
+                      "name": "적립식 증여의 시작을 증명하는 첫 거래 내역을 첨부해요",
+                      "fill": "#141415ff",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "적립식 증여의 시작을 증명하는 첫 거래 내역을 첨부해요",
+                      "lineHeight": 1.4285714285714286,
+                      "fontFamily": "Pretendard",
+                      "fontSize": 14,
+                      "fontWeight": "normal",
+                      "letterSpacing": -0.28
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "hpZnl",
+              "name": "Frame 1000005172",
+              "width": "fill_container",
+              "stroke": {
+                "align": "inside",
+                "thickness": 1
+              },
+              "layout": "vertical",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "bFRXj",
+                  "name": "Certificate Option",
+                  "width": "fill_container",
+                  "cornerRadius": 8,
+                  "stroke": {
+                    "align": "inside",
+                    "thickness": 1
+                  },
+                  "gap": 10,
+                  "padding": [
+                    12,
+                    0
+                  ],
+                  "justifyContent": "space_between",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "vYr7C",
+                      "name": "Frame 1000004610",
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": 1
+                      },
+                      "gap": 2,
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "5UL7z",
+                          "name": "ic_dot_secondary_16",
+                          "width": 16,
+                          "height": 16,
+                          "stroke": {
+                            "align": "inside",
+                            "thickness": 1
+                          },
+                          "layout": "none",
+                          "children": [
+                            {
+                              "type": "rectangle",
+                              "id": "MqgbC",
+                              "x": 0,
+                              "y": 0,
+                              "name": "Rectangle 10888",
+                              "width": 16,
+                              "height": 16,
+                              "stroke": {
+                                "align": "inside",
+                                "thickness": 1
+                              }
+                            },
+                            {
+                              "type": "ellipse",
+                              "id": "Sc0d4",
+                              "x": 6,
+                              "y": 6,
+                              "name": "Ellipse 188",
+                              "sweepAngle": -360.00001001791264,
+                              "fill": "#f37521ff",
+                              "width": 4,
+                              "height": 4,
+                              "stroke": {
+                                "align": "inside",
+                                "thickness": 1
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "id": "vmhgK",
+                          "name": "Certificate Name",
+                          "fill": "#141415ff",
+                          "content": "증여금 평가 명세서",
+                          "lineHeight": 1.4444444444444444,
+                          "fontFamily": "Pretendard",
+                          "fontSize": 18,
+                          "fontWeight": "500",
+                          "letterSpacing": -0.36
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "Ci2Zd",
+                      "name": "Frame 1000004611",
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": 1
+                      },
+                      "gap": 2,
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "lA6Hj",
+                          "name": "Certificate Name",
+                          "fill": "#707075ff",
+                          "content": "자세히 보기",
+                          "lineHeight": 1.4285714285714286,
+                          "fontFamily": "Pretendard",
+                          "fontSize": 14,
+                          "fontWeight": "500",
+                          "letterSpacing": -0.28
+                        },
+                        {
+                          "type": "frame",
+                          "id": "yjDbt",
+                          "name": "ic_chevron_right_disable_16",
+                          "clip": true,
+                          "width": 16,
+                          "height": 16,
+                          "fill": {
+                            "type": "color",
+                            "color": "#ffffffff",
+                            "enabled": false
+                          },
+                          "stroke": {
+                            "align": "inside",
+                            "thickness": 1
+                          },
+                          "layout": "none",
+                          "children": [
+                            {
+                              "type": "path",
+                              "id": "KPbSZ",
+                              "x": 8.736156463623047,
+                              "y": 13.757597923278809,
+                              "name": "Vector (Stroke)",
+                              "rotation": 89.99999931675467,
+                              "geometry": "M0 1.27279l1.27279-1.27279 7.36361 7.3636 7.3636-7.3636 1.27279 1.27279-8.63639 8.6364-8.6364-8.6364z",
+                              "fillRule": "evenodd",
+                              "fill": "#bebec1ff",
+                              "width": 11.5151948928833,
+                              "height": 6.606126308441162,
+                              "stroke": {
+                                "align": "center",
+                                "thickness": 1.7999999523162842
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "IWzTg",
+                  "name": "Frame 1000005170",
+                  "width": "fill_container",
+                  "fill": "#fff2e5ff",
+                  "cornerRadius": 8,
+                  "stroke": {
+                    "align": "inside",
+                    "thickness": 1
+                  },
+                  "gap": 8,
+                  "padding": 12,
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "gbvMy",
+                      "name": "증여금이 세법에 따라 정확히 계산된 것임을 증명해요",
+                      "fill": "#141415ff",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "증여금이 세법에 따라 정확히 계산된 것임을 증명해요",
+                      "lineHeight": 1.4285714285714286,
+                      "fontFamily": "Pretendard",
+                      "fontSize": 14,
+                      "fontWeight": "normal",
+                      "letterSpacing": -0.28
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "mEPLU",
+      "x": -2291,
+      "y": -1416,
+      "name": "Frame 1000005565",
+      "width": 396,
+      "fill": "#ffffffff",
+      "stroke": {
+        "align": "inside",
+        "thickness": 1
+      },
+      "layout": "vertical",
+      "gap": 40,
+      "padding": 50,
+      "alignItems": "center",
+      "children": [
+        {
+          "type": "rectangle",
+          "id": "Y4jWx",
+          "fill": {
+            "type": "image",
+            "enabled": true,
+            "url": "ic_check_fill_brand_72.png",
+            "mode": "fill"
+          },
+          "width": 72,
+          "height": 72
+        },
+        {
+          "type": "frame",
+          "id": "NsNeM",
+          "name": "title",
+          "width": "fill_container",
+          "stroke": {
+            "align": "inside",
+            "thickness": 1
+          },
+          "layout": "vertical",
+          "gap": 10,
+          "children": [
+            {
+              "type": "text",
+              "id": "bOwI8",
+              "name": "Title",
+              "fill": "#141415ff",
+              "textGrowth": "fixed-width",
+              "width": "fill_container",
+              "content": "신고 접수 완료",
+              "lineHeight": 1.3333333333333333,
+              "textAlign": "center",
+              "fontFamily": "LIFEPLUS",
+              "fontSize": 24,
+              "fontWeight": "700"
+            },
+            {
+              "type": "text",
+              "id": "I9ZYq",
+              "name": "Subtitle",
+              "fill": "#39393cff",
+              "textGrowth": "fixed-width",
+              "width": "fill_container",
+              "content": "국세청 홈택스에 증여세 신고서가 접수됐어요.\n자녀의 자산이 커지는 모습을 보며,  다음 증여도 함께 준비해 보아요!",
+              "lineHeight": 1.5,
+              "textAlign": "center",
+              "fontFamily": "Pretendard",
+              "fontSize": 16,
+              "fontWeight": "normal",
+              "letterSpacing": -0.32
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "V0xzH",
+      "x": -5518,
+      "y": 2135,
+      "name": "ic_logo_500",
+      "rotation": -1.5902773407317584e-15,
+      "clip": true,
+      "width": 120,
+      "height": 120,
+      "fill": "#141415ff",
+      "cornerRadius": 5,
+      "stroke": {
+        "align": "inside",
+        "thickness": 2.4000000953674316
+      },
+      "layout": "none",
+      "children": [
+        {
+          "type": "group",
+          "id": "yPcVh",
+          "x": 29,
+          "y": 66.128173828125,
+          "name": "Group 8171",
+          "children": [
+            {
+              "type": "path",
+              "id": "ldxkb",
+              "x": 43.099609375,
+              "y": 0,
+              "name": "Vector",
+              "rotation": 1.5902773407317584e-15,
+              "geometry": "M16.832 20.736c-0.81067 1.04533-1.824 1.856-3.04 2.432-1.19467 0.59733-2.58133 0.896-4.16 0.896-1.62133 0-3.04-0.288-4.256-0.864-1.19467-0.55467-2.19734-1.35467-3.008-2.4-0.78933-1.04533-1.38667-2.304-1.792-3.776-0.384-1.49333-0.576-3.15733-0.576-4.992 0-1.81333 0.192-3.456 0.576-4.928 0.384-1.49333 0.97067-2.76266 1.76-3.808 0.78933-1.04533 1.792-1.856 3.008-2.432 1.216-0.576 2.64534-0.864 4.288-0.864 1.57867 0 2.96533 0.288 4.16 0.864 1.216 0.576 2.22933 1.39733 3.04 2.464 0.81067 1.04533 1.41867 2.304 1.824 3.776 0.42667 1.472 0.64 3.11467 0.64001 4.928 0 1.77067-0.21334 3.40267-0.64001 4.896-0.40533 1.472-1.01333 2.74133-1.824 3.808z m-4.864-1.088c0.66133-0.40533 1.216-0.96 1.664-1.664 0.448-0.72533 0.77866-1.58933 0.992-2.592 0.23466-1.00267 0.352-2.12267 0.352-3.36 0-1.216-0.10667-2.31467-0.32-3.296-0.21333-1.00267-0.544-1.86667-0.992-2.592-0.42667-0.72533-0.98133-1.28-1.664-1.664-0.66133-0.40533-1.45066-0.608-2.368-0.608-1.024 0-1.87734 0.20267-2.56 0.608-0.68267 0.40533-1.22667 0.97067-1.632 1.696-0.40533 0.72533-0.69334 1.58934-0.864 2.592-0.17067 1.00267-0.256 2.09067-0.256 3.264 0 1.152 0.08533 2.22933 0.256 3.232 0.17067 1.00267 0.45867 1.87734 0.864 2.624 0.40533 0.72533 0.94933 1.30133 1.632 1.728 0.68267 0.40533 1.536 0.608 2.56 0.608 0.896 0 1.67466-0.192 2.336-0.576z",
+              "fill": "#ffffffff",
+              "width": 19.296005249023438,
+              "height": 24.06399917602539,
+              "stroke": {
+                "align": "outside",
+                "thickness": 1
+              }
+            },
+            {
+              "type": "path",
+              "id": "ppeW6",
+              "x": 20.599609375,
+              "y": 0,
+              "name": "Vector",
+              "rotation": 1.5902773407317584e-15,
+              "geometry": "M16.832 20.736c-0.81067 1.04533-1.824 1.856-3.04 2.432-1.19467 0.59733-2.58133 0.896-4.16 0.896-1.62133 0-3.04-0.288-4.256-0.864-1.19467-0.55467-2.19733-1.35467-3.008-2.4-0.78933-1.04533-1.38667-2.304-1.792-3.776-0.384-1.49333-0.576-3.15733-0.576-4.992 0-1.81333 0.192-3.456 0.576-4.928 0.384-1.49333 0.97067-2.76266 1.76-3.808 0.78933-1.04533 1.792-1.856 3.008-2.432 1.216-0.576 2.64534-0.864 4.288-0.864 1.57867 0 2.96533 0.288 4.16 0.864 1.216 0.576 2.22933 1.39733 3.04 2.464 0.81067 1.04533 1.41867 2.304 1.824 3.776 0.42667 1.472 0.64 3.11467 0.64 4.928 0 1.77067-0.21333 3.40267-0.64 4.896-0.40533 1.472-1.01333 2.74133-1.824 3.808z m-4.864-1.088c0.66133-0.40533 1.216-0.96 1.664-1.664 0.448-0.72533 0.77866-1.58933 0.992-2.592 0.23467-1.00267 0.352-2.12267 0.352-3.36 0-1.216-0.10667-2.31467-0.32-3.296-0.21333-1.00267-0.544-1.86667-0.992-2.592-0.42667-0.72533-0.98133-1.28-1.664-1.664-0.66133-0.40533-1.45066-0.608-2.368-0.608-1.024 0-1.87734 0.20267-2.56 0.608-0.68267 0.40533-1.22667 0.97067-1.632 1.696-0.40533 0.72533-0.69333 1.58934-0.864 2.592-0.17067 1.00267-0.256 2.09067-0.256 3.264 0 1.152 0.08533 2.22933 0.256 3.232 0.17067 1.00267 0.45867 1.87734 0.864 2.624 0.40533 0.72533 0.94933 1.30133 1.632 1.728 0.68267 0.40533 1.536 0.608 2.56 0.608 0.896 0 1.67466-0.192 2.336-0.576z",
+              "fill": "#ffffffff",
+              "width": 19.296003341674805,
+              "height": 24.06399917602539,
+              "stroke": {
+                "align": "outside",
+                "thickness": 1
+              }
+            },
+            {
+              "type": "path",
+              "id": "s3hU8",
+              "x": 0,
+              "y": 0.5439453125,
+              "name": "Vector",
+              "rotation": 1.5902773407317584e-15,
+              "geometry": "M3.232 16.512c0.512 0.87467 1.248 1.61067 2.208 2.208 0.96 0.576 2.03733 0.864 3.232 0.864 0.59733 0 1.16267-0.08533 1.696-0.256 0.53333-0.17067 1.00267-0.416 1.408-0.736 0.40533-0.32 0.72533-0.704 0.96-1.152 0.23467-0.46933 0.352-0.98133 0.352-1.536 0-0.576-0.11733-1.088-0.352-1.536-0.23467-0.46933-0.55467-0.864-0.96-1.184-0.40533-0.32-0.87467-0.56533-1.408-0.736-0.53333-0.17067-1.09867-0.256-1.696-0.256-0.68267 0-1.36533 0.128-2.048 0.384-0.68267 0.256-1.23733 0.62934-1.664 1.12l-3.808-1.504 1.312-12.192 13.184 0 0 3.84-9.696 0-0.576 5.344c0.40533-0.23467 0.928-0.416 1.568-0.544 0.64-0.14933 1.216-0.224 1.728-0.224 1.25867 0 2.42133 0.17067 3.488 0.512 1.06667 0.34133 1.984 0.832 2.752 1.472 0.768 0.64 1.36533 1.42933 1.792 2.368 0.42667 0.91733 0.64 1.96267 0.64 3.136 0 1.17333-0.21333 2.22933-0.64 3.168-0.42667 0.93867-1.024 1.73867-1.792 2.4-0.768 0.66133-1.68533 1.16266-2.752 1.504-1.06667 0.36267-2.22933 0.544-3.488 0.544-2.00533 0-3.744-0.39466-5.216-1.184-1.45067-0.78933-2.60267-1.86667-3.456-3.232l3.232-2.592z",
+              "fill": "#ffffffff",
+              "width": 17.34400177001953,
+              "height": 23.520000457763672,
+              "stroke": {
+                "align": "outside",
+                "thickness": 1
+              }
+            }
+          ]
+        },
+        {
+          "type": "group",
+          "id": "ZmXQB",
+          "x": 28,
+          "y": 30,
+          "name": "Group 8170",
+          "children": [
+            {
+              "type": "path",
+              "id": "unrgT",
+              "x": 45.505859375,
+              "y": 0.672119140625,
+              "name": "Vector",
+              "rotation": 1.5902773407317584e-15,
+              "geometry": "M4.224 22.944l-4.224 0 0-22.944 9.568 0c1.10933 0 2.18667 0.192 3.232 0.576 1.06667 0.36267 2.00533 0.91733 2.816 1.664 0.81067 0.72533 1.46133 1.632 1.952 2.72 0.49067 1.06667 0.736 2.31467 0.736 3.744 0 1.38667-0.23467 2.61333-0.704 3.68-0.448 1.06667-1.06667 1.97333-1.856 2.72-0.78933 0.74667-1.71733 1.312-2.784 1.696-1.06667 0.384-2.208 0.576-3.424 0.576l-5.312 0 0 5.568z m5.152-9.504c0.78933 0 1.46133-0.128 2.016-0.384 0.576-0.256 1.04534-0.59733 1.408-1.024 0.384-0.42667 0.672-0.928 0.864-1.504 0.192-0.576 0.288-1.17333 0.288-1.792 0-0.53333-0.08534-1.07733-0.256-1.632-0.17067-0.576-0.448-1.09867-0.832-1.568-0.384-0.46933-0.87467-0.85333-1.472-1.152-0.59733-0.29867-1.312-0.448-2.144-0.448l-5.024 0 0 9.504 5.152 0z",
+              "fill": "#ffffffff",
+              "width": 18.304000854492188,
+              "height": 22.944002151489258,
+              "stroke": {
+                "align": "outside",
+                "thickness": 1
+              }
+            },
+            {
+              "type": "path",
+              "id": "3y6Cl",
+              "x": 20.28125,
+              "y": 0,
+              "name": "Vector",
+              "rotation": 1.5902773407317584e-15,
+              "geometry": "M22.24 23.2l-5.28 0-1.728-1.696c-0.91733 0.61867-1.97333 1.12-3.168 1.504-1.19467 0.40533-2.464 0.59733-3.808 0.576-1.024 0-2.02667-0.10667-3.008-0.32-0.98133-0.192-1.86667-0.52266-2.656-0.992-0.768-0.49067-1.39733-1.13067-1.888-1.92-0.46933-0.81067-0.704-1.81334-0.704-3.008 0-0.768 0.10667-1.46133 0.32-2.08 0.21333-0.61867 0.52267-1.19466 0.928-1.728 0.42667-0.53333 0.93867-1.01334 1.536-1.44 0.59733-0.448 1.28-0.87467 2.048-1.28-0.704-0.896-1.26933-1.74933-1.696-2.56-0.42667-0.81067-0.64-1.62133-0.64-2.432 0-1.89867 0.608-3.33867 1.824-4.32 1.23733-1.00267 2.85867-1.504 4.864-1.504 1.00267 0 1.92 0.14933 2.752 0.448 0.832 0.27733 1.54667 0.672 2.144 1.184 0.59733 0.512 1.056 1.13067 1.376 1.856 0.34133 0.704 0.512 1.48267 0.512 2.336 0 0.40533-0.064 0.84267-0.192 1.312-0.128 0.46933-0.37333 0.96-0.736 1.472-0.36267 0.512-0.88533 1.056-1.568 1.632-0.66133 0.55467-1.54666 1.12-2.656 1.696l4.352 4.416c0.384-0.36267 0.75734-0.96 1.12-1.792 0.384-0.85333 0.65067-1.77067 0.8-2.752l3.872 0c-0.192 1.23733-0.55466 2.47467-1.088 3.712-0.53333 1.216-1.216 2.35733-2.048 3.424l4.416 4.256z m-12.064-14.976c0.46933-0.34133 0.832-0.65067 1.088-0.928 0.256-0.29867 0.42667-0.56533 0.512-0.8 0.10667-0.256 0.16-0.49067 0.16-0.704 0-0.61867-0.256-1.17333-0.768-1.664-0.512-0.512-1.17333-0.768-1.984-0.768-0.81067 0-1.46133 0.224-1.952 0.672-0.49067 0.448-0.736 0.992-0.736 1.632 0 0.49067 0.192 1.06667 0.576 1.728 0.384 0.64 0.82133 1.26933 1.312 1.888 0.72533-0.384 1.32267-0.736 1.792-1.056z m-3.04 5.28c-0.66133 0.27733-1.19467 0.576-1.6 0.896-0.384 0.32-0.68267 0.64-0.896 0.96-0.192 0.32-0.32 0.64-0.384 0.96-0.064 0.32-0.096 0.62933-0.096 0.928 0 0.81067 0.352 1.49333 1.056 2.048 0.72533 0.53333 1.68533 0.82133 2.88 0.864 0.78933 0.02133 1.57867-0.10666 2.368-0.384 0.78933-0.27733 1.42934-0.58667 1.92-0.928l-5.248-5.344z",
+              "fill": "#ffffffff",
+              "width": 22.240001678466797,
+              "height": 23.585601806640625,
+              "stroke": {
+                "align": "outside",
+                "thickness": 1
+              }
+            },
+            {
+              "type": "path",
+              "id": "vB5gX",
+              "x": 0,
+              "y": 0.3701171875,
+              "name": "Vector",
+              "rotation": 1.5902773407317584e-15,
+              "geometry": "M15.392 5.71004c-0.61867-0.34133-1.248-0.65067-1.888-0.928-0.55467-0.23467-1.17333-0.448-1.856-0.64-0.66133-0.21333-1.33333-0.34133-2.016-0.384-1.216-0.04267-2.18667 0.10667-2.912 0.448-0.72533 0.32-1.12 1.01333-1.184 2.08-0.04267 0.704 0.34133 1.376 1.152 2.016 0.832 0.64 2.26133 1.29067 4.288 1.952 0.96 0.32 1.87733 0.71467 2.752 1.184 0.896 0.448 1.664 1.00267 2.304 1.664 0.66133 0.66133 1.152 1.42934 1.472 2.304 0.32 0.87467 0.37333 1.87733 0.16 3.008-0.21333 1.216-0.672 2.176-1.376 2.88-0.704 0.68267-1.504 1.184-2.4 1.504-0.896 0.34133-1.824 0.53333-2.784 0.576-0.96 0.064-1.81333 0.07467-2.56 0.032-1.28-0.08533-2.44267-0.27733-3.488-0.576-1.024-0.27733-1.90933-0.58667-2.656-0.928-0.87467-0.384-1.67467-0.81067-2.4-1.28l1.728-3.616c0.42667 0.32 0.96 0.62933 1.6 0.928 0.66133 0.29867 1.32267 0.576 1.984 0.83199 0.68267 0.23467 1.32267 0.42667 1.92 0.576 0.59733 0.14933 1.056 0.23467 1.376 0.25601 1.6 0.128 2.784-0.01067 3.552-0.41601 0.768-0.40533 1.14133-1.152 1.12-2.23999-0.02133-0.384-0.20267-0.736-0.544-1.056-0.32-0.34133-0.74667-0.65067-1.28-0.928-0.53333-0.29867-1.14133-0.576-1.824-0.832-0.66133-0.256-1.33333-0.50133-2.016-0.736-0.66133-0.256-1.30133-0.512-1.92-0.768-0.61867-0.256-1.14133-0.52267-1.568-0.8-1.17333-0.74667-1.984-1.57867-2.432-2.496-0.448-0.93867-0.64-1.96267-0.576-3.072 0.10667-2.06933 0.928-3.648 2.464-4.736 1.536-1.10933 3.73333-1.61067 6.592-1.504 1.00267 0.04267 1.92 0.20267 2.752 0.48 0.85333 0.256 1.6 0.53333 2.24 0.832 0.72533 0.36267 1.408 0.75733 2.048 1.184l-1.824 3.2z",
+              "fill": "#ffffffff",
+              "width": 17.792001724243164,
+              "height": 23.431636810302734,
+              "stroke": {
+                "align": "outside",
+                "thickness": 1
+              }
             }
           ]
         }

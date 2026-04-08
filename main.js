@@ -10,22 +10,144 @@ gsap.registerPlugin(ScrollTrigger);
 // Clean up standard Vite text
 document.querySelector('#app')?.remove();
 
+if ('scrollRestoration' in history) {
+  history.scrollRestoration = 'manual';
+}
+
 // Mount header at the very top of the page
 document.body.insertBefore(Header(), document.body.firstChild);
+
+document.addEventListener('click', (event) => {
+  const logoLink = event.target.closest?.('[data-home-link]');
+  if (!logoLink) return;
+
+  const isRootPath = window.location.pathname === '/' || window.location.pathname.endsWith('/index.html');
+  event.preventDefault();
+  if (isRootPath) {
+    window.scrollTo(0, 0);
+    window.location.reload();
+    return;
+  }
+
+  window.location.href = './';
+});
 
 // Keep hero pinning below the fixed header
 const headerHeight = document.querySelector('.header')?.getBoundingClientRect().height ?? 72;
 const topUiOffset = Math.round(headerHeight);
 const heroPinned = document.querySelector('.hero-pinned');
 const section01 = document.querySelector('.section-01');
+const heroLoopVideo = document.querySelector('.hero-loop-video');
+const heroLoopFallback = heroLoopVideo?.querySelector('.hero-loop-video__fallback');
+let heroLoopFallbackHidden = false;
 
 // Set initial states for fly-in images
 gsap.set(".img-02, .img-03", { x: "-50vw" });
 gsap.set(".img-04, .img-05", { x: "50vw" });
+
+const hideHeroLoopFallback = () => {
+  if (!heroLoopFallback || heroLoopFallbackHidden) return;
+  heroLoopFallbackHidden = true;
+  gsap.to(heroLoopFallback, {
+    opacity: 0,
+    duration: 0.28,
+    ease: 'power2.out',
+    onComplete: () => {
+      heroLoopFallback.remove();
+    }
+  });
+};
+
+const initHeroLoopVideo = () => {
+  if (!heroLoopVideo) return;
+
+  const layers = Array.from(heroLoopVideo.querySelectorAll('video'));
+  if (layers.length < 2) return;
+
+  const [primary, secondary] = layers;
+  const swapLeadTime = 0.38;
+  const swapFadeDuration = 0.34;
+  let activeVideo = primary;
+  let standbyVideo = secondary;
+  let isSwapping = false;
+
+  const primeVideo = (video, shouldPlay) => {
+    video.loop = false;
+    video.muted = true;
+    video.playsInline = true;
+    video.preload = 'auto';
+    if (!shouldPlay) {
+      video.pause();
+      video.currentTime = 0;
+      gsap.set(video, { opacity: 0 });
+    }
+  };
+
+  primeVideo(primary, true);
+  primeVideo(secondary, false);
+
+  const completeSwap = (outgoing, incoming) => {
+    outgoing.pause();
+    outgoing.currentTime = 0;
+    gsap.set(outgoing, { opacity: 0 });
+    gsap.set(incoming, { opacity: 1 });
+    activeVideo = incoming;
+    standbyVideo = outgoing;
+    isSwapping = false;
+  };
+
+  const beginSwap = () => {
+    if (isSwapping) return;
+    if (activeVideo.readyState < 2 || !Number.isFinite(activeVideo.duration) || activeVideo.duration <= 0) return;
+
+    const remaining = activeVideo.duration - activeVideo.currentTime;
+    if (remaining > swapLeadTime) return;
+
+    isSwapping = true;
+
+    const outgoing = activeVideo;
+    const incoming = standbyVideo;
+
+    incoming.currentTime = 0;
+    incoming.playbackRate = outgoing.playbackRate;
+    gsap.set(incoming, { opacity: 0 });
+    incoming.play().catch(() => {});
+
+    gsap.to(incoming, {
+      opacity: 1,
+      duration: swapFadeDuration,
+      ease: 'power2.out'
+    });
+
+    gsap.to(outgoing, {
+      opacity: 0,
+      duration: swapFadeDuration,
+      ease: 'power2.out',
+      onComplete: () => completeSwap(outgoing, incoming)
+    });
+  };
+
+  const handleTimeUpdate = () => {
+    beginSwap();
+  };
+
+  activeVideo.addEventListener('timeupdate', handleTimeUpdate);
+  activeVideo.addEventListener('loadeddata', hideHeroLoopFallback, { once: true });
+  standbyVideo.addEventListener('timeupdate', handleTimeUpdate);
+
+  activeVideo.play().catch(() => {});
+
+  if (activeVideo.readyState >= 2 || standbyVideo.readyState >= 2) {
+    requestAnimationFrame(() => requestAnimationFrame(hideHeroLoopFallback));
+  }
+};
+
+initHeroLoopVideo();
 let heroTransitioning = false;
 let heroTransitioned = false;
 let heroAutoScrolling = false;
 let heroAutoScrollTween = null;
+const heroGalleryTimeScale = 0.5384615385;
 
 const stopHeroAutoScroll = () => {
   if (heroAutoScrollTween) {
@@ -42,7 +164,7 @@ const runHeroAutoScroll = (targetTop) => {
   const scrollState = { y: window.scrollY };
   heroAutoScrollTween = gsap.to(scrollState, {
     y: targetTop,
-    duration: 0.8,
+    duration: 1.3,
     ease: 'power3.out',
     onUpdate: () => {
       window.scrollTo(0, Math.round(scrollState.y));
@@ -91,6 +213,8 @@ const tl = gsap.timeline({
     window.scrollTo(0, 0);
   }
 });
+
+tl.timeScale(heroGalleryTimeScale);
 
 tl.to(".hero-title", {
   opacity: 0,
@@ -155,12 +279,14 @@ const canReturnToHeroFromSection01 = () => {
 
 const triggerHeroGallery = () => {
   if (!canTriggerHeroGallery()) return;
+  tl.timeScale(heroGalleryTimeScale);
   tl.play(0);
 };
 
 const resetHeroGallery = () => {
   if (!canResetHeroGallery()) return;
   heroTransitioning = true;
+  tl.timeScale(heroGalleryTimeScale);
   tl.reverse();
 };
 
@@ -169,7 +295,7 @@ const returnToHeroFromSection01 = () => {
   stopHeroAutoScroll();
   heroTransitioning = true;
   heroAutoScrolling = true;
-  tl.timeScale(1.25).reverse();
+  tl.timeScale(heroGalleryTimeScale).reverse();
 
   const scrollState = { y: window.scrollY };
   heroAutoScrollTween = gsap.to(scrollState, {
