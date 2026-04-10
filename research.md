@@ -329,6 +329,12 @@
 - This repository is an actively iterated static landing prototype, not a governance-only setup anymore
 - The active source of truth is the root-level HTML/CSS/JS entry set
 - The major engineering need now is not backend architecture, but disciplined verification of UI-heavy animation code and keeping docs synchronized with actual implementation state
+- Latest verified text change on test1 `Section 04`:
+  - planning card description now ends with period (`...가능해요.`)
+  - investment-link card description now ends with period (`...수 있어요.`)
+- Latest asset sync for handoff continuity:
+  - `untitled.pen` updated in working tree
+  - `Product List Container.png` added in working tree
 
 
 - Hero center image now uses `img_main_website.png`.
