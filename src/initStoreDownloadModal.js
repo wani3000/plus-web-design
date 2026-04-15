@@ -108,7 +108,7 @@ export function initStoreDownloadModal() {
   ensureModal();
 
   document.addEventListener('click', async (event) => {
-    const button = event.target.closest('.store-button');
+    const button = event.target.closest('.store-button, .mobile-header__download');
     if (!button) return;
 
     const storeType = getStoreType(button);

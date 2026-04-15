@@ -35,6 +35,16 @@
   - test3 only
   - or shared CSS/asset layers
 - Current user direction is to default to **test1-only** changes unless explicitly told otherwise.
+- Mobile tasks are shared UI work, but they still need to respect the test1/test2/test3 runtime split.
+- 히어로 카피 위치 조정처럼 공통 레이아웃 변화는 모바일/데스크톱 둘 다 함께 검증해야 한다.
+- 히어로 비디오 관련 수정은 poster/fallback, `canplay/playing` 시점, 모바일 autoplay 재시도까지 함께 확인해야 한다.
+- 모바일 타이포 통일 규칙에는 `Section 01` 말풍선 15px 예외가 포함되고, 기본 섹션 타이틀/서브타이틀은 28px / 18px, 간격 16px을 사용한다.
+- 모바일 주요 섹션 타이틀은 전용 줄바꿈을 사용한다.
+- 모바일 `Section 03` 카드의 `첫번째~네번째 공식` chip은 카드 우측 배치 대신 타이틀 위 8px 간격 세로 스택을 유지해야 한다.
+- 모바일 `Section 03` 카드 내부 그래픽은 현재 데스크톱 대비 65% 스케일을 유지해야 한다.
+- 모바일 `Section 03` 카드 내부 패딩은 상하좌우 모두 20px을 유지해야 한다.
+- 모바일 `Section 04` 카드 내부 그래픽/컴포넌트는 현재 데스크톱 대비 70% 스케일을 유지해야 한다.
+- 모바일 `Section 05 intro` 정보 카드는 1열 스택으로 유지해야 한다.
 
 ## Current Workstreams
 
@@ -118,7 +128,9 @@ log the result
 - Re-verify after any shared CSS or asset change
 - Current note:
   - `test2.html` is a full landing-page variant with Section 02 restored and the older scrub hero
+  - `test2.html` 모바일에서는 desktop scrub hero와 section motion을 끈다
   - `test3.html` remains the phone-to-card reveal experiment
+  - `test3.html` 모바일에서는 reveal motion을 끈다
   - `test2.css` remains inactive unless explicitly reused
 
 ## Current Verified Implementations

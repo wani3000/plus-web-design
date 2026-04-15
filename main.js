@@ -32,6 +32,220 @@ document.addEventListener('click', (event) => {
   window.location.href = './';
 });
 
+initStoreDownloadModal();
+
+const isMobile = window.matchMedia('(max-width: 767px)').matches;
+
+const initMobileSection01B = () => {
+  if (!isMobile) return;
+
+  const section01b = document.querySelector('.section-01b');
+  const phoneWrap = section01b?.querySelector('.section-01b__phone-wrap');
+  if (!section01b || !phoneWrap) return;
+
+  const activeIndex = 1;
+  let cycleStarted = false;
+  const mobilePhoneOrder = [
+    'img_mockup_12.png',
+    'img_mockup_01.png',
+    'img_mockup_02.png',
+    'img_mockup_03.png',
+    'img_mockup_10.png',
+    'img_mockup_07.png',
+    'img_mockup_08.png',
+    'img_mockup_09.png'
+  ];
+
+  const getPhoneCards = () => Array.from(phoneWrap.querySelectorAll('.section-01b__phone-outline'));
+  const getPhoneGap = () => parseFloat(getComputedStyle(phoneWrap).gap || '0');
+
+  const resetPhoneCardsToMobileOrder = () => {
+    const cards = getPhoneCards();
+    const bySrc = new Map(
+      cards.map((card) => {
+        const image = card.querySelector('.section-01b__phone-image');
+        const src = image?.getAttribute('src')?.split('/').pop() ?? '';
+        return [src, card];
+      })
+    );
+
+    mobilePhoneOrder.forEach((src) => {
+      const card = bySrc.get(src);
+      if (card) {
+        phoneWrap.appendChild(card);
+      }
+    });
+  };
+
+  const syncPhoneRail = ({ immediate = false } = {}) => {
+    const cards = getPhoneCards();
+    if (cards.length <= activeIndex) return;
+
+    const activeCard = cards[activeIndex];
+    const cardWidth = activeCard.getBoundingClientRect().width;
+    const step = cardWidth + getPhoneGap();
+    const viewportWidth = section01b.getBoundingClientRect().width;
+    const innerPaddingLeft = parseFloat(getComputedStyle(phoneWrap.parentElement).paddingLeft || '0');
+    const targetX = ((viewportWidth - cardWidth) / 2) - innerPaddingLeft - (activeIndex * step);
+
+    if (immediate) {
+      gsap.set(phoneWrap, { x: targetX });
+    } else {
+      gsap.to(phoneWrap, {
+        x: targetX,
+        duration: 0.72,
+        ease: 'power2.inOut',
+        overwrite: true
+      });
+    }
+
+    cards.forEach((card, index) => {
+      const isActiveCard = index === activeIndex;
+      const screen = card.querySelector('.section-01b__phone-screen');
+      const cardState = {
+        scale: isActiveCard ? 1 : 0.86,
+        opacity: isActiveCard ? 1 : 0.62,
+        y: isActiveCard ? 0 : 10
+      };
+      const screenState = {
+        opacity: isActiveCard ? 1 : 0.42
+      };
+
+      if (immediate) {
+        gsap.set(card, cardState);
+        if (screen) gsap.set(screen, screenState);
+      } else {
+        gsap.to(card, {
+          ...cardState,
+          duration: 0.72,
+          ease: 'power2.inOut',
+          overwrite: true
+        });
+        if (screen) {
+          gsap.to(screen, {
+            ...screenState,
+            duration: 0.72,
+            ease: 'power2.inOut',
+            overwrite: true
+          });
+        }
+      }
+
+      card.classList.toggle('is-active', isActiveCard);
+    });
+  };
+
+  const queueNextCycle = () => {
+    gsap.delayedCall(2.2, () => {
+      const cards = getPhoneCards();
+      if (cards.length <= activeIndex + 1) return;
+
+      const step = cards[0].getBoundingClientRect().width + getPhoneGap();
+      const currentActiveCard = cards[activeIndex];
+      const nextActiveCard = cards[activeIndex + 1];
+      const currentScreen = currentActiveCard.querySelector('.section-01b__phone-screen');
+      const nextScreen = nextActiveCard.querySelector('.section-01b__phone-screen');
+
+      gsap.to(currentActiveCard, {
+        scale: 0.86,
+        opacity: 0.62,
+        y: 10,
+        duration: 0.72,
+        ease: 'power2.inOut',
+        overwrite: true
+      });
+      gsap.to(nextActiveCard, {
+        scale: 1,
+        opacity: 1,
+        y: 0,
+        duration: 0.72,
+        ease: 'power2.inOut',
+        overwrite: true
+      });
+
+      if (currentScreen) {
+        gsap.to(currentScreen, {
+          opacity: 0.42,
+          duration: 0.72,
+          ease: 'power2.inOut',
+          overwrite: true
+        });
+      }
+
+      if (nextScreen) {
+        gsap.to(nextScreen, {
+          opacity: 1,
+          duration: 0.72,
+          ease: 'power2.inOut',
+          overwrite: true
+        });
+      }
+
+      gsap.to(phoneWrap, {
+        x: `-=${step}`,
+        duration: 0.72,
+        ease: 'power2.inOut',
+        overwrite: true,
+        onComplete: () => {
+          phoneWrap.appendChild(cards[0]);
+          syncPhoneRail({ immediate: true });
+          queueNextCycle();
+        }
+      });
+    });
+  };
+
+  resetPhoneCardsToMobileOrder();
+  syncPhoneRail({ immediate: true });
+
+  ScrollTrigger.create({
+    trigger: section01b,
+    start: 'top 85%',
+    once: true,
+    onEnter: () => {
+      if (cycleStarted) return;
+      cycleStarted = true;
+      queueNextCycle();
+    }
+  });
+
+  window.addEventListener('resize', () => {
+    syncPhoneRail({ immediate: true });
+  });
+};
+
+if (isMobile) {
+  // 모바일: 히어로 비디오 자동재생 보장
+  const mobileHeroVideo = document.querySelector('video.hero-loop-video__layer--primary');
+  if (mobileHeroVideo) {
+    // secondary 비디오는 모바일에서 불필요 — 리소스 절약
+    const secondaryVideo = document.querySelector('video.hero-loop-video__layer--secondary');
+    if (secondaryVideo) {
+      secondaryVideo.pause();
+      secondaryVideo.removeAttribute('src');
+      secondaryVideo.load();
+    }
+
+    const tryPlay = () => {
+      if (!mobileHeroVideo.paused) return;
+      mobileHeroVideo.muted = true;
+      mobileHeroVideo.play().catch(() => {});
+    };
+
+    if (mobileHeroVideo.readyState >= 2) {
+      tryPlay();
+    } else {
+      mobileHeroVideo.addEventListener('loadeddata', tryPlay, { once: true });
+    }
+    // 유저 인터랙션 후 재시도 (자동재생 정책 우회)
+    document.addEventListener('touchstart', tryPlay, { once: true, passive: true });
+    document.addEventListener('click', tryPlay, { once: true, passive: true });
+  }
+  initMobileSection01B();
+  requestAnimationFrame(() => ScrollTrigger.refresh());
+}
+
+if (!isMobile) {
 // Keep hero pinning below the fixed header
 const headerHeight = document.querySelector('.header')?.getBoundingClientRect().height ?? 72;
 const topUiOffset = Math.round(headerHeight);
@@ -131,11 +345,23 @@ const initHeroLoopVideo = () => {
     beginSwap();
   };
 
+  const handlePlayable = () => {
+    hideHeroLoopFallback();
+  };
+
   activeVideo.addEventListener('timeupdate', handleTimeUpdate);
-  activeVideo.addEventListener('loadeddata', hideHeroLoopFallback, { once: true });
+  activeVideo.addEventListener('loadeddata', handlePlayable, { once: true });
+  activeVideo.addEventListener('canplay', handlePlayable, { once: true });
+  activeVideo.addEventListener('playing', handlePlayable, { once: true });
   standbyVideo.addEventListener('timeupdate', handleTimeUpdate);
 
-  activeVideo.play().catch(() => {});
+  const tryPlayActiveVideo = () => {
+    activeVideo.play().catch(() => {});
+  };
+
+  tryPlayActiveVideo();
+  window.addEventListener('touchstart', tryPlayActiveVideo, { passive: true, once: true });
+  window.addEventListener('pointerdown', tryPlayActiveVideo, { passive: true, once: true });
 
   if (activeVideo.readyState >= 2 || standbyVideo.readyState >= 2) {
     requestAnimationFrame(() => requestAnimationFrame(hideHeroLoopFallback));
@@ -390,5 +616,5 @@ window.addEventListener('touchend', (event) => {
 }, { passive: true });
 
 initSharedSections();
-initStoreDownloadModal();
 requestAnimationFrame(() => ScrollTrigger.refresh());
+}

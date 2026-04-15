@@ -31,6 +31,18 @@
 - 테스트1의 회색 카드 8개 트리거는 현재 공통으로 더 늦춘 `top 68%` 기준을 사용해, 카드가 실제로 더 내려온 뒤에 텍스트/애니메이션이 시작되도록 조정된 상태다.
 - 같은 시점에 다자녀 카드 상단 사람 이미지는 선택 자녀에 맞춰 `bg_image_02`와 `bg_image_01` 사이를 전환한다.
 - 배지들은 현재 `김첫째(7,500,000원)` folded 상태를 `4초` 유지한 뒤 펼쳐지고, `김둘째(5,000,000원)`로 전환된 뒤 다시 접혀 `4초` 유지한다. 이후 다시 펼쳐 `김첫째`로 전환되고 같은 루프를 반복한다.
+- 모바일에서는 데스크톱 헤더의 `테스트1/테스트2/테스트3` 네비게이션과 섹션 스크롤 애니메이션을 숨기고, 모바일 전용 헤더와 단일 히어로만 보여준다.
+- 모바일 히어로는 20px 패딩 기준의 단일 메인 비디오로 축약되며, 헤더 아래 첫 화면에서 꽉 차게 보이도록 설정된다.
+- 모바일에서는 섹션 타이틀과 서브타이틀의 크기를 각각 28px / 18px으로 통일하고, 타이틀-서브타이틀 간격은 16px로 맞춘다.
+- 모바일 `Section 01` 말풍선 텍스트는 예외로 15px을 사용한다.
+- 모바일 `Section 03`의 `첫번째~네번째 공식` chip은 카드 우측이 아니라 타이틀 위 8px 간격으로 배치된다.
+- 모바일 `Section 03`의 각 카드 내부 그래픽은 현재 데스크톱 대비 65% 크기로 축소된다.
+- 모바일 `Section 03` 카드 내부 패딩은 상하좌우 모두 20px이다.
+- 모바일 `Section 04`의 `증여 계획부터 시작해요`, `증여금을 투자로 연결해요`, `증여세 신고까지 끝내요`, `쉬운 자녀관리` 카드 내부 그래픽/컴포넌트는 현재 데스크톱 대비 70% 크기로 축소된다.
+- 모바일 `Section 05 intro`의 두 정보 카드는 2열이 아니라 1열 상하 스택으로 배치된다.
+- 모바일 주요 섹션 타이틀은 전용 줄바꿈을 사용한다. 현재 `아이 자산...`, `파이가 자산관리의 시작을...`, `일찍부터 증여해서...`, `증여부터 투자...`가 적용 상태다.
+- 히어로 카피 `앞서가는 부모들의 자산 공식`은 현재 데스크톱/모바일 모두 메인 히어로 이미지 정중앙에 흰색 오버레이로 배치된다.
+- 히어로 메인 비디오는 `source` 태그 + poster/fallback 이미지 구조를 사용하며, 실제 재생 가능 시점(`canplay/playing`)까지 fallback 이미지를 유지해 모바일에서 파일명 placeholder나 검은 플래시가 드러나는 시간을 줄인다.
 - 배포는 GitHub Pages와 Vercel 둘 다 사용 중이며, 로컬 검증 기본 루프는 `npm run verify`다.
 
 ## 핵심 디렉토리 구조
@@ -79,16 +91,19 @@
   - 히어로 우측 하단 카드가 `section-02-left-video.mp4` 비디오로 표시됨
   - `Section 02`는 제거된 상태
   - 테스트1 전용 푸터 사용
+  - 모바일에서는 desktop hero timeline을 끄고, `mobile-header`와 단일 hero video만 사용
 - 테스트2: [test2.html](/Users/hanwha/Documents/GitHub/plus-web-design/test2.html)
   - `Section 02`가 포함된 전체 페이지 변형
   - [test2.js](/Users/hanwha/Documents/GitHub/plus-web-design/test2.js) + [src/initSectionsTest2.js](/Users/hanwha/Documents/GitHub/plus-web-design/src/initSectionsTest2.js) 조합
   - 히어로는 dim/text가 있는 scrub 버전
   - 기존 공용 푸터 유지
+  - 모바일에서는 scrub hero와 section motion을 끄고, `mobile-header`만 사용
 - 테스트3: [test3.html](/Users/hanwha/Documents/GitHub/plus-web-design/test3.html)
   - phone-to-card reveal 실험 페이지
   - [test3.js](/Users/hanwha/Documents/GitHub/plus-web-design/test3.js) + [src/initSectionsTest3.js](/Users/hanwha/Documents/GitHub/plus-web-design/src/initSectionsTest3.js) 조합
   - 하단에 메인 섹션 구조가 붙어 있음
   - 기존 공용 푸터 유지
+  - 모바일에서는 reveal motion을 끄고, `mobile-header`만 사용
 
 ## 테스트1 구조
 - Hero

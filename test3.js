@@ -32,6 +32,11 @@ const cardOverlayText = document.querySelector('.card-overlay-text');
 
 document.body.insertBefore(Header(), document.body.firstChild);
 
+initStoreDownloadModal();
+
+const isMobile = window.matchMedia('(max-width: 767px)').matches;
+
+if (!isMobile) {
 const headerHeight = document.querySelector('.header')?.getBoundingClientRect().height ?? 72;
 
 if (heroSection) {
@@ -190,5 +195,5 @@ if (heroSection && whiteFill && phoneFrame && cardsContainer) {
 }
 
 initSharedSections();
-initStoreDownloadModal();
 requestAnimationFrame(() => ScrollTrigger.refresh());
+}
