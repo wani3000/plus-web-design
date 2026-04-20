@@ -217,6 +217,23 @@ const initMobileSection01B = () => {
 if (isMobile) {
   // 모바일: 히어로 비디오 자동재생 보장
   const mobileHeroVideo = document.querySelector('video.hero-loop-video__layer--primary');
+  const mobileHeroLoop = document.querySelector('.hero-loop-video');
+  const mobileHeroFallback = mobileHeroLoop?.querySelector('.hero-loop-video__fallback');
+  let mobileHeroFallbackHidden = false;
+
+  const hideMobileHeroFallback = () => {
+    if (!mobileHeroFallback || mobileHeroFallbackHidden) return;
+    mobileHeroFallbackHidden = true;
+    gsap.to(mobileHeroFallback, {
+      opacity: 0,
+      duration: 0.28,
+      ease: 'power2.out',
+      onComplete: () => {
+        mobileHeroFallback.remove();
+      }
+    });
+  };
+
   if (mobileHeroVideo) {
     // secondary 비디오는 모바일에서 불필요 — 리소스 절약
     const secondaryVideo = document.querySelector('video.hero-loop-video__layer--secondary');
@@ -232,11 +249,19 @@ if (isMobile) {
       mobileHeroVideo.play().catch(() => {});
     };
 
+    const handlePlayable = () => {
+      hideMobileHeroFallback();
+    };
+
     if (mobileHeroVideo.readyState >= 2) {
       tryPlay();
+      hideMobileHeroFallback();
     } else {
       mobileHeroVideo.addEventListener('loadeddata', tryPlay, { once: true });
     }
+    mobileHeroVideo.addEventListener('loadeddata', handlePlayable, { once: true });
+    mobileHeroVideo.addEventListener('canplay', handlePlayable, { once: true });
+    mobileHeroVideo.addEventListener('playing', handlePlayable, { once: true });
     // 유저 인터랙션 후 재시도 (자동재생 정책 우회)
     document.addEventListener('touchstart', tryPlay, { once: true, passive: true });
     document.addEventListener('click', tryPlay, { once: true, passive: true });

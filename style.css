@@ -118,7 +118,7 @@
   --section-03-row-gap: 20px;
   --card-radius: 12px;
   --card-title-size: 28px;
-  --card-body-size: 18px;
+  --card-body-size: 16px;
 }
 
 * {
@@ -127,6 +127,8 @@
 
 html {
   scrollbar-gutter: stable;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
 }
 
 body {
@@ -2632,6 +2634,7 @@ body {
   width: 375px;
   height: 324px;
   object-fit: cover;
+  border-radius: 24px 24px 0 0;
   z-index: 0;
 }
 
@@ -3228,6 +3231,18 @@ body {
   gap: 10px;
 }
 
+.section-05__download-mobile {
+  display: none;
+}
+
+.section-05__download-mobile-icon {
+  display: block;
+  width: 24px;
+  height: 24px;
+  flex: 0 0 24px;
+  object-fit: contain;
+}
+
 .store-button--footer {
   width: 130px;
   height: 44px;
@@ -3786,7 +3801,7 @@ body.store-modal-open {
     --section-heading-size: 28px;
     --section-subtitle-size: 18px;
     --card-title-size: 24px;
-    --card-body-size: 18px;
+    --card-body-size: 16px;
     --section-title-letter-spacing: 0px;
     --section-subtitle-letter-spacing: -0.36px;
     --section-title-line-height: 1.25;
@@ -3950,7 +3965,7 @@ body.store-modal-open {
   }
 
   .hero-loop-video__fallback {
-    display: none;
+    display: block;
   }
 
   .hero-loop-video__layer--secondary {
@@ -3966,7 +3981,13 @@ body.store-modal-open {
   }
 
   .section-03__card {
-    padding: 20px;
+    padding: 30px;
+    height: 480px;
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .section-03__card-head {
+    margin-bottom: 12px;
   }
 
   .section-03__card--right-bottom .section-03__doc-card-screen--complete,
@@ -3975,11 +3996,18 @@ body.store-modal-open {
     display: none;
   }
 
+  .section-03__card--right-top,
+  .section-03__card--left-bottom,
+  .section-03__card--right-bottom {
+    display: flex;
+    flex-direction: column;
+  }
+
   .section-03__card-head {
     flex-direction: column-reverse;
     align-items: flex-start;
     justify-content: flex-start;
-    gap: 8px;
+    gap: 30px;
     padding-right: 0;
   }
 
@@ -3988,19 +4016,79 @@ body.store-modal-open {
     align-self: flex-start;
   }
 
+  .section-03__card-head > h3 {
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+
+  .section-03__card h3,
+  .section-03__card > p,
+  .section-04__card h3,
+  .section-04__card p,
+  .section-04__card-copy-bottom h3,
+  .section-04__card-copy-bottom p {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    max-width: 100%;
+    word-break: normal;
+    overflow-wrap: anywhere;
+    min-width: 0;
+  }
+
   .section-03__chart-block {
+    display: block;
+    width: 520px;
+    max-width: none;
     justify-self: center;
-    margin-left: 0;
+    margin-left: auto;
+    margin-right: auto;
     transform: scale(0.65);
     transform-origin: top center;
   }
 
+  .section-03__card--left-top .section-03__chart-block {
+    position: relative;
+    left: 50%;
+    margin-left: 0;
+    margin-right: 0;
+    transform: translateX(calc(-50% + 25px)) scale(0.65);
+  }
+
   .section-03__monthly-visual {
+    position: relative;
+    inset: auto;
     left: 50%;
     right: auto;
+    margin-top: 20px;
     width: 100%;
+    height: 250px;
     transform: translateX(-50%) scale(0.65);
     transform-origin: top center;
+  }
+
+  .section-03__card--right-top .section-03__monthly-visual {
+    margin-top: 20px;
+  }
+
+  .section-03__card--right-top .section-03__monthly-amount {
+    top: 0;
+  }
+
+  .section-03__etf-visual {
+    position: relative;
+    left: auto;
+    right: auto;
+    bottom: auto;
+    margin-top: 20px;
+    width: 100%;
+    height: 250px;
+    display: flex;
+    justify-content: center;
+  }
+
+  .section-03__card--left-bottom .section-03__etf-visual {
+    margin-top: 20px;
   }
 
   .section-03__etf-stage {
@@ -4008,13 +4096,33 @@ body.store-modal-open {
     transform-origin: top center;
   }
 
+  .section-03__card--left-bottom .section-03__etf-stage {
+    transform: translateX(-7px) scale(0.65);
+    transform-origin: top center;
+  }
+
+  .section-03__invest-visual {
+    position: relative;
+    inset: auto;
+    margin-top: 20px;
+    height: 320px;
+  }
+
   .section-03__invest-ui {
-    transform: translateX(-50%) scale(0.65);
+    top: 0;
+    bottom: auto;
+    transform: translateX(-50%) scale(0.78);
     transform-origin: top center;
   }
 
   .section-05-intro {
     padding: 120px 20px;
+  }
+
+  .section-04__card {
+    padding: 30px;
+    min-height: 0;
+    height: 480px;
   }
 
   .section-05-intro__inner {
@@ -4026,14 +4134,72 @@ body.store-modal-open {
     gap: 16px;
   }
 
+  .section-05__actions {
+    width: 100%;
+  }
+
+  .section-05__actions .store-button {
+    display: none;
+  }
+
+  .section-05__download-mobile {
+    display: inline-flex;
+    align-self: center;
+    margin-top: 10px;
+    padding: 12px 24px;
+    font-size: 18px;
+    line-height: 26px;
+    letter-spacing: -0.18px;
+    gap: 6px;
+    font-weight: 500;
+  }
+
   .section-04__plan-widget {
-    transform: scale(0.7);
-    transform-origin: top left;
+    width: calc(100% + 70px);
+    max-width: none;
+    margin: 0;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%) scale(0.72);
+    transform-origin: center;
+  }
+
+  .section-04__plan-row--primary .section-04__plan-label,
+  .section-04__plan-row--primary .section-04__plan-value {
+    font-size: 24px;
+  }
+
+  .section-04__plan-row--secondary .section-04__plan-label,
+  .section-04__plan-row--secondary .section-04__plan-value {
+    font-size: 20px;
+  }
+
+  .section-04__plan-foot span,
+  .section-04__plan-foot strong {
+    font-size: 20px;
   }
 
   .section-04__gift-link-visual {
-    transform: scale(0.7);
-    transform-origin: top left;
+    left: 50%;
+    right: auto;
+    width: 355px;
+    transform: translateX(-50%) scale(0.805);
+    transform-origin: top center;
+  }
+
+  .section-04__card--narrow-bottom .section-04__card-copy-bottom,
+  .section-04__card--wide-bottom .section-04__card-copy-bottom {
+    position: static;
+    left: auto;
+    right: auto;
+    bottom: auto;
+    margin-bottom: 20px;
+  }
+
+  .section-04__card--narrow-bottom .section-04__card-copy-bottom::before,
+  .section-04__card--wide-bottom .section-04__card-copy-bottom::before {
+    display: none;
   }
 
   .section-04__tax-card {
@@ -4046,22 +4212,78 @@ body.store-modal-open {
     transform-origin: top center;
   }
 
+  .section-04__card--narrow-bottom {
+    position: relative;
+  }
+
+  .section-04__card--narrow-bottom .section-04__tax-card {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: 0;
+    transform: translate(-50%, -50%) scale(0.84);
+    transform-origin: center;
+  }
+
+  .section-04__card--narrow-bottom .section-04__tax-logo-wrap {
+    display: block;
+    position: absolute;
+    right: 30px;
+    bottom: 30px;
+    margin: 0;
+    transform: scale(0.7);
+    transform-origin: bottom right;
+  }
+
   .section-04__card--wide-bottom-test1 .section-04__family-app-top-image--next {
     display: none;
   }
 
+  .section-04__card--wide-bottom-test1 {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .section-04__card--wide-bottom-test1 .section-04__card-copy-bottom {
+    order: 1;
+    position: relative;
+    z-index: 3;
+  }
+
+  .section-04__family-app-badges {
+    order: 2;
+    position: absolute;
+    top: 164px;
+    left: 50%;
+    margin-top: 0;
+    margin-bottom: 0;
+    transform: translateX(calc(-50% + 250px)) scale(0.7);
+    transform-origin: top center;
+    z-index: 4;
+  }
+
   .section-04__card--wide-bottom-test1 .section-04__family-app {
-    top: 20px;
+    order: 3;
+    position: absolute;
+    top: 130px;
     left: 50%;
     right: auto;
     width: 375px;
+    margin-top: 0;
     transform: translateX(-50%) scale(0.7);
     transform-origin: top center;
   }
 
-  .section-04__family-app-badges {
-    transform: translateX(calc(-50% + 250px)) scale(0.7);
-    transform-origin: top center;
+  .section-04__card--wide-bottom-test1 .section-04__family-app-top-image {
+    top: 20px;
+  }
+
+  .section-04__card--wide-bottom-test1 .section-04__family-app-body {
+    top: 300px;
+  }
+
+  .section-04__card--wide-bottom-test1 .section-04__family-app-sheet {
+    padding-top: 24px;
   }
 
   .site-footer--test1 {

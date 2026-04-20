@@ -38,8 +38,12 @@
 - 모바일 `Section 03`의 `첫번째~네번째 공식` chip은 카드 우측이 아니라 타이틀 위 8px 간격으로 배치된다.
 - 모바일 `Section 03`의 각 카드 내부 그래픽은 현재 데스크톱 대비 65% 크기로 축소된다.
 - 모바일 `Section 03` 카드 내부 패딩은 상하좌우 모두 20px이다.
+- 모바일 `Section 03`과 `Section 04` 카드 높이는 모두 500px로 맞춘다.
+- 모바일 `Section 03`과 `Section 04` 카드 내부 텍스트는 원래 크기를 유지하되, 텍스트 블록 폭을 카드 안으로 제한해 overflow를 막는다.
 - 모바일 `Section 04`의 `증여 계획부터 시작해요`, `증여금을 투자로 연결해요`, `증여세 신고까지 끝내요`, `쉬운 자녀관리` 카드 내부 그래픽/컴포넌트는 현재 데스크톱 대비 70% 크기로 축소된다.
+- 모바일 `증여세 신고까지 끝내요`와 `쉬운 자녀관리` 카드는 카피 블록을 하단 고정하지 않고, 다른 카드처럼 상단 정렬로 배치한다.
 - 모바일 `Section 05 intro`의 두 정보 카드는 2열이 아니라 1열 상하 스택으로 배치된다.
+- 모바일 `우리 아이 첫 번째 자산, 함께 만들어가요` CTA는 스토어 2버튼 대신 `plus-web-marketing`의 `파이 시작하기` 단일 `앱 다운로드` 버튼 스타일을 사용한다.
 - 모바일 주요 섹션 타이틀은 전용 줄바꿈을 사용한다. 현재 `아이 자산...`, `파이가 자산관리의 시작을...`, `일찍부터 증여해서...`, `증여부터 투자...`가 적용 상태다.
 - 히어로 카피 `앞서가는 부모들의 자산 공식`은 현재 데스크톱/모바일 모두 메인 히어로 이미지 정중앙에 흰색 오버레이로 배치된다.
 - 히어로 메인 비디오는 `source` 태그 + poster/fallback 이미지 구조를 사용하며, 실제 재생 가능 시점(`canplay/playing`)까지 fallback 이미지를 유지해 모바일에서 파일명 placeholder나 검은 플래시가 드러나는 시간을 줄인다.
@@ -90,7 +94,7 @@
   - 갤러리 전환 후 `Section 01`로 자동 스크롤
   - 히어로 우측 하단 카드가 `section-02-left-video.mp4` 비디오로 표시됨
   - `Section 02`는 제거된 상태
-  - 테스트1 전용 푸터 사용
+  - 테스트1 전용 푸터 사용, desktop/mobile 모두 로컬 `io_pi.png` 로고 사용
   - 모바일에서는 desktop hero timeline을 끄고, `mobile-header`와 단일 hero video만 사용
 - 테스트2: [test2.html](/Users/hanwha/Documents/GitHub/plus-web-design/test2.html)
   - `Section 02`가 포함된 전체 페이지 변형
@@ -219,3 +223,41 @@
 - The hero main video now preloads `section-02-hero-video-poster.png` and uses it as a background fallback to reduce the black flash on reload.
 
 - The hero main video fallback now uses the provided first-frame screenshot as the visible placeholder until the video frame is ready.
+
+- Mobile `Section 03` card titles and body text now explicitly opt into shrinking inside the card head/text blocks with `min-width: 0` so long Korean copy wraps inside the card instead of overflowing right.
+
+- iPhone Safari text autosizing is now explicitly disabled with `text-size-adjust: 100%` on `html`, because mobile `Section 03` copy could still overflow even when the CSS width rules were correct.
+
+- `Section 03` and `Section 04` card body copy now uses `16px` across all eight gray cards, replacing the previous `18px` body size.
+
+- On mobile, all eight gray cards in `Section 03` and `Section 04` now use unified `30px` internal padding.
+
+- Mobile `Section 03` graphics now all begin from a consistent `20px` gap below the text block by moving the non-chart cards off their old absolute offsets and into wrapper-level flow spacing.
+
+- Mobile `Section 03` card chips (`첫번째 공식` through `네번째 공식`) now sit `30px` above their card titles instead of `8px`.
+
+- On mobile, the key graphics inside `증여재산공제에 맞춰 10년 주기로 계획`, `장기 투자에 적합한 선택, 미국 ETF`, `증여 계획부터 시작해요`, and `증여금을 투자로 연결해요` are now centered within their gray cards instead of left-biased by their old transform origins.
+
+- The first `Section 03` chart card needed an extra mobile-only horizontal correction because the chart artwork itself has more empty space on the right than the left; its chart block is now nudged right so it reads visually centered in the card.
+
+- The mobile ETF stack in `장기 투자에 적합한 선택, 미국 ETF` also needed a card-specific correction because the rotated stack is visually right-heavy; the ETF stage is now nudged slightly left inside the card.
+
+- On mobile, the subtitle-to-graphic gap for `두번째 공식`, `세번째 공식`, and `쉬운 자녀관리` now resolves to `20px` at the actual visible graphic start rather than only at the wrapper level.
+
+- The mobile `쉬운 자녀관리` card copy now stays above the graphic again; the flow-based family app group keeps the copy block first and the badge/app visuals after it.
+
+- On mobile, all `Section 04` gray cards now use a fixed `500px` height instead of a growable minimum height, and the `쉬운 자녀관리` app graphic is clipped by the card bottom so it ends flush with the gray card edge.
+- Mobile `쉬운 자녀관리` card uses absolute-positioned badges/app graphic again so the fixed 500px card clips from the bottom instead of flow-layout clipping the visual early.
+- Mobile `쉬운 자녀관리` card now preserves the sheet's 24px top padding and instead lifts the whole app visual 20px so the summary sits higher without losing the white top spacing.
+- Mobile `쉬운 자녀관리` top photo alone is shifted 20px downward; the white sheet body remains at its original start position so only the image spacing changes.
+- The `쉬운 자녀관리` app photo now uses the same 24px top corner radius as the white summary sheet.
+- On mobile, the `증여세 신고까지 끝내요` amount card is centered both horizontally and vertically within the gray card and enlarged from 0.7x to 0.84x, with the auxiliary logo card hidden.
+- On mobile, the `증여 계획부터 시작해요` widget now restores the desktop card proportions instead of inheriting the 1100px breakpoint variant; it is absolutely centered with desktop font sizes (24/20/20).
+- Restored the mobile `증여세 신고까지 끝내요` HomeTax logo sub-card and anchored it to the bottom-right while keeping the amount card centered.
+- The mobile `증여 계획부터 시작해요` widget is now scaled to 80% while its wrapper width expands to `calc(100% - 10px)` so the block reads wider without changing its proportions.
+- Mobile `증여금을 투자로 연결해요` box stack is enlarged by 15%, changing the visual scale from `0.7` to `0.805`.
+- Mobile `네번째 공식` (`증여세 신고는 필수!`) document component is now scaled up by 20% (`0.65 -> 0.78`) without changing the 20px subtitle gap or the fixed gray-card height; the enlarged lower portion is intentionally clipped at the card bottom.
+- Mobile `세번째 공식` ETF stack no longer applies the old `-12px` card-specific offset; the VOO/QQQM/XLK stack is now aligned to the exact horizontal center of the gray card.
+- Direct code review showed the ETF bundle was still right-heavy because the second/third cards keep positive X offsets and rotation, so the visible bounding box center sat to the right of the stage center. Mobile now nudges the whole ETF stage `5.3px` left to place the rendered VOO/QQQM/XLK stack on the actual gray-card center.
+- Mobile `증여 계획부터 시작해요` widget is now reduced by an extra 10% relative to the prior mobile state (`scale(0.8) -> scale(0.72)`) while its wrapper width grows by 80px versus the old mobile width (`calc(100% - 10px) -> calc(100% + 70px)`) so clipped text gets more horizontal room.
+- On mobile, all eight gray cards in `Section 03` and `Section 04` now use a fixed `480px` height instead of `500px`; lower graphics are allowed to clip at the card bottom rather than resizing the cards.
