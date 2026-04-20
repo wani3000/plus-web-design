@@ -1,7 +1,7 @@
 # AGENTS.md
 
 ## Purpose
-- This file is the operating constitution for agents working in `/Users/hanwha/Documents/GitHub/plus-web-design`.
+- This file is the operating constitution for agents working in `/Users/chulwan/Documents/GitHub/plus-web-design`.
 - Agents must read this file before changing code, docs, or Jira.
 
 ## Project Reality
@@ -17,7 +17,7 @@
 - Keep environment analysis separated. Do not mix web, mobile web, or native assumptions unless separate code paths exist.
 
 ## Team Environment
-- Node.js is the active runtime. Verified local tool versions during setup: Node `v22.15.0`, npm `10.9.2`.
+- Node.js is the active runtime. Verified local tool versions during setup: Node `v22.17.0`, npm `11.8.0`.
 - Package manager: npm. Use `npm install`, `npm run build`, and `npm run preview`.
 - Build tool: Vite.
 - Primary language: Vanilla JavaScript with ES modules.

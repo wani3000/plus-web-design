@@ -1,9 +1,9 @@
 # research.md
 
 ## System Overview
-- Repository: `/Users/hanwha/Documents/GitHub/plus-web-design`
+- Repository: `/Users/chulwan/Documents/GitHub/plus-web-design`
 - Verified runtime shape: static Vite multi-entry landing site
-- Verified primary page: `/` from [index.html](/Users/hanwha/Documents/GitHub/plus-web-design/index.html)
+- Verified primary page: `/` from [index.html](/Users/chulwan/Documents/GitHub/plus-web-design/index.html)
 - Verified alternate pages:
   - `/test2.html`
   - `/test3.html`
@@ -18,7 +18,7 @@
 - Build tool: Vite `^8.0.1`
 - Core animation: GSAP `^3.14.2`
 - Additional animation/runtime dependency: `lottie-web ^5.13.0`
-- Verification dependency: `playwright ^1.55.1`
+- Verification dependency: `playwright ^1.59.0`
 - Language: Vanilla JavaScript with ES modules
 - Styling: plain CSS with local font-face declarations
 - Deployment:
@@ -28,13 +28,13 @@
 ## Verified Build and Artifact Findings
 
 ### Source build configuration
-- [package.json](/Users/hanwha/Documents/GitHub/plus-web-design/package.json)
+- [package.json](/Users/chulwan/Documents/GitHub/plus-web-design/package.json)
   - `dev`: `vite`
   - `build`: `vite build`
   - `preview`: `vite preview`
   - `verify:preview`: `node scripts/verify-preview.mjs`
   - `verify`: `npm run build && npm run verify:preview`
-- [vite.config.js](/Users/hanwha/Documents/GitHub/plus-web-design/vite.config.js)
+- [vite.config.js](/Users/chulwan/Documents/GitHub/plus-web-design/vite.config.js)
   - `base` is driven by `process.env.BASE_PATH || '/'`
   - multi-entry inputs:
     - `index.html`
@@ -62,46 +62,48 @@
 ## Directory and Module Analysis
 
 ### Active root entry files
-- [index.html](/Users/hanwha/Documents/GitHub/plus-web-design/index.html)
+- [index.html](/Users/chulwan/Documents/GitHub/plus-web-design/index.html)
   - primary landing page and main production-facing prototype
-- [main.js](/Users/hanwha/Documents/GitHub/plus-web-design/main.js)
+- [main.js](/Users/chulwan/Documents/GitHub/plus-web-design/main.js)
   - header mount and hero-only scroll timeline for the main page
 - header PI logo reloads the landing top on root pages
-- [src/initSectionsTest1.js](/Users/hanwha/Documents/GitHub/plus-web-design/src/initSectionsTest1.js)
+- [src/initSectionsTest1.js](/Users/chulwan/Documents/GitHub/plus-web-design/src/initSectionsTest1.js)
   - `index.html` 전용 section 01~05 initializer
-- [src/initSectionsTest2.js](/Users/hanwha/Documents/GitHub/plus-web-design/src/initSectionsTest2.js)
+- [src/initSectionsTest2.js](/Users/chulwan/Documents/GitHub/plus-web-design/src/initSectionsTest2.js)
   - `test2.html` 전용 section 01~05 initializer
-- [src/initSectionsTest3.js](/Users/hanwha/Documents/GitHub/plus-web-design/src/initSectionsTest3.js)
+- [src/initSectionsTest3.js](/Users/chulwan/Documents/GitHub/plus-web-design/src/initSectionsTest3.js)
   - `test3.html` 전용 section 01~05 initializer
-- [style.css](/Users/hanwha/Documents/GitHub/plus-web-design/style.css)
+- [style.css](/Users/chulwan/Documents/GitHub/plus-web-design/style.css)
   - main landing styles and all section layouts
-- [test2.html](/Users/hanwha/Documents/GitHub/plus-web-design/test2.html), [test2.js](/Users/hanwha/Documents/GitHub/plus-web-design/test2.js), [test2.css](/Users/hanwha/Documents/GitHub/plus-web-design/test2.css)
+- [plus-typography.css](/Users/chulwan/Documents/GitHub/plus-web-design/plus-typography.css)
+  - shared typography tokens used by mobile and desktop layouts
+- [test2.html](/Users/chulwan/Documents/GitHub/plus-web-design/test2.html), [test2.js](/Users/chulwan/Documents/GitHub/plus-web-design/test2.js), [test2.css](/Users/chulwan/Documents/GitHub/plus-web-design/test2.css)
   - iPhone-scroll experiment
-- [test3.html](/Users/hanwha/Documents/GitHub/plus-web-design/test3.html), [test3.js](/Users/hanwha/Documents/GitHub/plus-web-design/test3.js), [test3.css](/Users/hanwha/Documents/GitHub/plus-web-design/test3.css)
+- [test3.html](/Users/chulwan/Documents/GitHub/plus-web-design/test3.html), [test3.js](/Users/chulwan/Documents/GitHub/plus-web-design/test3.js), [test3.css](/Users/chulwan/Documents/GitHub/plus-web-design/test3.css)
   - phone-to-card reveal experiment plus pasted main sections
 
 ### Shared component and remnants
-- [src/components/Header.js](/Users/hanwha/Documents/GitHub/plus-web-design/src/components/Header.js)
-  - actively used by `main.js`
+- [src/components/Header.js](/Users/chulwan/Documents/GitHub/plus-web-design/src/components/Header.js)
+  - actively used by `main.js`, `test2.js`, and `test3.js`
 - `src/main.js`, `src/style.css`, `src/counter.js`, `src/assets/*`
   - Vite starter remnants or non-active leftovers
   - not part of the active root-level runtime except for `src/components/Header.js`
 
 ### Static assets
-- [/Users/hanwha/Documents/GitHub/plus-web-design/public](/Users/hanwha/Documents/GitHub/plus-web-design/public)
+- [/Users/chulwan/Documents/GitHub/plus-web-design/public](/Users/chulwan/Documents/GitHub/plus-web-design/public)
   - shipped images, videos, icons, svg assets
-- [/Users/hanwha/Documents/GitHub/plus-web-design/font](/Users/hanwha/Documents/GitHub/plus-web-design/font)
+- [/Users/chulwan/Documents/GitHub/plus-web-design/font](/Users/chulwan/Documents/GitHub/plus-web-design/font)
   - local font sources
 
 ### Deployment config
-- [/Users/hanwha/Documents/GitHub/plus-web-design/.github/workflows/deploy-pages.yml](/Users/hanwha/Documents/GitHub/plus-web-design/.github/workflows/deploy-pages.yml)
+- [/Users/chulwan/Documents/GitHub/plus-web-design/.github/workflows/deploy-pages.yml](/Users/chulwan/Documents/GitHub/plus-web-design/.github/workflows/deploy-pages.yml)
   - GitHub Pages deployment path
 
 ## Main Landing Structure Analysis
 
 ### Hero
-- fixed header injected through [src/components/Header.js](/Users/hanwha/Documents/GitHub/plus-web-design/src/components/Header.js)
-- 5-image gallery assembled and animated in [main.js](/Users/hanwha/Documents/GitHub/plus-web-design/main.js)
+- fixed header injected through [src/components/Header.js](/Users/chulwan/Documents/GitHub/plus-web-design/src/components/Header.js)
+- 5-image gallery assembled and animated in [main.js](/Users/chulwan/Documents/GitHub/plus-web-design/main.js)
 - late-stage overlay text and dimmed sequencing occur per image card
 
 ### Section 01
@@ -274,8 +276,8 @@
   - after gallery completion, the page auto-scrolls to `Section 01` over 1.3s
   - upward scroll near `Section 01` top can return to hero first state
 - hero right-bottom card now uses `section-02-left-video.mp4`
-- delegates section 01~05 interactions to [src/initSectionsTest1.js](/Users/hanwha/Documents/GitHub/plus-web-design/src/initSectionsTest1.js)
-- active visible section order currently skips former Section 02; removed markup is preserved in [section-02-backup.html](/Users/hanwha/Documents/GitHub/plus-web-design/section-02-backup.html)
+- delegates section 01~05 interactions to [src/initSectionsTest1.js](/Users/chulwan/Documents/GitHub/plus-web-design/src/initSectionsTest1.js)
+- active visible section order currently skips former Section 02; removed markup is preserved in [section-02-backup.html](/Users/chulwan/Documents/GitHub/plus-web-design/section-02-backup.html)
 - footer is test1-only custom/footer variant, not shared with test2/test3
 - test1 desktop/mobile footer brand logo both use local `./io_pi.png`
 
@@ -284,15 +286,15 @@
 - former Section 02가 복구된 버전
 - mounts the shared header
 - owns its own hero scroll-scrub flow with dim/text overlays and gallery text
-- uses [src/initSectionsTest2.js](/Users/hanwha/Documents/GitHub/plus-web-design/src/initSectionsTest2.js) for its own lower-section interactions
+- uses [src/initSectionsTest2.js](/Users/chulwan/Documents/GitHub/plus-web-design/src/initSectionsTest2.js) for its own lower-section interactions
 - keeps the older shared/common footer
 
 ### Entry 3: `test3.html` + `test3.js`
 - phone-to-card reveal experiment
 - dim, text, and reveal transitions
 - mounts the shared header
-- uses [src/initSectionsTest3.js](/Users/hanwha/Documents/GitHub/plus-web-design/src/initSectionsTest3.js) for the pasted main sections below the hero
-- active visible section order also skips former Section 02; removed markup is preserved in [section-02-backup.html](/Users/hanwha/Documents/GitHub/plus-web-design/section-02-backup.html)
+- uses [src/initSectionsTest3.js](/Users/chulwan/Documents/GitHub/plus-web-design/src/initSectionsTest3.js) for the pasted main sections below the hero
+- active visible section order also skips former Section 02; removed markup is preserved in [section-02-backup.html](/Users/chulwan/Documents/GitHub/plus-web-design/section-02-backup.html)
 - keeps the older shared/common footer
 
 ## Entry Split Status
@@ -317,7 +319,7 @@
 - Root-level active files vs `src/` remnants
   - source-of-truth can still be confused by inactive starter files
 - Large volume of hard-coded animation constants
-  - motion tuning is concentrated in [main.js](/Users/hanwha/Documents/GitHub/plus-web-design/main.js) and [style.css](/Users/hanwha/Documents/GitHub/plus-web-design/style.css)
+  - motion tuning is concentrated in [main.js](/Users/chulwan/Documents/GitHub/plus-web-design/main.js) and [style.css](/Users/chulwan/Documents/GitHub/plus-web-design/style.css)
   - future edits carry regression risk without visual verification
 - Local `.pen` artifact is separate from runtime
   - design-source edits and web-runtime edits can drift if not tracked deliberately
@@ -333,30 +335,9 @@
 - Latest verified text change on test1 `Section 04`:
   - planning card description now ends with period (`...가능해요.`)
   - investment-link card description now ends with period (`...수 있어요.`)
-- Latest asset sync for handoff continuity:
-  - `untitled.pen` updated in working tree
-  - `Product List Container.png` added in working tree
-
-
-- Hero center image now uses `img_main_website.png`.
-
-
-- Hero left-top card now uses `section-02-hero-video.mp4`.
-
-
-- Hero left-bottom card now uses `bg_02_baby.png`.
-
-- Hero center and left-top media are now swapped: the center card uses `section-02-hero-video.mp4`, and the left-top card uses `img_main_website.png`.
-
-- The hero main video now uses a two-layer crossfade loop to mask the jump when `section-02-hero-video.mp4` restarts.
-
-- Hero right-top card now uses `baby_03.png`.
-
-- The PI logo click path now disables scroll restoration and scrolls to the hero top before refreshing the landing.
-
-- Hero left-top card now uses `bg_image_04.png`.
-
-- The hero main video now uses `section-02-hero-video-poster.png` as a poster to reduce the black flash while reloading.
+- Latest repository asset handoff state:
+  - `untitled.pen` is present as the design-source artifact
+  - `Product List Container.png` is committed in the repository
 
 - Hero image hover zoom was removed so the gallery no longer scales up on pointer hover.
 

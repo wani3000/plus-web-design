@@ -7,6 +7,7 @@
 - 문서 초기 세팅 단계는 끝났고, 실제 랜딩 UI/모션 구현이 상당 부분 반영된 상태다.
 - 현재 소스 오브 트루스는 루트 엔트리 파일과 정적 자산이다.
 - 최근 작업은 `test1(index.html)` 기준 히어로 one-shot 전환, Section 01B 카드 레일 시작 타이밍 조정, Section 03 카드 카피/컴포넌트 재배치, Section 04 카드 단순화, 테스트1 전용 푸터 교체에 집중되어 있다.
+- 최근 공통 작업으로 모바일 전용 헤더, 모바일 히어로 축약, `plus-typography.css` 기반 타이포 토큰, 모바일 카드 레이아웃 정비가 추가됐다.
 - 테스트1 `Section 04`의 다자녀 자산관리 카드는 카드 내부에서만 보이도록 clipping 처리되어 있고, 현재 배지 3개는 카드 본체보다 더 아래로 미세조정된 상태다.
 - 테스트1 `Section 04`의 다자녀 자산관리 카드는 섹션 진입 시 회색 카드 하단 안쪽에서 위로 올라오고, 최종적으로 카드 상단 `45px` 아래, 기존 중심축보다 오른쪽 `110px` 이동한 위치에 정착한다. 배지 3개는 숨겨진 상태에서 `20px` 아래에서 현재 위치로 올라온다.
 - 테스트1 `Section 04`의 배지 3개는 하단 카피 gradient보다 높은 레이어에 두어, gradient에 덮이지 않게 유지한다.
@@ -50,61 +51,63 @@
 - 배포는 GitHub Pages와 Vercel 둘 다 사용 중이며, 로컬 검증 기본 루프는 `npm run verify`다.
 
 ## 핵심 디렉토리 구조
-- [index.html](/Users/hanwha/Documents/GitHub/plus-web-design/index.html)
+- [index.html](/Users/chulwan/Documents/GitHub/plus-web-design/index.html)
   - 메인 PI 랜딩 엔트리
-- [main.js](/Users/hanwha/Documents/GitHub/plus-web-design/main.js)
+- [main.js](/Users/chulwan/Documents/GitHub/plus-web-design/main.js)
   - `index.html` 전용 헤더/히어로/자동스크롤 로직
-- [src/initSectionsTest1.js](/Users/hanwha/Documents/GitHub/plus-web-design/src/initSectionsTest1.js)
+- [src/initSectionsTest1.js](/Users/chulwan/Documents/GitHub/plus-web-design/src/initSectionsTest1.js)
   - `index.html` 전용 섹션 인터랙션 초기화 모듈
-- [src/initSectionsTest2.js](/Users/hanwha/Documents/GitHub/plus-web-design/src/initSectionsTest2.js)
+- [src/initSectionsTest2.js](/Users/chulwan/Documents/GitHub/plus-web-design/src/initSectionsTest2.js)
   - `test2.html` 전용 섹션 인터랙션 초기화 모듈
-- [src/initSectionsTest3.js](/Users/hanwha/Documents/GitHub/plus-web-design/src/initSectionsTest3.js)
+- [src/initSectionsTest3.js](/Users/chulwan/Documents/GitHub/plus-web-design/src/initSectionsTest3.js)
   - `test3.html` 전용 섹션 인터랙션 초기화 모듈
-- [section-02-backup.html](/Users/hanwha/Documents/GitHub/plus-web-design/section-02-backup.html)
+- [section-02-backup.html](/Users/chulwan/Documents/GitHub/plus-web-design/section-02-backup.html)
   - 제거한 Section 02 마크업 백업
-- [style.css](/Users/hanwha/Documents/GitHub/plus-web-design/style.css)
+- [style.css](/Users/chulwan/Documents/GitHub/plus-web-design/style.css)
   - 메인 엔트리 전역/섹션 스타일
-- [test2.html](/Users/hanwha/Documents/GitHub/plus-web-design/test2.html)
+- [plus-typography.css](/Users/chulwan/Documents/GitHub/plus-web-design/plus-typography.css)
+  - 공통 타이포 토큰과 텍스트 클래스
+- [test2.html](/Users/chulwan/Documents/GitHub/plus-web-design/test2.html)
   - 메인 랜딩 변형 엔트리
   - `Section 02`가 포함된 전체 페이지
-- [test2.js](/Users/hanwha/Documents/GitHub/plus-web-design/test2.js)
+- [test2.js](/Users/chulwan/Documents/GitHub/plus-web-design/test2.js)
   - `test2.html` 전용 히어로/섹션 엔트리 스크립트
-- [test2.css](/Users/hanwha/Documents/GitHub/plus-web-design/test2.css)
+- [test2.css](/Users/chulwan/Documents/GitHub/plus-web-design/test2.css)
   - 과거 실험 페이지용 스타일 잔재
-- [test3.html](/Users/hanwha/Documents/GitHub/plus-web-design/test3.html)
+- [test3.html](/Users/chulwan/Documents/GitHub/plus-web-design/test3.html)
   - 카드 리빌 실험 엔트리
-- [test3.js](/Users/hanwha/Documents/GitHub/plus-web-design/test3.js)
+- [test3.js](/Users/chulwan/Documents/GitHub/plus-web-design/test3.js)
   - test3 인터랙션 로직
-- [test3.css](/Users/hanwha/Documents/GitHub/plus-web-design/test3.css)
+- [test3.css](/Users/chulwan/Documents/GitHub/plus-web-design/test3.css)
   - test3 전용 스타일
-- [src/components/Header.js](/Users/hanwha/Documents/GitHub/plus-web-design/src/components/Header.js)
+- [src/components/Header.js](/Users/chulwan/Documents/GitHub/plus-web-design/src/components/Header.js)
   - 메인 엔트리에서 삽입하는 공통 헤더 조각
-- [/Users/hanwha/Documents/GitHub/plus-web-design/public](/Users/hanwha/Documents/GitHub/plus-web-design/public)
+- [/Users/chulwan/Documents/GitHub/plus-web-design/public](/Users/chulwan/Documents/GitHub/plus-web-design/public)
   - 배포 대상 이미지, 비디오, 아이콘 등 정적 자산
-- [/Users/hanwha/Documents/GitHub/plus-web-design/font](/Users/hanwha/Documents/GitHub/plus-web-design/font)
+- [/Users/chulwan/Documents/GitHub/plus-web-design/font](/Users/chulwan/Documents/GitHub/plus-web-design/font)
   - 로컬 폰트 파일
-- [/Users/hanwha/Documents/GitHub/plus-web-design/.github/workflows/deploy-pages.yml](/Users/hanwha/Documents/GitHub/plus-web-design/.github/workflows/deploy-pages.yml)
+- [/Users/chulwan/Documents/GitHub/plus-web-design/.github/workflows/deploy-pages.yml](/Users/chulwan/Documents/GitHub/plus-web-design/.github/workflows/deploy-pages.yml)
   - GitHub Pages 배포 워크플로
 
 ## 엔트리 분기 구조
-- 테스트1: [index.html](/Users/hanwha/Documents/GitHub/plus-web-design/index.html)
+- 테스트1: [index.html](/Users/chulwan/Documents/GitHub/plus-web-design/index.html)
   - 현재 주 작업 대상
-  - [main.js](/Users/hanwha/Documents/GitHub/plus-web-design/main.js) + [src/initSectionsTest1.js](/Users/hanwha/Documents/GitHub/plus-web-design/src/initSectionsTest1.js) 조합
+  - [main.js](/Users/chulwan/Documents/GitHub/plus-web-design/main.js) + [src/initSectionsTest1.js](/Users/chulwan/Documents/GitHub/plus-web-design/src/initSectionsTest1.js) 조합
   - 히어로는 one-shot 전환
   - 갤러리 전환 후 `Section 01`로 자동 스크롤
   - 히어로 우측 하단 카드가 `section-02-left-video.mp4` 비디오로 표시됨
   - `Section 02`는 제거된 상태
   - 테스트1 전용 푸터 사용, desktop/mobile 모두 로컬 `io_pi.png` 로고 사용
   - 모바일에서는 desktop hero timeline을 끄고, `mobile-header`와 단일 hero video만 사용
-- 테스트2: [test2.html](/Users/hanwha/Documents/GitHub/plus-web-design/test2.html)
+- 테스트2: [test2.html](/Users/chulwan/Documents/GitHub/plus-web-design/test2.html)
   - `Section 02`가 포함된 전체 페이지 변형
-  - [test2.js](/Users/hanwha/Documents/GitHub/plus-web-design/test2.js) + [src/initSectionsTest2.js](/Users/hanwha/Documents/GitHub/plus-web-design/src/initSectionsTest2.js) 조합
+  - [test2.js](/Users/chulwan/Documents/GitHub/plus-web-design/test2.js) + [src/initSectionsTest2.js](/Users/chulwan/Documents/GitHub/plus-web-design/src/initSectionsTest2.js) 조합
   - 히어로는 dim/text가 있는 scrub 버전
   - 기존 공용 푸터 유지
   - 모바일에서는 scrub hero와 section motion을 끄고, `mobile-header`만 사용
-- 테스트3: [test3.html](/Users/hanwha/Documents/GitHub/plus-web-design/test3.html)
+- 테스트3: [test3.html](/Users/chulwan/Documents/GitHub/plus-web-design/test3.html)
   - phone-to-card reveal 실험 페이지
-  - [test3.js](/Users/hanwha/Documents/GitHub/plus-web-design/test3.js) + [src/initSectionsTest3.js](/Users/hanwha/Documents/GitHub/plus-web-design/src/initSectionsTest3.js) 조합
+  - [test3.js](/Users/chulwan/Documents/GitHub/plus-web-design/test3.js) + [src/initSectionsTest3.js](/Users/chulwan/Documents/GitHub/plus-web-design/src/initSectionsTest3.js) 조합
   - 하단에 메인 섹션 구조가 붙어 있음
   - 기존 공용 푸터 유지
   - 모바일에서는 reveal motion을 끄고, `mobile-header`만 사용
@@ -184,59 +187,17 @@
   - 테스트1 `Section 01B` 카드 레일 초기 순서 고정
   - 테스트1 `Section 04` 카드 위치 교환 및 애니메이션 타겟 분리
   - 테스트1 `Section 04` 카드 설명 문구 종결형(마침표) 반영: `증여 계획부터 시작해요`, `증여금을 투자로 연결해요`
+  - 모바일 전용 헤더/히어로/카드 레이아웃 규칙 정비
   - 테스트1 전용 푸터 교체 및 로컬 로고/스토어/소셜 컴포넌트 정리
 - `section-02-backup.html`는 삭제된 테스트1용 Section 02 백업으로 유지
 
 ## 참고 파일
-- [AGENTS.md](/Users/hanwha/Documents/GitHub/plus-web-design/AGENTS.md)
+- [AGENTS.md](/Users/chulwan/Documents/GitHub/plus-web-design/AGENTS.md)
   - 프로젝트 작업 규칙
-- [research.md](/Users/hanwha/Documents/GitHub/plus-web-design/research.md)
+- [research.md](/Users/chulwan/Documents/GitHub/plus-web-design/research.md)
   - 현재 코드베이스 구조 및 검증 결과
-- [plan.md](/Users/hanwha/Documents/GitHub/plus-web-design/plan.md)
+- [plan.md](/Users/chulwan/Documents/GitHub/plus-web-design/plan.md)
   - 현재 상태 기준 계획/정리 문서
-
-
-- Hero center image now uses `img_main_website.png`.
-
-
-- Hero left-top card now uses `section-02-hero-video.mp4`.
-
-
-- Hero left-bottom card now uses `bg_02_baby.png`.
-
-- Hero center and left-top media are now swapped: the center card uses `section-02-hero-video.mp4`, and the left-top card uses `img_main_website.png`.
-
-- The hero main video now uses a two-layer crossfade loop so `section-02-hero-video.mp4` feels less like it snaps back to frame 0.
-
-- Hero right-top card now uses `baby_03.png`.
-
-- Clicking the PI logo on the landing page now explicitly returns the view to the hero top before refreshing, with scroll restoration disabled for that reload path.
-
-- Hero left-top card now uses `bg_image_04.png`.
-
-- The hero main video now has a `section-02-hero-video-poster.png` poster to reduce the black flash while the video loads.
-
-- Hero image hover zoom was removed so the gallery no longer scales up on pointer hover.
-
-- The `쉬운 자녀관리` badge selection now holds each selected state for 3 seconds instead of 4.
-
-- The hero main video now preloads `section-02-hero-video-poster.png` and uses it as a background fallback to reduce the black flash on reload.
-
-- The hero main video fallback now uses the provided first-frame screenshot as the visible placeholder until the video frame is ready.
-
-- Mobile `Section 03` card titles and body text now explicitly opt into shrinking inside the card head/text blocks with `min-width: 0` so long Korean copy wraps inside the card instead of overflowing right.
-
-- iPhone Safari text autosizing is now explicitly disabled with `text-size-adjust: 100%` on `html`, because mobile `Section 03` copy could still overflow even when the CSS width rules were correct.
-
-- `Section 03` and `Section 04` card body copy now uses `16px` across all eight gray cards, replacing the previous `18px` body size.
-
-- On mobile, all eight gray cards in `Section 03` and `Section 04` now use unified `30px` internal padding.
-
-- Mobile `Section 03` graphics now all begin from a consistent `20px` gap below the text block by moving the non-chart cards off their old absolute offsets and into wrapper-level flow spacing.
-
-- Mobile `Section 03` card chips (`첫번째 공식` through `네번째 공식`) now sit `30px` above their card titles instead of `8px`.
-
-- On mobile, the key graphics inside `증여재산공제에 맞춰 10년 주기로 계획`, `장기 투자에 적합한 선택, 미국 ETF`, `증여 계획부터 시작해요`, and `증여금을 투자로 연결해요` are now centered within their gray cards instead of left-biased by their old transform origins.
 
 - The first `Section 03` chart card needed an extra mobile-only horizontal correction because the chart artwork itself has more empty space on the right than the left; its chart block is now nudged right so it reads visually centered in the card.
 

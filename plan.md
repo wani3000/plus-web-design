@@ -8,18 +8,19 @@
 
 ## Current Reality Snapshot
 - Active source of truth:
-  - [index.html](/Users/hanwha/Documents/GitHub/plus-web-design/index.html)
-  - [main.js](/Users/hanwha/Documents/GitHub/plus-web-design/main.js)
-  - [src/initSectionsTest1.js](/Users/hanwha/Documents/GitHub/plus-web-design/src/initSectionsTest1.js)
-  - [src/initSectionsTest2.js](/Users/hanwha/Documents/GitHub/plus-web-design/src/initSectionsTest2.js)
-  - [src/initSectionsTest3.js](/Users/hanwha/Documents/GitHub/plus-web-design/src/initSectionsTest3.js)
-  - [style.css](/Users/hanwha/Documents/GitHub/plus-web-design/style.css)
-  - [test2.html](/Users/hanwha/Documents/GitHub/plus-web-design/test2.html)
-  - [test2.js](/Users/hanwha/Documents/GitHub/plus-web-design/test2.js)
-  - [test2.css](/Users/hanwha/Documents/GitHub/plus-web-design/test2.css)
-  - [test3.html](/Users/hanwha/Documents/GitHub/plus-web-design/test3.html)
-  - [test3.js](/Users/hanwha/Documents/GitHub/plus-web-design/test3.js)
-  - [test3.css](/Users/hanwha/Documents/GitHub/plus-web-design/test3.css)
+  - [index.html](/Users/chulwan/Documents/GitHub/plus-web-design/index.html)
+  - [main.js](/Users/chulwan/Documents/GitHub/plus-web-design/main.js)
+  - [src/initSectionsTest1.js](/Users/chulwan/Documents/GitHub/plus-web-design/src/initSectionsTest1.js)
+  - [src/initSectionsTest2.js](/Users/chulwan/Documents/GitHub/plus-web-design/src/initSectionsTest2.js)
+  - [src/initSectionsTest3.js](/Users/chulwan/Documents/GitHub/plus-web-design/src/initSectionsTest3.js)
+  - [style.css](/Users/chulwan/Documents/GitHub/plus-web-design/style.css)
+  - [plus-typography.css](/Users/chulwan/Documents/GitHub/plus-web-design/plus-typography.css)
+  - [test2.html](/Users/chulwan/Documents/GitHub/plus-web-design/test2.html)
+  - [test2.js](/Users/chulwan/Documents/GitHub/plus-web-design/test2.js)
+  - [test2.css](/Users/chulwan/Documents/GitHub/plus-web-design/test2.css)
+  - [test3.html](/Users/chulwan/Documents/GitHub/plus-web-design/test3.html)
+  - [test3.js](/Users/chulwan/Documents/GitHub/plus-web-design/test3.js)
+  - [test3.css](/Users/chulwan/Documents/GitHub/plus-web-design/test3.css)
 - Verified checks:
   - `npm run build`
   - `npm run verify`
@@ -36,6 +37,7 @@
   - or shared CSS/asset layers
 - Current user direction is to default to **test1-only** changes unless explicitly told otherwise.
 - Mobile tasks are shared UI work, but they still need to respect the test1/test2/test3 runtime split.
+- 최신 공통 작업에는 모바일 전용 헤더, 모바일 히어로 축약, `plus-typography.css` 기반 타이포 토큰, 모바일 카드 레이아웃 정비가 포함된다.
 - 히어로 카피 위치 조정처럼 공통 레이아웃 변화는 모바일/데스크톱 둘 다 함께 검증해야 한다.
 - 히어로 비디오 관련 수정은 poster/fallback, `canplay/playing` 시점, 모바일 autoplay 재시도까지 함께 확인해야 한다.
 - 모바일 타이포 통일 규칙에는 `Section 01` 말풍선 15px 예외가 포함되고, 기본 섹션 타이틀/서브타이틀은 28px / 18px, 간격 16px을 사용한다.
@@ -60,9 +62,9 @@
 - Keep repository docs aligned with current code reality.
 
 #### Files
-- [README.md](/Users/hanwha/Documents/GitHub/plus-web-design/README.md)
-- [research.md](/Users/hanwha/Documents/GitHub/plus-web-design/research.md)
-- [plan.md](/Users/hanwha/Documents/GitHub/plus-web-design/plan.md)
+- [README.md](/Users/chulwan/Documents/GitHub/plus-web-design/README.md)
+- [research.md](/Users/chulwan/Documents/GitHub/plus-web-design/research.md)
+- [plan.md](/Users/chulwan/Documents/GitHub/plus-web-design/plan.md)
 
 #### Strategy
 - Remove stale claims from the initial setup phase.
@@ -95,7 +97,7 @@
 
 #### Verified constraints
 - UI is already heavily implemented; future changes require careful visual verification
-- Main runtime is concentrated in [main.js](/Users/hanwha/Documents/GitHub/plus-web-design/main.js) and [style.css](/Users/hanwha/Documents/GitHub/plus-web-design/style.css)
+- Main runtime is concentrated in [main.js](/Users/chulwan/Documents/GitHub/plus-web-design/main.js) and [style.css](/Users/chulwan/Documents/GitHub/plus-web-design/style.css)
 - Regressions are more likely from timing and layout coordination than from business logic
 
 #### Preferred workflow
@@ -109,11 +111,11 @@ log the result
 ```
 
 #### Current implementation note
-- Main hero-specific motion for test1 remains in [main.js](/Users/hanwha/Documents/GitHub/plus-web-design/main.js)
+- Main hero-specific motion for test1 remains in [main.js](/Users/chulwan/Documents/GitHub/plus-web-design/main.js)
 - Header PI logo now reloads the landing top on root pages
 - test1 hero is now one-shot, not scrub
 - after gallery transition, test1 auto-scrolls to Section 01
-- Section 01~05 interactions are now separated per entry in [src/initSectionsTest1.js](/Users/hanwha/Documents/GitHub/plus-web-design/src/initSectionsTest1.js), [src/initSectionsTest2.js](/Users/hanwha/Documents/GitHub/plus-web-design/src/initSectionsTest2.js), and [src/initSectionsTest3.js](/Users/hanwha/Documents/GitHub/plus-web-design/src/initSectionsTest3.js)
+- Section 01~05 interactions are now separated per entry in [src/initSectionsTest1.js](/Users/chulwan/Documents/GitHub/plus-web-design/src/initSectionsTest1.js), [src/initSectionsTest2.js](/Users/chulwan/Documents/GitHub/plus-web-design/src/initSectionsTest2.js), and [src/initSectionsTest3.js](/Users/chulwan/Documents/GitHub/plus-web-design/src/initSectionsTest3.js)
 - test1/test2/test3 should not share a single section initializer
 
 ### Workstream C: Secondary Entry Stability
@@ -122,12 +124,12 @@ log the result
 - Keep `test2` and `test3` buildable and visually intact while the main landing evolves.
 
 #### Files
-- [test2.html](/Users/hanwha/Documents/GitHub/plus-web-design/test2.html)
-- [test2.js](/Users/hanwha/Documents/GitHub/plus-web-design/test2.js)
-- [test2.css](/Users/hanwha/Documents/GitHub/plus-web-design/test2.css)
-- [test3.html](/Users/hanwha/Documents/GitHub/plus-web-design/test3.html)
-- [test3.js](/Users/hanwha/Documents/GitHub/plus-web-design/test3.js)
-- [test3.css](/Users/hanwha/Documents/GitHub/plus-web-design/test3.css)
+- [test2.html](/Users/chulwan/Documents/GitHub/plus-web-design/test2.html)
+- [test2.js](/Users/chulwan/Documents/GitHub/plus-web-design/test2.js)
+- [test2.css](/Users/chulwan/Documents/GitHub/plus-web-design/test2.css)
+- [test3.html](/Users/chulwan/Documents/GitHub/plus-web-design/test3.html)
+- [test3.js](/Users/chulwan/Documents/GitHub/plus-web-design/test3.js)
+- [test3.css](/Users/chulwan/Documents/GitHub/plus-web-design/test3.css)
 
 #### Strategy
 - Keep them on the same dependency model as the main build
@@ -283,6 +285,21 @@ log the result
   - code quality: satisfied (text-only UI change)
   - edge cases: no behavior/runtime change introduced
 
+### Iteration 8
+- Refined shared mobile landing card layouts:
+  - `Section 03` / `Section 04` mobile card height -> `500px`
+  - mobile card text width constrained to prevent overflow
+  - mobile gray-card body copy unified to `16px`
+  - mobile card padding unified to `30px`
+  - mobile `Section 03` graphic gap unified to `20px`
+  - mobile chip spacing above titles increased to `30px`
+  - mobile key graphics centered within cards
+  - mobile CTA switched to single `앱 다운로드` button style
+- Quality status:
+  - functional correctness: reflected in current root entry code and shared CSS
+  - code quality: improved through shared mobile rules and typography tokens
+  - edge cases: shared mobile CSS still requires cross-entry verification
+
 ## Todo List
 - `[x]` Refresh core operating docs to reflect current code reality
 - `[x]` Keep build/verify commands documented and working
@@ -290,33 +307,6 @@ log the result
 - `[x]` Document test1/test2/test3 branch ownership
 - `[ ]` Continue section-level runtime maintenance with artifact-first verification
 - `[ ]` Reduce source-of-truth ambiguity between root entry files and `src/` remnants when safe
-
-
-- Hero center image now uses `img_main_website.png`.
-
-
-- Hero left-top card now uses `section-02-hero-video.mp4`.
-
-
-- Hero left-bottom card now uses `bg_02_baby.png`.
-
-- Hero center and left-top media are now swapped so the center card uses `section-02-hero-video.mp4` and the left-top card uses `img_main_website.png`.
-
-- Hero main video uses a two-layer crossfade loop to reduce the visual jump at replay.
-
-- Hero right-top card now uses `baby_03.png`.
-
-- PI logo click now forces the landing back to the hero top before refreshing, with browser scroll restoration disabled for that path.
-
-- Hero left-top card now uses `bg_image_04.png`.
-
-- Hero main video now uses a generated `section-02-hero-video-poster.png` poster to reduce black flash on reload.
-
-- Hero image hover zoom was removed so the gallery no longer scales up on pointer hover.
-
-- The `쉬운 자녀관리` badge selection now holds each selected state for 3 seconds instead of 4.
-
-- The hero main video now preloads `section-02-hero-video-poster.png` and uses it as a background fallback to reduce the black flash on reload.
 
 - The hero main video fallback now uses the provided first-frame screenshot as the visible placeholder until playback is ready.
 
