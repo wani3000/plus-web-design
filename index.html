@@ -2,12 +2,11 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <title>Antigravity Scroll Animation</title>
-    <link rel="preload" as="image" href="./section-02-hero-video-poster.png" />
-    <script type="module" crossorigin src="/plus-web-design/assets/main-h2jbQlkX.js"></script>
-    <link rel="modulepreload" crossorigin href="/plus-web-design/assets/lottie-CrZ_VWx8.js">
-    <link rel="stylesheet" crossorigin href="/plus-web-design/assets/lottie-Cq0ZHO6I.css">
+    <link rel="preload" as="image" href="/plus-web-design/section-02-hero-video-poster.png" />
+    <script type="module" crossorigin src="/plus-web-design/assets/main-DuwX6j7A.js"></script>
+    <link rel="stylesheet" crossorigin href="/plus-web-design/assets/main-Dtd2eISm.css">
   </head>
   <body>
     <!-- Pinned Hero Section -->
@@ -16,9 +15,11 @@
         <!-- Center image -->
         <div class="image-wrapper img-01">
           <div class="hero-loop-video" aria-label="Hero video">
-            <img class="hero-loop-video__fallback" src="./section-02-hero-video-poster.png" alt="" aria-hidden="true" />
-            <video class="hero-media-video hero-loop-video__layer hero-loop-video__layer--primary" src="./section-02-hero-video.mp4" poster="./section-02-hero-video-poster.png" autoplay muted playsinline loop preload="auto"></video>
-            <video class="hero-media-video hero-loop-video__layer hero-loop-video__layer--secondary" src="./section-02-hero-video.mp4" poster="./section-02-hero-video-poster.png" autoplay muted playsinline loop preload="auto"></video>
+            <img class="hero-loop-video__fallback" src="/plus-web-design/section-02-hero-video-poster.png" alt="" aria-hidden="true" />
+            <template class="hero-loop-video__template">
+              <video class="hero-media-video hero-loop-video__layer hero-loop-video__layer--primary" data-src="/section-02-hero-video.mp4" poster="/plus-web-design/section-02-hero-video-poster.png" autoplay muted playsinline loop preload="none"></video>
+              <video class="hero-media-video hero-loop-video__layer hero-loop-video__layer--secondary" data-src="/section-02-hero-video.mp4" poster="/plus-web-design/section-02-hero-video-poster.png" muted playsinline preload="none"></video>
+            </template>
           </div>
         </div>
 
@@ -26,17 +27,17 @@
         <h1 class="hero-title">앞서가는 부모들의<br>자산 공식</h1>
         <!-- Left images (Top/Bottom) -->
         <div class="image-wrapper img-02">
-          <img src="./bg_image_04.png" alt="Background Image 04" />
+          <img src="/plus-web-design/bg_image_04.png" alt="Background Image 04" />
         </div>
         <div class="image-wrapper img-03">
-          <img src="./bg_02_baby.png" alt="Baby Image" />
+          <img src="/plus-web-design/bg_02_baby.png" alt="Baby Image" />
         </div>
         <!-- Right images (Top/Bottom) -->
         <div class="image-wrapper img-04">
-          <img src="./baby_03.png" alt="Baby 03 Image" />
+          <img src="/plus-web-design/baby_03.png" alt="Baby 03 Image" />
         </div>
         <div class="image-wrapper img-05">
-          <video class="hero-media-video" src="./section-02-left-video.mp4" autoplay muted loop playsinline preload="auto" aria-label="Hero video"></video>
+          <video class="hero-media-video" src="/plus-web-design/section-02-left-video.mp4" autoplay muted loop playsinline preload="auto" aria-label="Hero video"></video>
         </div>
       </div>
     </section>
@@ -115,13 +116,13 @@
         <div class="section-03__heading">
           <span class="section-03__chip section-03__chip--heading"><span class="section-03__chip-window"><span class="section-03__chip-track"><span class="section-03__chip-line">앞서가는 부모들의 자산공식</span><span class="section-03__chip-line" aria-hidden="true">앞서가는 부모들의 자산공식</span></span></span></span>
           <h2>일찍부터 증여해서<br>자녀에게 미래의 목돈을<br class="mobile-only-break"> 만들어주세요</h2>
-          <p>10년 주기 한도를 놓치지 않는 증여 플랜, 지금 시작하세요</p>
+          <p>10년 주기 한도를 놓치지 않는 증여 플랜,<br class="mobile-only-break">지금 시작하세요</p>
         </div>
       </div>
 
       <div class="section-03__card section-03__card--left-top">
         <div class="section-03__card-head">
-          <h3>증여재산공제에 맞춰 10년 주기로 계획</h3>
+          <h3>증여재산공제에 맞춰<br class="mobile-only-break">10년 주기로 계획</h3>
           <span class="section-03__chip"><span class="section-03__chip-window"><span class="section-03__chip-track"><span class="section-03__chip-line">첫번째 공식</span><span class="section-03__chip-line" aria-hidden="true">첫번째 공식</span></span></span></span>
         </div>
         <p>미성년 자녀는 10년 간 2천만 원, 성년 자녀는 5천만 원까지 공제돼요. 최고의 절세 효과를 누리려면 빠르고 계획적인 증여가 중요하죠.</p>
@@ -143,22 +144,22 @@
       </div>
       <div class="section-03__card section-03__card--right-top">
         <div class="section-03__card-head">
-          <h3>유기정기금 증여하고 장기 투자</h3>
+          <h3>유기정기금 증여하고<br class="mobile-only-break">장기 투자</h3>
           <span class="section-03__chip"><span class="section-03__chip-window"><span class="section-03__chip-track"><span class="section-03__chip-line">두번째 공식</span><span class="section-03__chip-line" aria-hidden="true">두번째 공식</span></span></span></span>
         </div>
-        <p>목돈이 없어도 괜찮아요. 매달 나눠 보내고 신고는 처음 한 번만 하면 돼요.<br>유기정기금 방식을 활용하면 공제 한도 안에서 더 많은 금액을 증여할 수 있어요.</p>
+        <p>목돈이 없어도 괜찮아요. 매달 나눠 보내고 신고는 처음 한 번만 하면 돼요. 유기정기금 방식을 활용하면 공제 한도 안에서 더 많은 금액을 증여할 수 있어요.</p>
         <div class="section-03__monthly-visual" aria-hidden="true">
           <div class="section-03__monthly-amount" data-target="194000">0</div>
           <div class="section-03__monthly-notes">
-            <img class="section-03__monthly-note section-03__monthly-note--left" src="./monthly-note-yellow.png" alt="">
-            <img class="section-03__monthly-note section-03__monthly-note--right" src="./monthly-note-green.png" alt="">
+            <img class="section-03__monthly-note section-03__monthly-note--left" src="/plus-web-design/monthly-note-yellow.png" alt="">
+            <img class="section-03__monthly-note section-03__monthly-note--right" src="/plus-web-design/monthly-note-green.png" alt="">
           </div>
         </div>
       </div>
 
       <div class="section-03__card section-03__card--left-bottom">
         <div class="section-03__card-head">
-          <h3>장기 투자에 적합한 선택, 미국 ETF</h3>
+          <h3>장기 투자에 적합한 선택,<br class="mobile-only-break">미국 ETF</h3>
           <span class="section-03__chip"><span class="section-03__chip-window"><span class="section-03__chip-track"><span class="section-03__chip-line">세번째 공식</span><span class="section-03__chip-line" aria-hidden="true">세번째 공식</span></span></span></span>
         </div>
         <p>S&amp;P나 NASDAQ 같은 지수 추종 ETF를 이용하면 애플, 구글, 엔비디아 등 미국을 대표하는 수백 개 기업에 분산 투자가 가능해요.</p>
@@ -167,7 +168,7 @@
             <div class="section-03__etf-item section-03__etf-item--first">
               <div class="section-03__etf-ui">
                 <div class="section-03__etf-logo">
-                  <img class="section-03__etf-logo-image" src="./ic_logo_etf.png" alt="">
+                  <img class="section-03__etf-logo-image" src="/plus-web-design/ic_logo_etf.png" alt="">
                 </div>
                 <div class="section-03__etf-center">
                   <p class="section-03__etf-symbol">VOO</p>
@@ -183,7 +184,7 @@
             <div class="section-03__etf-item section-03__etf-item--second">
               <div class="section-03__etf-ui">
                 <div class="section-03__etf-logo">
-                  <img class="section-03__etf-logo-image" src="./ic_logo_etf.png" alt="">
+                  <img class="section-03__etf-logo-image" src="/plus-web-design/ic_logo_etf.png" alt="">
                 </div>
                 <div class="section-03__etf-center">
                   <p class="section-03__etf-symbol">QQQM</p>
@@ -199,7 +200,7 @@
             <div class="section-03__etf-item section-03__etf-item--third">
               <div class="section-03__etf-ui">
                 <div class="section-03__etf-logo">
-                  <img class="section-03__etf-logo-image" src="./ic_logo_etf.png" alt="">
+                  <img class="section-03__etf-logo-image" src="/plus-web-design/ic_logo_etf.png" alt="">
                 </div>
                 <div class="section-03__etf-center">
                   <p class="section-03__etf-symbol">XLK</p>
@@ -309,13 +310,13 @@
             <div class="section-04__gift-link-visual" aria-hidden="true">
               <div class="section-04__gift-link-stack">
                 <div class="section-04__gift-link-card section-04__gift-link-card--red">
-                  <img class="section-04__gift-link-image section-04__gift-link-image--red" src="data:image/png;base64,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" alt="">
+                  <img class="section-04__gift-link-image section-04__gift-link-image--red" src="/plus-web-design/ic_box_red.png" alt="">
                 </div>
                 <div class="section-04__gift-link-card section-04__gift-link-card--green">
-                  <img class="section-04__gift-link-image section-04__gift-link-image--green" src="data:image/png;base64,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" alt="">
+                  <img class="section-04__gift-link-image section-04__gift-link-image--green" src="/plus-web-design/ic_box_green.png" alt="">
                 </div>
                 <div class="section-04__gift-link-card section-04__gift-link-card--white">
-                  <img class="section-04__gift-link-image section-04__gift-link-image--white" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABQCAYAAACOEfKtAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAOdEVYdFNvZnR3YXJlAEZpZ21hnrGWYwAABMdJREFUeAHtnFuITVEYx/9n3GWIkMJMQsqljFKavCBGXrzwRimvXpQ8EM/igReeeMATheQShXEpeXENKckgaVzKjGEM44z1b62vs8+ec8k++8zan9avvvbMOXvv8+3/Wutb9w0EAoFAQCMNxnLO1hm7auyLsQFjCxEoCwUb5v7eZqwPVrS8O9KWIlASisecN9HYJ1ix+lEQTmw2AoPIueMylBdObDQCRUisa4UV6DdKC8di/A6BQTDmTYUV6RfK5zzaPgSKkArjs7E/KC+cfDcZheIecOxA5VwnAt5CoIgGd6xWaUhMHIdCjg3AFsXNqJzzpP23FaHoluQZqot3xZ0bcl8MClKu4pDPb7tzRyAwiCaUznUSDw+484J4ZViM0kWWjeVZ7pzhCJRlDgri9Ri7DCsqYfH2XmkMhQP8jYHY/9HYJp8hdp58Ph62yH6PnYvYNWONNbp7/zT2DbZ5I9fQ8lCCjJoQts22GLtm7KOxXtgH4zDUe2NnjK2IXZurcF/5jgMGG4zdgBWrVEXTaeySsbWRe2S+ppaA3mzsLqr3IKLx7TRssSW5mAkc67v5j/eVv4+4ezSgkMCZITrQeREF5yv1X+PNEjn3jbHtsInAHDwPtsbtTnDf6P1FzPXOz8zU3lJkp8OOlkTFSNPyKdxDun1nne/eRRTxFqHYwSybJK4MPngVke2wZugRLy7iCdRArc0Yiie9gn7oatSKkITNnx9IQC01EcWnaKxpmZqaxGMspf9PYCu+PniAPywTPPWoMOplUhFdcM/hJeGl6LNPqkk8Sew7zn9vlQeLfgt0CSfidbtn8N58aYeu3Ce+zkVGunNJegO+BbzufPc+isOulRbhotaMlPvASWugNuijA7aPnSpJU2M59HEKdSCpgAugD7b7Uo99SQWcAn10wMbBVEkq4AToowd1IKmAI6GP1HMfSSqgmsmZCGNQB5IK2At9sA2YmUrkK/SxChmqRDqhCwq3CXUgqYAvoAsW3fmwk/SpDiQkFfA+9MFcuB92UME7MhKtyWTkiPMf3qcfGqFPQBHxtXsG7yJ2IZ2Jbh920j2DVxHPQ5do0VzI42H3HN4mldqgT7y4iO3ueYZ8rSF/jMvL8tBbjGX9DtcSetvdyUl1rQKKycqKB0hArSsT9kD/3gwWX2aCDxhiRHwOLGibXC9lLahBhCTI+pKD0J0L+RxcWPQQHmACcJxNgrKmHBe1nfDMMeisTKQCId7WTDMIj0KxQ5psF2p8+FqhE8x9bE+thh5k0fkaWB0G4BFJCI5Ua1jmK+FmJTK0b4SONENHUaZ/95zfNcW+tNVnDqRD3HlER7PYvJG13E3umIkBVkES5CWy2awRn1qR4S1fTFXpHmUpHkrcO+r8zNxWrygUkCtB6XC197wMZdx77vzL/I6C6FvV6LzvnEjxupxvqa6NrmeQZxFhsdkIuwuz2kYceVheR8Efwa6mfwWbiyfBdvi5NnGGuyaPykVR+ut8LR5XlMk+ZTXIwy3B4EAejU0Snx7DriCoFuCnGTsUua5UN1I+O+euUftqgOjm692ws2IcAmOu4pKzp8b2wr7STs7PVblf9HtOLXB+hntW2IxiUX1r7Lixme6c8F6FQCAQCAQCgUAg8B/xF6Bnx7MbvEbzAAAAAElFTkSuQmCC" alt="">
+                  <img class="section-04__gift-link-image section-04__gift-link-image--white" src="/plus-web-design/ic_box_white.png" alt="">
                 </div>
               </div>
             </div>
@@ -335,7 +336,7 @@
             </div>
             <div class="section-04__tax-logo-wrap" aria-hidden="true">
               <div class="section-04__tax-logo-card">
-                <img class="section-04__tax-logo-image" src="./unnamed-1-1.png" alt="">
+                <img class="section-04__tax-logo-image" src="/plus-web-design/unnamed-1-1.png" alt="">
               </div>
             </div>
           </article>
@@ -399,20 +400,20 @@
       <div class="section-05-intro__inner">
         <div class="section-03__heading">
           <h2>파이, 이렇게 쓰면 돼요</h2>
-          <p>이용 방법부터 증여 상식까지 차근차근 알려드려요</p>
+          <p>이용 방법부터 증여 상식까지<br class="mobile-only-break">차근차근 알려드려요</p>
         </div>
         <div class="section-05-intro__grid">
           <article class="section-05-intro__card">
             <div class="section-05-intro__card-copy">
-              <h3>생애 필수 증여+투자 패키지 이용방법</h3>
-              <p>자녀 정보 등록부터 증여세 신고까지 쉽게 알아보세요.</p>
+              <h3>생애 필수 증여+투자 패키지<br>이용방법</h3>
+              <p>자녀 정보 등록부터 증여세 신고까지<br class="mobile-only-break">쉽게 알아보세요.</p>
             </div>
             <a class="section-05-intro__card-button" href="#">자세히 보기</a>
           </article>
           <article class="section-05-intro__card">
             <div class="section-05-intro__card-copy">
               <h3>증여 Q&amp;A</h3>
-              <p>알아두면 도움되는 증여•세금 상식을 확인해보세요.</p>
+              <p>알아두면 도움되는 증여•세금 상식을<br class="mobile-only-break">확인해보세요.</p>
             </div>
             <a class="section-05-intro__card-button" href="#">자세히 보기</a>
           </article>
@@ -423,22 +424,22 @@
     <section class="section-05 section-05--download-cta">
       <div class="section-05__inner">
         <h2 class="section-05__title">우리 아이 첫 번째 자산,<br>함께 만들어가요</h2>
-        <p class="section-05__subtitle">복잡한 증여세, 어려운 투자, 자녀의 미래 준비를 함께 풀어요</p>
+        <p class="section-05__subtitle">복잡한 증여세, 어려운 투자,<br class="mobile-only-break">자녀의 미래 준비를 함께 풀어요</p>
         <div class="section-05__actions">
-            <a class="store-button" href="https://play.google.com/store/apps/details?id=hw.dp.plus&hl=ko" data-store="google" aria-label="Google Play 다운로드">
+            <a class="store-button" href="https://play.google.com/store/apps/details?id=hw.dp.plus&hl=ko&pli=1" data-store="google" aria-label="Google Play 다운로드">
             <span class="store-button__icon-frame" aria-hidden="true">
-              <img class="store-button__icon-image" src="https://www.figma.com/api/mcp/asset/c1269f60-c578-4fa6-934d-c540a1afcd7c" alt="" />
+                  <img class="store-button__icon-image" src="/plus-web-design/ic_store_google.png" alt="" />
             </span>
             <span class="store-button__label">Google Play</span>
           </a>
-            <a class="store-button" href="https://apps.apple.com/kr/app/%ED%8C%8C%EC%9D%B4/id6755743981" data-store="apple" aria-label="App Store 다운로드">
+            <a class="store-button" href="https://apps.apple.com/us/app/%ED%8C%8C%EC%9D%B4/id6755743981" data-store="apple" aria-label="App Store 다운로드">
             <span class="store-button__icon-frame" aria-hidden="true">
-              <img class="store-button__icon-image store-button__icon-image--apple" src="https://www.figma.com/api/mcp/asset/9522aba2-6fb0-4e8e-8b20-f634d3780b7d" alt="" />
+                  <img class="store-button__icon-image store-button__icon-image--apple" src="/plus-web-design/ic_store_apple.png" alt="" />
             </span>
             <span class="store-button__label">App Store</span>
           </a>
           <button class="mobile-header__download section-05__download-mobile" type="button" data-store="google" aria-label="앱 다운로드">
-            <img class="section-05__download-mobile-icon" src="./mobile-download.svg" alt="" aria-hidden="true" />
+            <img class="section-05__download-mobile-icon" src="/plus-web-design/mobile-download.svg" alt="" aria-hidden="true" />
             <span>앱 다운로드</span>
           </button>
         </div>
@@ -450,36 +451,36 @@
         <div class="site-footer__brand-row">
           <div class="site-footer__brand-copy">
             <span class="site-footer__pi-logo" aria-hidden="true">
-              <img src="./io_pi.png" alt="">
+              <img src="/plus-web-design/io_pi.png" alt="">
             </span>
             <span class="site-footer__brand-text">앞서가는 부모들의 자산공식, 파이</span>
           </div>
           <div class="site-footer__brand-partners" aria-hidden="true">
-            <img class="site-footer__partner-logo site-footer__partner-logo--plus" src="./ic_plus.png" alt="">
-            <img class="site-footer__partner-logo site-footer__partner-logo--hanwha" src="./ic_hanwha.png" alt="">
+            <img class="site-footer__partner-logo site-footer__partner-logo--plus" src="/plus-web-design/ic_plus.png" alt="">
+            <img class="site-footer__partner-logo site-footer__partner-logo--hanwha" src="/plus-web-design/ic_hanwha.png" alt="">
           </div>
         </div>
         <div class="site-footer__action-row">
           <div class="site-footer__stores">
-            <a class="store-button store-button--footer" href="https://play.google.com/store/apps/details?id=hw.dp.plus&hl=ko" data-store="google" aria-label="Google Play 다운로드">
+            <a class="store-button store-button--footer" href="https://play.google.com/store/apps/details?id=hw.dp.plus&hl=ko&pli=1" data-store="google" aria-label="Google Play 다운로드">
               <span class="store-button__icon-frame store-button__icon-frame--footer" aria-hidden="true">
-                <img class="store-button__icon-image store-button__icon-image--footer" src="https://www.figma.com/api/mcp/asset/bb07d194-d007-4fff-b5ab-4741cddc35af" alt="" />
+                <img class="store-button__icon-image store-button__icon-image--footer" src="/plus-web-design/ic_store_google.png" alt="" />
               </span>
               <span class="store-button__label store-button__label--footer">Google Play</span>
             </a>
-            <a class="store-button store-button--footer" href="https://apps.apple.com/kr/app/%ED%8C%8C%EC%9D%B4/id6755743981" data-store="apple" aria-label="App Store 다운로드">
+            <a class="store-button store-button--footer" href="https://apps.apple.com/us/app/%ED%8C%8C%EC%9D%B4/id6755743981" data-store="apple" aria-label="App Store 다운로드">
               <span class="store-button__icon-frame store-button__icon-frame--footer" aria-hidden="true">
-                <img class="store-button__icon-image store-button__icon-image--apple store-button__icon-image--footer-apple" src="https://www.figma.com/api/mcp/asset/844eb516-ac05-43ef-aa07-a6b27c6f49f7" alt="" />
+                <img class="store-button__icon-image store-button__icon-image--apple store-button__icon-image--footer-apple" src="/plus-web-design/ic_store_apple.png" alt="" />
               </span>
               <span class="store-button__label store-button__label--footer">App Store</span>
             </a>
           </div>
           <div class="site-footer__socials">
             <a class="site-footer__social" href="#" aria-label="Youtube">
-              <img src="./ic_youtube.png" alt="">
+              <img src="/plus-web-design/ic_youtube.png" alt="">
             </a>
             <a class="site-footer__social" href="#" aria-label="Instagram">
-              <img src="./ic_instagram.png" alt="">
+              <img src="/plus-web-design/ic_instagram.png" alt="">
             </a>
           </div>
         </div>
@@ -488,11 +489,11 @@
         <div class="mobile-footer__brand">
           <div class="mobile-footer__brand-top">
             <div class="mobile-footer__logo" aria-hidden="true">
-              <img class="mobile-footer__logo-image" src="./io_pi.png" alt="" />
+              <img class="mobile-footer__logo-image" src="/plus-web-design/io_pi.png" alt="" />
             </div>
             <div class="mobile-footer__partners" aria-label="파트너 로고">
-              <img class="mobile-footer__partner mobile-footer__partner--plus" src="./ic_plus.png" alt="PLUS" />
-              <img class="mobile-footer__partner mobile-footer__partner--hanwha" src="./ic_hanwha.png" alt="한화생명" />
+              <img class="mobile-footer__partner mobile-footer__partner--plus" src="/plus-web-design/ic_plus.png" alt="PLUS" />
+              <img class="mobile-footer__partner mobile-footer__partner--hanwha" src="/plus-web-design/ic_hanwha.png" alt="한화생명" />
             </div>
           </div>
         </div>
@@ -500,10 +501,10 @@
           <p class="mobile-footer__tagline text-label-1-bold">앞서가는 부모들의 자산공식, 파이</p>
           <div class="mobile-footer__socials" aria-label="소셜 미디어">
             <a class="mobile-footer__social" href="https://www.youtube.com/@pluspiofficial" target="_blank" rel="noopener noreferrer" aria-label="유튜브">
-              <img class="mobile-footer__social-icon mobile-footer__social-icon--youtube" src="./ic_youtube.png" alt="" />
+              <img class="mobile-footer__social-icon mobile-footer__social-icon--youtube" src="/plus-web-design/ic_youtube.png" alt="" />
             </a>
             <a class="mobile-footer__social" href="https://www.instagram.com/plus.pi.official/" target="_blank" rel="noopener noreferrer" aria-label="인스타그램">
-              <img class="mobile-footer__social-icon mobile-footer__social-icon--instagram" src="./ic_instagram.png" alt="" />
+              <img class="mobile-footer__social-icon mobile-footer__social-icon--instagram" src="/plus-web-design/ic_instagram.png" alt="" />
             </a>
           </div>
         </div>
