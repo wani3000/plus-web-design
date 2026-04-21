@@ -24,6 +24,7 @@ The current active product surface is a single home page built from:
 - single active home hero under the fixed header
 - one-shot hero transition and automatic move into Section 01
 - mobile uses a single hero video with fallback/poster handling
+- `public/section-02-hero-video-poster.png` now comes from a clean frame extracted from `section-02-hero-video.mp4`; the previous poster asset itself contained a visible `section-02-hero-video.mp4` label
 
 ### Section 01
 - title: `아이 자산 어떻게 관리하고 계신가요?`

@@ -25,6 +25,8 @@
 - Unused public assets previously tied to removed `test2` / `test3` runtime paths have been deleted after home-only reference verification
 - Desktop and tablet now share the same `40px` total horizontal header gutter via `.header__inner`
 - Mobile hero video now mounts hidden before source hydration and reveal, reducing the chance of a native file-name placeholder flash during first paint
+- The previous hero poster asset itself was contaminated: `public/section-02-hero-video-poster.png` visibly contained the string `section-02-hero-video.mp4`
+- The active poster has been replaced with a clean frame extracted from `section-02-hero-video.mp4`, so the filename flash is now removed at the asset source
 
 ## Verified Section Findings
 ### Section 01

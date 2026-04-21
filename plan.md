@@ -22,6 +22,7 @@
 - deleted leftover public assets that were no longer referenced after removing `test2` / `test3`
 - aligned the desktop header container with the same horizontal gutter used by tablet and section containers
 - hardened the mobile hero video attach/reveal order to reduce brief native file-name placeholder flashes
+- replaced `public/section-02-hero-video-poster.png` with a clean frame extracted from `section-02-hero-video.mp4` after confirming the old poster asset itself contained the stray `section-02-hero-video.mp4` text
 - added Vercel project configuration in-repo and copied it into `dist/` so `gh-pages` preview builds can be ignored instead of failing on missing Vite tooling
 - finalized mobile `Section 01` bubble baseline with no visible overlap at 390px width
 - documented current mobile `Section 01b` rail behavior
@@ -30,6 +31,7 @@
 - mobile `Section 01` uses fixed bubble slots and hidden bubble subset (`2`, `4`, `9`)
 - mobile `Section 01b` starts around `1s` after `top 85%` trigger and then keeps cycling
 - `lottie-web` warning remains documented and intentionally deferred
+- hero poster filename flash root cause is now resolved at the asset level, not through additional runtime logic
 - home-only build currently also emits a chunk-size warning because the runtime is now bundled into one main entry
 
 ## Remaining Focus
