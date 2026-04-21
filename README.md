@@ -55,6 +55,8 @@ The current active product surface is a single home page built from:
   - `public/ic_store_google.png`
   - `public/ic_store_apple.png`
 - Store buttons now use the same frame size while preserving each PNG's original aspect ratio
+- The header no longer exposes legacy test tabs; home is the only active top-level route
+- Unused runtime assets left over from removed `test2` / `test3` tracks have been deleted from `public/`
 
 ## Commands
 - dev: `npm run dev`

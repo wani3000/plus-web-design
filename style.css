@@ -193,28 +193,6 @@ body {
   object-fit: contain;
 }
 
-.header__nav {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  align-items: center;
-  gap: 24px;
-}
-
-.header__nav-item {
-  font-family: 'Pretendard Variable', Pretendard, sans-serif;
-  font-size: 15px;
-  font-weight: 600;
-  color: var(--color-gray-60);
-  text-decoration: none;
-  line-height: 1;
-}
-
-.header__nav-item.is-active {
-  color: var(--color-gray-90);
-}
-
 .header__stores {
   display: flex;
   align-items: center;

@@ -18,6 +18,8 @@
 - kept mobile/tablet/desktop behavior inside the single home entry
 - moved runtime assets to `public/` as the active asset boundary
 - switched store icons to user-provided PNG assets
+- removed the now-redundant home/test tab UI from the shared header
+- deleted leftover public assets that were no longer referenced after removing `test2` / `test3`
 - finalized mobile `Section 01` bubble baseline with no visible overlap at 390px width
 - documented current mobile `Section 01b` rail behavior
 
@@ -37,5 +39,6 @@
 - `[x]` Keep docs aligned with home-only structure
 - `[x]` Verify mobile Section 01 bubble baseline
 - `[x]` Verify mobile Section 01b runtime behavior
+- `[x]` Remove obsolete header tab UI and home-unused public assets
 - `[ ]` Final visual QA before release commit/push
 - `[ ]` Push and verify deploy after final QA
