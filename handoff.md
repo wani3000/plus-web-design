@@ -23,6 +23,7 @@
 - 홈 단일 구조가 확정되면서 헤더의 테스트 탭/홈 탭 UI도 제거했다.
 - 스토어 아이콘은 사용자 제공 PNG를 `public`에 넣고 실제 런타임 참조도 그 PNG로 통일했다.
 - 홈에서 더 이상 참조하지 않는 `public/` 런타임 에셋은 삭제했다.
+- Vercel 프로젝트에는 `buildCommand=npm run build`, `outputDirectory=dist`를 반영했고, 루트 `vercel.json`은 `gh-pages` 프리뷰 배포를 skip하도록 구성했다.
 - 모바일 `Section 01` 말풍선은 `mobileBubbleSlots` 기준으로 정리했고, 현재 visible bubble 기준 겹침이 없다.
 - 모바일 `Section 01b`는 별도 모바일 레일 순서와 active index를 사용한다.
 

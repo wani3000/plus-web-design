@@ -24,6 +24,7 @@
 - Legacy home-tab UI has been removed from the header component
 - Unused public assets previously tied to removed `test2` / `test3` runtime paths have been deleted after home-only reference verification
 - Desktop and tablet now share the same `40px` total horizontal header gutter via `.header__inner`
+- Mobile hero video now mounts hidden before source hydration and reveal, reducing the chance of a native file-name placeholder flash during first paint
 
 ## Verified Section Findings
 ### Section 01
@@ -46,6 +47,10 @@
 - `npm run build` succeeds
 - `npm run verify` succeeds
 - active verification route: `/`
+- Vercel project `plus-web-design` now explicitly stores:
+  - `buildCommand: npm run build`
+  - `outputDirectory: dist`
+- Root [vercel.json](/Users/chulwan/Documents/GitHub/plus-web-design/vercel.json) also defines `ignoreCommand` to cancel `gh-pages` preview deployments before Vercel attempts a Vite build
 
 ## Known Warning Decision
 - `lottie-web` emits a direct `eval` build warning

@@ -251,6 +251,7 @@ if (isMobile) {
     if (!mobileHeroVideo || !mobileHeroLoop || mobileHeroVideoRevealed) return;
     mobileHeroVideoRevealed = true;
     mobileHeroVideo.style.removeProperty('display');
+    mobileHeroVideo.style.removeProperty('visibility');
     gsap.set(mobileHeroVideo, { autoAlpha: 0 });
     gsap.to(mobileHeroVideo, {
       autoAlpha: 1,
@@ -262,12 +263,14 @@ if (isMobile) {
 
   const [mobileHeroVideo] = createHeroLoopVideoLayers(mobileHeroLoop);
   if (mobileHeroVideo) {
-    mobileHeroLoop?.appendChild(mobileHeroVideo);
     mobileHeroVideo.muted = true;
     mobileHeroVideo.playsInline = true;
     mobileHeroVideo.preload = 'auto';
     mobileHeroVideo.style.display = 'none';
+    mobileHeroVideo.style.visibility = 'hidden';
+    mobileHeroVideo.setAttribute('aria-hidden', 'true');
     gsap.set(mobileHeroVideo, { autoAlpha: 0 });
+    mobileHeroLoop?.appendChild(mobileHeroVideo);
 
     const tryPlay = () => {
       hydrateVideoSource(mobileHeroVideo);

@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "vite build && cp vercel.json dist/vercel.json",
     "preview": "vite preview",
     "verify:preview": "node scripts/verify-preview.mjs",
     "verify": "npm run build && npm run verify:preview"

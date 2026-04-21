@@ -21,6 +21,8 @@
 - removed the now-redundant home/test tab UI from the shared header
 - deleted leftover public assets that were no longer referenced after removing `test2` / `test3`
 - aligned the desktop header container with the same horizontal gutter used by tablet and section containers
+- hardened the mobile hero video attach/reveal order to reduce brief native file-name placeholder flashes
+- added Vercel project configuration in-repo and copied it into `dist/` so `gh-pages` preview builds can be ignored instead of failing on missing Vite tooling
 - finalized mobile `Section 01` bubble baseline with no visible overlap at 390px width
 - documented current mobile `Section 01b` rail behavior
 

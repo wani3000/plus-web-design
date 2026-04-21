@@ -68,6 +68,11 @@ The current active product surface is a single home page built from:
 `npm run verify` currently checks only the home route:
 - `/`
 
+## Deployment Notes
+- GitHub Pages remains the publish path via `.github/workflows/deploy-pages.yml`
+- A root [vercel.json](/Users/chulwan/Documents/GitHub/plus-web-design/vercel.json) now pins Vercel to `npm run build` + `dist`
+- The same `vercel.json` is copied into `dist/` during build so `gh-pages` branch deployments can skip via `ignoreCommand` instead of trying to run `vite build`
+
 ## Known Warning
 - `lottie-web` still emits a build warning related to direct `eval`
 - the single home bundle also triggers Vite's `500 kB` chunk-size warning after the repo was reduced to one active entry

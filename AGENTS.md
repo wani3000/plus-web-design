@@ -45,6 +45,7 @@
 - Primary language: Vanilla JavaScript with ES modules
 - Animation libraries: GSAP, lottie-web
 - Deployment target: GitHub Pages via `.github/workflows/deploy-pages.yml`
+- Additional hosting/project setting in use: Vercel project for Git-connected production/preview deployments
 
 ## Build and Verification Rules
 - Always validate with actual outputs before concluding a change works.
