@@ -23,6 +23,7 @@
 - Legacy store SVGs are no longer part of the active runtime path
 - Legacy home-tab UI has been removed from the header component
 - Unused public assets previously tied to removed `test2` / `test3` runtime paths have been deleted after home-only reference verification
+- Desktop and tablet now share the same `40px` total horizontal header gutter via `.header__inner`
 
 ## Verified Section Findings
 ### Section 01
