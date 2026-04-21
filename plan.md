@@ -47,3 +47,5 @@
 - `[x]` Remove obsolete header tab UI and home-unused public assets
 - `[ ]` Final visual QA before release commit/push
 - `[ ]` Push and verify deploy after final QA
+- Added a `header__download` button to `src/components/Header.js` and, under `@media (max-width: 1100px)`, switched the header from store-button pair to the single `앱 다운로드` button so tablet matches the CTA behavior.
+- Fixed copy spacing around `mobile-only-break` in CTA/help cards so desktop/tablet text no longer concatenates when the line break is hidden.

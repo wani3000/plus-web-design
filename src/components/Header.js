@@ -31,6 +31,9 @@ export function Header() {
         <span class="store-button__label">App Store</span>
       </a>
     </div>
+    <button class="header__download" type="button" data-store="google" aria-label="앱 다운로드">
+      앱 다운로드
+    </button>
   </div>
 </header>
 

@@ -59,3 +59,5 @@
 - the home-only build now also emits a chunk-size warning because the runtime is bundled into a single main entry chunk above `500 kB`
 - this is currently a third-party warning, not a failing repository runtime issue
 - current recommendation: keep both warnings documented and defer structural optimization unless deployment or runtime performance becomes blocked
+- Tablet behavior is now unified: the fixed header no longer shows separate store buttons below 1100px. Instead, the desktop header hides `.header__stores` and reveals a single `.header__download` button, matching the tablet CTA treatment.
+- Copy concatenation on desktop/tablet was caused by missing literal spaces around `<br class="mobile-only-break">` in shared CTA/help text. Added spaces before the conditional breaks so hidden breaks do not collapse words together.

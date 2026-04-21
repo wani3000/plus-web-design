@@ -198,6 +198,23 @@ body {
   gap: 10px;
 }
 
+.header__download {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 11px 18px;
+  border: none;
+  border-radius: 14px;
+  background: var(--color-gray-90);
+  color: var(--color-gray-00);
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: -0.16px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
 .mobile-header {
   display: none;
   position: fixed;
@@ -3649,19 +3666,11 @@ body.store-modal-open {
   }
 
   .section-05__actions .store-button {
-    display: none;
+    display: inline-flex;
   }
 
   .section-05__download-mobile {
-    display: inline-flex;
-    align-self: center;
-    margin-top: 10px;
-    padding: 12px 24px;
-    font-size: 18px;
-    line-height: 26px;
-    letter-spacing: -0.18px;
-    gap: 6px;
-    font-weight: 500;
+    display: none;
   }
 
   .site-footer {
@@ -3684,6 +3693,14 @@ body.store-modal-open {
   .section-01,
   .section-01b {
     padding: var(--section-content-top) 20px;
+  }
+
+  .header__stores {
+    display: none;
+  }
+
+  .header__download {
+    display: inline-flex;
   }
 
   .section-01b {

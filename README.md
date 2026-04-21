@@ -79,3 +79,5 @@
 - 저장소를 단일 홈 엔트리로 줄인 뒤, 단일 번들 기준으로 Vite의 `500 kB` chunk-size 경고도 발생합니다.
 - 현재 상태는 알려진 서드파티/번들 경고이며, 빌드는 정상적으로 성공합니다.
 - 현재 판단은 문서화 상태로 유지하고, 실제 배포 차단 이슈가 생기기 전까지는 교체하지 않는 것입니다.
+- Tablet (`max-width: 1100px`) now uses a single `앱 다운로드` button in the fixed header instead of separate Google Play / App Store buttons; the CTA section was already on the single-button treatment at that width.
+- Shared CTA/help copy that uses `mobile-only-break` now includes explicit spaces before the hidden line break so desktop/tablet text remains correctly spaced.
