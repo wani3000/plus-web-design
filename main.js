@@ -35,6 +35,19 @@ document.addEventListener('click', (event) => {
 initStoreDownloadModal();
 
 const isMobile = window.matchMedia('(max-width: 767px)').matches;
+const hydrateVideoSource = (video) => {
+  if (!video || video.getAttribute('src') || !video.dataset.src) return;
+  video.setAttribute('src', video.dataset.src);
+  video.load();
+};
+const getHeroLoopVideoTemplate = (container) => container?.querySelector('.hero-loop-video__template') ?? null;
+const createHeroLoopVideoLayers = (container) => {
+  const template = getHeroLoopVideoTemplate(container);
+  if (!template) return [];
+
+  const fragment = template.content.cloneNode(true);
+  return Array.from(fragment.querySelectorAll('video'));
+};
 
 const initMobileSection01B = () => {
   if (!isMobile) return;
@@ -136,7 +149,7 @@ const initMobileSection01B = () => {
   };
 
   const queueNextCycle = () => {
-    gsap.delayedCall(2.2, () => {
+    gsap.delayedCall(1, () => {
       const cards = getPhoneCards();
       if (cards.length <= activeIndex + 1) return;
 
@@ -216,10 +229,10 @@ const initMobileSection01B = () => {
 
 if (isMobile) {
   // 모바일: 히어로 비디오 자동재생 보장
-  const mobileHeroVideo = document.querySelector('video.hero-loop-video__layer--primary');
   const mobileHeroLoop = document.querySelector('.hero-loop-video');
   const mobileHeroFallback = mobileHeroLoop?.querySelector('.hero-loop-video__fallback');
   let mobileHeroFallbackHidden = false;
+  let mobileHeroVideoRevealed = false;
 
   const hideMobileHeroFallback = () => {
     if (!mobileHeroFallback || mobileHeroFallbackHidden) return;
@@ -234,40 +247,59 @@ if (isMobile) {
     });
   };
 
+  const revealMobileHeroVideo = (mobileHeroVideo) => {
+    if (!mobileHeroVideo || !mobileHeroLoop || mobileHeroVideoRevealed) return;
+    mobileHeroVideoRevealed = true;
+    mobileHeroVideo.style.removeProperty('display');
+    gsap.set(mobileHeroVideo, { autoAlpha: 0 });
+    gsap.to(mobileHeroVideo, {
+      autoAlpha: 1,
+      duration: 0.24,
+      ease: 'power2.out'
+    });
+    hideMobileHeroFallback();
+  };
+
+  const [mobileHeroVideo] = createHeroLoopVideoLayers(mobileHeroLoop);
   if (mobileHeroVideo) {
-    // secondary 비디오는 모바일에서 불필요 — 리소스 절약
-    const secondaryVideo = document.querySelector('video.hero-loop-video__layer--secondary');
-    if (secondaryVideo) {
-      secondaryVideo.pause();
-      secondaryVideo.removeAttribute('src');
-      secondaryVideo.load();
-    }
+    mobileHeroLoop?.appendChild(mobileHeroVideo);
+    mobileHeroVideo.muted = true;
+    mobileHeroVideo.playsInline = true;
+    mobileHeroVideo.preload = 'auto';
+    mobileHeroVideo.style.display = 'none';
+    gsap.set(mobileHeroVideo, { autoAlpha: 0 });
 
     const tryPlay = () => {
+      hydrateVideoSource(mobileHeroVideo);
       if (!mobileHeroVideo.paused) return;
       mobileHeroVideo.muted = true;
       mobileHeroVideo.play().catch(() => {});
     };
 
     const handlePlayable = () => {
-      hideMobileHeroFallback();
+      revealMobileHeroVideo(mobileHeroVideo);
+      tryPlay();
     };
 
-    if (mobileHeroVideo.readyState >= 2) {
-      tryPlay();
-      hideMobileHeroFallback();
-    } else {
-      mobileHeroVideo.addEventListener('loadeddata', tryPlay, { once: true });
-    }
     mobileHeroVideo.addEventListener('loadeddata', handlePlayable, { once: true });
     mobileHeroVideo.addEventListener('canplay', handlePlayable, { once: true });
     mobileHeroVideo.addEventListener('playing', handlePlayable, { once: true });
+
+    requestAnimationFrame(() => {
+      window.setTimeout(() => {
+        hydrateVideoSource(mobileHeroVideo);
+        if (mobileHeroVideo.readyState >= 2) {
+          handlePlayable();
+          return;
+        }
+        tryPlay();
+      }, 160);
+    });
     // 유저 인터랙션 후 재시도 (자동재생 정책 우회)
     document.addEventListener('touchstart', tryPlay, { once: true, passive: true });
     document.addEventListener('click', tryPlay, { once: true, passive: true });
   }
   initMobileSection01B();
-  requestAnimationFrame(() => ScrollTrigger.refresh());
 }
 
 if (!isMobile) {
@@ -279,6 +311,7 @@ const section01 = document.querySelector('.section-01');
 const heroLoopVideo = document.querySelector('.hero-loop-video');
 const heroLoopFallback = heroLoopVideo?.querySelector('.hero-loop-video__fallback');
 let heroLoopFallbackHidden = false;
+let heroInitialVideoRevealed = false;
 
 // Set initial states for fly-in images
 gsap.set(".img-02, .img-03", { x: "-50vw" });
@@ -300,10 +333,20 @@ const hideHeroLoopFallback = () => {
 const initHeroLoopVideo = () => {
   if (!heroLoopVideo) return;
 
-  const layers = Array.from(heroLoopVideo.querySelectorAll('video'));
+  let layers = Array.from(heroLoopVideo.querySelectorAll('video'));
+  if (!layers.length) {
+    layers = createHeroLoopVideoLayers(heroLoopVideo);
+    if (layers.length) {
+      const fragment = document.createDocumentFragment();
+      layers.forEach((layer) => fragment.appendChild(layer));
+      heroLoopVideo.appendChild(fragment);
+    }
+  }
   if (layers.length < 2) return;
 
   const [primary, secondary] = layers;
+  hydrateVideoSource(primary);
+  hydrateVideoSource(secondary);
   const swapLeadTime = 0.38;
   const swapFadeDuration = 0.34;
   let activeVideo = primary;
@@ -315,10 +358,10 @@ const initHeroLoopVideo = () => {
     video.muted = true;
     video.playsInline = true;
     video.preload = 'auto';
+    gsap.set(video, { opacity: 0 });
     if (!shouldPlay) {
       video.pause();
       video.currentTime = 0;
-      gsap.set(video, { opacity: 0 });
     }
   };
 
@@ -371,6 +414,13 @@ const initHeroLoopVideo = () => {
   };
 
   const handlePlayable = () => {
+    if (heroInitialVideoRevealed) return;
+    heroInitialVideoRevealed = true;
+    gsap.to(activeVideo, {
+      opacity: 1,
+      duration: 0.24,
+      ease: 'power2.out'
+    });
     hideHeroLoopFallback();
   };
 
@@ -388,8 +438,8 @@ const initHeroLoopVideo = () => {
   window.addEventListener('touchstart', tryPlayActiveVideo, { passive: true, once: true });
   window.addEventListener('pointerdown', tryPlayActiveVideo, { passive: true, once: true });
 
-  if (activeVideo.readyState >= 2 || standbyVideo.readyState >= 2) {
-    requestAnimationFrame(() => requestAnimationFrame(hideHeroLoopFallback));
+  if (activeVideo.readyState >= 2) {
+    requestAnimationFrame(() => requestAnimationFrame(handlePlayable));
   }
 };
 
@@ -640,6 +690,7 @@ window.addEventListener('touchend', (event) => {
   }
 }, { passive: true });
 
+}
+
 initSharedSections();
 requestAnimationFrame(() => ScrollTrigger.refresh());
-}

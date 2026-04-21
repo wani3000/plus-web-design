@@ -343,15 +343,15 @@ body {
 
 .store-button__icon-image {
   display: block;
-  width: 20px;
-  height: 20px;
+  width: 100%;
+  height: 100%;
   object-fit: contain;
 }
 
 .store-button__icon-image--apple {
-  width: 15px;
-  height: auto;
-  max-height: 20px;
+  width: 100%;
+  height: 100%;
+  max-height: none;
 }
 
 /* Top Navigation Bar */
@@ -465,7 +465,7 @@ body {
   inset: 0;
   overflow: hidden;
   border-radius: inherit;
-  background: url('./section-02-hero-video-poster.png') center center / cover no-repeat #000;
+  background: url('/section-02-hero-video-poster.png') center center / cover no-repeat #000;
 }
 
 .hero-loop-video__fallback {
@@ -492,7 +492,7 @@ body {
 }
 
 .hero-loop-video__layer--primary {
-  opacity: 1;
+  opacity: 0;
 }
 
 .hero-loop-video .hero-media-video {
@@ -2028,6 +2028,7 @@ body {
   transform: translateX(calc(20px * var(--etf-scale))) rotate(-5deg);
   transform-origin: left bottom;
   z-index: 2;
+  will-change: transform;
 }
 
 .section-03__etf-item--third {
@@ -2036,6 +2037,7 @@ body {
   transform: translateX(calc(6px * var(--etf-scale))) rotate(4deg);
   transform-origin: left bottom;
   z-index: 1;
+  will-change: transform;
 }
 
 .section-03__etf-ui {
@@ -2128,8 +2130,9 @@ body {
 .section-03__chart-block {
   position: relative;
   grid-row: 4;
-  justify-self: start;
-  margin-left: calc(50% - 222px);
+  justify-self: center;
+  margin-left: auto;
+  margin-right: auto;
   align-self: stretch;
   width: 520px;
   height: auto;
@@ -2159,14 +2162,14 @@ body {
 }
 
 .section-03__chart-label-group--small {
-  left: 108px;
+  left: 144px;
   bottom: calc(50% - 52px);
   transform: translateX(-100%);
   text-align: right;
 }
 
 .section-03__chart-label-group--large {
-  left: 428px;
+  left: 464px;
   bottom: calc(100% - 54px);
   transform: translateX(-100%);
   text-align: right;
@@ -2175,7 +2178,7 @@ body {
 
 .section-03__chart-label--small {
   position: absolute;
-  left: 108px;
+  left: 144px;
   bottom: calc(50% - 44px);
   transform: translateX(-100%);
   text-align: right;
@@ -2183,7 +2186,7 @@ body {
 
 .section-03__chart-label--large {
   position: absolute;
-  left: 428px;
+  left: 464px;
   bottom: calc(100% - 44px);
   transform: translateX(-100%);
   text-align: right;
@@ -2206,14 +2209,14 @@ body {
 }
 
 .section-03__chart-bar--small {
-  left: 120px;
+  left: 156px;
   bottom: 0;
   width: 88px;
   height: 50%;
 }
 
 .section-03__chart-bar--large {
-  left: 226px;
+  left: 262px;
   bottom: 0;
   width: 98px;
   height: 100%;
@@ -2234,13 +2237,13 @@ body {
 }
 
 .section-03__chart-line--small {
-  left: 208px;
+  left: 244px;
   bottom: calc(50% - 2px);
   width: 220px;
 }
 
 .section-03__chart-line--large {
-  left: 324px;
+  left: 360px;
   bottom: calc(100% - 2px);
   width: 104px;
 }
@@ -3254,16 +3257,17 @@ body {
 .store-button__icon-frame--footer {
   width: 16px;
   height: 16px;
+  flex: 0 0 16px;
 }
 
 .store-button__icon-image--footer {
-  width: 16px;
-  height: 16px;
+  width: 100%;
+  height: 100%;
 }
 
 .store-button__icon-image--footer-apple {
-  width: 13px;
-  height: 16px;
+  width: 100%;
+  height: 100%;
 }
 
 .store-button__label--footer {
@@ -3663,6 +3667,26 @@ body.store-modal-open {
     padding: 200px 20px;
   }
 
+  .section-05__actions {
+    width: 100%;
+  }
+
+  .section-05__actions .store-button {
+    display: none;
+  }
+
+  .section-05__download-mobile {
+    display: inline-flex;
+    align-self: center;
+    margin-top: 10px;
+    padding: 12px 24px;
+    font-size: 18px;
+    line-height: 26px;
+    letter-spacing: -0.18px;
+    gap: 6px;
+    font-weight: 500;
+  }
+
   .site-footer {
     padding: 40px 20px;
   }
@@ -3772,11 +3796,12 @@ body.store-modal-open {
 
   .section-05 {
     min-height: 0;
-    padding: 200px 20px;
+    padding: 100px 20px;
   }
 
   .section-05__title {
-    font-size: 36px;
+    font-size: 28px;
+    line-height: 35px;
   }
 
   .section-05__actions {
@@ -3792,6 +3817,328 @@ body.store-modal-open {
   .site-footer__stores,
   .site-footer__socials {
     justify-content: flex-start;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1100px) {
+  .header__inner {
+    width: min(var(--section-max), calc(100% - 40px));
+  }
+
+  .section-01__inner,
+  .section-01b__inner,
+  .section-02__inner,
+  .section-03__inner,
+  .section-04__inner,
+  .section-05-intro__inner,
+  .section-05__inner {
+    width: min(var(--section-max), calc(100% - 40px));
+  }
+
+  .section-01,
+  .section-01b,
+  .section-02,
+  .section-03,
+  .section-04,
+  .section-05,
+  .section-05-intro {
+    overflow-x: hidden;
+  }
+
+  .section-01__bubbles {
+    position: relative;
+    left: 50%;
+    width: 100vw;
+    height: clamp(300px, 34vw, 400px);
+    margin-top: var(--section-heading-bottom-gap);
+    transform: translateX(-50%);
+    display: block;
+    overflow: visible;
+  }
+
+  .section-01__bubble {
+    position: absolute;
+    transform: none;
+    white-space: nowrap;
+    text-align: left;
+  }
+
+  .section-01b {
+    --section-01b-title-offset: clamp(112px, 12vw, 140px);
+    --section-01b-phone-top-gap: clamp(88px, 9vw, 118px);
+    --section-01b-phone-bottom-gap: 48px;
+    --section-01b-phone-gap: clamp(12px, 1.8vw, 18px);
+    --section-01b-phone-overflow: 112px;
+  }
+
+  .section-02__grid {
+    grid-template-columns: minmax(0, 26fr) minmax(0, 26fr) minmax(0, 48fr);
+    grid-template-rows: minmax(360px, 44vw) minmax(240px, 28vw);
+    gap: 16px;
+  }
+
+  .section-02__card--chart,
+  .section-02__card--text {
+    padding: clamp(28px, 3vw, 36px);
+    height: auto;
+  }
+
+  .section-02__card--chart {
+    min-height: clamp(360px, 44vw, 460px);
+  }
+
+  .section-02__card--text {
+    min-height: clamp(240px, 28vw, 320px);
+  }
+
+  .section-02__block--hero {
+    min-height: clamp(360px, 44vw, 520px);
+    height: 100%;
+    aspect-ratio: auto;
+  }
+
+  .section-02__block--image,
+  .section-02__block--sub {
+    min-height: clamp(280px, 32vw, 360px);
+    height: 100%;
+    transform: translateY(-18%);
+  }
+
+  .section-02__chart {
+    height: clamp(180px, 22vw, 220px);
+  }
+
+  .section-02__guide-line {
+    left: 24%;
+    right: 28px;
+    width: auto;
+  }
+
+  .section-02__hourglass-lottie {
+    width: clamp(240px, 28vw, 320px);
+    height: clamp(240px, 28vw, 320px);
+    right: -30px;
+  }
+
+  .section-03 {
+    height: auto;
+    padding: var(--section-content-top) 20px 0;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+    align-items: start;
+  }
+
+  .section-03__inner {
+    grid-column: 1 / -1;
+    padding-top: 0;
+  }
+
+  .section-03__card {
+    position: relative;
+    left: auto;
+    top: auto;
+    width: 100%;
+    height: clamp(520px, 56vw, 580px);
+    padding: clamp(28px, 3vw, 36px);
+  }
+
+  .section-03__card--left-top,
+  .section-03__card--right-top,
+  .section-03__card--left-bottom,
+  .section-03__card--right-bottom {
+    left: auto;
+    top: auto;
+  }
+
+  .section-03__card-head {
+    padding-right: 138px;
+  }
+
+  .section-03 .section-03__card-head > .section-03__chip {
+    top: -4px;
+  }
+
+  .section-03__card--left-top {
+    display: grid;
+    grid-template-rows: auto auto 12px 1fr;
+  }
+
+  .section-03__card--left-top .section-03__chart-block {
+    transform: scale(0.78);
+    transform-origin: top center;
+    margin-top: 12px;
+  }
+
+  .section-03__card--right-top .section-03__monthly-amount {
+    left: 32px;
+    right: 32px;
+    font-size: 56px;
+  }
+
+  .section-03__card--right-top .section-03__monthly-notes {
+    transform: scale(0.78);
+    transform-origin: center bottom;
+    bottom: -146px;
+  }
+
+  .section-03__card--left-bottom .section-03__etf-visual {
+    left: 24px;
+    right: 24px;
+    bottom: 24px;
+  }
+
+  .section-03__card--left-bottom .section-03__etf-stage {
+    --etf-scale: 0.72;
+    margin: 0 auto;
+  }
+
+  .section-03__card--right-bottom .section-03__invest-visual {
+    inset: 198px 0 0;
+  }
+
+  .section-03__card--right-bottom .section-03__invest-ui {
+    bottom: -12px;
+    transform: translateX(-50%) scale(0.84);
+    transform-origin: bottom center;
+  }
+
+  .section-04 {
+    padding: var(--section-content-top) 20px 0;
+  }
+
+  .section-04__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-rows: 500px 520px;
+    gap: 16px;
+  }
+
+  .section-04__card {
+    padding: clamp(28px, 3vw, 36px);
+  }
+
+  .section-04__card--wide-top,
+  .section-04__card--narrow-top,
+  .section-04__card--narrow-bottom,
+  .section-04__card--wide-bottom {
+    grid-column: auto;
+    grid-row: auto;
+    width: 100%;
+    transform: none;
+  }
+
+  .section-04__card-copy-bottom {
+    left: clamp(28px, 3vw, 36px);
+    right: clamp(28px, 3vw, 36px);
+    bottom: clamp(28px, 3vw, 36px);
+  }
+
+  .section-04__card--wide-top .section-04__plan-widget {
+    width: 355px;
+    max-width: calc(100% - 32px);
+    padding: 30px;
+    position: absolute;
+    left: 50%;
+    top: 58%;
+    transform: translate(-50%, -50%) scale(0.82);
+    transform-origin: center;
+    margin: 0;
+  }
+
+  .section-04__gift-link-visual {
+    left: 50%;
+    right: auto;
+    width: 355px;
+    transform: translate(-50%, 28px) scale(0.78);
+    transform-origin: top center;
+  }
+
+  .section-04__card--narrow-bottom {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .section-04__card--narrow-bottom .section-04__tax-card {
+    position: absolute;
+    top: 58%;
+    left: 50%;
+    margin: 0;
+    transform: translate(-50%, -50%) scale(0.82);
+    transform-origin: center;
+  }
+
+  .section-04__card--narrow-bottom .section-04__tax-logo-wrap {
+    position: absolute;
+    right: 18px;
+    bottom: 18px;
+    margin: 0;
+    transform: scale(0.62);
+    transform-origin: bottom right;
+  }
+
+  .section-04__insight-list {
+    margin-top: 32px;
+  }
+
+  .section-04__insight-item {
+    width: 100%;
+    padding: 18px;
+    gap: 16px;
+  }
+
+  .section-04__insight-icon,
+  .section-04__insight-icon-image {
+    width: 64px;
+    height: 64px;
+  }
+
+  .section-04__card--wide-bottom-test1 {
+    height: 520px;
+  }
+
+  .section-04__family-app-badges {
+    top: 248px;
+    right: 18px;
+    transform: scale(0.62);
+    transform-origin: top right;
+  }
+
+  .section-04__card--wide-bottom-test1 .section-04__family-app {
+    top: 142px;
+    left: 50%;
+    right: auto;
+    width: 375px;
+    transform: translateX(-50%) scale(0.62);
+    transform-origin: top center;
+  }
+
+  .section-05-intro {
+    padding: 160px 20px;
+  }
+
+  .section-05 {
+    padding: 160px 20px;
+  }
+
+  .section-05__actions {
+    width: auto;
+    flex-wrap: nowrap;
+  }
+
+  .section-05__actions .store-button {
+    display: inline-flex;
+  }
+
+  .section-05__download-mobile {
+    display: none;
+  }
+
+  .site-footer__top,
+  .site-footer__bottom {
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+    flex-wrap: wrap;
   }
 }
 
@@ -3814,6 +4161,7 @@ body.store-modal-open {
 
   body {
     padding-top: var(--mobile-header-height);
+    overflow-x: hidden;
   }
 
   .header {
@@ -3833,7 +4181,80 @@ body.store-modal-open {
   }
 
   .section-01__bubble {
-    font-size: 15px;
+    font-size: 14px;
+    position: absolute;
+    transform: none;
+    padding: 14px 16px;
+    background: #FFFFFF;
+    color: #141415;
+    white-space: normal;
+    text-align: center;
+    max-width: min(280px, calc(100% - 16px));
+    word-break: keep-all;
+    line-height: 1;
+    letter-spacing: 0;
+    box-shadow: 0 3.2px 32px rgba(0, 0, 0, 0.12);
+    transition: none;
+  }
+
+  .section-01__bubble::after {
+    display: none;
+  }
+
+  .section-01__bubble:hover {
+    translate: 0 0;
+    box-shadow: 0 3.2px 32px rgba(0, 0, 0, 0.12);
+  }
+
+  .section-01__bubble:hover::after {
+    display: none;
+  }
+
+  .section-01__bubble--2,
+  .section-01__bubble--4,
+  .section-01__bubble--9 {
+    display: none;
+  }
+
+  .section-01__bubble--1,
+  .section-01__bubble--3 {
+    white-space: nowrap;
+    width: max-content;
+    max-width: none;
+  }
+
+  .section-01__bubble--6,
+  .section-01__bubble--7,
+  .section-01__bubble--8 {
+    white-space: nowrap;
+    width: max-content;
+    max-width: none;
+  }
+
+  .section-01__bubble--5 {
+    line-height: 22px;
+  }
+
+  .section-01,
+  .section-01__bubbles {
+    overflow-x: hidden;
+  }
+
+  .section-01__inner {
+    overflow: visible;
+  }
+
+  .section-01__bubbles {
+    position: relative;
+    left: auto;
+    width: calc(100vw - 16px);
+    max-width: calc(100vw - 16px);
+    height: 480px;
+    margin-left: calc(50% - 50vw + 8px);
+    margin-top: var(--section-heading-bottom-gap);
+    transform: none;
+    display: block;
+    overflow: hidden;
   }
 
   .section-01__heading,
@@ -3933,7 +4354,7 @@ body.store-modal-open {
     max-width: 320px;
     text-align: center;
     color: var(--color-gray-00);
-    font-size: 32px;
+    font-size: 36px;
     line-height: 1.25;
     letter-spacing: -0.4px;
   }
@@ -3961,7 +4382,7 @@ body.store-modal-open {
   }
 
   .hero-loop-video {
-    background: url('./section-02-hero-video-poster.png') center center / cover no-repeat #000;
+    background: url('/section-02-hero-video-poster.png') center center / cover no-repeat #000;
   }
 
   .hero-loop-video__fallback {
@@ -3973,11 +4394,15 @@ body.store-modal-open {
   }
 
   .hero-loop-video__layer--primary {
-    opacity: 1;
+    opacity: 0;
   }
 
   .section-03 {
     padding: var(--section-content-top) 20px 0;
+  }
+
+  .section-03__heading {
+    margin-bottom: 30px;
   }
 
   .section-03__card {
@@ -4016,6 +4441,17 @@ body.store-modal-open {
     align-self: flex-start;
   }
 
+  .section-03__heading .section-03__chip--heading {
+    padding: 14px 16px;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1;
+    background: #FFFFFF;
+    color: #141415;
+    border-radius: 999px;
+    box-shadow: 0 3.2px 32px rgba(0, 0, 0, 0.12);
+  }
+
   .section-03__card-head > h3 {
     flex: 1 1 auto;
     min-width: 0;
@@ -4049,10 +4485,36 @@ body.store-modal-open {
 
   .section-03__card--left-top .section-03__chart-block {
     position: relative;
+    justify-self: start;
     left: 50%;
     margin-left: 0;
     margin-right: 0;
-    transform: translateX(calc(-50% + 25px)) scale(0.65);
+    margin-bottom: -30px;
+
+    transform: translateX(-50%) scale(0.65);
+    transform-origin: bottom center;
+  }
+
+  .section-03__chart-bar--small {
+    height: calc(50% + 100px);
+  }
+
+  .section-03__chart-bar--large {
+    height: calc(100% + 100px);
+  }
+
+  .section-03__chart-label-group--small {
+    left: 144px;
+    bottom: calc(50% + 48px);
+  }
+
+  .section-03__chart-label-group--large {
+    bottom: calc(100% + 46px);
+  }
+
+  .section-03__chart-line--small,
+  .section-03__chart-line--large {
+    display: none !important;
   }
 
   .section-03__monthly-visual {
@@ -4069,10 +4531,24 @@ body.store-modal-open {
 
   .section-03__card--right-top .section-03__monthly-visual {
     margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .section-03__card--right-top .section-03__monthly-amount {
-    top: 0;
+    position: relative;
+    top: auto;
+    left: auto;
+    right: auto;
+    width: max-content;
+    margin: -96px auto 0;
+    z-index: 2;
+  }
+
+  .section-03__card--right-top .section-03__monthly-notes {
+    bottom: -330px;
+    transform: translateX(-10px);
   }
 
   .section-03__etf-visual {
@@ -4097,7 +4573,10 @@ body.store-modal-open {
   }
 
   .section-03__card--left-bottom .section-03__etf-stage {
-    transform: translateX(-7px) scale(0.65);
+    position: absolute;
+    left: 50%;
+    top: 0;
+    transform: translateX(-50%) translateY(30px) scale(0.65);
     transform-origin: top center;
   }
 
@@ -4116,13 +4595,21 @@ body.store-modal-open {
   }
 
   .section-05-intro {
-    padding: 120px 20px;
+    padding: 120px 20px 100px;
+  }
+
+  .section-05.section-05--download-cta {
+    margin-top: 0;
+  }
+
+  .section-04__heading {
+    margin-bottom: 50px;
   }
 
   .section-04__card {
     padding: 30px;
     min-height: 0;
-    height: 480px;
+    height: 400px;
   }
 
   .section-05-intro__inner {
@@ -4130,8 +4617,13 @@ body.store-modal-open {
   }
 
   .section-05-intro__grid {
+    margin-top: 50px;
     grid-template-columns: 1fr;
     gap: 16px;
+  }
+
+  .section-05-intro__card {
+    padding: 30px;
   }
 
   .section-05__actions {
@@ -4160,7 +4652,7 @@ body.store-modal-open {
     margin: 0;
     position: absolute;
     left: 50%;
-    top: 50%;
+    top: calc(50% + 40px);
     transform: translate(-50%, -50%) scale(0.72);
     transform-origin: center;
   }
@@ -4184,7 +4676,7 @@ body.store-modal-open {
     left: 50%;
     right: auto;
     width: 355px;
-    transform: translateX(-50%) scale(0.805);
+    transform: translate(-50%, 80px) scale(0.7245);
     transform-origin: top center;
   }
 
@@ -4218,7 +4710,7 @@ body.store-modal-open {
 
   .section-04__card--narrow-bottom .section-04__tax-card {
     position: absolute;
-    top: 50%;
+    top: calc(50% + 30px);
     left: 50%;
     margin: 0;
     transform: translate(-50%, -50%) scale(0.84);
@@ -4228,20 +4720,21 @@ body.store-modal-open {
   .section-04__card--narrow-bottom .section-04__tax-logo-wrap {
     display: block;
     position: absolute;
-    right: 30px;
-    bottom: 30px;
+    right: 25px;
+    bottom: 50px;
     margin: 0;
     transform: scale(0.7);
     transform-origin: bottom right;
   }
 
   .section-04__card--wide-bottom-test1 .section-04__family-app-top-image--next {
-    display: none;
+    display: block;
   }
 
   .section-04__card--wide-bottom-test1 {
     position: relative;
     overflow: hidden;
+    height: 520px;
   }
 
   .section-04__card--wide-bottom-test1 .section-04__card-copy-bottom {
@@ -4253,19 +4746,20 @@ body.store-modal-open {
   .section-04__family-app-badges {
     order: 2;
     position: absolute;
-    top: 164px;
-    left: 50%;
+    top: 276px;
+    right: 29px;
+    left: auto;
     margin-top: 0;
     margin-bottom: 0;
-    transform: translateX(calc(-50% + 250px)) scale(0.7);
-    transform-origin: top center;
+    transform: scale(0.7);
+    transform-origin: top right;
     z-index: 4;
   }
 
   .section-04__card--wide-bottom-test1 .section-04__family-app {
     order: 3;
     position: absolute;
-    top: 130px;
+    top: 136px;
     left: 50%;
     right: auto;
     width: 375px;

@@ -6,8 +6,6 @@ export default defineConfig({
     rollupOptions: {
       input: {
         main: 'index.html',
-        test2: 'test2.html',
-        test3: 'test3.html',
       },
     },
   },

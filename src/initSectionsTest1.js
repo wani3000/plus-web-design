@@ -5,7 +5,18 @@ import lottie from 'lottie-web';
 gsap.registerPlugin(ScrollTrigger);
 
 export function initSharedSections() {
+  const isMobile = window.matchMedia('(max-width: 767px)').matches;
   const animatedCardStart = 'top 68%';
+  const shouldLoopOnThisViewport = !isMobile;
+  const shuffleArray = (items) => {
+    const copy = [...items];
+    for (let index = copy.length - 1; index > 0; index -= 1) {
+      const swapIndex = Math.floor(Math.random() * (index + 1));
+      [copy[index], copy[swapIndex]] = [copy[swapIndex], copy[index]];
+    }
+    return copy;
+  };
+  const randomBetween = (min, max) => min + Math.random() * (max - min);
 
   // Section 02 chart (SVG + GSAP path draw)
   const section02Chart = document.querySelector('.section-02__chart');
@@ -156,7 +167,7 @@ export function initSharedSections() {
         lottie.loadAnimation({
           container: hourglassLottieEl,
           renderer: 'svg',
-          loop: true,
+          loop: shouldLoopOnThisViewport,
           autoplay: true,
           animationData
         });
@@ -165,7 +176,7 @@ export function initSharedSections() {
         lottie.loadAnimation({
           container: hourglassLottieEl,
           renderer: 'svg',
-          loop: true,
+          loop: shouldLoopOnThisViewport,
           autoplay: true,
           path: '/hourglass-loading.json'
         });
@@ -177,6 +188,86 @@ export function initSharedSections() {
   if (section01Bubbles) {
     const bubbles = Array.from(section01Bubbles.querySelectorAll('.section-01__bubble'));
     if (bubbles.length > 0) {
+      let lastBubbleLayoutKey = '';
+      const mobileBubbleSlots = [
+        { left: 4, top: 1, xPercent: 0, rotate: 0, xOffset: -90, yOffset: 30 },
+        { left: 52, top: 0, xPercent: -50, rotate: 0, xOffset: 60 },
+        { left: 97, top: 8, xPercent: -100, rotate: 0, xOffset: 70, yOffset: 68 },
+        { left: 14, top: 23, xPercent: 0, rotate: 0, xOffset: -50 },
+        { left: 88, top: 27, xPercent: -100, rotate: 0, xOffset: -50, yOffset: 50 },
+        { left: 50, top: 38, xPercent: -50, rotate: 0, xOffset: 100, yOffset: 78 },
+        { left: 2, top: 57, xPercent: 0, rotate: 0, xOffset: -50 },
+        { left: 56, top: 63, xPercent: -50, rotate: 0, yOffset: 40 },
+        { left: 96, top: 76, xPercent: -100, rotate: 0 }
+      ];
+      const applyBubbleLayout = (force = false) => {
+        const useMobileLayout = window.matchMedia('(max-width: 767px)').matches;
+        const layoutWidth = Math.round(section01Bubbles.clientWidth);
+        const nextLayoutKey = `${useMobileLayout ? 'mobile' : 'desktop'}:${layoutWidth}`;
+        if (!force && nextLayoutKey === lastBubbleLayoutKey) {
+          return;
+        }
+        lastBubbleLayoutKey = nextLayoutKey;
+
+        if (!useMobileLayout) {
+          gsap.set(bubbles, {
+            clearProps: 'width,maxWidth,left,top,xPercent,rotation'
+          });
+          return;
+        }
+
+        const containerWidth = section01Bubbles.clientWidth;
+        const containerHeight = section01Bubbles.clientHeight;
+        bubbles.forEach((bubble, index) => {
+          const shouldUseNaturalWidth =
+            bubble.classList.contains('section-01__bubble--1') ||
+            bubble.classList.contains('section-01__bubble--3') ||
+            bubble.classList.contains('section-01__bubble--6') ||
+            bubble.classList.contains('section-01__bubble--7') ||
+            bubble.classList.contains('section-01__bubble--8');
+          const textLength = bubble.textContent?.trim().length ?? 0;
+          const targetWidth =
+            textLength > 30 ? 250 :
+            textLength > 22 ? 226 :
+            textLength > 16 ? 190 :
+              154;
+
+          gsap.set(bubble, {
+            width: shouldUseNaturalWidth ? 'auto' : targetWidth,
+            maxWidth: shouldUseNaturalWidth ? 'none' : targetWidth,
+            left: 0,
+            top: 0,
+            xPercent: 0
+          });
+
+          const bubbleWidth = bubble.offsetWidth;
+          const bubbleHeight = bubble.offsetHeight;
+          const horizontalPadding = 8;
+          const minLeft = horizontalPadding;
+          const minTop = 0;
+          const maxLeft = Math.max(minLeft, containerWidth - bubbleWidth - horizontalPadding);
+          const maxTop = Math.max(minTop, containerHeight - bubbleHeight);
+          const slot = mobileBubbleSlots[index] ?? mobileBubbleSlots[index % mobileBubbleSlots.length];
+          const slotLeft =
+            (containerWidth * slot.left / 100) -
+            (bubbleWidth * ((slot.xPercent ?? 0) / -100)) +
+            (slot.xOffset ?? 0);
+          const slotTop =
+            (containerHeight * slot.top / 100) +
+            (slot.yOffset ?? 0);
+
+          gsap.set(bubble, {
+            left: Math.round(Math.min(maxLeft, Math.max(minLeft, slotLeft))),
+            top: Math.round(Math.min(maxTop, Math.max(minTop, slotTop))),
+            xPercent: 0,
+            rotation: 0
+          });
+        });
+      };
+
+      applyBubbleLayout(true);
+      window.addEventListener('resize', () => applyBubbleLayout());
+
       bubbles.forEach((bubble) => {
         bubble.addEventListener('mouseenter', () => {
           bubble._cloudDriftTween?.pause();
@@ -187,11 +278,46 @@ export function initSharedSections() {
         });
       });
 
-      gsap.set(bubbles, {
-        autoAlpha: 0,
-        x: 0,
-        y: (index) => 10 + (index % 4) * 8
-      });
+      if (window.matchMedia('(max-width: 767px)').matches) {
+        gsap.set(bubbles, {
+          autoAlpha: 0,
+          scale: 0.78,
+          x: () => gsap.utils.random(-22, 22),
+          y: () => gsap.utils.random(24, 56)
+        });
+      } else {
+        gsap.set(bubbles, {
+          autoAlpha: 0,
+          x: 0,
+          y: (index) => 10 + (index % 4) * 8
+        });
+      }
+
+      const isMobileBubbleViewport = window.matchMedia('(max-width: 767px)').matches;
+      const bubbleRevealTween = isMobileBubbleViewport
+        ? {
+            autoAlpha: 1,
+            scale: 1,
+            x: 0,
+            y: 0,
+            duration: 0.72,
+            ease: 'back.out(1.7)',
+            stagger: {
+              each: 0.08,
+              from: 'random'
+            }
+          }
+        : {
+            autoAlpha: 1,
+            x: 0,
+            y: 0,
+            duration: 0.85,
+            ease: 'power3.out',
+            stagger: {
+              each: 0.08,
+              from: 'random'
+            }
+          };
 
       gsap.timeline({
         scrollTrigger: {
@@ -201,6 +327,7 @@ export function initSharedSections() {
           once: true
         },
         onComplete: () => {
+          if (window.matchMedia('(max-width: 767px)').matches || !shouldLoopOnThisViewport) return;
           bubbles.forEach((bubble, index) => {
             const driftX = 24 + (index % 4) * 10;
             const driftY = index % 2 === 0 ? -6 : 6;
@@ -217,23 +344,13 @@ export function initSharedSections() {
           });
         }
       })
-        .to(bubbles, {
-          autoAlpha: 1,
-          x: 0,
-          y: 0,
-          duration: 0.85,
-          ease: 'power3.out',
-          stagger: {
-            each: 0.08,
-            from: 'random'
-          }
-        });
+        .to(bubbles, bubbleRevealTween);
     }
   }
 
   const initDroppingLogoStack = (block, selectors = {}, options = {}) => {
     if (!block) return;
-    const repeat = options.repeat ?? true;
+    const repeat = options.repeat ?? shouldLoopOnThisViewport;
     const paused = options.paused ?? false;
 
     const redCard = block.querySelector(selectors.red ?? '.section-02__logo-card--red');
@@ -646,7 +763,7 @@ export function initSharedSections() {
 
       const docTl = gsap.timeline({
         paused: true,
-        repeat: -1
+        repeat: shouldLoopOnThisViewport ? -1 : 0
       })
         .to(investUi, {
           y: 0,
@@ -667,43 +784,45 @@ export function initSharedSections() {
           ease: 'power2.out',
           stagger: 0.16
         }, '+=0.08')
-        .to({}, { duration: 2 })
-        .to(docChecklist || investUi, {
-          y: -24,
-          autoAlpha: 0,
-          duration: 0.34,
-          ease: 'power2.inOut'
-        })
-        .to(docCompleteIcon, {
-          y: 0,
-          autoAlpha: 1,
-          duration: 0.34,
-          ease: 'power3.out'
-        }, '<+0.06');
+        .to({}, { duration: 2 });
 
-      docTl
-        .to(docCompleteTitle, {
-          y: 0,
-          autoAlpha: 1,
-          duration: 0.32,
-          ease: 'power2.out'
-        }, '+=0.06')
-        .to(docCompleteBody, {
-          y: 0,
-          autoAlpha: 1,
-          duration: 0.34,
-          ease: 'power2.out'
-        }, '+=0.05')
-        .to({}, { duration: 5 })
-        .to(investUi, {
-          y: 28,
-          autoAlpha: 0,
-          duration: 0.42,
-          ease: 'power3.in'
-        })
-        .call(() => {
-          resetDocCardState(28);
-        });
+      if (shouldLoopOnThisViewport) {
+        docTl
+          .to(docChecklist || investUi, {
+            y: -24,
+            autoAlpha: 0,
+            duration: 0.34,
+            ease: 'power2.inOut'
+          })
+          .to(docCompleteIcon, {
+            y: 0,
+            autoAlpha: 1,
+            duration: 0.34,
+            ease: 'power3.out'
+          }, '<+0.06')
+          .to(docCompleteTitle, {
+            y: 0,
+            autoAlpha: 1,
+            duration: 0.32,
+            ease: 'power2.out'
+          }, '+=0.06')
+          .to(docCompleteBody, {
+            y: 0,
+            autoAlpha: 1,
+            duration: 0.34,
+            ease: 'power2.out'
+          }, '+=0.05')
+          .to({}, { duration: 5 })
+          .to(investUi, {
+            y: 28,
+            autoAlpha: 0,
+            duration: 0.42,
+            ease: 'power3.in'
+          })
+          .call(() => {
+            resetDocCardState(28);
+          });
+      }
 
       const investIntroTl = gsap.timeline({
         scrollTrigger: {
@@ -953,7 +1072,7 @@ export function initSharedSections() {
 
       const planTl = gsap.timeline({
         paused: true,
-        repeat: -1
+        repeat: shouldLoopOnThisViewport ? -1 : 0
       });
 
       if (planWidget) {
@@ -1017,20 +1136,24 @@ export function initSharedSections() {
             duration: 2.5,
             ease: 'power2.out'
           }, '<')
-          .to({}, { duration: 5 })
-          .to(planWidget, {
-            y: -16,
-            autoAlpha: 0,
-            duration: 0.3,
-            ease: 'power2.in'
-          })
-          .call(resetPlanState)
-          .to(planWidget, {
-            y: 0,
-            autoAlpha: 1,
-            duration: 0.45,
-            ease: 'power3.out'
-          });
+          .to({}, { duration: 5 });
+
+        if (shouldLoopOnThisViewport) {
+          planTl
+            .to(planWidget, {
+              y: -16,
+              autoAlpha: 0,
+              duration: 0.3,
+              ease: 'power2.in'
+            })
+            .call(resetPlanState)
+            .to(planWidget, {
+              y: 0,
+              autoAlpha: 1,
+              duration: 0.45,
+              ease: 'power3.out'
+            });
+        }
 
         planTl
           .to(lightBar, {
@@ -1078,14 +1201,18 @@ export function initSharedSections() {
             duration: 2.5,
             ease: 'power2.out'
           }, '<')
-          .to({}, { duration: 5 })
-          .to(planWidget, {
-            y: -16,
-            autoAlpha: 0,
-            duration: 0.3,
-            ease: 'power2.in'
-          })
-          .call(resetPlanState);
+          .to({}, { duration: 5 });
+
+        if (shouldLoopOnThisViewport) {
+          planTl
+            .to(planWidget, {
+              y: -16,
+              autoAlpha: 0,
+              duration: 0.3,
+              ease: 'power2.in'
+            })
+            .call(resetPlanState);
+        }
       }
 
       const planIntroTl = gsap.timeline({
@@ -1242,15 +1369,17 @@ export function initSharedSections() {
 
       familyTl.call(() => {
         if (familyBadgeItems.length < 3 || !familyOliveBadge || !familyBlueBadge) return;
+        const initialHoldDuration = isMobile ? 0.5 : 3;
+        const firstSpreadDelay = isMobile ? 0 : 0.65;
 
         const badgeLoop = gsap.timeline()
-          .to({}, { duration: 3 })
+          .to({}, { duration: initialHoldDuration })
           // first spread
           .to(familyBadgeItems[1], {
             x: 54,
             duration: 0.42,
             ease: 'power2.out'
-          }, '+=0.65')
+          }, `+=${firstSpreadDelay}`)
           .to(familyBadgeItems[2], {
             x: 108,
             duration: 0.42,
@@ -1304,7 +1433,9 @@ export function initSharedSections() {
             ease: 'power2.inOut'
           }, '<');
 
-        badgeLoop.repeat(-1);
+        if (shouldLoopOnThisViewport) {
+          badgeLoop.repeat(-1);
+        }
       });
     }
   }
@@ -1331,7 +1462,7 @@ export function initSharedSections() {
 
   // Section 01b phone rail animation
   const section01b = document.querySelector('.section-01b');
-  if (section01b) {
+  if (!isMobile && section01b) {
     const phoneWrap = section01b.querySelector('.section-01b__phone-wrap');
     if (phoneWrap) {
       const centerIndex = 4;

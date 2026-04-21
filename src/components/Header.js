@@ -1,15 +1,11 @@
 export function Header() {
   const template = document.createElement('template');
-  const piLogo = './io_pi.png';
+  const piLogo = '/io_pi.png';
   const homeHref = './';
-  const googlePlayHref = 'https://play.google.com/store/apps/details?id=hw.dp.plus&hl=ko';
-  const appleStoreHref = 'https://apps.apple.com/kr/app/%ED%8C%8C%EC%9D%B4/id6755743981';
-  const googlePlayLogo = 'https://www.figma.com/api/mcp/asset/c1269f60-c578-4fa6-934d-c540a1afcd7c';
-  const appleLogo = 'https://www.figma.com/api/mcp/asset/9522aba2-6fb0-4e8e-8b20-f634d3780b7d';
-  const pathname = window.location.pathname;
-  const isTest2 = pathname.endsWith('/test2.html') || pathname.endsWith('test2.html');
-  const isTest3 = pathname.endsWith('/test3.html') || pathname.endsWith('test3.html');
-  const isTest1 = !isTest2 && !isTest3;
+  const googlePlayHref = 'https://play.google.com/store/apps/details?id=hw.dp.plus&hl=ko&pli=1';
+  const appleStoreHref = 'https://apps.apple.com/us/app/%ED%8C%8C%EC%9D%B4/id6755743981';
+  const googlePlayLogo = '/ic_store_google.png';
+  const appleLogo = '/ic_store_apple.png';
   template.innerHTML = `
 <header class="header">
   <div class="header__inner">
@@ -22,9 +18,7 @@ export function Header() {
     </div>
 
     <nav class="header__nav" aria-label="주요 메뉴">
-      <a class="header__nav-item${isTest1 ? ' is-active' : ''}" href="./">테스트1</a>
-      <a class="header__nav-item${isTest2 ? ' is-active' : ''}" href="./test2.html">테스트2</a>
-      <a class="header__nav-item${isTest3 ? ' is-active' : ''}" href="./test3.html">테스트3</a>
+      <a class="header__nav-item is-active" href="./">홈</a>
     </nav>
 
     <div class="header__stores">

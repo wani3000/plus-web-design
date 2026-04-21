@@ -5,7 +5,7 @@ import { setTimeout as delay } from 'node:timers/promises'
 const host = '127.0.0.1'
 const port = 4173
 const baseUrl = `http://${host}:${port}`
-const routes = ['/', '/test2.html', '/test3.html']
+const routes = ['/']
 
 const preview = spawn(
   'npm',

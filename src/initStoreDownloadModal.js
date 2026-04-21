@@ -3,11 +3,11 @@ import QRCode from 'qrcode'
 const STORE_LINKS = {
   google: {
     label: 'Google Play',
-    href: 'https://play.google.com/store/apps/details?id=hw.dp.plus&hl=ko'
+    href: 'https://play.google.com/store/apps/details?id=hw.dp.plus&hl=ko&pli=1'
   },
   apple: {
     label: 'App Store',
-    href: 'https://apps.apple.com/kr/app/%ED%8C%8C%EC%9D%B4/id6755743981'
+    href: 'https://apps.apple.com/us/app/%ED%8C%8C%EC%9D%B4/id6755743981'
   }
 };
 
@@ -17,6 +17,20 @@ let panel = null;
 let qrImage = null;
 let storeText = null;
 let activeTrigger = null;
+
+const DIRECT_DOWNLOAD_BUTTON_SELECTOR = '.mobile-header__download, .section-05__download-mobile';
+
+const detectDeviceStore = () => {
+  const userAgent = navigator.userAgent || navigator.vendor || '';
+  const isAndroid = /android/i.test(userAgent);
+  const isIOS =
+    /iPad|iPhone|iPod/.test(userAgent) ||
+    (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+
+  if (isAndroid) return 'google';
+  if (isIOS) return 'apple';
+  return null;
+};
 
 const getStoreType = (button) => {
   const explicit = button.dataset.store;
@@ -38,7 +52,7 @@ const ensureModal = () => {
     <div class="store-modal__dimmed" data-store-close="true"></div>
     <div class="store-modal__panel" role="dialog" aria-modal="true" aria-labelledby="store-modal-title" tabindex="-1">
       <button class="store-modal__close" type="button" aria-label="팝업 닫기" data-store-close="true">
-        <img src="./ic_close_24.png" alt="" />
+        <img src="/ic_close_24.png" alt="" />
       </button>
       <div class="store-modal__qr-wrap">
         <img class="store-modal__qr-image" alt="앱 다운로드 QR 코드" />
@@ -113,6 +127,15 @@ export function initStoreDownloadModal() {
 
     const storeType = getStoreType(button);
     if (!storeType) return;
+
+    if (button.matches(DIRECT_DOWNLOAD_BUTTON_SELECTOR)) {
+      const deviceStore = detectDeviceStore();
+      if (deviceStore) {
+        event.preventDefault();
+        window.location.href = STORE_LINKS[deviceStore].href;
+        return;
+      }
+    }
 
     event.preventDefault();
     await openModal(storeType, button);
