@@ -9,10 +9,6 @@ var __create=Object.create,__defProp=Object.defineProperty,__getOwnPropDesc=Obje
       </a>
     </div>
 
-    <nav class="header__nav" aria-label="주요 메뉴">
-      <a class="header__nav-item is-active" href="./">홈</a>
-    </nav>
-
     <div class="header__stores">
       <a class="store-button" href="${r}" data-store="google" aria-label="Google Play 다운로드">
         <span class="store-button__icon-frame" aria-hidden="true">
