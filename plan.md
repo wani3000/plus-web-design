@@ -17,6 +17,7 @@
 2. 미사용 자산을 삭제한다.
 3. `README.md`, `research.md`, `plan.md`, `handoff.md` 를 현재 구조 기준으로 재작성한다.
 4. `npm run build` 로 정리 결과를 검증한다.
+5. GitHub Actions deprecated action runtime 경고를 공식 Pages 액션 체인으로 교체해 정리한다.
 
 ## Progress
 - [x] 활성 런타임 파일 재점검
@@ -26,6 +27,7 @@
 - [x] 미사용 자산 삭제
 - [x] 최종 빌드 검증
 - [x] 브라우저 탭 title을 `앞서가는 부모들의 자산공식, 파이`로 정리
+- [x] GitHub Pages workflow를 공식 Pages 액션 체인으로 교체
 
 ## Expected End State
 - 홈 단일 엔트리 구조가 문서와 일치

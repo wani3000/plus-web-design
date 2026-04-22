@@ -62,4 +62,14 @@
   - `lottie-web` direct `eval`
   - bundle chunk size warning
 
+## Deployment Workflow
+- `/Users/hanwha/Documents/GitHub/plus-web-design/.github/workflows/deploy-pages.yml` 는 공식 GitHub Pages 액션 체인으로 교체했습니다.
+- 이전 `peaceiris/actions-gh-pages@v4` 경로는 Node 20 deprecation annotation의 직접 원인이었습니다.
+- 현재 워크플로:
+  - `actions/checkout@v6`
+  - `actions/configure-pages@v5`
+  - `actions/setup-node@v6`
+  - `actions/upload-pages-artifact@v3`
+  - `actions/deploy-pages@v4`
+
 이 두 경고는 현재 기능 차단 이슈로 판단하지 않습니다.
