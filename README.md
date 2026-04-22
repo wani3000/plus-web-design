@@ -64,13 +64,11 @@
 - GitHub Pages: `.github/workflows/deploy-pages.yml`
 - Vercel 설정: `/Users/hanwha/Documents/GitHub/plus-web-design/vercel.json`
 - 빌드 산출물은 `dist/` 입니다.
-- GitHub Pages 배포는 이제 `peaceiris/actions-gh-pages` 대신 공식 Pages 액션 체인으로 동작합니다.
+- GitHub Pages 배포는 현재 `gh-pages` 브랜치 푸시 방식으로 유지합니다.
   - `actions/checkout@v6`
-  - `actions/configure-pages@v5`
   - `actions/setup-node@v6`
-  - `actions/upload-pages-artifact@v3`
-  - `actions/deploy-pages@v4`
-- `actions/configure-pages@v5` 는 `enablement: true` 로 설정되어, 저장소에 Pages site가 아직 없을 때도 첫 run에서 활성화할 수 있게 구성했습니다.
+  - `peaceiris/actions-gh-pages@v4`
+- 공식 Pages 액션 체인(`configure-pages` / `upload-pages-artifact` / `deploy-pages`) 전환은 시도했지만, 현재 저장소에서는 Pages site 생성 권한이 없어 적용하지 못했습니다.
 
 ## 알려진 빌드 경고
 - `lottie-web` 의 direct `eval` 경고

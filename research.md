@@ -63,15 +63,15 @@
   - bundle chunk size warning
 
 ## Deployment Workflow
-- `/Users/hanwha/Documents/GitHub/plus-web-design/.github/workflows/deploy-pages.yml` 는 공식 GitHub Pages 액션 체인으로 교체했습니다.
-- 이전 `peaceiris/actions-gh-pages@v4` 경로는 Node 20 deprecation annotation의 직접 원인이었습니다.
+- `/Users/hanwha/Documents/GitHub/plus-web-design/.github/workflows/deploy-pages.yml` 는 현재 `gh-pages` 브랜치 배포 방식을 유지합니다.
 - 현재 워크플로:
   - `actions/checkout@v6`
-  - `actions/configure-pages@v5`
   - `actions/setup-node@v6`
-  - `actions/upload-pages-artifact@v3`
-  - `actions/deploy-pages@v4`
-- 첫 공식 전환 run에서는 저장소 Pages site가 아직 활성화되지 않아 `configure-pages`가 404로 실패했습니다.
-- 현재는 `actions/configure-pages@v5` 에 `enablement: true` 를 추가해 첫 실행에서 Pages 활성화까지 수행하도록 맞췄습니다.
+  - `peaceiris/actions-gh-pages@v4`
+- 공식 Pages 액션 체인 전환은 시도했지만 실패했습니다.
+  - `GET /repos/{owner}/{repo}/pages` -> `404 Not Found`
+  - `POST /repos/{owner}/{repo}/pages` -> `403 Resource not accessible by integration`
+- 즉 현재 자격으로는 저장소 Pages site를 생성/활성화할 수 없습니다.
+- 결론적으로 배포 안정성을 우선해 working path로 되돌리고, 업그레이드 가능한 액션(`checkout`, `setup-node`)만 최신으로 올렸습니다.
 
 이 두 경고는 현재 기능 차단 이슈로 판단하지 않습니다.
