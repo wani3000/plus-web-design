@@ -4537,6 +4537,26 @@ body.store-modal-open {
 }
 
 @media (min-width: 1101px) {
+  .section-01b__subtitle,
+  .section-03__heading p,
+  .section-04__heading p,
+  .section-05__subtitle {
+    font-size: 22px;
+  }
+
+  .section-03__card > p,
+  .section-04__card p,
+  .section-04__card-copy-bottom p,
+  .section-05-intro__card p {
+    font-size: 18px;
+  }
+
+  .section-05-intro__card-button {
+    height: 44px;
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+
   .section-04__card--narrow-bottom .section-04__tax-logo-wrap {
     /* Align logo-wrap top with D-120 badge top.
        Badge top ≈ 58% − half-tax-card + inner-offset ≈ calc(58% + 7px). */

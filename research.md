@@ -62,6 +62,16 @@
   - `lottie-web` direct `eval`
   - bundle chunk size warning
 
+## Typography Snapshot
+- 카드/인트로 설명 본문(`Section 03`, `Section 04`, `Section 05 intro`)은 현재 viewport별로 다음 값을 사용합니다.
+  - Desktop (`min-width: 1101px`): `18px`
+  - Tablet (`768px ~ 1100px`): `16px`
+  - Mobile (`max-width: 767px`): `16px`
+- 데스크톱 섹션 서브타이틀(`Section 01B`, `Section 03`, `Section 04`, `Section 05`)은 `22px`로 맞춥니다.
+
+## Desktop CTA Snapshot
+- 데스크톱 `Section 05 intro` 카드의 `자세히 보기` 버튼은 헤더 `App Store` / `Google Play` 버튼과 동일한 `44px` 높이로 맞춥니다.
+
 ## Deployment Workflow
 - `/Users/hanwha/Documents/GitHub/plus-web-design/.github/workflows/deploy-pages.yml` 는 현재 `gh-pages` 브랜치 배포 방식을 유지합니다.
 - 현재 워크플로:
