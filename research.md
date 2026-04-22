@@ -3,12 +3,18 @@
 ## Repository Facts
 - 저장소 경로: `/Users/hanwha/Documents/GitHub/plus-web-design`
 - 프로젝트 형태: Vite 기반 정적 랜딩
-- 활성 페이지: `/Users/hanwha/Documents/GitHub/plus-web-design/index.html`
+- 활성 페이지:
+  - `/Users/hanwha/Documents/GitHub/plus-web-design/index.html`
+  - `/Users/hanwha/Documents/GitHub/plus-web-design/guide.html`
+  - `/Users/hanwha/Documents/GitHub/plus-web-design/gift-qa.html`
 - 검증된 서버/DB/ORM 레이어는 없습니다.
 
 ## Active Runtime
 - `/Users/hanwha/Documents/GitHub/plus-web-design/index.html`
+- `/Users/hanwha/Documents/GitHub/plus-web-design/guide.html`
+- `/Users/hanwha/Documents/GitHub/plus-web-design/gift-qa.html`
 - `/Users/hanwha/Documents/GitHub/plus-web-design/main.js`
+- `/Users/hanwha/Documents/GitHub/plus-web-design/detail.js`
 - `/Users/hanwha/Documents/GitHub/plus-web-design/style.css`
 - `/Users/hanwha/Documents/GitHub/plus-web-design/src/components/Header.js`
 - `/Users/hanwha/Documents/GitHub/plus-web-design/src/initSectionsTest1.js`
@@ -99,3 +105,13 @@
 - 결론적으로 배포 안정성을 우선해 working path로 되돌리고, 업그레이드 가능한 액션(`checkout`, `setup-node`)만 최신으로 올렸습니다.
 
 이 두 경고는 현재 기능 차단 이슈로 판단하지 않습니다.
+
+## Detail Pages
+- `guide.html` 과 `gift-qa.html` 는 root HTML 엔트리로 추가됩니다.
+- `vite.config.js` 의 `rollupOptions.input` 에 3개 엔트리(`index`, `guide`, `giftQa`)를 명시해야 빌드 산출물에 포함됩니다.
+- 두 페이지는 공통 `detail.js` 를 사용하고, 모바일은 back header / 태블릿·데스크톱은 기존 `Header()` 를 사용합니다.
+- 상세 페이지 초기 아이콘 확대 플래시는 CSS를 `detail.js` 에서 import 하던 구조 때문에 발생했습니다. 현재는 두 HTML이 `style.css` 를 직접 `<link>` 로 로드하고, `detail.js` 는 DOM/행동만 담당합니다.
+- preview 확인 결과:
+  - `/` -> `200`
+  - `/guide.html` -> `200`
+  - `/gift-qa.html` -> `200`

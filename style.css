@@ -296,12 +296,46 @@ body {
   outline-offset: 2px;
 }
 
+.detail-page-body {
+  padding-top: var(--header-height);
+}
+
 .mobile-only-break {
   display: none;
 }
 
 .tablet-only-break {
   display: none;
+}
+
+.detail-mobile-header {
+  display: none;
+}
+
+.detail-page {
+  width: 100%;
+  min-height: calc(100vh - var(--header-height));
+  background: var(--color-gray-00);
+}
+
+.detail-page__hero {
+  width: 100%;
+  padding: var(--section-content-top) 0 120px;
+}
+
+.detail-page__inner {
+  width: min(var(--section-max), 100%);
+  margin: 0 auto;
+}
+
+.detail-page__title {
+  margin: 0;
+  color: var(--color-gray-90);
+  font-family: 'Pretendard Variable', Pretendard, sans-serif;
+  font-size: var(--section-heading-size);
+  font-weight: 700;
+  line-height: var(--section-title-line-height);
+  letter-spacing: var(--section-title-letter-spacing);
 }
 
 .store-button {
@@ -3964,7 +3998,8 @@ body.store-modal-open {
   .section-03__inner,
   .section-04__inner,
   .section-05-intro__inner,
-  .section-05__inner {
+  .section-05__inner,
+  .detail-page__inner {
     width: 100%;
   }
 
@@ -3974,7 +4009,8 @@ body.store-modal-open {
   .section-03,
   .section-04,
   .section-05,
-  .section-05-intro {
+  .section-05-intro,
+  .detail-page__hero {
     overflow-x: hidden;
   }
 
@@ -4590,6 +4626,10 @@ body.store-modal-open {
     overflow-x: hidden;
   }
 
+  .detail-page-body {
+    padding-top: var(--mobile-header-height);
+  }
+
   .header {
     display: none;
   }
@@ -4598,12 +4638,62 @@ body.store-modal-open {
     display: flex;
   }
 
+  .detail-mobile-header {
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1200;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.94);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(var(--color-gray-90-rgb), 0.05);
+  }
+
+  .detail-mobile-header__inner {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 10px 20px;
+  }
+
+  .detail-mobile-header__back {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: var(--color-gray-90);
+    cursor: pointer;
+  }
+
+  .detail-mobile-header__back-icon {
+    display: block;
+    font-family: 'Pretendard Variable', Pretendard, sans-serif;
+    font-size: 28px;
+    line-height: 1;
+    transform: translateY(-1px);
+  }
+
   .mobile-header__stores {
     display: none;
   }
 
   .mobile-header__download {
     display: inline-flex;
+  }
+
+  .detail-page__hero {
+    padding: var(--section-content-top) 0 80px;
+  }
+
+  .detail-page__inner {
+    padding: 0 20px;
   }
 
   .section-01__bubble {

@@ -6,6 +6,8 @@ export default defineConfig({
     rollupOptions: {
       input: {
         main: 'index.html',
+        guide: 'guide.html',
+        giftQa: 'gift-qa.html',
       },
     },
   },

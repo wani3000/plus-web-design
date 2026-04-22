@@ -3,14 +3,20 @@
 ## 개요
 - 저장소 경로: `/Users/hanwha/Documents/GitHub/plus-web-design`
 - Vite 기반 정적 랜딩 프로젝트입니다.
-- 현재 활성 엔트리는 홈 단일 페이지 하나입니다.
+- 현재 활성 엔트리는 3개입니다.
+  - `/Users/hanwha/Documents/GitHub/plus-web-design/index.html`
+  - `/Users/hanwha/Documents/GitHub/plus-web-design/guide.html`
+  - `/Users/hanwha/Documents/GitHub/plus-web-design/gift-qa.html`
 - 데스크톱, 태블릿, 모바일은 모두 동일한 홈 엔트리 안에서 breakpoint로 분기합니다.
 - 브라우저 탭 타이틀은 `앞서가는 부모들의 자산공식, 파이` 입니다.
 - 현재 UI는 승인 완료 상태로 간주하며, 추가 정리 작업은 시각 결과를 바꾸지 않는 범위에서만 진행합니다.
 
 ## 활성 런타임 파일
 - `/Users/hanwha/Documents/GitHub/plus-web-design/index.html`
+- `/Users/hanwha/Documents/GitHub/plus-web-design/guide.html`
+- `/Users/hanwha/Documents/GitHub/plus-web-design/gift-qa.html`
 - `/Users/hanwha/Documents/GitHub/plus-web-design/main.js`
+- `/Users/hanwha/Documents/GitHub/plus-web-design/detail.js`
 - `/Users/hanwha/Documents/GitHub/plus-web-design/style.css`
 - `/Users/hanwha/Documents/GitHub/plus-web-design/src/components/Header.js`
 - `/Users/hanwha/Documents/GitHub/plus-web-design/src/initSectionsTest1.js`
@@ -52,6 +58,20 @@
 ### Section 05 / Footer
 - CTA와 footer는 현재 홈 단일 엔트리 안에서 viewport별 분기를 가집니다.
 - 스토어 다운로드 모달은 `/Users/hanwha/Documents/GitHub/plus-web-design/src/initStoreDownloadModal.js` 가 담당합니다.
+
+### Detail Pages
+- `/Users/hanwha/Documents/GitHub/plus-web-design/guide.html`
+  - 제목: `생애 필수 증여+투자 패키지 이용방법`
+- `/Users/hanwha/Documents/GitHub/plus-web-design/gift-qa.html`
+  - 제목: `증여 Q&A`
+- 공통 런타임: `/Users/hanwha/Documents/GitHub/plus-web-design/detail.js`
+- 모바일은 back header, 태블릿/데스크톱은 홈과 동일한 상단 네비게이션을 사용합니다.
+- 두 상세 페이지 모두 하단에 footer를 노출합니다.
+- 상세 페이지의 `style.css` 는 HTML `<link>` 로 선로딩합니다. 초기 JS import 로드 방식에서 발생하던 아이콘/푸터 FOUC를 방지하기 위한 구조입니다.
+- preview 응답 확인:
+  - `/` -> `200`
+  - `/guide.html` -> `200`
+  - `/gift-qa.html` -> `200`
 
 ## 자산 정책
 - 런타임 자산은 `/Users/hanwha/Documents/GitHub/plus-web-design/public`

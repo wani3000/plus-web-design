@@ -1,41 +1,38 @@
 # plan.md
 
 ## Current Objective
-- 데스크톱/태블릿/모바일 UI를 변경하지 않고 코드베이스를 정리합니다.
+- `Section 05 intro` 카드의 `자세히 보기`에서 연결되는 상세 페이지 2개를 추가합니다.
 - 목표:
-  - 사용 중인 파일/자산만 남기기
-  - 문서를 현재 구조 기준으로 재작성하기
-  - 빌드 검증까지 완료하기
+  - `guide.html`, `gift-qa.html` 엔트리 추가
+  - 모바일/태블릿/데스크톱 조건에 맞는 헤더/푸터 적용
+  - 멀티 엔트리 빌드 반영
+  - 상세 페이지 초기 아이콘 FOUC 제거
+  - 문서 최신화 및 검증 완료
 
 ## Constraints
-- UI 변경 금지
-- 애니메이션/레이아웃/카피 배치 변경 금지
+- 새 상세 페이지 외 기존 홈 UI는 유지
 - `dist/` 직접 수정 금지
 
 ## Execution Plan
-1. 활성 런타임과 자산 참조를 다시 점검한다.
-2. 미사용 자산을 삭제한다.
-3. `README.md`, `research.md`, `plan.md`, `handoff.md` 를 현재 구조 기준으로 재작성한다.
-4. `npm run build` 로 정리 결과를 검증한다.
-5. GitHub Actions deprecated action runtime 경고를 줄이기 위해 업그레이드 가능한 액션부터 최신으로 올린다.
+1. 현재 헤더/푸터/CTA 링크 구조를 확인한다.
+2. 상세 페이지 2개와 공통 `detail.js` 를 추가한다.
+3. `style.css` 에 상세 페이지 전용 클래스만 추가한다.
+4. `vite.config.js` 에 멀티 엔트리를 반영한다.
+5. 문서를 현재 구조에 맞게 갱신한다.
+6. `npm run build` 와 preview 응답으로 검증한다.
+7. 상세 페이지 초기 스타일 로드 방식을 점검해 FOUC를 제거한다.
 
 ## Progress
-- [x] 활성 런타임 파일 재점검
-- [x] `public/` 자산 참조 재점검
-- [x] 미사용 자산 식별 (`public/.DS_Store`)
-- [x] 문서 재작성
-- [x] 미사용 자산 삭제
-- [x] 최종 빌드 검증
-- [x] 브라우저 탭 title을 `앞서가는 부모들의 자산공식, 파이`로 정리
-- [x] `actions/checkout` / `actions/setup-node` 를 최신 major로 업그레이드
-- [x] 공식 Pages 액션 체인 전환 시도 및 권한 한계 문서화
-- [x] 데스크톱 카드/인트로 설명 본문 크기 `18px`로 조정, 태블릿/모바일 `16px` 유지
-- [x] 데스크톱 `자세히 보기` 버튼 높이를 헤더 스토어 버튼(`44px`)과 통일
-- [x] 데스크톱 섹션 서브타이틀을 `22px`로 통일
-- [x] 모바일 `Section 01B` 레일 애니메이션에서 resize 강제 리셋을 줄이고 step/target 캐싱 적용
-- [x] 모바일 `Section 01B` 내부 이미지 코너 반경 추가 조정 (`19px`)
+- [x] 헤더/푸터/CTA 링크 구조 확인
+- [x] `guide.html`, `gift-qa.html`, `detail.js` 추가
+- [x] `index.html` CTA 링크 연결
+- [x] 상세 페이지 전용 CSS 추가
+- [x] `vite.config.js` 멀티 엔트리 반영
+- [x] build / preview 검증
+- [x] 상세 페이지 CSS 선로딩으로 초기 FOUC 제거
+- [x] 문서 최신화
 
 ## Expected End State
-- 홈 단일 엔트리 구조가 문서와 일치
-- 미사용 `public` 파일 제거 완료
+- 홈 + 상세 2개 페이지의 3개 엔트리 구조가 문서와 일치
+- 상세 페이지에서 헤더/푸터/타이틀 동작이 viewport별 요구사항과 일치
 - 현재 알려진 경고만 유지
