@@ -188,6 +188,8 @@ export function initSharedSections() {
   if (section01Bubbles) {
     const bubbles = Array.from(section01Bubbles.querySelectorAll('.section-01__bubble'));
     if (bubbles.length > 0) {
+      const isCompactBubbleViewport = () => window.matchMedia('(max-width: 1100px)').matches;
+      const isTabletBubbleViewport = () => window.matchMedia('(min-width: 768px) and (max-width: 1100px)').matches;
       let lastBubbleLayoutKey = '';
       const mobileBubbleSlots = [
         { left: 4, top: 1, xPercent: 0, rotate: 0, xOffset: -90, yOffset: 30 },
@@ -201,7 +203,7 @@ export function initSharedSections() {
         { left: 96, top: 76, xPercent: -100, rotate: 0 }
       ];
       const applyBubbleLayout = (force = false) => {
-        const useMobileLayout = window.matchMedia('(max-width: 767px)').matches;
+        const useMobileLayout = isCompactBubbleViewport();
         const layoutWidth = Math.round(section01Bubbles.clientWidth);
         const nextLayoutKey = `${useMobileLayout ? 'mobile' : 'desktop'}:${layoutWidth}`;
         if (!force && nextLayoutKey === lastBubbleLayoutKey) {
@@ -219,12 +221,17 @@ export function initSharedSections() {
         const containerWidth = section01Bubbles.clientWidth;
         const containerHeight = section01Bubbles.clientHeight;
         bubbles.forEach((bubble, index) => {
+          const useTabletSizing = isTabletBubbleViewport();
           const shouldUseNaturalWidth =
+            useTabletSizing ||
             bubble.classList.contains('section-01__bubble--1') ||
             bubble.classList.contains('section-01__bubble--3') ||
             bubble.classList.contains('section-01__bubble--6') ||
             bubble.classList.contains('section-01__bubble--7') ||
             bubble.classList.contains('section-01__bubble--8');
+          const tabletMaxWidth = bubble.classList.contains('section-01__bubble--5')
+            ? Math.min(520, containerWidth - 24)
+            : Math.min(420, containerWidth - 24);
           const textLength = bubble.textContent?.trim().length ?? 0;
           const targetWidth =
             textLength > 30 ? 250 :
@@ -234,7 +241,7 @@ export function initSharedSections() {
 
           gsap.set(bubble, {
             width: shouldUseNaturalWidth ? 'auto' : targetWidth,
-            maxWidth: shouldUseNaturalWidth ? 'none' : targetWidth,
+            maxWidth: useTabletSizing ? tabletMaxWidth : (shouldUseNaturalWidth ? 'none' : targetWidth),
             left: 0,
             top: 0,
             xPercent: 0
@@ -278,7 +285,7 @@ export function initSharedSections() {
         });
       });
 
-      if (window.matchMedia('(max-width: 767px)').matches) {
+      if (isCompactBubbleViewport()) {
         gsap.set(bubbles, {
           autoAlpha: 0,
           scale: 0.78,
@@ -293,7 +300,7 @@ export function initSharedSections() {
         });
       }
 
-      const isMobileBubbleViewport = window.matchMedia('(max-width: 767px)').matches;
+      const isMobileBubbleViewport = isCompactBubbleViewport();
       const bubbleRevealTween = isMobileBubbleViewport
         ? {
             autoAlpha: 1,
@@ -327,7 +334,7 @@ export function initSharedSections() {
           once: true
         },
         onComplete: () => {
-          if (window.matchMedia('(max-width: 767px)').matches || !shouldLoopOnThisViewport) return;
+          if (isCompactBubbleViewport() || !shouldLoopOnThisViewport) return;
           bubbles.forEach((bubble, index) => {
             const driftX = 24 + (index % 4) * 10;
             const driftY = index % 2 === 0 ? -6 : 6;
@@ -376,7 +383,7 @@ export function initSharedSections() {
       gsap.set(dropOrder, {
         y: (index) => physics[index]?.startY ?? defaultPhysics.startY,
         x: (index) => physics[index]?.driftX ?? defaultPhysics.driftX,
-        autoAlpha: 1,
+        autoAlpha: 0,
         scaleX: 1,
         scaleY: 1,
         zIndex: 1,
@@ -407,7 +414,7 @@ export function initSharedSections() {
       });
 
       logoTl
-        .to(card, { zIndex: 50 + index, duration: 0.02 }, cursor)
+        .set(card, { autoAlpha: 1, zIndex: 50 + index }, cursor)
         .to(card, { y: 0, x: 0, duration: p.fall, ease: 'power4.in' }, cursor)
         .to(card, { scaleX: 1.05, scaleY: 0.92, duration: 0.07, ease: 'power1.out' }, impactAt)
         .to(card, { y: -p.bounce, scaleX: 0.99, scaleY: 1.02, duration: 0.16, ease: 'power2.out' }, impactAt + 0.05)
@@ -945,7 +952,7 @@ export function initSharedSections() {
         gsap.set(taxBodyCard, { y: 18, autoAlpha: 0 });
       }
       if (taxLogoWrap) {
-        gsap.set(taxLogoWrap, { y: 56, autoAlpha: 0 });
+        gsap.set(taxLogoWrap, { y: 0, autoAlpha: 0 });
       }
 
       const taxTl = gsap.timeline({

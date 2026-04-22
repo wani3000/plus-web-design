@@ -1,65 +1,64 @@
 # research.md
 
-## System Overview
-- Repository: `/Users/chulwan/Documents/GitHub/plus-web-design`
-- Verified runtime shape: Vite static landing site
-- Verified active page: `/` from [index.html](/Users/chulwan/Documents/GitHub/plus-web-design/index.html)
-- No verified backend, database, ORM, or repository-owned API runtime
+## Repository Facts
+- 저장소 경로: `/Users/hanwha/Documents/GitHub/plus-web-design`
+- 프로젝트 형태: Vite 기반 정적 랜딩
+- 활성 페이지: `/Users/hanwha/Documents/GitHub/plus-web-design/index.html`
+- 검증된 서버/DB/ORM 레이어는 없습니다.
 
-## Verified Active Runtime
-- [index.html](/Users/chulwan/Documents/GitHub/plus-web-design/index.html)
-- [main.js](/Users/chulwan/Documents/GitHub/plus-web-design/main.js)
-- [style.css](/Users/chulwan/Documents/GitHub/plus-web-design/style.css)
-- [src/components/Header.js](/Users/chulwan/Documents/GitHub/plus-web-design/src/components/Header.js)
-- [src/initSectionsTest1.js](/Users/chulwan/Documents/GitHub/plus-web-design/src/initSectionsTest1.js)
-- [src/initStoreDownloadModal.js](/Users/chulwan/Documents/GitHub/plus-web-design/src/initStoreDownloadModal.js)
+## Active Runtime
+- `/Users/hanwha/Documents/GitHub/plus-web-design/index.html`
+- `/Users/hanwha/Documents/GitHub/plus-web-design/main.js`
+- `/Users/hanwha/Documents/GitHub/plus-web-design/style.css`
+- `/Users/hanwha/Documents/GitHub/plus-web-design/src/components/Header.js`
+- `/Users/hanwha/Documents/GitHub/plus-web-design/src/initSectionsTest1.js`
+- `/Users/hanwha/Documents/GitHub/plus-web-design/src/initStoreDownloadModal.js`
 
-## Verified Runtime Assets
-- Runtime assets are served from [public](/Users/chulwan/Documents/GitHub/plus-web-design/public)
-- Fonts are loaded from [font](/Users/chulwan/Documents/GitHub/plus-web-design/font)
-- User-provided store icons currently in use:
-  - `public/ic_store_google.png`
-  - `public/ic_store_apple.png`
-- Legacy store SVGs are no longer part of the active runtime path
-- Legacy home-tab UI has been removed from the header component
-- Unused public assets previously tied to removed `test2` / `test3` runtime paths have been deleted after home-only reference verification
-- Desktop and tablet now share the same `40px` total horizontal header gutter via `.header__inner`
-- Mobile hero video now mounts hidden before source hydration and reveal, reducing the chance of a native file-name placeholder flash during first paint
-- The previous hero poster asset itself was contaminated: `public/section-02-hero-video-poster.png` visibly contained the string `section-02-hero-video.mp4`
-- The active poster has been replaced with a clean frame extracted from `section-02-hero-video.mp4`, so the filename flash is now removed at the asset source
+## Asset Audit
+- 점검 기준 파일:
+  - `index.html`
+  - `main.js`
+  - `style.css`
+  - `src/initSectionsTest1.js`
+  - `src/initStoreDownloadModal.js`
+  - `src/components/Header.js`
+- 위 활성 런타임 파일 기준으로 `public/` 참조를 다시 조사했습니다.
+- 확인된 미사용 `public/` 파일:
+  - `.DS_Store`
+- 그 외 `public/` 파일은 모두 현재 홈 엔트리에서 사용 중입니다.
 
-## Verified Section Findings
-### Section 01
-- mobile bubble layout is controlled in [src/initSectionsTest1.js](/Users/chulwan/Documents/GitHub/plus-web-design/src/initSectionsTest1.js) via `mobileBubbleSlots`
-- mobile currently hides bubbles `2`, `4`, `9`
-- latest 390px-wide viewport verification showed no overlap among visible rendered bubbles
+## Viewport Behavior Snapshot
+### Desktop
+- `1100px` 초과
+- 기본 header / card layout / footer 구조 사용
 
-### Section 01b
-- desktop rail logic lives in [src/initSectionsTest1.js](/Users/chulwan/Documents/GitHub/plus-web-design/src/initSectionsTest1.js)
-- mobile rail boot logic lives in [main.js](/Users/chulwan/Documents/GitHub/plus-web-design/main.js)
-- current mobile order:
-  - `12 -> 01 -> 02 -> 03 -> 10 -> 07 -> 08 -> 09`
-- current mobile active index: `1`
-- current mobile timing:
-  - `ScrollTrigger start: top 85%`
-  - about `1s` delayed start
-  - continuous cycle after start
+### Tablet
+- `768px ~ 1100px`
+- 단일 `앱 다운로드` 헤더/CTA
+- tablet-only 줄바꿈과 카드 typography override 일부 존재
+- Section 01 말풍선은 mobile-style compact layout을 재사용
+- Section 01 말풍선 텍스트 크기는 `16px`
+- `section-01__bubble--5` 는 태블릿에서 `520px` 상한과 자연 줄바꿈 규칙을 사용
+
+### Mobile
+- `767px` 이하
+- 모바일 헤더
+- 모바일 hero 비디오/fallback 처리
+- 모바일 Section 01/01b 전용 분기 존재
+
+## Codebase Hygiene Findings
+- `README.md`, `research.md`, `plan.md`, `handoff.md` 에 이전 사용자 경로(`/Users/chulwan/...`)가 남아 있었습니다.
+- 문서가 append-only 로그 형태로 누적되어 현재 구조를 빠르게 파악하기 어려운 상태였습니다.
+- 현재 정리 목표는 UI 수정이 아니라:
+  - 경로/현실 최신화
+  - 미사용 자산 제거
+  - 문서 재구성
+  입니다.
 
 ## Verified Build Status
-- `npm run build` succeeds
-- `npm run verify` succeeds
-- active verification route: `/`
-- Vercel project `plus-web-design` now explicitly stores:
-  - `buildCommand: npm run build`
-  - `outputDirectory: dist`
-- Root [vercel.json](/Users/chulwan/Documents/GitHub/plus-web-design/vercel.json) also defines `ignoreCommand` to cancel `gh-pages` preview deployments before Vercel attempts a Vite build
+- `npm run build` 성공
+- 현재 알려진 경고:
+  - `lottie-web` direct `eval`
+  - bundle chunk size warning
 
-## Known Warning Decision
-- `lottie-web` emits a direct `eval` build warning
-- the home-only build now also emits a chunk-size warning because the runtime is bundled into a single main entry chunk above `500 kB`
-- this is currently a third-party warning, not a failing repository runtime issue
-- current recommendation: keep both warnings documented and defer structural optimization unless deployment or runtime performance becomes blocked
-- Tablet behavior is now unified at `768px ~ 1100px`: the fixed header hides `.header__stores` and reveals a single `.header__download` button, the CTA hides store-button pairs and shows the single download button, and the footer swaps from desktop footer markup to the mobile footer layout.
-- Tablet side gutters were previously mixed between `padding: 0 20px` sections and `inner width: calc(100% - 40px)` sections. This was normalized so tablet now uses section-level `20px` left/right padding consistently, with `__inner` wrappers expanded to `width: 100%`.
-- The header still looked off after that normalization because `.header__inner` had been widened to `100%` without restoring side padding. Tablet now adds `padding: 0 20px` plus `box-sizing: border-box` to the header inner wrapper so nav and section gutters line up.
-- Copy concatenation on desktop/tablet was caused by missing literal spaces around `<br class="mobile-only-break">` in shared CTA/help text. Added spaces before the conditional breaks so hidden breaks do not collapse words together.
+이 두 경고는 현재 기능 차단 이슈로 판단하지 않습니다.

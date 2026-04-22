@@ -204,7 +204,7 @@ body {
   justify-content: center;
   padding: 11px 18px;
   border: none;
-  border-radius: 14px;
+  border-radius: 8px;
   background: var(--color-gray-90);
   color: var(--color-gray-00);
   font-size: 16px;
@@ -297,6 +297,10 @@ body {
 }
 
 .mobile-only-break {
+  display: none;
+}
+
+.tablet-only-break {
   display: none;
 }
 
@@ -2494,8 +2498,7 @@ body {
 .section-04__tax-logo-wrap {
   width: 160px;
   height: 160px;
-  margin: -22px auto 0;
-  transform: translate(120px, -80px);
+  margin: 0;
   position: relative;
   z-index: 3;
 }
@@ -2524,7 +2527,28 @@ body {
   grid-column: 1;
   grid-row: 2;
   width: 500px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
   overflow: hidden;
+}
+
+/* Base desktop layout for the filing-status card. Breakpoints only adjust scale/anchors. */
+.section-04__card--narrow-bottom .section-04__tax-card {
+  position: absolute;
+  top: 58%;
+  left: 50%;
+  margin: 0;
+  transform: translate(-50%, -50%);
+  transform-origin: center;
+}
+
+.section-04__card--narrow-bottom .section-04__tax-logo-wrap {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  transform: translate(120px, -80px);
+  transform-origin: center;
 }
 
 .section-04__insight-list {
@@ -2598,8 +2622,24 @@ body {
   grid-column: 2;
   grid-row: 2;
   width: 920px;
+  display: flex;
+  flex-direction: column;
   transform: translateX(-420px);
   position: relative;
+}
+
+.section-04__card--narrow-bottom .section-04__card-copy-bottom,
+.section-04__card--wide-bottom .section-04__card-copy-bottom {
+  position: static;
+  left: auto;
+  right: auto;
+  bottom: auto;
+  margin-bottom: 20px;
+}
+
+.section-04__card--narrow-bottom .section-04__card-copy-bottom::before,
+.section-04__card--wide-bottom .section-04__card-copy-bottom::before {
+  display: none;
 }
 
 .section-04__card--wide-bottom-test1 {
@@ -3643,6 +3683,13 @@ body.store-modal-open {
     top: auto;
   }
 
+  .section-03__card--right-top,
+  .section-03__card--left-bottom,
+  .section-03__card--right-bottom {
+    display: flex;
+    flex-direction: column;
+  }
+
   .section-04__grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     grid-template-rows: 500px 520px;
@@ -3686,7 +3733,7 @@ body.store-modal-open {
   :root {
     --section-gap: 64px;
     --section-content-top: 64px;
-    --section-heading-bottom-gap: 48px;
+    --section-heading-bottom-gap: 64px;
     --section-03-card-top: 398px;
   }
 
@@ -3710,7 +3757,7 @@ body.store-modal-open {
 
   .section-01__heading,
   .section-01b__heading {
-    font-size: 42px;
+    font-size: 38px;
   }
 
   .section-01b__phone-outline {
@@ -3815,6 +3862,96 @@ body.store-modal-open {
 }
 
 @media (min-width: 768px) and (max-width: 1100px) {
+  .tablet-only-break {
+    display: inline;
+  }
+
+  .section-01__bubble {
+    font-size: 16px;
+    position: absolute;
+    transform: none;
+    padding: 14px 16px;
+    background: #FFFFFF;
+    color: #141415;
+    white-space: normal;
+    text-align: center;
+    max-width: min(420px, calc(100% - 16px));
+    word-break: keep-all;
+    line-height: 1;
+    letter-spacing: 0;
+    box-shadow: 0 3.2px 32px rgba(0, 0, 0, 0.12);
+    transition: none;
+  }
+
+  .section-01__bubble,
+  .section-01__bubble--1,
+  .section-01__bubble--2,
+  .section-01__bubble--3,
+  .section-01__bubble--4,
+  .section-01__bubble--5,
+  .section-01__bubble--6,
+  .section-01__bubble--7,
+  .section-01__bubble--8,
+  .section-01__bubble--9 {
+    width: auto;
+    max-width: min(420px, calc(100% - 24px));
+    white-space: normal;
+  }
+
+  .section-01__bubble::after {
+    display: none;
+  }
+
+  .section-01__bubble:hover {
+    translate: 0 0;
+    box-shadow: 0 3.2px 32px rgba(0, 0, 0, 0.12);
+  }
+
+  .section-01__bubble:hover::after {
+    transform: none;
+  }
+
+  .section-01__bubble--5 {
+    max-width: min(520px, calc(100% - 24px));
+    line-height: 22px;
+    word-break: normal;
+    overflow-wrap: anywhere;
+  }
+
+  .section-01,
+  .section-01__bubbles {
+    overflow-x: hidden;
+  }
+
+  .section-01__inner {
+    overflow: visible;
+  }
+
+  .section-01b__heading,
+  .section-03__heading h2,
+  .section-04__heading h2,
+  .section-05-intro .section-03__heading h2,
+  .section-05__title {
+    font-family: 'Pretendard Variable', Pretendard, sans-serif;
+    font-size: 38px;
+    font-weight: 700;
+    line-height: var(--section-title-line-height);
+    letter-spacing: var(--section-title-letter-spacing);
+    text-align: center;
+  }
+
+  .section-01b__subtitle,
+  .section-04__heading p,
+  .section-05-intro .section-03__heading p,
+  .section-05__subtitle {
+    font-family: 'Pretendard Variable', Pretendard, sans-serif;
+    font-size: var(--section-subtitle-size);
+    font-weight: 400;
+    line-height: var(--section-subtitle-line-height);
+    letter-spacing: var(--section-subtitle-letter-spacing);
+    text-align: center;
+  }
+
   .header__inner {
     width: 100%;
     padding: 0 20px;
@@ -3843,13 +3980,15 @@ body.store-modal-open {
 
   .section-01__bubbles {
     position: relative;
-    left: 50%;
-    width: 100vw;
-    height: clamp(300px, 34vw, 400px);
+    left: auto;
+    width: calc(100vw - 16px);
+    max-width: calc(100vw - 16px);
+    height: 480px;
+    margin-left: calc(50% - 50vw + 8px);
     margin-top: var(--section-heading-bottom-gap);
-    transform: translateX(-50%);
+    transform: none;
     display: block;
-    overflow: visible;
+    overflow: hidden;
   }
 
   .section-01__bubble {
@@ -3861,10 +4000,25 @@ body.store-modal-open {
 
   .section-01b {
     --section-01b-title-offset: clamp(112px, 12vw, 140px);
-    --section-01b-phone-top-gap: clamp(88px, 9vw, 118px);
+    --section-01b-phone-top-gap: var(--section-heading-bottom-gap);
     --section-01b-phone-bottom-gap: 48px;
-    --section-01b-phone-gap: clamp(12px, 1.8vw, 18px);
     --section-01b-phone-overflow: 112px;
+    /* Clip phone cards 20px at the bottom */
+    height: calc(100vh - var(--hero-top-offset) - 110px);
+    min-height: calc(100vh - var(--hero-top-offset) - 110px);
+    /* 75% phone scaling */
+    --_01b-full-phone-height: calc((100vh - var(--hero-top-offset)) - var(--section-01b-title-offset) - var(--section-01b-copy-height) - var(--section-01b-phone-top-gap) + var(--section-01b-phone-overflow));
+    --section-01b-phone-height: calc(var(--_01b-full-phone-height) * 0.75);
+    --section-01b-phone-gap: calc(clamp(12px, 1.8vw, 18px) * 0.75);
+  }
+
+  /* Top-align the 75%-scaled phones: 64px below subtitle, extra space falls to bottom */
+  .section-01b .section-01b__phone-wrap {
+    top: calc(var(--section-01b-title-offset) + var(--section-01b-copy-height) + var(--section-01b-phone-top-gap));
+  }
+
+  .section-01b .section-01b__phone-frame {
+    top: calc(var(--section-01b-title-offset) + var(--section-01b-copy-height) + var(--section-01b-phone-top-gap));
   }
 
   .section-02__grid {
@@ -3943,6 +4097,20 @@ body.store-modal-open {
     padding: clamp(28px, 3vw, 36px);
   }
 
+  .section-03__card h3,
+  .section-04__card h3,
+  .section-04__card-copy-bottom h3 {
+    font-size: 22px;
+  }
+
+  .section-03__card > p {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    word-break: normal;
+    overflow-wrap: anywhere;
+  }
+
   .section-03__card--left-top,
   .section-03__card--right-top,
   .section-03__card--left-bottom,
@@ -3952,55 +4120,167 @@ body.store-modal-open {
   }
 
   .section-03__card-head {
-    padding-right: 138px;
+    flex-direction: column-reverse;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 20px;
+    padding-right: 0;
   }
 
   .section-03 .section-03__card-head > .section-03__chip {
-    top: -4px;
+    position: static;
+    align-self: flex-start;
+    padding: 12px 14px;
+    font-size: 12px;
   }
 
   .section-03__card--left-top {
-    display: grid;
-    grid-template-rows: auto auto 12px 1fr;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+
+  .section-03__card--left-top > * {
+    min-width: 0;
+  }
+
+  .section-03__chart-block {
+    display: block;
+    width: 520px;
+    max-width: none;
+    justify-self: center;
+    margin-left: auto;
+    margin-right: auto;
+    transform: scale(0.65);
+    transform-origin: top center;
   }
 
   .section-03__card--left-top .section-03__chart-block {
-    transform: scale(0.78);
+    position: relative;
+    justify-self: start;
+    left: 50%;
+    height: 320px;
+    margin-top: auto;
+    margin-left: 0;
+    margin-right: 0;
+    margin-bottom: -30px;
+    transform: translateX(-50%) scale(0.845);
+    transform-origin: bottom center;
+  }
+
+  .section-03__card--left-top .section-03__chart-bar--small {
+    height: 50%;
+  }
+
+  .section-03__card--left-top .section-03__chart-bar--large {
+    height: 100%;
+  }
+
+  .section-03__card--left-top .section-03__chart-label-group--small {
+    bottom: calc(50% - 52px);
+  }
+
+  .section-03__card--left-top .section-03__chart-label-group--large {
+    bottom: calc(100% - 54px);
+  }
+
+  .section-03__chart-bar--small {
+    height: calc(50% + 100px);
+  }
+
+  .section-03__chart-bar--large {
+    height: calc(100% + 100px);
+  }
+
+  .section-03__chart-label-group--small {
+    left: 144px;
+    bottom: calc(50% + 48px);
+  }
+
+  .section-03__chart-label-group--large {
+    bottom: calc(100% + 46px);
+  }
+
+  .section-03__chart-line--small,
+  .section-03__chart-line--large {
+    display: none !important;
+  }
+
+  .section-03__monthly-visual {
+    position: relative;
+    inset: auto;
+    left: 50%;
+    right: auto;
+    margin-top: 20px;
+    width: 100%;
+    height: 250px;
+    transform: translateX(-50%) scale(0.65);
     transform-origin: top center;
-    margin-top: 12px;
+  }
+
+  .section-03__card--right-top .section-03__monthly-visual {
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .section-03__card--right-top .section-03__monthly-amount {
-    left: 32px;
-    right: 32px;
-    font-size: 56px;
+    position: relative;
+    top: auto;
+    left: auto;
+    right: auto;
+    width: max-content;
+    margin: -96px auto 0;
+    z-index: 2;
   }
 
   .section-03__card--right-top .section-03__monthly-notes {
-    transform: scale(0.78);
-    transform-origin: center bottom;
-    bottom: -146px;
+    bottom: -330px;
+    transform: translateX(-10px);
+  }
+
+  .section-03__etf-visual {
+    position: relative;
+    left: auto;
+    right: auto;
+    bottom: auto;
+    margin-top: 20px;
+    width: 100%;
+    height: 250px;
+    display: flex;
+    justify-content: center;
   }
 
   .section-03__card--left-bottom .section-03__etf-visual {
-    left: 24px;
-    right: 24px;
-    bottom: 24px;
+    margin-top: 20px;
+  }
+
+  .section-03__etf-stage {
+    transform: scale(0.65);
+    transform-origin: top center;
   }
 
   .section-03__card--left-bottom .section-03__etf-stage {
-    --etf-scale: 0.72;
-    margin: 0 auto;
+    position: absolute;
+    left: 50%;
+    top: 0;
+    transform: translateX(-50%) translateY(30px) scale(0.65);
+    transform-origin: top center;
   }
 
-  .section-03__card--right-bottom .section-03__invest-visual {
-    inset: 198px 0 0;
+  .section-03__invest-visual {
+    position: relative;
+    inset: auto;
+    margin-top: 20px;
+    height: 320px;
   }
 
   .section-03__card--right-bottom .section-03__invest-ui {
-    bottom: -12px;
-    transform: translateX(-50%) scale(0.84);
-    transform-origin: bottom center;
+    top: 0;
+    bottom: auto;
+    transform: translateX(-50%) scale(0.78);
+    transform-origin: top center;
   }
 
   .section-04 {
@@ -4034,15 +4314,29 @@ body.store-modal-open {
   }
 
   .section-04__card--wide-top .section-04__plan-widget {
-    width: 355px;
-    max-width: calc(100% - 32px);
-    padding: 30px;
+    width: calc(100% + 70px);
+    max-width: none;
     position: absolute;
     left: 50%;
-    top: 58%;
-    transform: translate(-50%, -50%) scale(0.82);
+    top: calc(50% + 40px);
+    transform: translate(-50%, -50%) scale(0.72);
     transform-origin: center;
     margin: 0;
+  }
+
+  .section-04__card--wide-top .section-04__plan-row--primary .section-04__plan-label,
+  .section-04__card--wide-top .section-04__plan-row--primary .section-04__plan-value {
+    font-size: 24px;
+  }
+
+  .section-04__card--wide-top .section-04__plan-row--secondary .section-04__plan-label,
+  .section-04__card--wide-top .section-04__plan-row--secondary .section-04__plan-value {
+    font-size: 20px;
+  }
+
+  .section-04__card--wide-top .section-04__plan-foot span,
+  .section-04__card--wide-top .section-04__plan-foot strong {
+    font-size: 20px;
   }
 
   .section-04__gift-link-visual {
@@ -4053,27 +4347,20 @@ body.store-modal-open {
     transform-origin: top center;
   }
 
-  .section-04__card--narrow-bottom {
-    position: relative;
-    overflow: hidden;
+  .section-04__card--narrow-bottom .section-04__tax-logo-wrap {
+    position: absolute;
+    /* Align top with D-120 badge top; place 20px right of badge right edge */
+    top: calc(58% + 6px);
+    left: calc(50% + 60px);
+    right: auto;
+    bottom: auto;
+    margin: 0;
+    transform: scale(0.62);
+    transform-origin: top left;
   }
 
   .section-04__card--narrow-bottom .section-04__tax-card {
-    position: absolute;
-    top: 58%;
-    left: 50%;
-    margin: 0;
     transform: translate(-50%, -50%) scale(0.82);
-    transform-origin: center;
-  }
-
-  .section-04__card--narrow-bottom .section-04__tax-logo-wrap {
-    position: absolute;
-    right: 18px;
-    bottom: 18px;
-    margin: 0;
-    transform: scale(0.62);
-    transform-origin: bottom right;
   }
 
   .section-04__insight-list {
@@ -4246,6 +4533,18 @@ body.store-modal-open {
     width: 34px;
     height: 34px;
     object-fit: contain;
+  }
+}
+
+@media (min-width: 1101px) {
+  .section-04__card--narrow-bottom .section-04__tax-logo-wrap {
+    /* Align logo-wrap top with D-120 badge top.
+       Badge top ≈ 58% − half-tax-card + inner-offset ≈ calc(58% + 7px). */
+    top: calc(58% + 7px);
+    right: 56px;
+    bottom: auto;
+    transform: scale(0.8);
+    transform-origin: top right;
   }
 }
 
@@ -4799,20 +5098,6 @@ body.store-modal-open {
   .section-04__card--narrow-bottom .section-04__card-copy-bottom::before,
   .section-04__card--wide-bottom .section-04__card-copy-bottom::before {
     display: none;
-  }
-
-  .section-04__tax-card {
-    transform: scale(0.7);
-    transform-origin: top center;
-  }
-
-  .section-04__tax-logo-wrap {
-    transform: translate(120px, -80px) scale(0.7);
-    transform-origin: top center;
-  }
-
-  .section-04__card--narrow-bottom {
-    position: relative;
   }
 
   .section-04__card--narrow-bottom .section-04__tax-card {
