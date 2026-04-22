@@ -70,6 +70,7 @@
   - `actions/setup-node@v6`
   - `actions/upload-pages-artifact@v3`
   - `actions/deploy-pages@v4`
+- `actions/configure-pages@v5` 는 `enablement: true` 로 설정되어, 저장소에 Pages site가 아직 없을 때도 첫 run에서 활성화할 수 있게 구성했습니다.
 
 ## 알려진 빌드 경고
 - `lottie-web` 의 direct `eval` 경고

@@ -71,5 +71,7 @@
   - `actions/setup-node@v6`
   - `actions/upload-pages-artifact@v3`
   - `actions/deploy-pages@v4`
+- 첫 공식 전환 run에서는 저장소 Pages site가 아직 활성화되지 않아 `configure-pages`가 404로 실패했습니다.
+- 현재는 `actions/configure-pages@v5` 에 `enablement: true` 를 추가해 첫 실행에서 Pages 활성화까지 수행하도록 맞췄습니다.
 
 이 두 경고는 현재 기능 차단 이슈로 판단하지 않습니다.

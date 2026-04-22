@@ -28,6 +28,7 @@
 - [x] 최종 빌드 검증
 - [x] 브라우저 탭 title을 `앞서가는 부모들의 자산공식, 파이`로 정리
 - [x] GitHub Pages workflow를 공식 Pages 액션 체인으로 교체
+- [x] `configure-pages` 초기 404를 `enablement: true` 로 보정
 
 ## Expected End State
 - 홈 단일 엔트리 구조가 문서와 일치
