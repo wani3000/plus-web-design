@@ -34,6 +34,8 @@
 ### Section 01b
 - 제목: `파이가 자산관리의 시작을 도와드릴게요`
 - 휴대폰 레일과 모바일 순환 로직은 `main.js` 와 `src/initSectionsTest1.js` 에 분산되어 있습니다.
+- 모바일 `Section 01B` 레일은 width-change 기반 재계산만 수행하며, height-only resize에서는 즉시 재배치하지 않습니다.
+- 모바일 `Section 01B` 내부 이미지/스크린 코너 반경은 `19px` 입니다.
 
 ### Section 03 / Section 04
 - 회색 카드 기반 핵심 설명/그래픽 섹션입니다.

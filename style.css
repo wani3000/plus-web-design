@@ -4735,7 +4735,6 @@ body.store-modal-open {
     height: calc(var(--section-01b-phone-height) * 0.75 + 28px);
     align-items: flex-start;
     overflow: hidden;
-    will-change: transform;
   }
 
   .section-01b__phone-outline {
@@ -4745,12 +4744,12 @@ body.store-modal-open {
   }
 
   .section-01b__phone-screen {
-    border-radius: 16px !important;
+    border-radius: 19px !important;
     background: #080808;
   }
 
   .section-01b__phone-image {
-    border-radius: 16px !important;
+    border-radius: 19px !important;
   }
 
   .section-01b__phone-frame {

@@ -58,6 +58,9 @@ const initMobileSection01B = () => {
 
   const activeIndex = 1;
   let cycleStarted = false;
+  let phoneMetrics = null;
+  let lastViewportWidth = 0;
+  let resizeRafId = 0;
   const mobilePhoneOrder = [
     'img_mockup_12.png',
     'img_mockup_01.png',
@@ -71,6 +74,27 @@ const initMobileSection01B = () => {
 
   const getPhoneCards = () => Array.from(phoneWrap.querySelectorAll('.section-01b__phone-outline'));
   const getPhoneGap = () => parseFloat(getComputedStyle(phoneWrap).gap || '0');
+  const setActiveClasses = (cards = getPhoneCards()) => {
+    cards.forEach((card, index) => {
+      card.classList.toggle('is-active', index === activeIndex);
+    });
+  };
+
+  const computePhoneMetrics = () => {
+    const cards = getPhoneCards();
+    if (cards.length <= activeIndex) return null;
+
+    const activeCard = cards[activeIndex];
+    const cardWidth = activeCard.getBoundingClientRect().width;
+    const step = cardWidth + getPhoneGap();
+    const viewportWidth = section01b.getBoundingClientRect().width;
+    const innerPaddingLeft = parseFloat(getComputedStyle(phoneWrap.parentElement).paddingLeft || '0');
+    const targetX = ((viewportWidth - cardWidth) / 2) - innerPaddingLeft - (activeIndex * step);
+
+    phoneMetrics = { cardWidth, step, viewportWidth, targetX };
+    lastViewportWidth = viewportWidth;
+    return phoneMetrics;
+  };
 
   const resetPhoneCardsToMobileOrder = () => {
     const cards = getPhoneCards();
@@ -90,22 +114,18 @@ const initMobileSection01B = () => {
     });
   };
 
-  const syncPhoneRail = ({ immediate = false } = {}) => {
+  const syncPhoneRail = ({ immediate = false, recompute = true } = {}) => {
     const cards = getPhoneCards();
     if (cards.length <= activeIndex) return;
 
-    const activeCard = cards[activeIndex];
-    const cardWidth = activeCard.getBoundingClientRect().width;
-    const step = cardWidth + getPhoneGap();
-    const viewportWidth = section01b.getBoundingClientRect().width;
-    const innerPaddingLeft = parseFloat(getComputedStyle(phoneWrap.parentElement).paddingLeft || '0');
-    const targetX = ((viewportWidth - cardWidth) / 2) - innerPaddingLeft - (activeIndex * step);
+    const metrics = recompute || !phoneMetrics ? computePhoneMetrics() : phoneMetrics;
+    if (!metrics) return;
 
     if (immediate) {
-      gsap.set(phoneWrap, { x: targetX });
+      gsap.set(phoneWrap, { x: metrics.targetX });
     } else {
       gsap.to(phoneWrap, {
-        x: targetX,
+        x: metrics.targetX,
         duration: 0.72,
         ease: 'power2.inOut',
         overwrite: true
@@ -153,11 +173,17 @@ const initMobileSection01B = () => {
       const cards = getPhoneCards();
       if (cards.length <= activeIndex + 1) return;
 
-      const step = cards[0].getBoundingClientRect().width + getPhoneGap();
+      const metrics = phoneMetrics ?? computePhoneMetrics();
+      if (!metrics) return;
+
+      const step = metrics.step;
       const currentActiveCard = cards[activeIndex];
       const nextActiveCard = cards[activeIndex + 1];
       const currentScreen = currentActiveCard.querySelector('.section-01b__phone-screen');
       const nextScreen = nextActiveCard.querySelector('.section-01b__phone-screen');
+
+      currentActiveCard.classList.remove('is-active');
+      nextActiveCard.classList.add('is-active');
 
       gsap.to(currentActiveCard, {
         scale: 0.86,
@@ -195,13 +221,14 @@ const initMobileSection01B = () => {
       }
 
       gsap.to(phoneWrap, {
-        x: `-=${step}`,
+        x: metrics.targetX - step,
         duration: 0.72,
         ease: 'power2.inOut',
         overwrite: true,
         onComplete: () => {
           phoneWrap.appendChild(cards[0]);
-          syncPhoneRail({ immediate: true });
+          gsap.set(phoneWrap, { x: metrics.targetX });
+          setActiveClasses();
           queueNextCycle();
         }
       });
@@ -223,7 +250,12 @@ const initMobileSection01B = () => {
   });
 
   window.addEventListener('resize', () => {
-    syncPhoneRail({ immediate: true });
+    cancelAnimationFrame(resizeRafId);
+    resizeRafId = window.requestAnimationFrame(() => {
+      const viewportWidth = section01b.getBoundingClientRect().width;
+      if (Math.abs(viewportWidth - lastViewportWidth) < 1) return;
+      syncPhoneRail({ immediate: true, recompute: true });
+    });
   });
 };
 

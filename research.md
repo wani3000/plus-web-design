@@ -46,6 +46,8 @@
 - 모바일 헤더
 - 모바일 hero 비디오/fallback 처리
 - 모바일 Section 01/01b 전용 분기 존재
+- 모바일 `Section 01B` phone rail 은 width-change 기반 재계산만 허용하고, height-only resize에서는 강제 리셋하지 않도록 조정했습니다.
+- 모바일 `Section 01B` 의 내부 `phone-screen` / `phone-image` radius 는 `19px` 입니다.
 
 ## Codebase Hygiene Findings
 - `README.md`, `research.md`, `plan.md`, `handoff.md` 에 이전 사용자 경로(`/Users/chulwan/...`)가 남아 있었습니다.
@@ -71,6 +73,18 @@
 
 ## Desktop CTA Snapshot
 - 데스크톱 `Section 05 intro` 카드의 `자세히 보기` 버튼은 헤더 `App Store` / `Google Play` 버튼과 동일한 `44px` 높이로 맞춥니다.
+
+## Mobile Section 01B Animation
+- 모바일 `Section 01B` 레일 끊김의 핵심 원인은 `resize` 이벤트마다 즉시 `syncPhoneRail({ immediate: true })`가 실행되며 레일을 강제로 재배치하던 구조였습니다.
+- 특히 iPhone Safari 주소창 변화로 생기는 height-only resize에도 리셋이 발생할 수 있었습니다.
+- 보조 악화 요인:
+  - 모바일 `.section-01b__phone-wrap` 의 상시 `will-change: transform`
+  - 사이클 끝의 `appendChild + immediate sync`
+- 현재는:
+  - width 변화가 있을 때만 재계산
+  - step / targetX 캐싱
+  - 사이클 완료 후 전체 sync 대신 레일 위치만 복원
+  방식으로 정리했습니다.
 
 ## Deployment Workflow
 - `/Users/hanwha/Documents/GitHub/plus-web-design/.github/workflows/deploy-pages.yml` 는 현재 `gh-pages` 브랜치 배포 방식을 유지합니다.
