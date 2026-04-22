@@ -59,5 +59,7 @@
 - the home-only build now also emits a chunk-size warning because the runtime is bundled into a single main entry chunk above `500 kB`
 - this is currently a third-party warning, not a failing repository runtime issue
 - current recommendation: keep both warnings documented and defer structural optimization unless deployment or runtime performance becomes blocked
-- Tablet behavior is now unified: the fixed header no longer shows separate store buttons below 1100px. Instead, the desktop header hides `.header__stores` and reveals a single `.header__download` button, matching the tablet CTA treatment.
+- Tablet behavior is now unified at `768px ~ 1100px`: the fixed header hides `.header__stores` and reveals a single `.header__download` button, the CTA hides store-button pairs and shows the single download button, and the footer swaps from desktop footer markup to the mobile footer layout.
+- Tablet side gutters were previously mixed between `padding: 0 20px` sections and `inner width: calc(100% - 40px)` sections. This was normalized so tablet now uses section-level `20px` left/right padding consistently, with `__inner` wrappers expanded to `width: 100%`.
+- The header still looked off after that normalization because `.header__inner` had been widened to `100%` without restoring side padding. Tablet now adds `padding: 0 20px` plus `box-sizing: border-box` to the header inner wrapper so nav and section gutters line up.
 - Copy concatenation on desktop/tablet was caused by missing literal spaces around `<br class="mobile-only-break">` in shared CTA/help text. Added spaces before the conditional breaks so hidden breaks do not collapse words together.

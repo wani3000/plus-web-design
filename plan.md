@@ -49,3 +49,10 @@
 - `[ ]` Push and verify deploy after final QA
 - Added a `header__download` button to `src/components/Header.js` and, under `@media (max-width: 1100px)`, switched the header from store-button pair to the single `앱 다운로드` button so tablet matches the CTA behavior.
 - Fixed copy spacing around `mobile-only-break` in CTA/help cards so desktop/tablet text no longer concatenates when the line break is hidden.
+- Switched tablet (`768px ~ 1100px`) CTA to the single `앱 다운로드` button and swapped the footer to the mobile footer layout while keeping desktop footer untouched above 1100px.
+- Standardized tablet horizontal gutters to `20px` across sections by moving tablet layout to section-level side padding and `width: 100%` inner containers.
+- Fixed the tablet header gutter specifically by adding `padding: 0 20px` back to `.header__inner`, so the nav matches the section gutters at `768px ~ 1100px`.
+- Fixed the `유기정기금 증여하고 장기 투자` title spacing by adding a literal space before the conditional mobile line break.
+- Changed the `생애 필수 증여+투자 패키지 이용방법` card title to use a mobile-only line break so desktop renders it on one line.
+- Fixed the `증여재산공제에 맞춰 10년 주기로 계획` title spacing by adding a literal space before the conditional mobile line break.
+- Fixed the `장기 투자에 적합한 선택, 미국 ETF` title spacing by adding a literal space before the conditional mobile line break.
