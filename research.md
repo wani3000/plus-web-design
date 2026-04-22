@@ -13,6 +13,7 @@
 - `/Users/hanwha/Documents/GitHub/plus-web-design/src/components/Header.js`
 - `/Users/hanwha/Documents/GitHub/plus-web-design/src/initSectionsTest1.js`
 - `/Users/hanwha/Documents/GitHub/plus-web-design/src/initStoreDownloadModal.js`
+- 현재 문서 title 문자열: `앞서가는 부모들의 자산공식, 파이`
 
 ## Asset Audit
 - 점검 기준 파일:
